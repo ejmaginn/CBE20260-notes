@@ -1,0 +1,21 @@
+% --- Figure Spacing (Your existing settings) ---
+\setlength{\intextsep}{12pt} 
+\setlength{\textfloatsep}{14pt}
+\setlength{\floatsep}{12pt}
+
+% --- Headers and Footers ---
+\usepackage[headsepline, footsepline]{scrlayer-scrpage}
+\clearpairofpagestyles
+\ihead{CBE 20260}  % Inner Head (Left)
+\ohead{Spring 2026}   % Outer Head (Right)
+\cfoot{\pagemark}     % Center Foot (Page Number)
+\pagestyle{scrheadings}
+
+% --- Optional: Make links look nicer ---
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+}

@@ -1,0 +1,61 @@
+project:
+  type: website # website: → sets the site title and a simple navbar:
+
+website:
+  title: "CBE 20260 — Course Notes"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home # Home (index.qmd)
+      - text: Lectures
+        menu:
+          - href: class01/lecture01.qmd
+            text: Lecture 1 — Introduction
+          # Add more lectures here as you create them:
+          # - href: class02/lecture02.qmd
+          #   text: Lecture 2 — Title
+
+
+format:
+  html:
+    theme: cosmo         # Options: cosmo, flatly, journal, lumen, paper
+    fontsize: 1.1em      # Slightly larger text for reading
+    linestretch: 1.5     # More breathing room between lines
+    mainfont: "Georgia"  # System fonts for HTML
+    toc: true
+    number-sections: true
+
+    
+  pdf:
+    documentclass: scrartcl  # "KOMA-Script" (cleaner, more modern than standard 'article')
+    papersize: letter
+    geometry:
+      - top=1in
+      - bottom=1in
+      - left=1in
+      - right=1in
+    mainfont: "TeX Gyre Pagella" # A nice Palatino clone (must be installed on system)
+    # OR leave mainfont blank to use default LaTeX Computer Modern
+
+    colorlinks: false
+    linkcolor: black
+    fig-width: 4      # ← main line
+    fig-align: center
+    fig-cap-location: bottom
+    fig-pos: h
+    include-in-header: latex/preamble.tex
+  
+crossref:
+  fig-title: "Fig."   # caption prefix: Fig. 1
+  fig-prefix: "Fig."  # inline ref: Fig. 1
+
+  eq-title:  "Eq."    # caption prefix: Eq. 1
+  eq-prefix: "Eq."       # inline ref: Eq.1
+#  eq-prefix: ""       # inline ref: just 1 (we'll add Eq./eq. manually)
+
+
+resources:
+  - "*/images/**"
+
+# resources: - */images/** → tells Quarto to copy any images/ folder inside any subdirectory (e.g., class01/images/, class02/images/) into the built site so your image links work.
+bibliography: references.bib

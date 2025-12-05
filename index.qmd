@@ -1,0 +1,14 @@
+---
+title: "CBE 20260 — Lecture Notes"
+---
+
+# Welcome
+
+These are the working notes for **CBE 20260 Introduction to Chemical Engineering Thermodynamics** (Spring 2026).
+
+Use the **Lectures** menu in the navigation bar to jump to individual lecture notes.
+
+> These materials are meant to accompany the textbook  
+> *Fundamentals of Chemical Engineering Thermodynamics* by Dahm and Visco.
+
+See the course Canvas site for the syllabus, schedule, and other materials. 
