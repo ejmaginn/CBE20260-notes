@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Prof.&nbsp;Edward Maginn">
+
+<title>Lecture 1 — Introduction to Chemical Engineering Thermodynamics – CBE 20260 — Course Notes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-950ba19c765f2cec88564589b0edcdee.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">CBE 20260 — Course Notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-lectures" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Lectures</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-lectures">    
+        <li>
+    <a class="dropdown-item" href="../class01/lecture01.html">
+ <span class="dropdown-text">Lecture 1 — Introduction</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#course-administration" id="toc-course-administration" class="nav-link active" data-scroll-target="#course-administration"><span class="header-section-number">1</span> Course Administration</a></li>
+  <li><a href="#origins-of-thermodynamics" id="toc-origins-of-thermodynamics" class="nav-link" data-scroll-target="#origins-of-thermodynamics"><span class="header-section-number">2</span> Origins of Thermodynamics</a>
+  <ul class="collapse">
+  <li><a href="#historical-figures-in-thermodynamics" id="toc-historical-figures-in-thermodynamics" class="nav-link" data-scroll-target="#historical-figures-in-thermodynamics"><span class="header-section-number">2.2</span> Historical Figures in Thermodynamics</a>
+  <ul class="collapse">
+  <li><a href="#james-joule-manchester-england" id="toc-james-joule-manchester-england" class="nav-link" data-scroll-target="#james-joule-manchester-england"><span class="header-section-number">2.2.1</span> James Joule (Manchester, England)</a></li>
+  <li><a href="#william-thomson-ireland-and-scotland" id="toc-william-thomson-ireland-and-scotland" class="nav-link" data-scroll-target="#william-thomson-ireland-and-scotland"><span class="header-section-number">2.2.2</span> William Thomson (Ireland and Scotland)</a></li>
+  <li><a href="#j.-willard-gibbs-united-states" id="toc-j.-willard-gibbs-united-states" class="nav-link" data-scroll-target="#j.-willard-gibbs-united-states"><span class="header-section-number">2.2.3</span> J. Willard Gibbs (United States)</a></li>
+  <li><a href="#hermann-von-helmholtz-germany" id="toc-hermann-von-helmholtz-germany" class="nav-link" data-scroll-target="#hermann-von-helmholtz-germany"><span class="header-section-number">2.2.4</span> Hermann von Helmholtz (Germany)</a></li>
+  <li><a href="#john-m.-prausnitz-germany-united-states" id="toc-john-m.-prausnitz-germany-united-states" class="nav-link" data-scroll-target="#john-m.-prausnitz-germany-united-states"><span class="header-section-number">2.2.5</span> John M. Prausnitz (Germany, United States)</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#where-thermodynamics-fits-in-the-curriculum" id="toc-where-thermodynamics-fits-in-the-curriculum" class="nav-link" data-scroll-target="#where-thermodynamics-fits-in-the-curriculum"><span class="header-section-number">3</span> Where Thermodynamics Fits in the Curriculum</a></li>
+  <li><a href="#a-fundamental-engineering-concept" id="toc-a-fundamental-engineering-concept" class="nav-link" data-scroll-target="#a-fundamental-engineering-concept"><span class="header-section-number">4</span> A Fundamental Engineering Concept</a></li>
+  <li><a href="#chemical-process-example" id="toc-chemical-process-example" class="nav-link" data-scroll-target="#chemical-process-example"><span class="header-section-number">5</span> Chemical Process Example</a></li>
+  <li><a href="#how-this-class-differs-from-other-classes" id="toc-how-this-class-differs-from-other-classes" class="nav-link" data-scroll-target="#how-this-class-differs-from-other-classes"><span class="header-section-number">6</span> How this class differs from other classes</a></li>
+  <li><a href="#beyond-engineering" id="toc-beyond-engineering" class="nav-link" data-scroll-target="#beyond-engineering"><span class="header-section-number">7</span> Beyond Engineering</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture01.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lecture 1 — Introduction to Chemical Engineering Thermodynamics</h1>
+<p class="subtitle lead">CBE 20260 — Spring 2026</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Prof.&nbsp;Edward Maginn </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="course-administration" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Course Administration</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Instructor Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Please make sure to review the syllabus and course schedule posted on Canvas. If you have questions about policies or course details, you can probably find the answer in the syllabus.</p>
+</div>
+</div>
+<ul>
+<li>Review of syllabus
+<ul>
+<li><strong>Exams:</strong> Wednesdays during 75 minute tutorial time. See schedule for dates.<br>
+</li>
+<li><strong>Tutorial:</strong> Weekly problem-solving sessions using example exam questions.</li>
+<li><strong>Quizzes:</strong> All extra credit - meant to encourage you to read the textbook<br>
+</li>
+<li><strong>Homework:</strong> Graded via Gradescope (0–4 scale)<br>
+</li>
+<li><strong>Honor code:</strong> Group HW allowed; write solutions individually<br>
+</li>
+<li><strong>Reading:</strong> Textbook (Dahm &amp; Visco); it is a companion to these notes, and the readings are posted for each class. Weekly readings are the basis for quizzes.<br>
+</li>
+<li><strong>Office hours:</strong> In-person<br>
+</li>
+<li><strong>Late homework:</strong> 50% deduction for first 24-hours, then no credit</li>
+<li><strong>Review of honor code</strong></li>
+<li><strong>AI policy:</strong> See the syllabus for details</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="origins-of-thermodynamics" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Origins of Thermodynamics</h1>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li>From the Greek:
+<ul>
+<li>θέρμη <em>therme</em> = heat, warmth</li>
+<li>Δύναμις <em>dynamis</em> = power, force</li>
+</ul></li>
+<li><strong>Thermodynamics = “getting power or work from heat.”</strong></li>
+</ul>
+<p>This reflects its historical development: engineers built machines that extracted work from heat. <a href="#fig-steam-engine" class="quarto-xref">Fig.&nbsp;1</a> shows an early beam engine (a type of steam engine) built by the partnership of Matthew Boulton and James Watt. The engine was constructed in 1777 and worked until 1848. It is the oldest surviving Watt engine in the world.</p>
+<p>Thermodynamics is much broader than just heat engines, as we will see!</p>
+</div><div class="column" style="width:45%;">
+<div id="fig-steam-engine" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-steam-engine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/steam-engine.jpg" class="img-fluid figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-steam-engine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;1: Old Bess, an early steam engine, at the London Science Museum
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Engineer: from the Latin <em>ingenium</em> (ingenious, engine)</li>
+<li>Engineers are practical people who devised “engines” to extract work from heat</li>
+<li>Catapults (developed by military engineers) were called “siege engines”</li>
+<li>Thermodynamics is crucial to the identity of <em>engineering</em>, and so is a foundational topic</li>
+<li><h2 id="examples-of-engines" data-number="2.1" class="anchored" data-anchor-id="origins-of-thermodynamics"><span class="header-section-number">2.1</span> Examples of engines</h2></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li>The pump in <a href="#fig-dublin-pump" class="quarto-xref">Fig.&nbsp;2</a> was used to dewater coal mines, and is in the lobby of the Engineering building at City College, Dublin.</li>
+</ul>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:40%;">
+<div id="fig-dublin-pump" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dublin-pump-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/dublin-pump.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dublin-pump-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;2: Steam-driven water pump, University College, Dublin
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li><a href="#fig-micity-power" class="quarto-xref">Fig.&nbsp;3</a> is a 680 MWe power plant just west of campus in Michigan City.</li>
+<li>What kind of a plant is this?</li>
+<li>Why did they put it along the shores of Lake Michigan?</li>
+</ul>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:40%;">
+<div id="fig-micity-power" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-micity-power-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/michigan-city-power.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-micity-power-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;3: Power plant, Michigan City, IN
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<section id="historical-figures-in-thermodynamics" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="historical-figures-in-thermodynamics"><span class="header-section-number">2.2</span> Historical Figures in Thermodynamics</h2>
+<div id="fig-thermo-people" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-thermo-people-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/thermo-people.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-thermo-people-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;4: Historical figures who helped establish the field of thermodynamics. Image courtesy of Gian Paolo Beretta, MIT.
+</figcaption>
+</figure>
+</div>
+<ul>
+<li><a href="#fig-thermo-people" class="quarto-xref">Fig.&nbsp;4</a> shows many of the key people who helped establish the foundations of thermodynamics.</li>
+</ul>
+<section id="james-joule-manchester-england" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="james-joule-manchester-england"><span class="header-section-number">2.2.1</span> James Joule (Manchester, England)</h3>
+<ul>
+<li>Demonstrated the <strong>mechanical equivalent of heat</strong> (1845) via his famous “paddle wheel” experiment</li>
+<li>Established that work can be converted into heat<br>
+</li>
+<li>SI unit of energy named in his honor<br>
+</li>
+<li>Fun fact: ran a brewery with his father and performed experiments in his spare time.</li>
+</ul>
+</section>
+<section id="william-thomson-ireland-and-scotland" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="william-thomson-ireland-and-scotland"><span class="header-section-number">2.2.2</span> William Thomson (Ireland and Scotland)</h3>
+<ul>
+<li>Built theoretical foundations using Joule’s measurements<br>
+</li>
+<li>Developed the <strong>absolute temperature scale</strong><br>
+</li>
+<li>Later knighted as Lord Kelvin</li>
+</ul>
+</section>
+<section id="j.-willard-gibbs-united-states" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="j.-willard-gibbs-united-states"><span class="header-section-number">2.2.3</span> J. Willard Gibbs (United States)</h3>
+<ul>
+<li>Created the <strong>mathematical foundation</strong> of thermodynamics<br>
+</li>
+<li>Introduced concepts of free energies &amp; chemical potentials<br>
+</li>
+<li>Coined the term <strong>statistical mechanics</strong><br>
+</li>
+<li>Invented vector calculus<br>
+</li>
+<li>Yale professor (1871–1903)</li>
+</ul>
+</section>
+<section id="hermann-von-helmholtz-germany" class="level3" data-number="2.2.4">
+<h3 data-number="2.2.4" class="anchored" data-anchor-id="hermann-von-helmholtz-germany"><span class="header-section-number">2.2.4</span> Hermann von Helmholtz (Germany)</h3>
+<ul>
+<li>Medical doctor<br>
+</li>
+<li>Key contributor to the <strong>First Law</strong> (conservation of energy, 1847)<br>
+</li>
+<li>Helmholtz energy (A) named after him; “Arbeit” = work (German)</li>
+</ul>
+</section>
+<section id="john-m.-prausnitz-germany-united-states" class="level3" data-number="2.2.5">
+<h3 data-number="2.2.5" class="anchored" data-anchor-id="john-m.-prausnitz-germany-united-states"><span class="header-section-number">2.2.5</span> John M. Prausnitz (Germany, United States)</h3>
+<ul>
+<li>Key 20th-century figure in chemical engineering thermodynamics<br>
+</li>
+<li>Founder of modern models for phase equilibrium (UNIQUAC, UNIFAC)</li>
+</ul>
+<hr>
+</section>
+</section>
+</section>
+<section id="where-thermodynamics-fits-in-the-curriculum" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Where Thermodynamics Fits in the Curriculum</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><a href="#fig-curriculum" class="quarto-xref">Fig.&nbsp;5</a> shows how thermodynamics connects mathematical and scientific foundations to engineering analysis and design.</p>
+<ul>
+<li><strong>Base:</strong> Math, chemistry, physics<br>
+</li>
+<li><strong>Fundamental tools:</strong> Introductory material balances, numerical methods, statistics<br>
+</li>
+<li><strong>Core Concepts:</strong> Thermodynamics, transport, materials<br>
+</li>
+<li><strong>Engineering tools:</strong> Reaction engineering, separations, process control<br>
+</li>
+<li><strong>Capstone:</strong> Process and product design</li>
+</ul>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:45%;">
+<div id="fig-curriculum" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-curriculum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/curriculum.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-curriculum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;5: Chemical Engineering Curriculum
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="a-fundamental-engineering-concept" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> A Fundamental Engineering Concept</h1>
+<p>We often write transport and driving-force relationships as:</p>
+<p><span id="eq-transport"><span class="math display">\[
+J = - L \nabla X
+\tag{1}\]</span></span></p>
+<p>where in <a href="#eq-transport" class="quarto-xref">Eq.&nbsp;1</a>,</p>
+<ul>
+<li>J = flux<br>
+</li>
+<li>X = driving force<br>
+</li>
+<li>L = transport coefficient</li>
+</ul>
+<p>General idea: <strong>rate of change or production = driving force × mobility (or inverse resistance).</strong></p>
+<p><strong>Thermodynamics</strong> is concerned with driving forces. <strong>Transport phenomena</strong> is concerned with mobility.</p>
+<hr>
+</section>
+<section id="chemical-process-example" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Chemical Process Example</h1>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li><a href="#fig-process" class="quarto-xref">Fig.&nbsp;6</a> shows a generic chemical process whereby raw materials A and B are converted in a reactor to form desired product P and undesired product U.</li>
+<li>A separation process is required to purify P from U and recycle unreacted A and B.</li>
+<li>Thermodynamics is involved in all aspects of this process
+<ul>
+<li>Chemical reaction equilibria</li>
+<li>Phase equilibria for the separation process</li>
+<li>Heating and cooling required to run the reactor and separator</li>
+<li>Power to run pumps, compressors, other equipment</li>
+<li>Limits on how efficient the process can be</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:55%;">
+<div id="fig-process" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-process-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/process.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-process-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;6: A generic chemical process (from fig 1-1 Dahm and Visco).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="how-this-class-differs-from-other-classes" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> How this class differs from other classes</h1>
+<ul>
+<li>This class is similar to mechanical engineering thermodynamics, in that we treat 1st and 2nd law, power cycles, refrigeration, etc.</li>
+<li>We focus less on motive power, and more on molecular-level phenomena, phase diagrams, equations of state</li>
+<li>For the most part, we will only deal with pure compounds</li>
+<li>Preparation for 2nd class phase equilibria and separations, where mixtures and reactions are treated; unique to Cheg.</li>
+</ul>
+</section>
+<section id="beyond-engineering" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Beyond Engineering</h1>
+<ul>
+<li>policy issues need thermodynamics
+<ul>
+<li>green and renewable energy</li>
+<li>electric cars</li>
+<li>biofuels</li>
+<li>CO<span class="math inline">\(_2\)</span> capture</li>
+<li>data centers</li>
+<li>grid</li>
+<li>energy efficiency</li>
+</ul></li>
+<li>Law, business
+<ul>
+<li>what is feasible, efficient, possible?</li>
+</ul></li>
+<li>An educated person in the 21st century must have a basic understanding of the 1st and 2nd laws!</li>
+</ul>
+<p><strong>Albert Einstein:</strong> “A theory is the more impressive the greater the simplicity of its premises, the more different kinds of things it relates, and the more extended its area of applicability. Therefore the deep impression that classical thermodynamics made upon me. It is the only physical theory of universal content which I am convinced will never be overthrown, within the framework of applicability of its basic concepts.”</p>
+<p><strong>C. P. Snow:</strong> “A good many times I have been present at gatherings of people who, by the standards of the traditional culture, are thought highly educated and who have with considerable gusto been expressing their incredulity of scientists. Once or twice I have been provoked and have asked the company how many of them could describe the Second Law of Thermodynamics. The response was cold: it was also negative. Yet I was asking something which is the scientific equivalent of: Have you read a work of Shakespeare’s?</p>
+<p>I now believe that if I had asked an even simpler question – such as, What do you mean by mass, or acceleration, which is the scientific equivalent of saying, Can you read? – not more than one in ten of the highly educated would have felt that I was speaking the same language. So the great edifice of modern physics goes up, and the majority of the cleverest people in the western world have about as much insight into it as their neolithic ancestors would have had.”</p>
+<!-- CP Snow, Einstein -->
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "CBE 20260 — Lecture Notes",
+    "section": "",
+    "text": "1 Welcome\nThese are the working notes for CBE 20260 Introduction to Chemical Engineering Thermodynamics (Spring 2026).\nUse the Lectures menu in the navigation bar to jump to individual lecture notes.\n\nThese materials are meant to accompany the textbook\nFundamentals of Chemical Engineering Thermodynamics by Dahm and Visco.\n\nSee the course Canvas site for the syllabus, schedule, and other materials."
+  },
+  {
+    "objectID": "class01/lecture01.html",
+    "href": "class01/lecture01.html",
+    "title": "Lecture 1 — Introduction to Chemical Engineering Thermodynamics",
+    "section": "",
+    "text": "NoteInstructor Note\n\n\n\nPlease make sure to review the syllabus and course schedule posted on Canvas. If you have questions about policies or course details, you can probably find the answer in the syllabus.\n\n\n\nReview of syllabus\n\nExams: Wednesdays during 75 minute tutorial time. See schedule for dates.\n\nTutorial: Weekly problem-solving sessions using example exam questions.\nQuizzes: All extra credit - meant to encourage you to read the textbook\n\nHomework: Graded via Gradescope (0–4 scale)\n\nHonor code: Group HW allowed; write solutions individually\n\nReading: Textbook (Dahm & Visco); it is a companion to these notes, and the readings are posted for each class. Weekly readings are the basis for quizzes.\n\nOffice hours: In-person\n\nLate homework: 50% deduction for first 24-hours, then no credit\nReview of honor code\nAI policy: See the syllabus for details"
+  },
+  {
+    "objectID": "class01/lecture01.html#historical-figures-in-thermodynamics",
+    "href": "class01/lecture01.html#historical-figures-in-thermodynamics",
+    "title": "Lecture 1 — Introduction to Chemical Engineering Thermodynamics",
+    "section": "2.2 Historical Figures in Thermodynamics",
+    "text": "2.2 Historical Figures in Thermodynamics\n\n\n\n\n\n\nFig. 4: Historical figures who helped establish the field of thermodynamics. Image courtesy of Gian Paolo Beretta, MIT.\n\n\n\n\nFig. 4 shows many of the key people who helped establish the foundations of thermodynamics.\n\n\n2.2.1 James Joule (Manchester, England)\n\nDemonstrated the mechanical equivalent of heat (1845) via his famous “paddle wheel” experiment\nEstablished that work can be converted into heat\n\nSI unit of energy named in his honor\n\nFun fact: ran a brewery with his father and performed experiments in his spare time.\n\n\n\n2.2.2 William Thomson (Ireland and Scotland)\n\nBuilt theoretical foundations using Joule’s measurements\n\nDeveloped the absolute temperature scale\n\nLater knighted as Lord Kelvin\n\n\n\n2.2.3 J. Willard Gibbs (United States)\n\nCreated the mathematical foundation of thermodynamics\n\nIntroduced concepts of free energies & chemical potentials\n\nCoined the term statistical mechanics\n\nInvented vector calculus\n\nYale professor (1871–1903)\n\n\n\n2.2.4 Hermann von Helmholtz (Germany)\n\nMedical doctor\n\nKey contributor to the First Law (conservation of energy, 1847)\n\nHelmholtz energy (A) named after him; “Arbeit” = work (German)\n\n\n\n2.2.5 John M. Prausnitz (Germany, United States)\n\nKey 20th-century figure in chemical engineering thermodynamics\n\nFounder of modern models for phase equilibrium (UNIQUAC, UNIFAC)"
+  }
+]
