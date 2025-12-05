@@ -36,8 +36,8 @@ Please make sure to review the syllabus and course schedule posted on Canvas. If
 
 ::: {.column width="55%"}
 - From the Greek:
-  - θέρμη *therme* = heat, warmth 
-  - Δύναμις *dynamis* = power, force
+  - *therme* = heat, warmth 
+  - *dynamis* = power, force
 - **Thermodynamics = “getting power or work from heat.”**
 
 This reflects its historical development: engineers built machines that extracted work from heat.  @fig-steam-engine shows an early beam engine (a type of steam engine) built by the partnership of Matthew Boulton and James Watt. The engine was constructed in 1777 and worked until 1848. It is the oldest surviving Watt engine in the world. 
@@ -56,7 +56,7 @@ Thermodynamics is much broader than just heat engines, as we will see!
 - Engineers are practical people who devised "engines" to extract work from heat
 - Catapults (developed by military engineers) were called "siege engines"
 - Thermodynamics is crucial to the identity of *engineering*, and so is a foundational topic
-- 
+  
 ## Examples of engines
 
 :::: {.columns}
@@ -165,9 +165,9 @@ $$ {#eq-transport}
 
 where in @eq-transport, 
 
-- J =  flux  
-- X =  driving force  
-- L =  transport coefficient  
+- $J$ =  flux  
+- $\nabla X$ =  driving force  
+- $L$ =  transport coefficient  
 
 General idea: **rate of change or production = driving force × mobility (or inverse resistance).**
 
