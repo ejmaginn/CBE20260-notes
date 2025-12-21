@@ -11,11 +11,15 @@ website:
         menu:
           - href: class01/lecture01.qmd
             text: Lecture 1 — Introduction
+          - href: class02/lecture02.qmd
+            text: Lecture 2 — Systems, Boundaries and Other Basics
           # Add more lectures here as you create them:
           # - href: class02/lecture02.qmd
           #   text: Lecture 2 — Title
-
-
+      - text: Notebooks
+        menu:
+          - href: class02/lecture02_example.ipynb
+            text: L2 Block & Spring Demo
 format:
   html:
     theme: cosmo         # Options: cosmo, flatly, journal, lumen, paper
@@ -24,27 +28,33 @@ format:
     mainfont: "Georgia"  # System fonts for HTML
     toc: true
     number-sections: true
+    keep-ipynb: true
+    code-tools: false
 
     
   pdf:
-    documentclass: scrartcl  # "KOMA-Script" (cleaner, more modern than standard 'article')
+    documentclass: scrartcl
     papersize: letter
     geometry:
       - top=1in
       - bottom=1in
       - left=1in
       - right=1in
-    mainfont: "TeX Gyre Pagella" # A nice Palatino clone (must be installed on system)
-    # OR leave mainfont blank to use default LaTeX Computer Modern
-
+    mainfont: "TeX Gyre Pagella"
     colorlinks: false
     linkcolor: black
-    fig-width: 4      # ← main line
+    fig-width: 4
     fig-align: center
     fig-cap-location: bottom
-    fig-pos: h
-    include-in-header: latex/preamble.tex
-  
+    fig-pos: 'H'               # Forces figures to stay put
+    monofont: "Courier New"    # Optional: nicer code font
+    
+    # MERGED HEADER SECTION BELOW:
+    include-in-header:
+      - latex/preamble.tex     # Your original file
+      - text: |                # The new fix for code wrapping
+          \usepackage{fvextra}
+          \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
 crossref:
   fig-title: "Fig."   # caption prefix: Fig. 1
   fig-prefix: "Fig."  # inline ref: Fig. 1

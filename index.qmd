@@ -1,5 +1,6 @@
 ---
-title: "CBE 20260 — Lecture Notes"
+title: "CBE 20260 — Lecture Notes, Spring 2026"
+subtitle: "Introduction to Chemical Engineering Thermodynamics"
 ---
 
 # Welcome
