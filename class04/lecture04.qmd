@@ -1,0 +1,357 @@
+---
+title: "Lecture 4: Fundamental Postulate, States, Phase Rule, and Pure Substance Phase Behavior"
+subtitle: "CBE 20260 / Thermodynamics I"
+author: "Edward Maginn"
+# date: "Lecture 4"
+format:
+  html:
+    toc: true
+    number-sections: true
+  pdf:
+    toc: true
+    number-sections: true
+execute:
+  echo: false
+---
+# Last Class
+- Forms of work
+- Internal energy
+- Maxwell-Boltzmann distribution
+- Heat
+
+## What you should be able to do after this lecture
+
+By the end of class you should be able to:
+
+1. State the **fundamental postulate** of classical thermodynamics and explain what it implies for **state specification** of a pure substance.
+2. Define **equilibrium** and distinguish **state variables** from **path-dependent quantities**.
+3. Explain why **differences of state variables** depend only on the end states, not the path.
+4. Use the **Gibbs phase rule** to determine degrees of freedom for single-phase and multiphase regions (including the triple point).
+5. Interpret **P–T** and **P–V** diagrams for a pure substance, including **saturation lines**, **critical point**, **triple point**, and **normal boiling point**.
+6. Describe how the **3D P–V–T surface** unifies the common 2D projections.
+
+---
+
+**Brief review - Heat and Work**
+
+- Heat and Work are NOT energy
+
+- Heat and Work are mechanisms to change the energy of a system
+
+- Energy is kinetic, potential, and internal
+
+- Work is the “orderly” transfer of energy. It has direction and typically requires some device to facilitate it
+
+- Heat is “disorderly” transfer of energy. It is spontaneous given a temperature difference and results from random molecular collisions.
+
+- Heat and Work are therefore not equivalent.
+
+- Internal energy is molecular kinetic and potential energy
+
+- Kinetic: Temperature
+
+- Potential: “molecular position” => more on this later
+
+---
+
+# Fundamental postulate of thermodynamics
+
+The **fundamental postulate** underlies all of equilibrium thermodynamics:
+
+> **Fundamental postulate (classical thermo):**  
+> *Isolated systems with no external forces acting on them will approach unique equilibrium states characterized by the mass of each distinct species in the system and two independently variable properties.*
+
+For a **pure substance** (single chemical component), this has a powerful implication:
+
+> If you specify **two independent intensive properties** (e.g., $T$ and $P$, or $T$ and $\underline{V}$, or $P$ and $\hat{V}$, etc.), then **all other intensive properties are determined**. 
+
+## State variables and equilibrium
+
+A **state variable** (state function) is a property determined solely by the equilibrium state of the system. Examples include:
+
+- $T$, $P$, $\hat{V}$ (specific volume), $\rho$ (density)
+
+- $\underline{U}$ (molar internal energy), $\hat{H}$ (specific enthalpy), $\underline{S}$ (molar entropy) *(later)*
+
+For a pure substance, we can write  relationships like:
+$$
+\underline{U} = \underline{U}(T,P), \quad \underline{V} = \underline{V}(T,P), \quad \underline{H} = \underline{H}(T,P), \;\text{etc.}
+$$
+
+Because state variables describe equilibrium states, they have **no memory** of how the system got there.
+
+---
+
+## Differences in state variables do not depend on the path
+
+Consider two equilibrium states, 1 and 2. For any state variable $X$,
+$$
+\Delta X = X_2 - X_1
+$$
+depends only on the endpoints.
+
+This is one of the most practical ideas in thermodynamics:
+
+> Even if the **real process path** from state 1 to state 2 is complicated, we can compute $\Delta X$ using **any convenient (hypothetical) path**, as long as it connects the same endpoints. 
+
+### Convenient thermodynamic paths
+
+A common strategy is to split a change into two steps—e.g., first change $P$ at constant $T$, then change $T$ at constant $P$ (or vice versa). For example,
+$$
+\Delta X
+= X(T_2,P_2) - X(T_1,P_1)
+$$
+
+One convenient decomposition is:
+$$
+\Delta X
+=
+\underbrace{X(T_1,P_2)-X(T_1,P_1)}_{\text{step 1: change }P\text{ at fixed }T_1}
++
+\underbrace{X(T_2,P_2)-X(T_1,P_2)}_{\text{step 2: change }T\text{ at fixed }P_2}
+$$
+
+Or alternatively:
+$$
+\Delta X
+=
+\underbrace{X(T_2,P_1)-X(T_1,P_1)}_{\text{step 1: change }T\text{ at fixed }P_1}
++
+\underbrace{X(T_2,P_2)-X(T_2,P_1)}_{\text{step 2: change }P\text{ at fixed }T_2}
+$$
+
+> **Key point:** A *real* path might involve simultaneous changes in $T$ and $P$ in a complicated way, but for a state variable we are free to choose a **thermodynamic path** that is easier to evaluate.
+
+### Path-dependent quantities (contrast)
+
+Not everything is a state variable. The most important counterexamples are:
+- heat $Q$
+- work $W$
+
+These depend on the process details (path), not just end states. (We will make this precise as we proceed.)
+
+---
+
+##  Gibbs phase rule
+
+State specification becomes especially clear when phases are present.
+
+The **Gibbs phase rule** is:
+$$
+F = C - \Pi + 2
+$$
+where:
+- $F$ = degrees of freedom (number of independent intensive variables you can set)
+- $C$ = number of chemical components
+- $\Pi$ = number of phases present (solid, liquid, vapor, etc.) 
+
+### Pure substances ($C=1$)
+
+For a pure substance ($C=1$):
+
+- **Single phase** ($\Pi=1$):  
+  $$
+  F = 1 - 1 + 2 = 2
+  $$
+  Two independent intensive variables (e.g., $T$ and $P$) specify the state. 
+
+- **Two phases** ($\Pi=2$), e.g., liquid + vapor:
+  $$
+  F = 1 - 2 + 2 = 1
+  $$
+  Only one independent intensive variable can be chosen.  
+  Example: specifying $T$ fixes the saturation pressure $P_{\text{sat}}(T)$.
+
+- **Three phases** ($\Pi=3$), solid + liquid + vapor:
+  $$
+  F = 1 - 3 + 2 = 0
+  $$
+  No freedom: the system must be at the **triple point**.
+
+---
+
+## Physical properties of pure substances and phase behavior
+
+We will focus heavily on **pure substances** in this course. The most accessible “primary” measurable properties are:
+
+- pressure $P$
+
+- temperature $T$
+
+- volume $\underline{V}$ (or $\hat{V}$)
+
+Collectively, this is often described as **P–V–T behavior**. 
+
+The fundamental postulate tells us: for a pure substance in equilibrium, **two** independent intensive variables are enough to determine the state. That is why 2D projections like P–T and P–V diagrams are so useful. It is also why the steam tables are set up as they are.
+
+---
+
+## P–T diagrams for a pure substance
+
+A **P–T phase diagram** shows where solid, liquid, and vapor are stable. A typical diagram includes:
+
+- sublimation line (solid–vapor)
+
+- fusion/melting line (solid–liquid)
+
+- vaporization/boiling line (liquid–vapor)
+
+- triple point
+
+- critical point
+
+<!-- ![Typical P–T phase diagram showing triple point, critical point, and phase regions.](images/lecture04/pt_phase_diagram.png){#fig-pt-diagram width=85%}
+-->
+### 5.1 Triple point
+
+The **triple point** is the unique point where solid, liquid, and vapor coexist:
+
+- $\Pi=3$, $C=1$ $\Rightarrow$ $F=0$  
+
+So $T$ and $P$ are both fixed at the triple point. 
+
+### Boiling point and saturation pressure
+
+On the liquid–vapor coexistence line:
+
+- $\Pi=2$, so $F=1$.
+
+Thus at a **given pressure** there is a **single temperature** at which boiling occurs, and at a given temperature there is a **single saturation pressure**:
+
+$$
+P_{\text{sat}} = P_{\text{sat}}(T)
+$$
+As $T$ increases, $P_{\text{sat}}(T)$ increases. 
+
+**Normal boiling point:** the temperature at which liquid and vapor coexist at $P=1\ \text{bar}$.
+
+<!--
+![Boiling point decreases with elevation because atmospheric pressure decreases.](images/lecture04/boiling_point_elevation.png){#fig-bp-elevation width=75%}
+-->
+
+### Melting and sublimation lines
+
+- **Melting line (solid–liquid):** locus of points where solid and liquid coexist.
+- 
+- **Sublimation line (solid–vapor):** locus of points where solid and vapor coexist.
+
+Different substances have different slopes for these lines (water is a famous exception in some respects), but the phase-rule logic is universal.
+
+### Critical point and supercritical fluid
+
+The **critical point** is the unique endpoint of the liquid–vapor coexistence curve where the distinction between liquid and vapor disappears. It is characterized by:
+
+- critical temperature $T_c$
+
+- critical pressure $P_c$
+
+For $T>T_c$ and $P>P_c$, the substance is a **supercritical fluid** (no liquid–vapor phase boundary). 
+
+---
+
+## P–V diagrams for a pure substance
+
+A **P–V diagram** shows pressure versus (molar or specific) volume, often with **isotherms** (constant $T$ curves).
+
+A typical set of isotherms looks like:
+
+<!--
+![Typical P–V behavior for a pure substance showing saturated liquid/vapor lines and the critical point.](images/lecture04/pv_isotherms.png){#fig-pv-isotherms width=85%}
+-->
+
+### Saturated liquid and saturated vapor lines
+
+For $T<T_c$, an isotherm intersects a two-phase region where **liquid and vapor coexist**. The boundaries are:
+
+- **Saturated liquid line**: states that are “just about to boil” (quality $x=0$)
+- 
+- **Saturated vapor line**: states that are “just about to condense” (quality $x=1$)
+
+Together these form the **vapor dome** on many property diagrams.
+
+Inside the two-phase region:
+
+- pressure is fixed at $P_{\text{sat}}(T)$
+
+- $\underline{V}$ depends on the phase fractions
+
+### 6.2 Quality (two-phase mixtures)
+
+For a liquid–vapor mixture, we often define the **vapor quality** $x$:
+$$
+x = \frac{m_v}{m_\text{total}}
+$$
+
+For any specific property $y$ that is additive on a mass basis (e.g., $\underline{V}$, $\underline{U}$, $\underline{S}$),
+$$
+y = (1-x)\,y_f + x\,y_g
+$$
+where:
+
+- subscript $f$ denotes saturated liquid
+
+- subscript $g$ denotes saturated vapor
+
+This relation becomes a practical tool once we start using property tables and charts.
+
+### How saturation pressure changes with temperature (reading the diagram)
+
+A useful qualitative fact seen in the diagrams:
+
+- At higher $T$ (but still $T<T_c$), the saturation pressure is larger:
+  $$
+  P_{\text{sat}}(T_2) > P_{\text{sat}}(T_1) \quad \text{if } T_2>T_1
+  $$
+
+- At a fixed pressure, increasing temperature tends to increase the specific volume in the vapor region.
+
+These are the kinds of trends we will use repeatedly in problem solving.
+
+---
+
+## 3-D representation: the P–V–T surface
+
+The P–T and P–V diagrams are **projections** of a more complete picture: the **3D P–V–T surface**.
+
+<!--
+![Schematic 3D P–V–T surface showing solid, liquid, vapor regions, critical point, and a triple line.](images/lecture04/pvt_surface.png){#fig-pvt-surface width=80%}
+-->
+
+Key ideas:
+
+- The two-phase equilibria form **surfaces/lines** on this 3D object.
+- 
+- The triple point in a P–T diagram corresponds to a **triple line** in 3D (where three phases coexist).
+- 
+- The critical point is a special point on the liquid–vapor boundary where the two-phase region ends.
+
+A helpful way to interpret the surface is to imagine processes such as **isobaric heating** (constant $P$) and observe how the state moves across single-phase regions and possibly through two-phase coexistence. 
+
+---
+
+## Summary and what comes next
+
+- The fundamental postulate tells us: for a pure substance, **two** independent intensive variables determine the equilibrium state.
+- State variables have no path dependence: $\Delta X$ depends only on endpoints.
+- The Gibbs phase rule explains degrees of freedom:
+  - single phase (pure): $F=2$
+  - two phases (pure): $F=1$
+  - triple point (pure): $F=0$
+- P–T and P–V diagrams are essential tools for visualizing phase behavior.
+- The P–V–T surface unifies these projections.
+
+**Next lecture:** we will begin using quantitative property relations/tables/charts to compute properties and state changes for pure substances in a systematic way.
+
+---
+
+## Optional practice (recommended)
+
+1. For a pure substance, evaluate $F$ for:
+   - single-phase liquid
+   - liquid + vapor
+   - solid + liquid + vapor
+
+2. On a P–T diagram, explain why the boiling point at a given pressure is a *single* temperature.
+
+3. On a P–V diagram, explain what changes (and what does not change) as a system moves through the two-phase region at fixed temperature.
+

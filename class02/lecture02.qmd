@@ -10,12 +10,24 @@ format:
   pdf:
     geometry: margin=1in
 ---
-# Last class
+# Last Class
+
 - Course admin
 - Origins of thermodynamics
-  - Engines (engineer!)
-  - Key people
+- Engines (engineer!)
+- Key people
 - Where thermo fits in the curriculum and beyond
+
+## What you should be able to do after this lecture
+
+By the end of class you should be able to:
+
+1. Describe basic thermodynamic definitions involving **systems** and **boundaries**.
+2. Explain the difference between **equilibrium** and **steady-state**
+3. Understand concepts of **energy**, **work**, and a **thermodynamic process**.
+4. State the **First Law of Thermodynamics** both in words and mathematically.  
+
+---
 
 # Systems and Boundaries
 
@@ -114,6 +126,7 @@ Are the wooden desks in the classroom "at equilibrium"? Hint: *thermodynamics* t
 :::
 
 # Basic Definitions
+
 - **System**: A specific portion of space that we are concerned with. **Always** define your system before starting to work a problem. Systems have boundaries.
 - **Process**: A specific time period or event you are analyzing.
 - **Control volume**: The space inside the boundaries of the system.
@@ -142,6 +155,23 @@ Are the wooden desks in the classroom "at equilibrium"? Hint: *thermodynamics* t
 - **Thermodynamic process**: A specific series of events that take place over a specific time, taking the *system* from an *initial state* to a *final state*. See @fig-process
 
 ![Thermodynamic process](images/process.png){#fig-process width=6in fig-align="center"}
+
+**Intensive and Extensive Quantities**
+
+*Extensive properties* are proportional to the amount of material in the system. We will follow the textbook's convention and use "plain" symbols to represent extensive quantities. 
+
+- **Volume**: $V$; $m^3$, $cm^3$, gallons, etc.
+- **Energy**: $E$; kJ, BTU, etc.
+
+*Intensive properties* are independent of both system size and the amount of material present in the system.
+
+There are three kinds of intensive properties. We will underline the symbol to mean *molar* and place a "hat" above the symbol to mean specific. Natural intensive variables are just given plain symbols.
+
+1. **Natural**: *temperature* $T$: Kelvin ($K$), Fahrenheit ($F$), Celsius ($C$); *pressure* $P$: pa, psi, bar, etc.
+2. **Molar**: *molar volume* $\underline{V}$: $m^3/mol$; *molar energy* $\underline{E}$: kJ/mol
+3. **Specific**: *specific volume* $\hat{V}$: $m^3/kg$; *specific energy* $\hat{E}$: BTU/lb
+
+Take care to note the kind of quantity you are dealing with, and *always carry along units* in your calculations to make sure you don't make a mistake!
 
 # Energy and Work
 - **Energy** is a key concept of thermodynamics.
@@ -188,7 +218,12 @@ $$E_{PE} = \frac{1}{2} k x^2$$ {#eq-potential-energy-spring}
 
 Objects can do work via their energy (kinetic, potential, internal) and in so doing, they can change their energy and the energy of the surroundings. But we observe that the *total energy* is constant. This leads to the First Law.
 
-**First Law of Thermodynamics**: It has been *observed* that energy is a *conserved quantity*. After a thermodynamic process occurs, the *energy of the system and surroundings is the same*. 
+> **First Law of Thermodynamics**: 
+> It has been *observed* that energy is a *conserved quantity*. After a thermodynamic process occurs, the *energy of the system and surroundings is the same.*
+>  
+
+"**Conservation** (the conservation law) means this … that there is a number, which you can calculate, at one moment—and as nature undergoes its multitude of changes, this number doesn't change. That is, if you calculate again, this quantity, it'll be the same as it was before. An example is the conservation of energy: there's a quantity that you can calculate according to a certain rule, and it comes out the same answer after, no matter what happens."
+ Richard Feynman
 
 Consider the example of an ideal frictionless pendulum shown in @fig-pendulum. The system (the ball) converts its kinetic energy to potential energy and back again along a trajectory. At any given point, the total energy is constant
 $$ E_{tot} = E_{KE} + E_{PE}$$ {#eq-E-total}
@@ -213,9 +248,9 @@ We wish to calculate the work done **on the block** and **on the spring** as the
 
 Before calculating the work, we must strictly define our system, boundary, and surroundings to determine what constitutes "external" work.
 
-* **The System:** We define the **Block** (mass $m$) as our system.
+* **The System:** We define the **Block** (mass $m$) as the system.
 * **The Boundary:** The boundary is the physical surface of the block.
-* **The Surroundings:** The spring, the ground, and the air are part of the surroundings.
+* **The Surroundings:** The spring, the ice, and the air are part of the surroundings.
 
 **Why this matters:**
 Because the spring is in the *surroundings*, the force it exerts on the block acts **across the boundary**. As the boundary moves (displacement $dx$), energy is transferred *from* the block *to* the spring in the form of **Work**.
