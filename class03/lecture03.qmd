@@ -65,11 +65,11 @@ Work was done *on* the block (somehow) and it resulted in an increase in the pot
 
 # Other kinds of work
 
-In addition to moving objects up and down, there are three other important kinds of work.
+In addition to moving objects up and down (we can call this "external field" work, $W_{ef}$), there are three other important kinds of work.
 
-1. **Expansion-contraction work**: Typically a fluid expanding or contracting to raise or lower a piston or move an object.
-2. **Flow work**: Associated with fluids flowing into and out of something.
-3. **Shaft work**: Work associated with some mechanical device; we often represent it as an agitator or impeller attached to a shaft, hence the name. Common examples of equipment that involve shaft work are pumps, compressors, turbines, and mixers.
+1. **Expansion-contraction work** ($W_{ec}$): Typically a fluid expanding or contracting to raise or lower a piston or move an object.
+2. **Flow work** ($W_f$): Associated with fluids flowing into and out of something.
+3. **Shaft work** ($W_s$): Work associated with some mechanical device; we often represent it as an agitator or impeller attached to a shaft, hence the name. Common examples of equipment that involve shaft work are pumps, compressors, turbines, and mixers.
 
 ---
 
@@ -136,7 +136,7 @@ That is, *no work* is done, because there is no force opposing the expansion. Th
 
 ## Flow Work (PV work)
 
-We have analyzed "boundary work" for a *closed* system, $W_{b} = -\int P_{ext} \, dV$,
+We have analyzed "expansion-contraction" for a *closed* system, $W_{ec} = -\int P_{ext} \, dV$,
 but work is also associated with fluid flow. 
 
 The key idea is that **pressure forces do work to push fluid across the control surface**.
@@ -182,7 +182,7 @@ $$
 So the **net flow work rate** is
 
 $$
-\dot W_{flow} = \dot W_{in} + \dot W_{out}
+\dot W_{f} = \dot W_{in} + \dot W_{out}
                = P_{in}\dot V_{in} - P_{out}\dot V_{out}
 $$ {#eq-flowwork-rate}
 
@@ -220,7 +220,7 @@ $$
 
 Net flow work rate:
 $$
-\dot W_{flow} = 1{,}000~\text{J/min} \approx 16.7~\text{W}
+\dot W_{f} = 1{,}000~\text{J/min} \approx 16.7~\text{W}
 $$
 
 **Interpretation**: because $(P_{in} > P_{out})$, **net work must be supplied to push the water through the control volume** (with our sign convention). This would typically be supplied by a pump, but you could imagine if the pipe was not level, gravity could supply the needed work.
@@ -234,13 +234,13 @@ Windmills and water wheels convert the kinetic energy of a flowing fluid into sh
 For a constant torque $\tau$ rotating through an angle $\theta$:
 
 $$
-W_{shaft} = \tau \theta
+W_{s} = \tau \theta
 $$ {#eq-shaft}
 
 or in terms of power ($\dot{W}$) and angular velocity ($\omega$):
 
 $$
-\dot{W}_{shaft} = \tau \omega
+\dot{W}_{s} = \tau \omega
 $$ {#eq-shaft-power}
 
 We typically don't compute shaft work using @eq-shaft or @eq-shaft-power, but we instead use other thermodynamic properties to "back calculate" $W_s$, or we are given $W_s$ as a design variable. More on this later...

@@ -17,6 +17,8 @@ website:
             text: Lecture 3 — Forms of Energy and Calculating Work
           - href: class04/lecture04.qmd
             text: Lecture 4 — Fundamental Postulate, States, Phase Rule, and Pure Substance Phase Behaviors 
+          - href: class05/lecture05.qmd
+            text: Lecture 5 — Heat Capacity, Enthalpy 
           # Add more lectures here as you create them:
           # - href: class0x/lecture02.qmd
           #   text: Lecture x — Title
