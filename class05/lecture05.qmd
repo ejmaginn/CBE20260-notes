@@ -32,7 +32,12 @@ execute:
 
 By the end of class you should be able to:
 
-1. concept 1
+1. Define what enthalpy is and why it is important
+2. Understand and mathematically define constant volume and constant pressure heat capacity
+3. Describe the molecular basis for heat capacity
+4. Define the relationship between $C_P$ and $C_V$ for an ideal gas
+
+
 
 ---
 
@@ -48,7 +53,7 @@ By the end of class you should be able to:
 
 - Work is the “orderly” transfer of energy. It has direction and typically requires some device to facilitate it
 
-- Heat is “disorderly” transfer of energy. It is spontaneous given a temperature difference and results from random molecular collisions.
+- Heat is the “disorderly” transfer of energy. It is spontaneous given a temperature difference and results from random molecular collisions.
 
 - Heat and Work are therefore not equivalent.
 
@@ -56,7 +61,7 @@ By the end of class you should be able to:
 
   - Kinetic: Temperature
 
-  - Potential: “molecular position” => more on this later
+  - Potential: “molecular position” $\rightarrow$ more on this later
 
 ---
 
@@ -242,13 +247,20 @@ Ideal gas heat capacities for a range of materials are tabulated (see Appendix D
 $$\frac{C^{IG}_P}{R} = A + BT + CT^2 + DT^3 + ET^4
 $$
 
-Heat capacity describes how molecules "store" energy. Recall from our discussion of the Maxwell-Boltzmann equation that the average translational kinetic energy of a simple molecule is
-$$
-\left\langle \tfrac{1}{2} m v^2 \right\rangle
-= \tfrac{3}{2} k_B T
-$$
+Heat capacity describes how molecules "store" energy. Recall from our discussion of the Maxwell-Boltzmann equation that 
 
-That means that each "direction" of motion (x, y, z) can store $1/2 R$ kinetic energy. We therefore expect that if a molecule only can store translational kinetic energy (a good approximation for spherical molecules like noble gases), 
+$$
+\left \langle v^2 \right \rangle = \frac{3 k_B T}{m}
+$$ {#eq-MBv2}
+
+the average translational kinetic energy of a simple molecule is
+$$
+\left\langle \frac{1}{2} m v^2 \right\rangle
+= \tfrac{3}{2} k_B T
+$$ {#eq-MBT}
+where in @eq-MBv2 and @eq-MBT, $N_{Av} k_B = R$.
+
+This means that each "direction" of motion (x, y, z) can store $\frac{1}{2} R$ kinetic energy. We therefore expect that if a molecule only can store translational kinetic energy (a good approximation for spherical molecules like noble gases), 
 $$C^{IG}_v \approx \frac{3}{2} R
 $$
 and
@@ -256,8 +268,11 @@ $$
 C^{IG}_p \approx \frac{5}{2} R
 $$
 
-If instead of a simple spherical molecule (like argon), the molecule is a diatomic and the bond behaves like a harmonic spring, then it turns out that the vibratinoal mode of the bond can store and additional $R$ of energy. To a good approximation, foro simple diatomics like $N_2$ and $O_2$, we can estimate the ideal gas heat capacity as
+If instead of a simple spherical molecule (like argon), the molecule is a diatomic (such as the one shown in @fig-diatomic), then it turns out that the vibrational mode of the bond can roughly store an additional $R$ of energy. 
 
+![A diatomic molecule can be thought of as two atoms connected by a harmonic spring.](images/diatomic.png){#fig-diatomic width=30%}
+
+Therefore, to a good approximation, for simple diatomic molecules like $N_2$ and $O_2$, the ideal gas heat capacity can be estimated as
 $$
 C^{IG}_v \approx \frac{5}{2} R
 $$
@@ -266,7 +281,7 @@ $$
 C^{IG}_p \approx \frac{7}{2} R
 $$
 
-Larger molecules will have laregr heat capacities, since they have more modes to store energy. 
+Large molecules tend to have bigger heat capacities than small molecules, since they have more modes to store energy. 
 
 > Water has an unusually high heat capacity for such a small molecule.
 > Why do you think this is?
@@ -274,15 +289,13 @@ Larger molecules will have laregr heat capacities, since they have more modes to
 
 # Summary and what comes next
 
-- The fundamental postulate tells us: for a pure substance, **two** independent intensive variables determine the equilibrium state.
-- State variables have no path dependence: $\Delta X$ depends only on endpoints.
-- The Gibbs phase rule explains degrees of freedom:
-  - single phase (pure): $F=2$
-  - two phases (pure): $F=1$
-  - triple point (pure): $F=0$
-- P–T and P–V diagrams are essential tools for visualizing phase behavior.
-- The P–V–T surface unifies these projections.
+- We have defined a new state variable called *enthalpy*: $H \equiv U + PV$
+- Heat capacity tells us how much the temperature of a material changes upon the addition or removal of heat
+- Heat capacity is also a state variable, but since it involves heat (a path-dependent variable) we have two "kinds" - constant volume and constant pressure
+- For liquids and solids, which are often nearly incompressible, it is usually a good approximation that $C_P \approx C_V$
+- For ideal gases, $C_P^{IG} = C_V^{IG} + R$
 
-**Next lecture:** we will begin using quantitative property relations/tables/charts to compute properties and state changes for pure substances in a systematic way.
+
+**Next lecture:** We will calculate changes in internal energy and enthalpy using heat capacity. We will also discuss intramolecular forces to better understand how these interactions explain thermodynamic properties.
 
 
