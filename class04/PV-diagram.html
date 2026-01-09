@@ -239,60 +239,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> T <span class="kw">in</span> T_vals:</span>
 <span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Calculate Saturation Pressure at this T</span></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>        P <span class="op">=</span> CP.PropsSI(<span class="st">'P'</span>, <span class="st">'T'</span>, T, <span class="st">'Q'</span>, <span class="dv">0</span>, fluid)</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>        P_sat.append(P)</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Calculate Saturated Liquid Volume (Q=0)</span></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>        rho_l <span class="op">=</span> CP.PropsSI(<span class="st">'D'</span>, <span class="st">'T'</span>, T, <span class="st">'Q'</span>, <span class="dv">0</span>, fluid)</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>        v_liq.append(<span class="dv">1</span><span class="op">/</span>rho_l)</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Calculate Saturated Vapor Volume (Q=1)</span></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>        rho_v <span class="op">=</span> CP.PropsSI(<span class="st">'D'</span>, <span class="st">'T'</span>, T, <span class="st">'Q'</span>, <span class="dv">1</span>, fluid)</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>        v_vap.append(<span class="dv">1</span><span class="op">/</span>rho_v)</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 3. Generate Isotherms (Constant Temperature lines)</span></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Let's plot 3 isotherms: One below crit, one at crit, one above</span></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>    isotherms_C <span class="op">=</span> [<span class="dv">300</span>, <span class="fl">373.946</span>, <span class="dv">450</span>] <span class="co"># Temperatures in Celsius</span></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>    <span class="co"># (Note: Water T_crit is approx 373.946 C)</span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot Dome</span></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>    plt.plot(v_liq, P_sat, <span class="st">'b-'</span>, label<span class="op">=</span><span class="st">'Saturated Liquid'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>    plt.plot(v_vap, P_sat, <span class="st">'r-'</span>, label<span class="op">=</span><span class="st">'Saturated Vapor'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot Isotherms</span></span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>    v_iso <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">100</span>) <span class="co"># Log spacing for volume is better</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Q is the quality of the fluid: 0 = saturated liquid, 1 = saturated vapor</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>        P <span class="op">=</span> CP.PropsSI(<span class="st">'P'</span>, <span class="st">'T'</span>, T, <span class="st">'Q'</span>, <span class="dv">0</span>, fluid)</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>        P_sat.append(P)</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Calculate Saturated Liquid Volume (Q=0)</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>        <span class="co"># v = 1 / density</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>        rho_l <span class="op">=</span> CP.PropsSI(<span class="st">'D'</span>, <span class="st">'T'</span>, T, <span class="st">'Q'</span>, <span class="dv">0</span>, fluid)</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>        v_liq.append(<span class="dv">1</span><span class="op">/</span>rho_l)</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Calculate Saturated Vapor Volume (Q=1)</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>        rho_v <span class="op">=</span> CP.PropsSI(<span class="st">'D'</span>, <span class="st">'T'</span>, T, <span class="st">'Q'</span>, <span class="dv">1</span>, fluid)</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>        v_vap.append(<span class="dv">1</span><span class="op">/</span>rho_v)</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 3. Generate Isotherms (Constant Temperature lines)</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Let's plot 3 isotherms: One below crit, one at crit, one above</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>    <span class="co"># These temperatures are for water; adjust for other fluids as needed</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>    isotherms_C <span class="op">=</span> [<span class="dv">300</span>, <span class="fl">373.946</span>, <span class="dv">450</span>] <span class="co"># Temperatures in Celsius</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>    <span class="co"># (Note: Water T_crit is approx 373.946 C)</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot Dome</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>    plt.plot(v_liq, P_sat, <span class="st">'b-'</span>, label<span class="op">=</span><span class="st">'Saturated Liquid'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>    plt.plot(v_vap, P_sat, <span class="st">'r-'</span>, label<span class="op">=</span><span class="st">'Saturated Vapor'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
 <span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> T_c <span class="kw">in</span> isotherms_C:</span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>        T_k <span class="op">=</span> T_c <span class="op">+</span> <span class="fl">273.15</span></span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>        P_iso <span class="op">=</span> []</span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> v <span class="kw">in</span> v_iso:</span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>            <span class="cf">try</span>:</span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Calculate P given T and v (Density)</span></span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>                p_val <span class="op">=</span> CP.PropsSI(<span class="st">'P'</span>, <span class="st">'T'</span>, T_k, <span class="st">'D'</span>, <span class="dv">1</span><span class="op">/</span>v, fluid)</span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>                P_iso.append(p_val)</span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>            <span class="cf">except</span>:</span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>                P_iso.append(<span class="va">None</span>)</span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>        plt.plot(v_iso, P_iso, <span class="st">'--'</span>, label<span class="op">=</span><span class="ss">f'T = </span><span class="sc">{</span>T_c<span class="sc">}</span><span class="ss"> C'</span>)</span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Formatting to match textbook style</span></span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>    plt.xscale(<span class="st">'log'</span>) <span class="co"># Crucial for P-v diagrams</span></span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>    plt.yscale(<span class="st">'log'</span>)</span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">'Specific Volume $v$ ($m^3/kg$)'</span>)</span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">'Pressure $P$ (Pa)'</span>)</span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="ss">f'Log-Log P-v Diagram for </span><span class="sc">{</span>fluid<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>    plt.grid(<span class="va">True</span>, which<span class="op">=</span><span class="st">"both"</span>, ls<span class="op">=</span><span class="st">"-"</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>    plt.legend()</span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>    plt.axhline(P_crit, color<span class="op">=</span><span class="st">'k'</span>, linestyle<span class="op">=</span><span class="st">':'</span>, label<span class="op">=</span><span class="st">'Critical Pressure'</span>)</span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
-<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the function</span></span>
-<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>plot_Pv_diagram(<span class="st">'Water'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot Isotherms</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>    v_iso <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">100</span>) <span class="co"># Log spacing for volume is better</span></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> T_c <span class="kw">in</span> isotherms_C:</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>        T_k <span class="op">=</span> T_c <span class="op">+</span> <span class="fl">273.15</span></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>        P_iso <span class="op">=</span> []</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> v <span class="kw">in</span> v_iso:</span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>            <span class="cf">try</span>:</span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Calculate P given T and v (Density)</span></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>                p_val <span class="op">=</span> CP.PropsSI(<span class="st">'P'</span>, <span class="st">'T'</span>, T_k, <span class="st">'D'</span>, <span class="dv">1</span><span class="op">/</span>v, fluid)</span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>                P_iso.append(p_val)</span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>            <span class="cf">except</span>:</span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>                P_iso.append(<span class="va">None</span>)</span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>        plt.plot(v_iso, P_iso, <span class="st">'--'</span>, label<span class="op">=</span><span class="ss">f'T = </span><span class="sc">{</span>T_c<span class="sc">}</span><span class="ss"> C'</span>)</span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Formatting to match textbook style</span></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>    plt.xscale(<span class="st">'log'</span>) <span class="co"># Crucial for P-v diagrams</span></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>    plt.yscale(<span class="st">'log'</span>)</span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">'Specific Volume $v$ ($m^3/kg$)'</span>)</span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">'Pressure $P$ (Pa)'</span>)</span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="ss">f'Log-Log P-v Diagram for </span><span class="sc">{</span>fluid<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>    plt.grid(<span class="va">True</span>, which<span class="op">=</span><span class="st">"both"</span>, ls<span class="op">=</span><span class="st">"-"</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>    plt.legend()</span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>    plt.axhline(P_crit, color<span class="op">=</span><span class="st">'k'</span>, linestyle<span class="op">=</span><span class="st">':'</span>, label<span class="op">=</span><span class="st">'Critical Pressure'</span>)</span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the function</span></span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>plot_Pv_diagram(<span class="st">'Water'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Generating P-v Diagram for CO2...</code></pre>
+<pre><code>Generating P-v Diagram for Water...</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
