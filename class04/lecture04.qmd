@@ -341,7 +341,7 @@ I have prepared an interactive Jupyter Notebook that allows you to plot a pressu
 
 [**View Interactive Notebook (.ipynb)**](PV-diagram.ipynb)
 
-[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ejmaginn/CBE20260-notes/blob/main/class04/PV_diagram.ipynb)
+[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ejmaginn/CBE20260-notes/blob/main/class04/PV-diagram.ipynb)
 
 :::
 
