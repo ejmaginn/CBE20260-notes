@@ -7,6 +7,8 @@ format:
     toc: true
   pdf:
     geometry: margin=1in
+    toc: true
+    number-sections: true
 ---
 
 # Course Administration

@@ -9,6 +9,8 @@ format:
     highlight-style: pygments
   pdf:
     geometry: margin=1in
+    toc: true
+    number-sections: true
 ---
 # Last Class
 
@@ -294,7 +296,12 @@ I have prepared a Jupyter Notebook that performs this calculation and plots the 
 
 ::: {.content-visible when-format="html"}
 [**View Interactive Notebook**](lecture02_example.ipynb)
+
+[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ejmaginn/CBE20260-notes/blob/main/class02/lecture02_example.ipynb)
+
 :::
+
+
 
 ::: {.content-visible when-format="pdf"}
 *Note: This example is available as an interactive Jupyter Notebook on the course website.*

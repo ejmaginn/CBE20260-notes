@@ -332,6 +332,26 @@ A useful qualitative fact seen in the diagrams:
 
 These are the kinds of trends we will use repeatedly in problem solving.
 
+
+::: {.callout-tip icon=false}
+## Interactive Example
+I have prepared an interactive Jupyter Notebook that allows you to plot a pressure-volume diagram. It uses information from an open source data package called CoolProp. We will talk more about this later, but for now just focus on what the diagram looks like.
+
+::: {.content-visible when-format="html"}
+
+[**View Interactive Notebook (.ipynb)**](PV-diagram.ipynb)
+
+[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ejmaginn/CBE20260-notes/blob/main/class04/PV_diagram.ipynb)
+
+:::
+
+::: {.content-visible when-format="pdf"}
+*Note: This example is available as an interactive Jupyter Notebook on the course website.*
+:::
+:::
+
+
+
 ---
 
 ## T-V diagrams for a pure substance

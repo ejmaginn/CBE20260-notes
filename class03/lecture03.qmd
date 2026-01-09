@@ -5,10 +5,14 @@ subtitle: "CBE 20260 — Spring 2026"
 format:
   html:
     toc: true
+    number-sections: true
     theme: cosmo
     highlight-style: pygments
+
   pdf:
     geometry: margin=1in
+    toc: true
+    number-sections: true
 ---
 # Last class
 - Systems, boundaries, other definitions
@@ -321,13 +325,9 @@ I have prepared an interactive Jupyter Notebook that allows you to model the dis
 
 ::: {.content-visible when-format="html"}
 
-[**Download notebook (.ipynb)**](lecture03_example.ipynb)
+[**View Interactive Notebook (.ipynb)**](lecture03_example.ipynb)
 
-[**Open notebook (web)**](lecture03_example.ipynb)
-
-<a href="lecture03_example.ipynb" download><strong>Download notebook (.ipynb)</strong></a>
-
-
+[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ejmaginn/CBE20260-notes/blob/main/class03/lecture03_example.ipynb)
 :::
 
 ::: {.content-visible when-format="pdf"}
