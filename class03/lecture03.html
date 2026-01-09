@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Prof.&nbsp;Edward Maginn">
+
+<title>Lecture 3 — Forms of Energy and Calculating Work – CBE 20260 — Course Notes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-68c8bffd90dad8f2b55c52d7b6410dc0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-bfe9e8e6564b7e0b90284b343d5cfca4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">CBE 20260 — Course Notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-lectures" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Lectures</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-lectures">    
+        <li>
+    <a class="dropdown-item" href="../class01/lecture01.html">
+ <span class="dropdown-text">Lecture 1 — Introduction</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class02/lecture02.html">
+ <span class="dropdown-text">Lecture 2 — Systems, Boundaries and Other Basics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class03/lecture03.html">
+ <span class="dropdown-text">Lecture 3 — Forms of Energy and Calculating Work</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class04/lecture04.html">
+ <span class="dropdown-text">Lecture 4 — Fundamental Postulate, States, Phase Rule, and Pure Substance Phase Behaviors</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class05/lecture05.html">
+ <span class="dropdown-text">Lecture 5 — Heat Capacity, Enthalpy</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-notebooks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Notebooks</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-notebooks">    
+        <li>
+    <a class="dropdown-item" href="../class02/lecture02_example.html">
+ <span class="dropdown-text">L2 Block &amp; Spring Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class03/lecture03_example.html">
+ <span class="dropdown-text">L3 Maxwell-Boltzmann Distribution Demo</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#last-class" id="toc-last-class" class="nav-link active" data-scroll-target="#last-class"><span class="header-section-number">1</span> Last class</a>
+  <ul class="collapse">
+  <li><a href="#what-you-should-be-able-to-do-after-this-lecture" id="toc-what-you-should-be-able-to-do-after-this-lecture" class="nav-link" data-scroll-target="#what-you-should-be-able-to-do-after-this-lecture"><span class="header-section-number">1.1</span> What you should be able to do after this lecture</a></li>
+  </ul></li>
+  <li><a href="#review-of-mechanical-work" id="toc-review-of-mechanical-work" class="nav-link" data-scroll-target="#review-of-mechanical-work"><span class="header-section-number">2</span> Review of Mechanical Work</a></li>
+  <li><a href="#other-kinds-of-work" id="toc-other-kinds-of-work" class="nav-link" data-scroll-target="#other-kinds-of-work"><span class="header-section-number">3</span> Other kinds of work</a>
+  <ul class="collapse">
+  <li><a href="#expansion-contraction-work-piston-cylinder" id="toc-expansion-contraction-work-piston-cylinder" class="nav-link" data-scroll-target="#expansion-contraction-work-piston-cylinder"><span class="header-section-number">3.1</span> Expansion &amp; Contraction Work (Piston-Cylinder)</a></li>
+  <li><a href="#flow-work-pv-work" id="toc-flow-work-pv-work" class="nav-link" data-scroll-target="#flow-work-pv-work"><span class="header-section-number">3.2</span> Flow Work (PV work)</a></li>
+  <li><a href="#shaft-work" id="toc-shaft-work" class="nav-link" data-scroll-target="#shaft-work"><span class="header-section-number">3.3</span> Shaft Work</a></li>
+  </ul></li>
+  <li><a href="#internal-energy-u" id="toc-internal-energy-u" class="nav-link" data-scroll-target="#internal-energy-u"><span class="header-section-number">4</span> Internal Energy (<span class="math inline">\(U\)</span>)</a>
+  <ul class="collapse">
+  <li><a href="#maxwellboltzmann-distribution-and-molecular-kinetic-energy" id="toc-maxwellboltzmann-distribution-and-molecular-kinetic-energy" class="nav-link" data-scroll-target="#maxwellboltzmann-distribution-and-molecular-kinetic-energy"><span class="header-section-number">4.1</span> Maxwell–Boltzmann distribution and molecular kinetic energy</a>
+  <ul class="collapse">
+  <li><a href="#effect-of-temperature-on-the-distribution" id="toc-effect-of-temperature-on-the-distribution" class="nav-link" data-scroll-target="#effect-of-temperature-on-the-distribution"><span class="header-section-number">4.1.1</span> Effect of temperature on the distribution</a></li>
+  <li><a href="#connection-to-internal-energy" id="toc-connection-to-internal-energy" class="nav-link" data-scroll-target="#connection-to-internal-energy"><span class="header-section-number">4.1.2</span> Connection to internal energy</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#heat-q-vs.-work-w" id="toc-heat-q-vs.-work-w" class="nav-link" data-scroll-target="#heat-q-vs.-work-w"><span class="header-section-number">5</span> Heat (<span class="math inline">\(Q\)</span>) vs.&nbsp;Work (<span class="math inline">\(W\)</span>)</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture03.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lecture 3 — Forms of Energy and Calculating Work</h1>
+<p class="subtitle lead">CBE 20260 — Spring 2026</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Prof.&nbsp;Edward Maginn </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="last-class" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Last class</h1>
+<ul>
+<li>Systems, boundaries, other definitions</li>
+<li>Different forms of energy</li>
+<li>First Law</li>
+<li>Calculating work</li>
+</ul>
+<section id="what-you-should-be-able-to-do-after-this-lecture" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="what-you-should-be-able-to-do-after-this-lecture"><span class="header-section-number">1.1</span> What you should be able to do after this lecture</h2>
+<p>By the end of class you should be able to:</p>
+<ol type="1">
+<li><strong>Calculate work</strong> for: displacement of objects in external fields; expansion and contraction (piston and cylinder problems); fluid flow</li>
+<li>Describe what <strong>internal energy</strong> is</li>
+<li>Apply the <strong>Maxwell-Boltzmann equation</strong> to compute molecular kinetic energy</li>
+<li>Describe what <strong>heat</strong> is, and how it differs from work and energy.</li>
+<li>Apply an <strong>energy balance</strong> to a closed system</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="review-of-mechanical-work" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Review of Mechanical Work</h1>
+<p>As defined in the previous lecture, <strong>Work (<span class="math inline">\(W\)</span>)</strong> is the energy transfer associated with a force acting through a distance.</p>
+<p><span id="eq-work-gen"><span class="math display">\[
+W = \int \vec{F} \cdot d\vec{x}
+\tag{1}\]</span></span></p>
+<p>In this course (IUPAC convention), we define work done <strong>on</strong> the system as positive (<span class="math inline">\(W &gt; 0\)</span>). Work done <strong>by</strong> the system (energy leaving) is negative (<span class="math inline">\(W &lt; 0\)</span>).</p>
+<p>It is straightforward to calculate work when objects are lifted (or dropped) in a gravitational field.</p>
+<hr>
+<p>Consider the example in <a href="#fig-block-raising" class="quarto-xref">Fig.&nbsp;1</a>:</p>
+<div id="fig-block-raising" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-block-raising-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/block-raising.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:4in">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-block-raising-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;1: Work for raising a mass
+</figcaption>
+</figure>
+</div>
+<p><strong>System</strong>: Block of mass 500 kg</p>
+<p><strong>Direction of force</strong>: <span class="math inline">\(\vec{F}\)</span> is in the +h direction. We must push <em>on</em> the system upward for it to move. <span class="math inline">\(F = mg\)</span></p>
+<p><strong>Displacement</strong>: 2 m in the +h direction</p>
+<p><strong>Expectation</strong>: The process of lifting the system (block) will raise its potential energy. We therefore expect work to be <em>positive</em>, since by our convention, positive work corresponds to adding energy to the system.</p>
+<p><strong>Do the calculation</strong></p>
+<p><span class="math display">\[W = \int_0^{2m} mg dh = (500 kg) \cdot (9.8 m/s^2) * (2 m) = 9800 J\]</span></p>
+<p><strong>Comment</strong></p>
+<p>Work was done <em>on</em> the block (somehow) and it resulted in an increase in the potential energy of the block. We know from the First Law that this energy had to come from somewhere. Clearly, the block won’t just jump up 2 m on its own, so something is missing in the image!</p>
+<hr>
+</section>
+<section id="other-kinds-of-work" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Other kinds of work</h1>
+<p>In addition to moving objects up and down (we can call this “external field” work, <span class="math inline">\(W_{ef}\)</span>), there are three other important kinds of work.</p>
+<ol type="1">
+<li><strong>Expansion-contraction work</strong> (<span class="math inline">\(W_{ec}\)</span>): Typically a fluid expanding or contracting to raise or lower a piston or move an object.</li>
+<li><strong>Flow work</strong> (<span class="math inline">\(W_f\)</span>): Associated with fluids flowing into and out of something.</li>
+<li><strong>Shaft work</strong> (<span class="math inline">\(W_s\)</span>): Work associated with some mechanical device; we often represent it as an agitator or impeller attached to a shaft, hence the name. Common examples of equipment that involve shaft work are pumps, compressors, turbines, and mixers.</li>
+</ol>
+<hr>
+<section id="expansion-contraction-work-piston-cylinder" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="expansion-contraction-work-piston-cylinder"><span class="header-section-number">3.1</span> Expansion &amp; Contraction Work (Piston-Cylinder)</h2>
+<p>A very common form of work in thermodynamics is the expansion or compression of a gas in a piston-cylinder device.</p>
+<p>Consider a gas contained within a cylinder with a moveable piston, such as that in <a href="#fig-piston-initial-final" class="quarto-xref">Fig.&nbsp;2</a>.</p>
+<div id="fig-piston-initial-final" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-piston-initial-final-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/piston-initial-final.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:4in">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-piston-initial-final-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;2: Expansion of a gas in a piston-cylinder device
+</figcaption>
+</figure>
+</div>
+<p>Let’s consider the case shown here, where the gas expands from some initial volume <span class="math inline">\(V_1\)</span> to a larger volume <span class="math inline">\(V_2\)</span>.</p>
+<p><strong>System</strong>: gas in cylinder.</p>
+<p><strong>Surroundings</strong>: piston, walls of cylinder, air outside, etc.</p>
+<p><strong>What are the forces on the system?</strong> Consider a free body diagram, as shown in <a href="#fig-gas-fbd" class="quarto-xref">Fig.&nbsp;3</a>.</p>
+<div id="fig-gas-fbd" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gas-fbd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/gas-fbd.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:4in">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gas-fbd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;3: Free body diagram of gas in a piston-cylinder
+</figcaption>
+</figure>
+</div>
+<ul>
+<li>The atmosphere exerts a pressure <span class="math inline">\(P_{atm}\)</span> against a piston area <span class="math inline">\(A_p\)</span>. The force is <span class="math inline">\(F_{atm} = - P_{atm} A_p\)</span> (the negative sign means it is in the negative y-direction).</li>
+<li>The mass of the piston exerts a force downward <span class="math inline">\(F_p = -m_p g\)</span></li>
+<li>If the piston moves upward, the walls of the piston will have frictional resistance with the cylinder walls. This will result in a negative force downward, <span class="math inline">\(F_f\)</span>. The exact form of <span class="math inline">\(F_f\)</span> is complex.</li>
+<li>If the piston moves a distance <span class="math inline">\(dy\)</span>:</li>
+</ul>
+<ol type="1">
+<li><strong>Force:</strong> <span class="math inline">\(F_{atm} = -(P_{atm} A_p) -(m_p g) - F_f\)</span></li>
+<li><strong>Displacement:</strong> <span class="math inline">\(dy\)</span></li>
+<li><strong>Volume Change:</strong> <span class="math inline">\(dV = A_p dy\)</span></li>
+</ol>
+<p>The work of expansion is thus</p>
+<p><span id="eq-piston-diff"><span class="math display">\[
+W = \int_{V_1}^{V_2} -P_{atm} dV - \int_{V_1}^{V_2} (m_p g /A_p) dV - \int_{V_1}^{V_2} (F_f/A_p) dV
+\tag{2}\]</span></span></p>
+<p>If we make simplifying assumptions that the system is frictionless and the piston mass is negligible, the <span id="eq-piston-int"><span class="math display">\[
+W = - \int_{V_1}^{V_2} P_{atm} dV
+\tag{3}\]</span></span></p>
+<p>If the atmospheric pressure is constant, then</p>
+<p><span id="eq-PV-work"><span class="math display">\[
+W = - P_{atm} (V_2-V_1)
+\tag{4}\]</span></span></p>
+<p>Notice that if the gas was compressed by an external atmospheric pressure <span class="math inline">\(P_{atm}\)</span>, the equations are exactly the same, and we still get <a href="#eq-PV-work" class="quarto-xref">Eq.&nbsp;4</a>, except:</p>
+<ul>
+<li><strong>Expansion</strong> (<span class="math inline">\(dV &gt; 0\)</span>): <span class="math inline">\(W &lt; 0\)</span> (Energy leaves system).</li>
+<li><strong>Compression</strong> (<span class="math inline">\(dV &lt; 0\)</span>): <span class="math inline">\(W &gt; 0\)</span> (Energy enters system).</li>
+</ul>
+<p><strong>Expansion into a Vacuum</strong></p>
+<p>What would be the work associated with a gas expanding against a vacuum, as in <a href="#fig-piston-vacuum" class="quarto-xref">Fig.&nbsp;4</a>? (We remove the first stop and the piston goes up until it strikes the top stop).</p>
+<div id="fig-piston-vacuum" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-piston-vacuum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/piston-vacuum.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:4in">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-piston-vacuum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;4: Expansion of a gas against a vacuum
+</figcaption>
+</figure>
+</div>
+<p>The equation is the same as we derived earlier. Neglecting friction and the mass of the piston, the work is <span id="eq-PV-vacuum"><span class="math display">\[W = -\int P_{ext} dV = -P_{ext} (V_2 - V_1) = 0
+\tag{5}\]</span></span></p>
+<p>That is, <em>no work</em> is done, because there is no force opposing the expansion. The energy of the gas does not change for this case, even though the volume of the gas does change. This is an interesting result and we will come back to this concept later when talking about <em>reversible processes</em>.</p>
+</section>
+<section id="flow-work-pv-work" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="flow-work-pv-work"><span class="header-section-number">3.2</span> Flow Work (PV work)</h2>
+<p>We have analyzed “expansion-contraction” for a <em>closed</em> system, <span class="math inline">\(W_{ec} = -\int P_{ext} \, dV\)</span>, but work is also associated with fluid flow.</p>
+<p>The key idea is that <strong>pressure forces do work to push fluid across the control surface</strong>. That work is called <strong>flow work</strong>.</p>
+<p>Consider steady flow through a pipe segment, as shown in <a href="#fig-flowwork-cv" class="quarto-xref">Fig.&nbsp;5</a>.</p>
+<div id="fig-flowwork-cv" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-flowwork-cv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/pipe-flow-example.png" class="img-fluid figure-img" style="width:90.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-flowwork-cv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;5: Control volume (system) is the fluid in the pipe; pressure forces act on inlet/outlet faces.
+</figcaption>
+</figure>
+</div>
+<p>Focus on a thin “slug” of fluid crossing the inlet; this is the system. See <a href="#fig-slug-in" class="quarto-xref">Fig.&nbsp;6</a>. The surrounding upstream fluid exerts a pressure force on the inlet face to push the fluid into the pipe:</p>
+<p><span id="eq-Fin"><span class="math display">\[
+F_{in} = P_{in}A
+\tag{6}\]</span></span></p>
+<p>where the sign is positive because the force is in the direction of displacement <span class="math inline">\(dx\)</span>. The slug is pushed a distance <span class="math inline">\(dx\)</span> into the control volume, where <span class="math inline">\(A\)</span> is the cross sectional area of the pipe.</p>
+<p><span id="eq-dwin"><span class="math display">\[
+dW_{in} = F_{in}\,dx = (P_{in}A)\,dx = (P_{in}A) \,(dV/A) = P_{in}\,dV
+\tag{7}\]</span></span></p>
+<p>where <span class="math inline">\(dV = A \,dx\)</span> is the volume of the slug.</p>
+<div id="fig-slug-in" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-slug-in-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/slug-in.png" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-slug-in-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;6: A “slug” of fluid (the system) is pushed into the pipe.
+</figcaption>
+</figure>
+</div>
+<p>Integrating <a href="#eq-dwin" class="quarto-xref">Eq.&nbsp;7</a> and dividing by time gives the <strong>rate</strong> of inlet flow work:</p>
+<p><span class="math display">\[
+\dot W_{in} = P_{in} \,\dot V_{in}
+\]</span></p>
+<p>where <span class="math inline">\((\dot V)\)</span> is the volumetric flow rate at the inlet plane.</p>
+<p>At the outlet, a pressure force also acts on the control surface. The fluid element has to push against the downstream fluid to “leave” the pipe. This force is therefore in the negative <span class="math inline">\(x\)</span> direction.</p>
+<div id="fig-slug-out" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-slug-out-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/slug-out.png" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-slug-out-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;7: A “slug” of fluid (the system) pushes out of the pipe.
+</figcaption>
+</figure>
+</div>
+<p><span class="math display">\[
+\dot W_{out} = -P_{out}\,\dot V_{out}
+\]</span></p>
+<p>So the <strong>net flow work rate</strong> is</p>
+<p><span id="eq-flowwork-rate"><span class="math display">\[
+\dot W_{f} = \dot W_{in} + \dot W_{out}
+               = P_{in}\dot V_{in} - P_{out}\dot V_{out}
+\tag{8}\]</span></span></p>
+<p><strong>Note</strong>: Flow work is evaluated <strong>at the planes where flow crosses the control surface</strong></p>
+<hr>
+<p><strong>Worked example</strong></p>
+<p>Let’s solve for the flow work associated with the system shown in <a href="#fig-flowwork-cv" class="quarto-xref">Fig.&nbsp;5</a>. Water flows through a pipe at <span class="math inline">\(\dot m = 100~\text{kg/min}\)</span>, with <span class="math inline">\(P_{in}=300~\text{kPa}\)</span> and <span class="math inline">\(P_{out}=290~\text{kPa}\)</span>. Assume liquid water is incompressible with <span class="math inline">\(\rho = 1000~\text{kg/m}^3\)</span>.</p>
+<p>Volumetric flow rate: <span class="math display">\[
+\dot V = \frac{\dot m}{\rho}
+       = \frac{100~\text{kg/min}}{1000~\text{kg/m}^3}
+       = 0.10~\text{m}^3/\text{min}
+\]</span></p>
+<p>Inlet flow work rate: <span class="math display">\[
+\dot W_{in} = P_{in}\dot V
+            = (300~\text{kPa})(0.10~\text{m}^3/\text{min})
+            = 30{,}000~\text{J/min}
+\]</span></p>
+<p>Outlet flow work rate: <span class="math display">\[
+\dot W_{out} = -P_{out}\dot V
+             = -(290~\text{kPa})(0.10~\text{m}^3/\text{min})
+             = -29{,}000~\text{J/min}
+\]</span></p>
+<p>Net flow work rate: <span class="math display">\[
+\dot W_{f} = 1{,}000~\text{J/min} \approx 16.7~\text{W}
+\]</span></p>
+<p><strong>Interpretation</strong>: because <span class="math inline">\((P_{in} &gt; P_{out})\)</span>, <strong>net work must be supplied to push the water through the control volume</strong> (with our sign convention). This would typically be supplied by a pump, but you could imagine if the pipe was not level, gravity could supply the needed work.</p>
+<hr>
+</section>
+<section id="shaft-work" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="shaft-work"><span class="header-section-number">3.3</span> Shaft Work</h2>
+<p>Energy can also be transferred via a rotating shaft (e.g., a turbine, pump, mixers, or engine crankshaft). Windmills and water wheels convert the kinetic energy of a flowing fluid into shaft work.</p>
+<p>For a constant torque <span class="math inline">\(\tau\)</span> rotating through an angle <span class="math inline">\(\theta\)</span>:</p>
+<p><span id="eq-shaft"><span class="math display">\[
+W_{s} = \tau \theta
+\tag{9}\]</span></span></p>
+<p>or in terms of power (<span class="math inline">\(\dot{W}\)</span>) and angular velocity (<span class="math inline">\(\omega\)</span>):</p>
+<p><span id="eq-shaft-power"><span class="math display">\[
+\dot{W}_{s} = \tau \omega
+\tag{10}\]</span></span></p>
+<p>We typically don’t compute shaft work using <a href="#eq-shaft" class="quarto-xref">Eq.&nbsp;9</a> or <a href="#eq-shaft-power" class="quarto-xref">Eq.&nbsp;10</a>, but we instead use other thermodynamic properties to “back calculate” <span class="math inline">\(W_s\)</span>, or we are given <span class="math inline">\(W_s\)</span> as a design variable. More on this later…</p>
+</section>
+</section>
+<section id="internal-energy-u" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Internal Energy (<span class="math inline">\(U\)</span>)</h1>
+<p>Imagine we have two blocks of the same mass and same material sitting next to each other, as in <a href="#fig-blocks-T1-T2" class="quarto-xref">Fig.&nbsp;8</a>.</p>
+<div id="fig-blocks-T1-T2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-blocks-T1-T2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/blocks-T1-T2.png" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-blocks-T1-T2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;8: Hot and cold blocks of the same mass and materials.
+</figcaption>
+</figure>
+</div>
+<p>Neither block is moving and they are at the same height. The only difference is that block 1 is hotter than block 2 (<span class="math inline">\(T_1 &gt; T_2\)</span>). Even though the two blocks have the same macroscopic potential and kinetic energy, we intuitively guess that block 1 has “more energy” than block 2.</p>
+<p>To account for this, we define a property called <strong>Internal Energy (<span class="math inline">\(U\)</span>)</strong>, which represents the sum of all microscopic forms of energy within the system. This includes:</p>
+<ul>
+<li><strong>Molecular Kinetic Energy:</strong> Translation, rotation, and vibration of molecules (related to temperature).</li>
+<li><strong>Molecular Potential Energy:</strong> Intermolecular forces between the molecules (related to things like phase and density).</li>
+</ul>
+<p>Thus, we can write the total energy of a closed system as <span class="math display">\[
+E_{total} = U + KE_{macro} + PE_{macro}
+\]</span></p>
+<p>We often drop the “macro” subscripts, remembering that <span class="math inline">\(KE\)</span> and <span class="math inline">\(PE\)</span> apply to the overall kinetic and potential energy of the system. All the “microscopic” kinetic and potential energy is lumped into <span class="math inline">\(U\)</span>.</p>
+<p>For many situations of interest in chemical engineering, changes in internal energy are much, much larger than changes in macroscopic potential or kinetic energy. Thus, often we can make the approximation that <span class="math inline">\(\Delta E \approx \Delta U\)</span>.</p>
+<hr>
+<section id="maxwellboltzmann-distribution-and-molecular-kinetic-energy" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="maxwellboltzmann-distribution-and-molecular-kinetic-energy"><span class="header-section-number">4.1</span> Maxwell–Boltzmann distribution and molecular kinetic energy</h2>
+<p>Internal energy arises from microscopic degrees of freedom. For gases (and, to a good approximation, liquids at moderate conditions), an important contribution comes from <strong>molecular kinetic energy</strong> associated with random thermal motion.</p>
+<p>At thermodynamic equilibrium, <strong>molecular velocities are not all the same</strong>. Instead, they are distributed according to the <strong>Maxwell–Boltzmann distribution</strong>, which specifies the probability that a molecule has a speed between <span class="math inline">\((v)\)</span> and <span class="math inline">\((v+dv)\)</span>.</p>
+<p>For a gas of molecules of mass (<span class="math inline">\(m\)</span>) at temperature (<span class="math inline">\(T\)</span>), the speed distribution is</p>
+<p><span id="eq-MB-dist"><span class="math display">\[
+f(v)
+= 4\pi v^2
+\left( \frac{m}{2\pi k_B T} \right)^{3/2}
+\exp \left(-\frac{m v^2}{2k_B T}\right)
+\tag{11}\]</span></span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(k_B\)</span> is Boltzmann’s constant, and</li>
+<li><span class="math inline">\(f(v)\,dv\)</span> is the fraction of molecules with speeds in the interval (<span class="math inline">\([v, v+dv]\)</span>). <a href="#eq-MB-dist" class="quarto-xref">Eq.&nbsp;11</a> is plotted in <a href="#fig-MB-dist" class="quarto-xref">Fig.&nbsp;9</a> for water at different temperatures.</li>
+</ul>
+<div id="fig-MB-dist" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-MB-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/MB-dist.png" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-MB-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;9: The Maxwell-Boltzmann distribution of water molecule velocities at different temperatures.
+</figcaption>
+</figure>
+</div>
+<p>Several important molecular‐scale averages follow directly from this distribution:</p>
+<ul>
+<li><p><strong>Average molecular speed</strong> <span class="math display">\[
+\langle v \rangle
+= \left( \frac{8k_B T}{\pi m} \right)^{1/2}
+\]</span></p></li>
+<li><p><strong>Average squared molecular speed</strong> <span class="math display">\[
+\langle v^2 \rangle
+= \frac{3k_B T}{m}
+\]</span></p></li>
+</ul>
+<p>The average <em>translational kinetic energy</em> of a molecule is therefore</p>
+<p><span class="math display">\[
+\left\langle \tfrac{1}{2} m v^2 \right\rangle
+= \tfrac{3}{2} k_B T
+\]</span></p>
+<p>This result is fundamental: <strong>temperature is a direct measure of the average molecular kinetic energy</strong>. So in <a href="#fig-blocks-T1-T2" class="quarto-xref">Fig.&nbsp;8</a>, block 1 has more internal energy than block 2 because it is hotter and thus its molecules have greater kinetic energy than the molecules of block 2.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Interactive Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I have prepared an interactive Jupyter Notebook that allows you to model the distribution of molecular velocities as a function of temperature and species.</p>
+<p><a href="../class03/lecture03_example.html"><strong>Download notebook (.ipynb)</strong></a></p>
+<p><a href="../class03/lecture03_example.html"><strong>Open notebook (web)</strong></a></p>
+<p><a href="../class03/lecture03_example.html" download=""><strong>Download notebook (.ipynb)</strong></a></p>
+</div>
+</div>
+<hr>
+<section id="effect-of-temperature-on-the-distribution" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="effect-of-temperature-on-the-distribution"><span class="header-section-number">4.1.1</span> Effect of temperature on the distribution</h3>
+<p><a href="#fig-MB-dist" class="quarto-xref">Fig.&nbsp;9</a> shows that as temperature increases:</p>
+<ul>
+<li>The distribution <strong>shifts to higher velocities</strong></li>
+<li>The distribution <strong>broadens</strong>, meaning a wider range of molecular speeds</li>
+<li>Both the average speed <span class="math inline">\(\left &lt; v  \right &gt;\)</span> and average kinetic energy increase</li>
+</ul>
+<p>In <a href="#fig-MB-dist" class="quarto-xref">Fig.&nbsp;9</a>, you can see that increasing temperature moves the peak to the right and lowers it while preserving the total area under the curve (the number of molecules).</p>
+<blockquote class="blockquote">
+<p><strong>Key physical point:</strong> Even at a fixed temperature, some molecules are moving much faster than average, while others are much slower. Thermodynamic properties emerge from <em>ensemble averages</em>, not from individual molecular behavior.</p>
+</blockquote>
+<hr>
+</section>
+<section id="connection-to-internal-energy" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="connection-to-internal-energy"><span class="header-section-number">4.1.2</span> Connection to internal energy</h3>
+<p>Because the average molecular kinetic energy scales linearly with temperature, the <strong>translational contribution to internal energy for an ideal gas depends only on temperature</strong>.</p>
+<p>On a molar basis,</p>
+<p><span class="math display">\[
+\underline{U}_{\text{trans}} = \tfrac{3}{2} RT
+\]</span></p>
+<p>Additional contributions to internal energy (rotation, vibration, intermolecular potential energy) become important for real gases and liquids (we will talk about this later), but the Maxwell–Boltzmann distribution provides the foundational link between <strong>microscopic motion</strong> and <strong>macroscopic thermodynamic properties</strong>.</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="heat-q-vs.-work-w" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Heat (<span class="math inline">\(Q\)</span>) vs.&nbsp;Work (<span class="math inline">\(W\)</span>)</h1>
+<p>What happens if we bring the hot and cold blocks into contact, as in <a href="#fig-block-together" class="quarto-xref">Fig.&nbsp;10</a>?</p>
+<div id="fig-block-together" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-block-together-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/block-together.png" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-block-together-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;10: Hot and cold blocks of the same mass and materials brought together eventually reach the same temperature.
+</figcaption>
+</figure>
+</div>
+<p>we know from experience that the temperatures will equalize, and <span class="math inline">\(T_3 = \frac{1}{2} (T_1+T_2)\)</span> for blocks of the same material and equal mass. Also, <span class="math inline">\(\underline{U}_3 = \frac{1}{2} (\underline{U}_1 + \underline{U}_2)\)</span></p>
+<p>Why does this happen? The “fast” molecules of block 1 hit the slower molecules of block 2 when they are in contact. Kinetic energy is transferred from the hotter atoms to the colder atoms. This occurs at the interface, but the hot atoms at the surface collide with other atoms in the interior of the block. We say that <strong>heat</strong> is <strong>conducted</strong> from the hot block to the cold block. This process, of exchanging energy through molecular collisions of atoms at different temperatures, is called <strong>heat</strong>.</p>
+<div id="fig-hot-cold-interface" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hot-cold-interface-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/hot-cold-interface.png" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hot-cold-interface-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;11: Heat is energy transferred between two systems due to molecular collisions of atoms with different kinetic energies (i.e.&nbsp;temperatures.
+</figcaption>
+</figure>
+</div>
+<p><strong>Heat</strong>: Energy transferred as a result of a temperature difference, with energy going from hot to cold (see <a href="#fig-hot-cold-interface" class="quarto-xref">Fig.&nbsp;11</a>).</p>
+<p>So there are two modes of energy transfer:</p>
+<ol type="1">
+<li><strong>Work (<span class="math inline">\(W\)</span>):</strong> Energy transfer driven by a <strong>Force</strong> acting through a distance. It is an <em>orderly</em> transfer of energy, typically facilitated by some type of device.</li>
+<li><strong>Heat (<span class="math inline">\(Q\)</span>):</strong> Energy transfer driven strictly by a <strong>Temperature Difference</strong> (<span class="math inline">\(\Delta T\)</span>). It is a <em>random</em> transfer of energy that occurs without any kind of device.</li>
+</ol>
+<p>Heat and Work are not equivalent; as we will see, work is more “valuable” than heat.</p>
+<p>The overall closed-system energy balance can thus be written as:</p>
+<p><span id="eq-first-law-closed"><span class="math display">\[
+\Delta E = \Delta U + \Delta E_{KE} + \Delta E_{PE}= Q + W
+\tag{12}\]</span></span></p>
+<p>All this says is that there can be interactions with the surroundings via heat and work, which can result in changes in the three types of energy of the system. Note that <span class="math inline">\(W\)</span> can involve expansion/contraction or shaft work. Since the system is closed, there is no flow work. The time-dependent energy balance for a closed system (consistent with eqn 3.34 in your text is)</p>
+<p><span id="eq-first-law-closed-time"><span class="math display">\[ \frac{d}{dt} \left [ M \left (\hat{U} + \frac{v^2}{2} +gh \right ) \right ] = \dot{W}_s + \dot{W}_{EC} + \dot{Q}
+\tag{13}\]</span></span></p>
+<p>where the dots over the work and heat symbols indicate a rate (energy/time or power).</p>
+<p>Note that in <a href="#eq-first-law-closed" class="quarto-xref">Eq.&nbsp;12</a> and <a href="#eq-first-law-closed-time" class="quarto-xref">Eq.&nbsp;13</a>, the extensive energy change is considered (in <a href="#eq-first-law-closed-time" class="quarto-xref">Eq.&nbsp;13</a>, mass <span class="math inline">\(M\)</span> is multiplied by specific energy units). Be careful about units in all calculations!</p>
+<p><a href="#eq-first-law-closed" class="quarto-xref">Eq.&nbsp;12</a> can also be written for the surroundings. The net result is that</p>
+<p><span class="math display">\[ (Q+W)_{sys} = -(Q+W)_{surr}
+\]</span></p>
+<p>and thus the First Law is</p>
+<p><span class="math display">\[\Delta E_{sys} + \Delta E_{surr} = 0
+\]</span>.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/ejmaginn\.github\.io\/CBE20260-notes\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

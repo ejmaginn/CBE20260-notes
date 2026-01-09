@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Prof.&nbsp;Edward Maginn">
+
+<title>Lecture 2 — Systems, Boundaries and Other Basics – CBE 20260 — Course Notes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-68c8bffd90dad8f2b55c52d7b6410dc0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-bfe9e8e6564b7e0b90284b343d5cfca4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">CBE 20260 — Course Notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-lectures" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Lectures</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-lectures">    
+        <li>
+    <a class="dropdown-item" href="../class01/lecture01.html">
+ <span class="dropdown-text">Lecture 1 — Introduction</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class02/lecture02.html">
+ <span class="dropdown-text">Lecture 2 — Systems, Boundaries and Other Basics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class03/lecture03.html">
+ <span class="dropdown-text">Lecture 3 — Forms of Energy and Calculating Work</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class04/lecture04.html">
+ <span class="dropdown-text">Lecture 4 — Fundamental Postulate, States, Phase Rule, and Pure Substance Phase Behaviors</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class05/lecture05.html">
+ <span class="dropdown-text">Lecture 5 — Heat Capacity, Enthalpy</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-notebooks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Notebooks</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-notebooks">    
+        <li>
+    <a class="dropdown-item" href="../class02/lecture02_example.html">
+ <span class="dropdown-text">L2 Block &amp; Spring Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class03/lecture03_example.html">
+ <span class="dropdown-text">L3 Maxwell-Boltzmann Distribution Demo</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#last-class" id="toc-last-class" class="nav-link active" data-scroll-target="#last-class"><span class="header-section-number">1</span> Last Class</a>
+  <ul class="collapse">
+  <li><a href="#what-you-should-be-able-to-do-after-this-lecture" id="toc-what-you-should-be-able-to-do-after-this-lecture" class="nav-link" data-scroll-target="#what-you-should-be-able-to-do-after-this-lecture"><span class="header-section-number">1.1</span> What you should be able to do after this lecture</a></li>
+  </ul></li>
+  <li><a href="#systems-and-boundaries" id="toc-systems-and-boundaries" class="nav-link" data-scroll-target="#systems-and-boundaries"><span class="header-section-number">2</span> Systems and Boundaries</a></li>
+  <li><a href="#equilibrium-and-steady-state" id="toc-equilibrium-and-steady-state" class="nav-link" data-scroll-target="#equilibrium-and-steady-state"><span class="header-section-number">3</span> Equilibrium and Steady State</a></li>
+  <li><a href="#basic-definitions" id="toc-basic-definitions" class="nav-link" data-scroll-target="#basic-definitions"><span class="header-section-number">4</span> Basic Definitions</a></li>
+  <li><a href="#energy-and-work" id="toc-energy-and-work" class="nav-link" data-scroll-target="#energy-and-work"><span class="header-section-number">5</span> Energy and Work</a>
+  <ul class="collapse">
+  <li><a href="#example-work-calculation-block-vs.-spring" id="toc-example-work-calculation-block-vs.-spring" class="nav-link" data-scroll-target="#example-work-calculation-block-vs.-spring"><span class="header-section-number">5.1</span> Example: Work Calculation (Block vs.&nbsp;Spring)</a></li>
+  <li><a href="#problem-setup-system-boundary-definition" id="toc-problem-setup-system-boundary-definition" class="nav-link" data-scroll-target="#problem-setup-system-boundary-definition"><span class="header-section-number">5.2</span> Problem Setup: System &amp; Boundary Definition</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture02.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lecture 2 — Systems, Boundaries and Other Basics</h1>
+<p class="subtitle lead">CBE 20260 — Spring 2026</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Prof.&nbsp;Edward Maginn </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="last-class" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Last Class</h1>
+<ul>
+<li>Course admin</li>
+<li>Origins of thermodynamics</li>
+<li>Engines (engineer!)</li>
+<li>Key people</li>
+<li>Where thermo fits in the curriculum and beyond</li>
+</ul>
+<section id="what-you-should-be-able-to-do-after-this-lecture" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="what-you-should-be-able-to-do-after-this-lecture"><span class="header-section-number">1.1</span> What you should be able to do after this lecture</h2>
+<p>By the end of class you should be able to:</p>
+<ol type="1">
+<li>Describe basic thermodynamic definitions involving <strong>systems</strong> and <strong>boundaries</strong>.</li>
+<li>Explain the difference between <strong>equilibrium</strong> and <strong>steady-state</strong></li>
+<li>Understand concepts of <strong>energy</strong>, <strong>work</strong>, and a <strong>thermodynamic process</strong>.</li>
+<li>State the <strong>First Law of Thermodynamics</strong> both in words and mathematically.</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="systems-and-boundaries" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Systems and Boundaries</h1>
+<ul>
+<li>It is important to have clear definitions when we are discussing thermodynamic concepts.
+<ul>
+<li><strong>System</strong>: Specific portion of space we are concerned with</li>
+<li><strong>Surroundings</strong>: everything other than the system</li>
+<li><strong>Universe</strong>: system + surroundings</li>
+<li><strong>Process</strong>: specific time period or event being analyzed</li>
+<li><strong>Control volume</strong>: space inside boundaries of a system</li>
+</ul></li>
+<li>Soon, we will discuss a <em>Rankine cycle</em>, which is represented by <a href="#fig-rankine-system" class="quarto-xref">Fig.&nbsp;1</a>. The cycle consists of a pump, a condenser, a heat exchanger, a boiler, and a turbine.</li>
+</ul>
+<div id="fig-rankine-system" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rankine-system-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/rankine-system.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:4in">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rankine-system-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;1: System: Rankine Cycle
+</figcaption>
+</figure>
+</div>
+<ul>
+<li>We can define many parts of the cycle as the <em>system</em>
+<ul>
+<li>The pump could be the system, in which case everything else is the surroundings</li>
+<li>Maybe all the equipment is the system</li>
+</ul></li>
+<li><strong>Boundaries</strong> separate <em>systems</em> from the <em>surroundings</em>
+<ul>
+<li><strong>Open</strong>: mass can exchange between system and surroundings</li>
+<li><strong>Closed</strong>: mass cannot exchange between system and surroundings</li>
+<li><strong>Adiabatic</strong>: heat (defined soon!) cannot cross the boundary (can still have work cross boundary)</li>
+<li><strong>Diathermal</strong>: heat can cross the boundary</li>
+<li><strong>Isolated</strong>: neither energy (defined soon!) nor mass can cross the boundary (the universe is the ultimate isolated system)</li>
+<li><strong>Isochoric</strong>: volume does not change (i.e.&nbsp;rigid boundary)</li>
+<li><strong>Isobaric</strong>: pressure does not change (moveable boundary, i.e.&nbsp;floating piston)</li>
+<li><strong>Isothermal</strong>: temperature does not change (diathermal boundary)</li>
+</ul></li>
+<li><strong>Two types of systems</strong></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><strong>Simple system</strong>: no internal boundaries or restraints; all parts of the system can exchange mass and energy</li>
+<li><a href="#fig-simple-system" class="quarto-xref">Fig.&nbsp;2</a> is an example of a simple system</li>
+</ul>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:45%;">
+<div id="fig-simple-system" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-simple-system-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/simple-system.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-simple-system-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;2: A simple system.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><strong>Composite system</strong>: two or more simple systems separated by boundaries</li>
+<li><a href="#fig-composite-system" class="quarto-xref">Fig.&nbsp;3</a> is an example of a composite system made up of simple systems A, B, C, and D</li>
+</ul>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:45%;">
+<div id="fig-composite-system" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-composite-system-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/composite-system.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-composite-system-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;3: A composite system.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="equilibrium-and-steady-state" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Equilibrium and Steady State</h1>
+<ul>
+<li>Thermodynamics is concerned with systems at <strong>equilibrium</strong>
+<ul>
+<li>A system is at <em>equilibrium</em> when there are no “driving forces” to change a “state property”.</li>
+<li><strong>State property</strong>: defined formally later, but think of pressure, temperature, concentration, etc.</li>
+<li>Examples of <strong>driving forces</strong>: pressure gradient (mechanical), temperature gradient (thermal), etc.</li>
+<li><strong>Steady state</strong> is a related concept; it occurs when the <em>properties of a system are constant with respect to time</em>.</li>
+</ul></li>
+<li>Consider a <em>heat exchanger</em> that uses warm water to heat the air in your dorm, such as that shown in <a href="#fig-heat-exchanger" class="quarto-xref">Fig.&nbsp;4</a></li>
+</ul>
+<div id="fig-heat-exchanger" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-heat-exchanger-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/heat-exchanger.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:6in">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-heat-exchanger-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;4: Heat Exchanger
+</figcaption>
+</figure>
+</div>
+<ul>
+<li>Hot water enters a tube on the left and cold air enters a “shell” surrounding the tube on the right.</li>
+<li>The hot water gives up energy via <em>heat</em> (defined shortly) to the air and gradually cools down as it moves from left to right, while the air warms up as it moves from right to left.</li>
+<li>This is the basic idea of how a heat exchanger works.</li>
+<li>Is this system at equilibrium? Is it at steady state?</li>
+</ul>
+<div id="fig-heat-exchange-detail" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-heat-exchange-detail-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/heat-exchange-detail.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:6in">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-heat-exchange-detail-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;5: Heat Exchanger Detail
+</figcaption>
+</figure>
+</div>
+<ul>
+<li><a href="#fig-heat-exchange-detail" class="quarto-xref">Fig.&nbsp;5</a> shows more detail of the heat exchanger. If we consider a vertical cross section at a mid-point along the tube, we see that across the thin metal tube surface, the water is at a higher temperature <span class="math inline">\(T_1\)</span> than the air, which is at <span class="math inline">\(T_2\)</span>.</li>
+<li>If there are no overall changes in the inlet temperatures and flows of air and water, eventually this system will reach <strong>steady state</strong>, in that the temperatures of air and water <em>at any point along the tube</em> will not change.</li>
+<li>However, there are temperature gradients between the air and the water, and along the tube between inlet and outlet water and air flows, as shown in <a href="#fig-T-gradient" class="quarto-xref">Fig.&nbsp;6</a>.</li>
+</ul>
+<div id="fig-T-gradient" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-T-gradient-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/T-gradient.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:6in">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-T-gradient-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;6: Temperature gradient
+</figcaption>
+</figure>
+</div>
+<ul>
+<li>The <em>system</em> of the heat exchanger is therefore not at equilibrium.</li>
+<li>However, we could imagine a small element of water (or air) at a fixed position. It’s <em>state variables</em> (i.e.&nbsp;temperature, pressure) would be constant, so we could apply thermodynamics to that volume element of fluid.</li>
+<li>We will apply these concepts of equilibrium and steady-state a lot in this class.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Thought Experiment
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Are the wooden desks in the classroom “at equilibrium”? Hint: <em>thermodynamics</em> tells us about driving forces, and <em>kinetics</em> tells us about rates.</p>
+</div>
+</div>
+</section>
+<section id="basic-definitions" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Basic Definitions</h1>
+<ul>
+<li><strong>System</strong>: A specific portion of space that we are concerned with. <strong>Always</strong> define your system before starting to work a problem. Systems have boundaries.</li>
+<li><strong>Process</strong>: A specific time period or event you are analyzing.</li>
+<li><strong>Control volume</strong>: The space inside the boundaries of the system.</li>
+<li><strong>Surroundings</strong>: Everything except the system.</li>
+<li><strong>Boundaries</strong>
+<ul>
+<li><strong>Open</strong>: mass can exchange between the system and the surroundings, as in <a href="#fig-open-tank" class="quarto-xref">Fig.&nbsp;7</a></li>
+</ul></li>
+</ul>
+<div id="fig-open-tank" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-open-tank-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/open-tank.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:4in">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-open-tank-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;7: Open tank
+</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Closed</strong>: mass cannot exchange between the system and the surroundings, as in <a href="#fig-closed-tank" class="quarto-xref">Fig.&nbsp;8</a>. Composite systems can be closed with open simple systems being part of the overall composite system.</li>
+</ul>
+<div id="fig-closed-tank" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-closed-tank-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/closed-tank.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:4in">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-closed-tank-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;8: Closed tank
+</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Adiabatic</strong>: Heat (defined soon) cannot cross a system boundary. However, <em>work</em> (also to be defined soon) can cross an adiabatic boundary. See <a href="#fig-adiabatic-system" class="quarto-xref">Fig.&nbsp;9</a>.</li>
+</ul>
+<div id="fig-adiabatic-system" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-adiabatic-system-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/adiabatic-system.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:4in">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-adiabatic-system-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;9: Adiabatic system tank
+</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Diathermal</strong>: Heat can cross the boundary (i.e.&nbsp;metal walls, no insulation).</li>
+<li><strong>Isolated</strong>: Neither energy (defined soon!) nor mass may cross the system boundary.</li>
+<li><strong>Isochoric</strong>: No volume change - rigid walls.</li>
+<li><strong>Isobaric</strong>: Pressure does not change (volume can change)</li>
+<li><strong>Isothermal</strong>: A system with diathermal walls in contact with a heat bath (temperature is constant)</li>
+</ul>
+<div id="fig-other-boundaries" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-other-boundaries-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/other-boundaries.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:6in">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-other-boundaries-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;10: Other Boundaries
+</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Thermodynamic process</strong>: A specific series of events that take place over a specific time, taking the <em>system</em> from an <em>initial state</em> to a <em>final state</em>. See <a href="#fig-process" class="quarto-xref">Fig.&nbsp;11</a></li>
+</ul>
+<div id="fig-process" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-process-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/process.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:6in">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-process-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;11: Thermodynamic process
+</figcaption>
+</figure>
+</div>
+<p><strong>Intensive and Extensive Quantities</strong></p>
+<p><em>Extensive properties</em> are proportional to the amount of material in the system. We will follow the textbook’s convention and use “plain” symbols to represent extensive quantities.</p>
+<ul>
+<li><strong>Volume</strong>: <span class="math inline">\(V\)</span>; <span class="math inline">\(m^3\)</span>, <span class="math inline">\(cm^3\)</span>, gallons, etc.</li>
+<li><strong>Energy</strong>: <span class="math inline">\(E\)</span>; kJ, BTU, etc.</li>
+</ul>
+<p><em>Intensive properties</em> are independent of both system size and the amount of material present in the system.</p>
+<p>There are three kinds of intensive properties. We will underline the symbol to mean <em>molar</em> and place a “hat” above the symbol to mean specific. Natural intensive variables are just given plain symbols.</p>
+<ol type="1">
+<li><strong>Natural</strong>: <em>temperature</em> <span class="math inline">\(T\)</span>: Kelvin (<span class="math inline">\(K\)</span>), Fahrenheit (<span class="math inline">\(F\)</span>), Celsius (<span class="math inline">\(C\)</span>); <em>pressure</em> <span class="math inline">\(P\)</span>: pa, psi, bar, etc.</li>
+<li><strong>Molar</strong>: <em>molar volume</em> <span class="math inline">\(\underline{V}\)</span>: <span class="math inline">\(m^3/mol\)</span>; <em>molar energy</em> <span class="math inline">\(\underline{E}\)</span>: kJ/mol</li>
+<li><strong>Specific</strong>: <em>specific volume</em> <span class="math inline">\(\hat{V}\)</span>: <span class="math inline">\(m^3/kg\)</span>; <em>specific energy</em> <span class="math inline">\(\hat{E}\)</span>: BTU/lb</li>
+</ol>
+<p>Take care to note the kind of quantity you are dealing with, and <em>always carry along units</em> in your calculations to make sure you don’t make a mistake!</p>
+</section>
+<section id="energy-and-work" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Energy and Work</h1>
+<ul>
+<li><strong>Energy</strong> is a key concept of thermodynamics.</li>
+<li>Thomas Young first used the term in 1807 and it was loosely related to what we now call kinetic energy.</li>
+<li>Later, energy was defined as “<strong>the capacity to do work</strong>”.</li>
+<li>But what is work?
+<ul>
+<li><strong>Work</strong> occurs whenever an object is moved against an opposing force.</li>
+<li>Mathematically, we define work (a scalar) via <a href="#eq-work" class="quarto-xref">Eq.&nbsp;1</a> <span id="eq-work"><span class="math display">\[
+W \equiv \int \vec{F_E} \cdot d \vec{x}
+\tag{1}\]</span></span></li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>work in your textbook
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Your textbook defines work in terms of scalars as <span class="math inline">\(W=\int F d\ell\)</span>, but to get the sign “right” you have to know the signs on <span class="math inline">\(F\)</span> and <span class="math inline">\(d \ell\)</span>. It is best to use vectors for force and displacement. We will work an example later to make this clearer.</p>
+</div>
+</div>
+<div id="fig-sliding-block" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sliding-block-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sliding-block.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:4in">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sliding-block-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;12: Work involved with making a block slide
+</figcaption>
+</figure>
+</div>
+<p><a href="#fig-sliding-block" class="quarto-xref">Fig.&nbsp;12</a> shows how to do a calculation of work. First, define the system (in this case the block).</p>
+<p>Friction between the block and the surface resists motion, so unless we do <em>work</em> on the system, nothing happens.</p>
+<p>If we push on the block in the positive x-direction with an external force <span class="math inline">\(\vec{F}_E\)</span>, the block is displaced in the positive x-direction by an amount <span class="math inline">\(dx\)</span>. It gains energy via the work done on it.</p>
+<p>The integral over the path gives the work done on the system. Since both the force and displacement vectors are positive, the work is positive. We say positive work means work was done <em>on the system</em>.</p>
+<p>There are three “types” of energy</p>
+<ul>
+<li><strong>Kinetic energy</strong>: the capacity to do work via <em>motion</em>. Gaspard-Gustave de Coriolis coined the term “kinetic energy” in 1829.</li>
+</ul>
+<p><span id="eq-kinetic-energy"><span class="math display">\[E_{KE}= \frac{1}{2} mv^2 \tag{2}\]</span></span></p>
+<ul>
+<li><strong>Potential energy</strong>: the capacity to do work via <em>position</em> or <em>configuration</em>. This term was coined by William Rankine in 1853. For potential energy to make sense, there needs to be some sort of external field (i.e.&nbsp;gravity, electric potential) or a device (i.e.&nbsp;a spring) involved.
+<ul>
+<li>For a <em>gravitational potential</em> where <span class="math inline">\(m\)</span> is the object mass, <span class="math inline">\(g\)</span> is the gravitational constant, and <span class="math inline">\(h\)</span> is the relative position withing the external gravitational field, the potential energy is</li>
+</ul></li>
+</ul>
+<p><span id="eq-potential-energy-gravity"><span class="math display">\[E_{PE} = m g h \tag{3}\]</span></span></p>
+<ul>
+<li>For a <em>harmonic spring</em> with force constant <span class="math inline">\(k\)</span> and where <span class="math inline">\(x\)</span> is the displacement of the spring from it’s zero energy state, the potential energy is</li>
+</ul>
+<p><span id="eq-potential-energy-spring"><span class="math display">\[E_{PE} = \frac{1}{2} k x^2 \tag{4}\]</span></span></p>
+<ul>
+<li><strong>Internal energy</strong>: the kinetic and potential energy of the molecules that make up the substance. We will say more about this later.</li>
+</ul>
+<p>Objects can do work via their energy (kinetic, potential, internal) and in so doing, they can change their energy and the energy of the surroundings. But we observe that the <em>total energy</em> is constant. This leads to the First Law.</p>
+<blockquote class="blockquote">
+<p><strong>First Law of Thermodynamics</strong>: It has been <em>observed</em> that energy is a <em>conserved quantity</em>. After a thermodynamic process occurs, the <em>energy of the system and surroundings is the same.</em></p>
+</blockquote>
+<p>“<strong>Conservation</strong> (the conservation law) means this … that there is a number, which you can calculate, at one moment—and as nature undergoes its multitude of changes, this number doesn’t change. That is, if you calculate again, this quantity, it’ll be the same as it was before. An example is the conservation of energy: there’s a quantity that you can calculate according to a certain rule, and it comes out the same answer after, no matter what happens.” Richard Feynman</p>
+<p>Consider the example of an ideal frictionless pendulum shown in <a href="#fig-pendulum" class="quarto-xref">Fig.&nbsp;13</a>. The system (the ball) converts its kinetic energy to potential energy and back again along a trajectory. At any given point, the total energy is constant <span id="eq-E-total"><span class="math display">\[ E_{tot} = E_{KE} + E_{PE} \tag{5}\]</span></span></p>
+<div id="fig-pendulum" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pendulum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/pendulum.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:4in">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pendulum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;13: Ideal pendulum
+</figcaption>
+</figure>
+</div>
+<p>Bodies in motion have kinetic energy, and so they can do work. Consider the following example.</p>
+<div style="page-break-after: always;"></div>
+<section id="example-work-calculation-block-vs.-spring" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="example-work-calculation-block-vs.-spring"><span class="header-section-number">5.1</span> Example: Work Calculation (Block vs.&nbsp;Spring)</h2>
+<p>Let’s consider a specific numerical example to calculate work by hand and using Python.</p>
+<p>A block of mass <strong><span class="math inline">\(m = 5.0 \text{ kg}\)</span></strong> is sliding on frictionless ice with a velocity of <strong><span class="math inline">\(v = 4.0 \text{ m/s}\)</span></strong>. It strikes a plunger attached to a spring with a spring constant <strong><span class="math inline">\(k = 2000 \text{ N/m}\)</span></strong>. See <a href="#fig-block-spring-image" class="quarto-xref">Fig.&nbsp;14</a>.</p>
+<div id="fig-block-spring-image" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-block-spring-image-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/block-spring-image.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:6in">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-block-spring-image-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;14: Sliding block and spring
+</figcaption>
+</figure>
+</div>
+<p>We wish to calculate the work done <strong>on the block</strong> and <strong>on the spring</strong> as the block comes to a complete stop.</p>
+</section>
+<section id="problem-setup-system-boundary-definition" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="problem-setup-system-boundary-definition"><span class="header-section-number">5.2</span> Problem Setup: System &amp; Boundary Definition</h2>
+<p>Before calculating the work, we must strictly define our system, boundary, and surroundings to determine what constitutes “external” work.</p>
+<ul>
+<li><strong>The System:</strong> We define the <strong>Block</strong> (mass <span class="math inline">\(m\)</span>) as the system.</li>
+<li><strong>The Boundary:</strong> The boundary is the physical surface of the block.</li>
+<li><strong>The Surroundings:</strong> The spring, the ice, and the air are part of the surroundings.</li>
+</ul>
+<p><strong>Why this matters:</strong> Because the spring is in the <em>surroundings</em>, the force it exerts on the block acts <strong>across the boundary</strong>. As the boundary moves (displacement <span class="math inline">\(dx\)</span>), energy is transferred <em>from</em> the block <em>to</em> the spring in the form of <strong>Work</strong>.</p>
+<p><span class="math display">\[W_{b} = \int_{x_1}^{x_2} \vec{F} \cdot d\vec{x}\]</span></p>
+<p>Since the force of the spring opposes the displacement of the boundary, we expect that the Work done on the system is <strong>negative</strong> (energy leaves the block).</p>
+<p><strong>Calculation by Hand:</strong></p>
+<ul>
+<li><p>Initial kinetic energy of the block: <span class="math inline">\(KE_i = \frac{1}{2}mv_i^2 = 0.5 \times 5.0 \times 4.0^2 = 40 \text{ J}\)</span>. The block can be considered to be a <span class="math inline">\(h=0\)</span> and so it has no potential energy.</p></li>
+<li><p>The spring is harmonic, with <span class="math inline">\(PE_{spring}=\frac{1}{2} k x^2\)</span>; its initial position is <span class="math inline">\(x_i=0\)</span> so it has no initial potential energy. It is also not moving, so it has no kinetic energy.</p></li>
+<li><p>The block will contact the spring and compress it. It will stop when all its kinetic energy is transferred to the spring, or when its kinetic energy is zero and the spring potential energy is <span class="math inline">\(PE = KE_i = \frac{1}{2}kx_f{^2} = 40 J\)</span>, where <span class="math inline">\(x_f\)</span> is the final or maximum compression distance of the spring.</p></li>
+<li><p>The force of the spring on the block is the negative derivative of the potential energy, <span class="math inline">\(\vec{F}_{spring} = -\nabla_x \frac{1}{2}kx_f{^2} = -k x_f\)</span>.</p></li>
+<li><p>Maximum compression or final position of the spring will be: <span class="math inline">\(x_{f} = \sqrt{m v_i^2/k} = 0.2m\)</span></p></li>
+<li><p>Using <a href="#eq-work" class="quarto-xref">Eq.&nbsp;1</a>, <span class="math inline">\(W \equiv \int \vec{F_E} \cdot d \vec{x}\)</span></p>
+<p>System = block: <span class="math inline">\(W = \int_0^{+0.2} -k x \, dx = - \frac{1}{2} k x^2 |^{0.2}_0 = -40 J\)</span>.</p>
+<p>The work on the block is -40 J. In other words, the block gives up energy by doing work on the surroundings (the spring).</p>
+<p><strong>What if the spring was the system?</strong> We use the same equations, but now the external force on the spring is in the same direction as the spring compression, or a positive value: <span class="math inline">\(W = \int_0^{+0.2} +k x \, dx = + 40 J\)</span>.</p>
+<p>The block (surroundings) did work on the system (the spring), the spring experienced positive work, and so it gained energy from the surroundings.</p></li>
+<li><p><strong>Remember</strong>: for a given system, when work is negative energy <em>leaves</em> the system via the work. When work is positive, energy <em>enters</em> the system via work. Be careful in defining the system, boundaries, and surroundings.</p></li>
+</ul>
+<p>We can also use Python to calculate the work done by numerically integrating the force over the displacement.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Interactive Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I have prepared a Jupyter Notebook that performs this calculation and plots the work as the area under the force-displacement curve.</p>
+<p><a href="../class02/lecture02_example.html"><strong>View Interactive Notebook</strong></a></p>
+</div>
+</div>
+<p>At the point where the block has no velocity and the spring is under maximum compression, all the kinetic energy of the block was converted to potential energy of the spring <em>via work</em>. <strong>Work is not energy; it is a mechanism for transferring energy</strong>.</p>
+<p><strong>What happens next?</strong> The compressed spring will uncompress, thereby generating an external force on the block on the -x direction. The block will start moving to the left (-x direction) until the spring returns to its initial position. Assuming no friction, the block will then have the same kinetic energy it had before striking the spring, but its velocity will be 4 m/s in the -x direction.</p>
+<ul>
+<li>Work through the math for this case. You will see that if the block is the system, the work on it will be positive (both the force and displacement vectors are in the -x direction, therefore making the work be positive). This makes sense: the block regains its kinetic energy via work done on it by the surroundings (the spring).</li>
+<li>If you consider the system to be the spring, the force is in the +x direction while the displacement is in the -x direction; the work on the spring is negative, meaning it loses energy to the block.</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/ejmaginn\.github\.io\/CBE20260-notes\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
