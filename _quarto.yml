@@ -19,6 +19,8 @@ website:
             text: Lecture 4 — Fundamental Postulate, States, Phase Rule, and Pure Substance Phase Behaviors 
           - href: class05/lecture05.qmd
             text: Lecture 5 — Heat Capacity, Enthalpy 
+          - href: class06/lecture06.qmd
+            text: Lecture 6 — Calculating Internal Energy and Enthalpy Changes; intermolecular forces
           # Add more lectures here as you create them:
           # - href: class0x/lecture02.qmd
           #   text: Lecture x — Title
@@ -29,7 +31,9 @@ website:
           - href: class03/lecture03_example.ipynb
             text: L3 Maxwell-Boltzmann Distribution Demo
           - href: class04/PV-diagram.ipynb
-            text: L4 PV Diagram Demo  
+            text: L4 PV Diagram Demo
+          - href: class06/lecture06_LJ.ipynb
+            text: L6 LJ Potential Demo
           # Add more notebooks here as you create them:  
           #- href: class03/lecture03_example.ipynb
           #  text: L3 Work Modes & Polytropic Expansion
