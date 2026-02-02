@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Edward Maginn">
+
+<title>Lecture 7: The van der Waals EOS and Open System Energy Balances – CBE 20260 — Course Notes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-950ba19c765f2cec88564589b0edcdee.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">CBE 20260 — Course Notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-lectures" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Lectures</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-lectures">    
+        <li>
+    <a class="dropdown-item" href="../class01/lecture01.html">
+ <span class="dropdown-text">Lecture 1 — Introduction</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class02/lecture02.html">
+ <span class="dropdown-text">Lecture 2 — Systems, Boundaries and Other Basics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class03/lecture03.html">
+ <span class="dropdown-text">Lecture 3 — Forms of Energy and Calculating Work</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class04/lecture04.html">
+ <span class="dropdown-text">Lecture 4 — Fundamental Postulate, States, Phase Rule, and Pure Substance Phase Behaviors</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class05/lecture05.html">
+ <span class="dropdown-text">Lecture 5 — Heat Capacity, Enthalpy</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class06/lecture06.html">
+ <span class="dropdown-text">Lecture 6 — Calculating Internal Energy and Enthalpy Changes; intermolecular forces</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class07/lecture07.html">
+ <span class="dropdown-text">Lecture 7 - The van der Waals Equation of State; compressibility factor; open system energy balance</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-notebooks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Notebooks</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-notebooks">    
+        <li>
+    <a class="dropdown-item" href="../class02/lecture02_example.html">
+ <span class="dropdown-text">L2 Block &amp; Spring Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class03/lecture03_example.html">
+ <span class="dropdown-text">L3 Maxwell-Boltzmann Distribution Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class04/PV-diagram.html">
+ <span class="dropdown-text">L4 PV Diagram Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class06/lecture06_LJ.html">
+ <span class="dropdown-text">L6 LJ Potential Demo</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#recap-and-motivation" id="toc-recap-and-motivation" class="nav-link active" data-scroll-target="#recap-and-motivation"><span class="header-section-number">1</span> Recap and Motivation</a></li>
+  <li><a href="#the-van-der-waals-equation-of-state" id="toc-the-van-der-waals-equation-of-state" class="nav-link" data-scroll-target="#the-van-der-waals-equation-of-state"><span class="header-section-number">2</span> The van der Waals Equation of State</a>
+  <ul class="collapse">
+  <li><a href="#correction-1-repulsion-finite-size" id="toc-correction-1-repulsion-finite-size" class="nav-link" data-scroll-target="#correction-1-repulsion-finite-size"><span class="header-section-number">2.1</span> Correction 1: Repulsion (Finite Size)</a></li>
+  <li><a href="#correction-2-attraction" id="toc-correction-2-attraction" class="nav-link" data-scroll-target="#correction-2-attraction"><span class="header-section-number">2.2</span> Correction 2: Attraction</a></li>
+  <li><a href="#the-result-van-der-waals-equation-of-state-eos-1873" id="toc-the-result-van-der-waals-equation-of-state-eos-1873" class="nav-link" data-scroll-target="#the-result-van-der-waals-equation-of-state-eos-1873"><span class="header-section-number">2.3</span> The Result: van der Waals Equation of State (EOS) (1873)</a>
+  <ul class="collapse">
+  <li><a href="#connection-to-the-lennard-jones-potential" id="toc-connection-to-the-lennard-jones-potential" class="nav-link" data-scroll-target="#connection-to-the-lennard-jones-potential"><span class="header-section-number">2.3.1</span> Connection to the Lennard-Jones potential</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#interactive-example-the-van-der-waals-equation-of-state" id="toc-interactive-example-the-van-der-waals-equation-of-state" class="nav-link" data-scroll-target="#interactive-example-the-van-der-waals-equation-of-state"><span class="header-section-number">3</span> Interactive Example: The van der Waals equation of state</a></li>
+  <li><a href="#compressibility-factor-z" id="toc-compressibility-factor-z" class="nav-link" data-scroll-target="#compressibility-factor-z"><span class="header-section-number">4</span> Compressibility Factor (<span class="math inline">\(Z\)</span>)</a></li>
+  <li><a href="#open-system-energy-balance" id="toc-open-system-energy-balance" class="nav-link" data-scroll-target="#open-system-energy-balance"><span class="header-section-number">5</span> Open System Energy Balance</a>
+  <ul class="collapse">
+  <li><a href="#mass-balance" id="toc-mass-balance" class="nav-link" data-scroll-target="#mass-balance"><span class="header-section-number">5.1</span> Mass Balance</a></li>
+  <li><a href="#the-energy-balance-general-form" id="toc-the-energy-balance-general-form" class="nav-link" data-scroll-target="#the-energy-balance-general-form"><span class="header-section-number">5.2</span> The Energy Balance (General Form)</a>
+  <ul class="collapse">
+  <li><a href="#steady-state-assumption" id="toc-steady-state-assumption" class="nav-link" data-scroll-target="#steady-state-assumption"><span class="header-section-number">5.2.1</span> Steady-State Assumption</a></li>
+  <li><a href="#steady-state-one-inlet-and-one-outlet" id="toc-steady-state-one-inlet-and-one-outlet" class="nav-link" data-scroll-target="#steady-state-one-inlet-and-one-outlet"><span class="header-section-number">5.2.2</span> Steady state, one inlet and one outlet</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#example-1-multnomah-falls" id="toc-example-1-multnomah-falls" class="nav-link" data-scroll-target="#example-1-multnomah-falls"><span class="header-section-number">6</span> Example 1: Multnomah Falls</a></li>
+  <li><a href="#example-2-the-throttling-valve" id="toc-example-2-the-throttling-valve" class="nav-link" data-scroll-target="#example-2-the-throttling-valve"><span class="header-section-number">7</span> Example 2: The Throttling Valve</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture07.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lecture 7: The van der Waals EOS and Open System Energy Balances</h1>
+<p class="subtitle lead">CBE 20260 / Thermodynamics I</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Edward Maginn </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="recap-and-motivation" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Recap and Motivation</h1>
+<p>In the last lecture, we looked at intermolecular interactions and discovered that molecules are not non-interacting point particles as the ideal gas law assumes. Instead they have:</p>
+<p><strong>Finite size</strong> (Repulsion at short distances).</p>
+<p><strong>Stickiness</strong> (Attraction at long distances).</p>
+<p>Today, we will use that microscopic insight to start improving the ideal gas “law”. Then, we will broaden our scope to analyze systems where mass flows in and out (open systems).</p>
+<hr>
+</section>
+<section id="the-van-der-waals-equation-of-state" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> The van der Waals Equation of State</h1>
+<blockquote class="blockquote">
+<p>“If, in some cataclysm, all of scientific knowledge were to be destroyed, and only one sentence passed on to the next generations of creatures, what statement would contain the most information in the fewest words? I believe it is the <strong>atomic hypothesis</strong>… that all things are made of atoms—little particles that move around in perpetual motion, attracting each other when they are a little distance apart, but repelling upon being squeezed into one another.”</p>
+<p>— <em>Richard Feynman</em></p>
+</blockquote>
+<p>The Ideal Gas Law is simple, but only an approximation: <span class="math display">\[P = \frac{RT}{\underline{V}}\]</span></p>
+<p>It assumes molecules are point masses that do not interact. It therefore only applies in the limit of an infinitely low density (low pressure) gas and/or at very high temperature where the kinetic energy of the gas molecules overwhelms any intermolecular interactions. Let’s “perturb” this equation to account for reality.</p>
+<section id="correction-1-repulsion-finite-size" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="correction-1-repulsion-finite-size"><span class="header-section-number">2.1</span> Correction 1: Repulsion (Finite Size)</h2>
+<p>Molecules take up space. If you pack a lot of molecules into a box, the volume <em>available</em> for them to move around is not the total volume <span class="math inline">\(\underline{V}\)</span>, but the total volume <em>minus</em> the volume of the molecules themselves and the inaccessible volume in the interstices between molecules (see <a href="#fig-excluded-volume" class="quarto-xref">Fig.&nbsp;1</a>).</p>
+<div id="fig-excluded-volume" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-excluded-volume-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/excluded-volume.png" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-excluded-volume-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;1: An image showing the “excluded volume” of molecules having finite size and repulsion.
+</figcaption>
+</figure>
+</div>
+<p>We define a parameter <strong><span class="math inline">\(b\)</span></strong> as the “excluded volume” due to molecular size. It accounts for the size of the molecules and any space “excluded” from other molecules. <span class="math display">\[\underline{V}_{available} = \underline{V} - b\]</span></p>
+<p>This leads to a “perturbation” to the ideal gas law that accounts for molecular volume: <span id="eq-IG1"><span class="math display">\[P = \frac{RT}{\underline{V} - b} \tag{1}\]</span></span> <em>Result:</em> For a fixed <span class="math inline">\(T\)</span> and <span class="math inline">\(\underline{V}\)</span>, <a href="#eq-IG1" class="quarto-xref">Eq.&nbsp;1</a> predicts that the pressure is <strong>higher</strong> than what the ideal gas law predicts, because molecules are hitting the walls more often (they have less room to wander).</p>
+</section>
+<section id="correction-2-attraction" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="correction-2-attraction"><span class="header-section-number">2.2</span> Correction 2: Attraction</h2>
+<p>In addition to repelling each other at short distances, we learned that molecules tend to <em>attract</em> each other at longer distances, due to things like dipole moments and dispersion forces. The potential energy of attraction <span class="math inline">\(\Gamma\)</span> scales more or less like <span class="math inline">\(\Gamma \propto 1/r^6\)</span>, where <span class="math inline">\(r\)</span> is the distance between the molecules. These so-called van der Waals forces cause a reduction in the pressure, since the attractive forces “pull back” molecules and <strong>reduce</strong> the momentum with which they hit the wall of a container. The pressure reduction scales like <span class="math inline">\(1/\underline{V}^2\)</span>, which can be rationalized in two (equivalent) ways:</p>
+<ul>
+<li>The reduction in force of a molecule hitting a container wall is proportional to the density of the molecules pulling it back (<span class="math inline">\(\rho \propto 1/\underline{V}\)</span>).</li>
+<li>The number of molecules hitting the wall is also proportional to density (<span class="math inline">\(\rho \propto 1/\underline{V}\)</span>).</li>
+<li>Therefore, the reduction in pressure is proportional to <span class="math inline">\(1/\underline{V}^2\)</span>.</li>
+</ul>
+<p>OR:</p>
+<ul>
+<li>Since the attractive energy scales as <span class="math inline">\(\Gamma \propto 1/r^6\)</span>, dimensional analysis suggests that the reduction in pressure scales in the same way, which is <span class="math inline">\(\propto 1/\underline{V}^2\)</span>.</li>
+</ul>
+<p>In either case, we define a parameter <strong><span class="math inline">\(a\)</span></strong> to represent the strength of attraction. <span id="eq-IG2"><span class="math display">\[P_{reduction} = \frac{a}{\underline{V}^2} \tag{2}\]</span></span></p>
+</section>
+<section id="the-result-van-der-waals-equation-of-state-eos-1873" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="the-result-van-der-waals-equation-of-state-eos-1873"><span class="header-section-number">2.3</span> The Result: van der Waals Equation of State (EOS) (1873)</h2>
+<p>Combining these two corrections <a href="#eq-IG1" class="quarto-xref">Eq.&nbsp;1</a> and <a href="#eq-IG2" class="quarto-xref">Eq.&nbsp;2</a> results in the famous <strong>van der Waals Equation of State</strong>:</p>
+<p><span id="eq-vdw"><span class="math display">\[P = \frac{RT}{\underline{V} - b} - \frac{a}{\underline{V}^2} \tag{3}\]</span></span></p>
+<p>This was the first cubic equation of state (called this because it is cubic function in volume, which you can see if you expand it to a polynomial. The interactive demo below explores this). <a href="#eq-vdw" class="quarto-xref">Eq.&nbsp;3</a> was derived by Johannes Diderik van der Waals as part of his PhD thesis “Over de continuiteit van den gas - en vloeistoftoestand” (On the continuity of the gas and liquid state). He won the Nobel Prize in 1910 for this work, which helped provide a molecular explanation for why fluids can exist in the liquid and vapor state. It is not a very accurate EOS and so is not used for engineering calculations. However, due to its simplicity and the fact that it captures many of the basic properties of real fluids, it is an important equation to understand.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Critical Point Parameters
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The parameters <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are not arbitrary fitting parameters; they are typically linked to the <strong>critical point</strong> of the fluid.</p>
+<p>At the critical point (<span class="math inline">\(T_c, P_c\)</span>), the critical isotherm exhibits a horizontal inflection point. Physically, this means the distinction between liquid and vapor disappears. Mathematically, it implies that both the slope and the curvature of the <span class="math inline">\(P-\underline{V}\)</span> curve are zero:</p>
+<p><span class="math display">\[
+\left( \frac{\partial P}{\partial \underline{V}} \right)_{T_c} = 0 \quad \text{and} \quad \left( \frac{\partial^2 P}{\partial \underline{V}^2} \right)_{T_c} = 0
+\]</span></p>
+<p>By applying these two constraints to the van der Waals equation (<a href="#eq-vdw" class="quarto-xref">Eq.&nbsp;3</a>) and solving the resulting system of algebraic equations, we obtain the standard definitions for the parameters:</p>
+<p><span class="math display">\[
+a = \frac{27}{64} \frac{(RT_c)^2}{P_c}, \quad b = \frac{RT_c}{8P_c}
+\]</span></p>
+<p>Each material has a different critical point, so each material has their own unique values of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>. You find them by looking up the critical temperature and pressure of the substance of interest (see, for example, Appendix C of your textbook) and calculating <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> with the formulae above. We will see that this is important when we later talk about the principle of <em>corresponding states</em>.</p>
+</div>
+</div>
+<hr>
+<section id="connection-to-the-lennard-jones-potential" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="connection-to-the-lennard-jones-potential"><span class="header-section-number">2.3.1</span> Connection to the Lennard-Jones potential</h3>
+<ul>
+<li><strong><span class="math inline">\(b\)</span> (Exclusion):</strong> Correlates with the collision diameter <span class="math inline">\(\sigma\)</span>.</li>
+<li><strong><span class="math inline">\(a\)</span> (Attraction):</strong> Correlates with the potential well depth <span class="math inline">\(\epsilon\)</span>.</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="interactive-example-the-van-der-waals-equation-of-state" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Interactive Example: The van der Waals equation of state</h1>
+<p>I have prepared a notebook that plots the VDW EOS for CO<span class="math inline">\(_2\)</span> at a temperature you choose with a slider. It plots the equation on a P-V diagram. Note the cubic nature of the EOS below the critical point. If you choose a pressure, you can solve the equation graphically by drawing a horizontal line at a given pressure and finding the roots where the line intersects the VDW equation curve. The low and high volume roots are the model prediction of the liquid and vapor volume, respectively. The middle root is disregarded. (More on this later)!</p>
+<p><a href="../class07/VDW-loop.html"><strong>View Interactive Notebook</strong></a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://colab.research.google.com/github/ejmaginn/CBE20260-notes/blob/main/class07/lecture07_VDW-loop.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid figure-img"></a></p>
+<figcaption>Open In Colab</figcaption>
+</figure>
+</div>
+<p>I have prepared a second notebook that actually solves the roots of the VDW EOS and plots these for CO<span class="math inline">\(_2\)</span>. Here, you can choose a pressure and temperature and the notebook will solve for the volume roots. We will have more to say about solving cubic equations of state later in the class, but for now you can play with the notebook to get a feel for how this EOS works.</p>
+<p><a href="VDW-TP.ipynb"><strong>View Interactive Notebook</strong></a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://colab.research.google.com/github/ejmaginn/CBE20260-notes/blob/main/class07/lecture07_VDW-TP.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid figure-img"></a></p>
+<figcaption>Open In Colab</figcaption>
+</figure>
+</div>
+</section>
+<section id="compressibility-factor-z" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Compressibility Factor (<span class="math inline">\(Z\)</span>)</h1>
+<p>How do we quickly know if a gas is behaving ideally or if we need a more realistic EOS like van der Waals? We define the <strong>Compressibility Factor</strong>, <span class="math inline">\(Z\)</span>:</p>
+<p><span class="math display">\[Z \equiv \frac{P\underline{V}}{RT}\]</span></p>
+<ul>
+<li><strong>If <span class="math inline">\(Z = 1\)</span>:</strong> The gas is ideal.</li>
+<li><strong>If <span class="math inline">\(Z &gt; 1\)</span>:</strong> Repulsion dominates. The gas is “harder” to compress than an ideal gas (usually at high P).</li>
+<li><strong>If <span class="math inline">\(Z &lt; 1\)</span>:</strong> Attraction dominates. The gas is “easier” to compress than an ideal gas (molecules want to stick together).</li>
+</ul>
+<p>As pressure approaches 0, all real gases approach ideal behavior (<span class="math inline">\(Z \to 1\)</span>). <a href="#fig-compressibility-factor" class="quarto-xref">Fig.&nbsp;2</a> shows what Z looks like for moderate pressures.</p>
+<div id="fig-compressibility-factor" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-compressibility-factor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/compressibility-factor.png" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-compressibility-factor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;2: Compressibiity factor vs pressure for different isotherms. The liquid-vapor coexistence region is shown by the black “dome”.
+</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="open-system-energy-balance" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Open System Energy Balance</h1>
+<p>Up to this point, we have mostly discussed <strong>closed systems</strong> (mass is constant). In chemical engineering, we deal with pumps, turbines, reactors, and heat exchangers where mass flows in and out. It is crucial when applying open system balance equations for mass and energy that you first define your system, boundaries, and environment. We sometimes call the system and boundaries a “control volume”. The balance equations then apply to the system.</p>
+<section id="mass-balance" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="mass-balance"><span class="header-section-number">5.1</span> Mass Balance</h2>
+<p>The open system mass balance is</p>
+<p><span id="eq-mass-balance"><span class="math display">\[\frac{dM}{dt} = \sum_{j=1}^J \dot{m}_{j,in} - \sum_{k=1}^K \dot{m}_{k,ouot} \tag{4}\]</span></span></p>
+<p>where the total mass of the system is <span class="math inline">\(M\)</span>, there are <span class="math inline">\(J\)</span> and <span class="math inline">\(K\)</span> streams flowing into and out of the system, respectively, and <span class="math inline">\(\dot{m}\)</span> is the mass flow rate (e.g.&nbsp;kg/s).</p>
+</section>
+<section id="the-energy-balance-general-form" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="the-energy-balance-general-form"><span class="header-section-number">5.2</span> The Energy Balance (General Form)</h2>
+<p>We start with the First Law for a closed system: <span class="math inline">\(\frac{dE}{dt} = \dot{Q} + \dot{W}\)</span>. However, when mass enters or leaves, it carries energy (internal + kinetic + potential). Thus the general open system energy balance (Dahm &amp; Visco notation) is:</p>
+<p><span id="eq-open-ebalance1"><span class="math display">\[
+\begin{aligned}
+\frac{d}{dt} \left [ \left (\hat{U} + \frac{v^2}{2} + gh \right )  \right ] &amp;=
+\sum_{j=1}^J \left [\dot{m}_{j,in} \left ( \hat{U}_j +P_j\hat{V}_j + \frac{v_j^2}{2} + gh_j\right )   \right] \\
+&amp;- \sum_{k=1}^K \left [\dot{m}_{k,out} \left ( \hat{U}_k +P_k\hat{V}_k + \frac{v_k^2}{2} + gh_k\right )   \right] \\
+&amp;+ \dot{W}_s + \dot{W}_{EC} + \dot{Q}
+\end{aligned}
+\tag{5}\]</span></span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(\dot{W}_s\)</span>: Shaft work (turbines, pumps).</li>
+<li><span class="math inline">\(\dot{W}_{ec}\)</span>: Expansion/Contraction of the system itself (usually 0 for rigid equipment).</li>
+</ul>
+<p>Recall that as a fluid enters or leaves a system, there is <strong>Flow Work</strong>. We showed that to push a unit of mass <em>into</em> a system, the surroundings must do work <span class="math inline">\(P_{in}\underline{V}_{in}\)</span>. To push mass <em>out</em>, the system must do work <span class="math inline">\(P_{out}\underline{V}_{out}\)</span>. That is where the <span class="math inline">\(P_j\hat{V}_j\)</span> and <span class="math inline">\(P_k\hat{V}_k\)</span> terms come from.</p>
+<p>Recall the definition of Enthalpy: <span class="math inline">\(\hat{H} = \hat{U} + P\hat{V}\)</span>. By combining the internal energy of the stream with the flow work required to move it, we replace <span class="math inline">\(\hat{U}\)</span> and <span class="math inline">\(P\hat{V}\)</span> with <span class="math inline">\(\hat{H}\)</span> for all <em>flowing streams</em>.</p>
+<p><span id="eq-open-ebalance2"><span class="math display">\[
+\begin{aligned}
+\frac{d}{dt} \left [ \left (\hat{U} + \frac{v^2}{2} + gh \right )  \right ] &amp;=
+\sum_{j=1}^J \left [\dot{m}_{j,in} \left ( \hat{H}_j + \frac{v_j^2}{2} + gh_j\right )   \right] \\
+&amp;- \sum_{k=1}^K \left [\dot{m}_{k,out} \left ( \hat{H}_k + \frac{v_k^2}{2} + gh_k\right )   \right] \\
+&amp;+ \dot{W}_s + \dot{W}_{EC} + \dot{Q}
+\end{aligned}
+\tag{6}\]</span></span></p>
+<p><a href="#eq-open-ebalance2" class="quarto-xref">Eq.&nbsp;6</a> is the general time-dependent open system energy balance we will use throughout this class. The integrated time-independent form is given by</p>
+<p><span id="eq-open-ebalance3"><span class="math display">\[
+\begin{aligned}
+\Delta \left [ \left (\hat{U} + \frac{v^2}{2} + gh \right )  \right ] &amp;=
+\sum_{j=1}^J \left [{m}_{j,in} \left ( \hat{H}_j + \frac{v_j^2}{2} + gh_j\right )   \right] \\
+&amp;- \sum_{k=1}^K \left [{m}_{k,out} \left ( \hat{H}_k + \frac{v_k^2}{2} + gh_k\right )   \right] \\
+&amp;+ {W}_s + {W}_{EC} + {Q}
+\end{aligned}
+\tag{7}\]</span></span></p>
+<p>It is important to understand the distinction between <a href="#eq-open-ebalance2" class="quarto-xref">Eq.&nbsp;6</a> and <a href="#eq-open-ebalance3" class="quarto-xref">Eq.&nbsp;7</a>; <a href="#eq-open-ebalance2" class="quarto-xref">Eq.&nbsp;6</a> applies to a process as it occurs in time, while <a href="#eq-open-ebalance3" class="quarto-xref">Eq.&nbsp;7</a> is applied to the before and after state of a thermodynamic process. The dots above the terms in <a href="#eq-open-ebalance2" class="quarto-xref">Eq.&nbsp;6</a> mean energy/time or <em>power</em>.</p>
+<section id="steady-state-assumption" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="steady-state-assumption"><span class="header-section-number">5.2.1</span> Steady-State Assumption</h3>
+<p>For many continuous processes (after startup), the energy of the system does not change with time. We say the system is at <em>steady-state</em>. That means <span id="eq-steady-state"><span class="math display">\[\frac{d}{dt} \left [ \left (\hat{U} + \frac{v^2}{2} + gh \right )  \right ]=0 \tag{8}\]</span></span></p>
+<p>and <span id="eq-steady-state-delta"><span class="math display">\[\Delta \left [ \left (\hat{U} + \frac{v^2}{2} + gh \right )  \right ] =0 \tag{9}\]</span></span></p>
+</section>
+<section id="steady-state-one-inlet-and-one-outlet" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="steady-state-one-inlet-and-one-outlet"><span class="header-section-number">5.2.2</span> Steady state, one inlet and one outlet</h3>
+<p>If a system is at steady state and there is only one inlet and outlet, the mass can’t accumulate in the system. In this case, in addition to <a href="#eq-steady-state" class="quarto-xref">Eq.&nbsp;8</a> (or <a href="#eq-steady-state-delta" class="quarto-xref">Eq.&nbsp;9</a>) being valid, <span class="math inline">\(\dot{m}_{in} = \dot{m}_{out} = \dot{m}\)</span>. For this case, we can simplify the energy balances even more. <a href="#eq-open-ebalance2" class="quarto-xref">Eq.&nbsp;6</a> becomes</p>
+<p><span id="eq-ss-ebalance1"><span class="math display">\[0=\dot{m} \left [  \left ( \hat{H}_{in} + \frac{v_{in}^2}{2} + gh_{in}\right )  -  \left ( \hat{H}_{out} + \frac{v_{out}^2}{2} + gh_{out} \right ) \right] + \dot{W}_s + \dot{W}_{EC} + \dot{Q} \tag{10}\]</span></span></p>
+<p>while <a href="#eq-open-ebalance3" class="quarto-xref">Eq.&nbsp;7</a> becomes</p>
+<p><span id="eq-ss-ebalance2"><span class="math display">\[0={m} \left [  \left ( \hat{H}_{in} + \frac{v_{in}^2}{2} + gh_{in}\right )  -  \left ( \hat{H}_{out} + \frac{v_{out}^2}{2} + gh_{out} \right ) \right] + W_s + {W}_{EC} + {Q} \tag{11}\]</span></span></p>
+<p><a href="#eq-ss-ebalance1" class="quarto-xref">Eq.&nbsp;10</a> and <a href="#eq-ss-ebalance2" class="quarto-xref">Eq.&nbsp;11</a> are often used, but make sure the assumptions behind them are valid!</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="example-1-multnomah-falls" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Example 1: Multnomah Falls</h1>
+<div id="fig-falls" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-falls-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/falls.png" class="img-fluid figure-img" style="width:30.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-falls-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;3: Picture I took of Multnomah Falls in Oregon.
+</figcaption>
+</figure>
+</div>
+<p><strong>Problem:</strong> Water at 25°C flows in a creek at 2 m/s. It reaches a cliff and drops 200 m into a pool below. Assume steady state and adiabatic operation. Ignore evaporation and wind resistance.</p>
+<ol type="1">
+<li><p>What is the velocity of the water right before it hits the pool?</p></li>
+<li><p>What is the temperature rise in the pool?</p></li>
+</ol>
+<p><strong>Solution:</strong></p>
+<p>Draw a schematic of the problem <img src="images/water-fall-diagram.png" id="fig-water-fall-diagram" class="img-fluid" style="width:30.0%" alt="Water falling a height H"></p>
+<p><strong>Part A: Velocity at the bottom</strong> Apply Energy Balance from Top (1) to Bottom (2) (just before impact).</p>
+<ul>
+<li><p><span class="math inline">\(Q=0, W_s=0, \Delta H \approx 0\)</span> (assuming T hasn’t changed yet).</p></li>
+<li><p>Balance: <span class="math inline">\(\Delta (\frac{v^2}{2}) + g\Delta z = 0\)</span></p></li>
+<li><p><span class="math inline">\(\frac{v_2^2 - v_1^2}{2} + g(z_2 - z_1) = 0\)</span></p></li>
+</ul>
+<p><span class="math display">\[v_2 = \sqrt{v_1^2 + 2g(h)} = \sqrt{2^2 + 2(9.81)(200)} \approx \mathbf{62.6 \text{ m/s}}\]</span></p>
+<p>This is obviously way too high (roughly 140 mph). Neglecting wind resistance is a bad assumption. But let’s see what we can learn.</p>
+<p><strong>Part B: Temperature in the Pool</strong></p>
+<p>Now consider the pool (State 3). The water comes to rest: <span class="math inline">\(v_3 \approx 0\)</span>.</p>
+<p>Apply Energy Balance from Top (1) to Pool (3).</p>
+<ul>
+<li><p><span class="math inline">\(\Delta (\frac{v^2}{2}) \approx 0\)</span> (starts slow (neglect 2 m/s), ends stopped).</p></li>
+<li><p><span class="math inline">\(\Delta z = -200\)</span> m.</p></li>
+<li><p>Balance: <span class="math inline">\(\Delta \hat{H} + g\Delta z = 0 \implies \hat{H}_3 - \hat{H}_1 = -g(z_3 - z_1)\)</span></p></li>
+<li><p>For a liquid, <span class="math inline">\(\Delta \hat{H} \approx C_p \Delta T\)</span>.</p></li>
+</ul>
+<p><span class="math display">\[C_p \Delta T = g h\]</span></p>
+<p><span class="math display">\[\Delta T = \frac{9.81 \text{ m/s}^2 \times 200 \text{ m}}{4184 \text{ J/kg}^\circ\text{C}}\]</span></p>
+<p><span class="math display">\[\Delta T = \frac{1962 \text{ J/kg}}{4184 \text{ J/kg}^\circ\text{C}} \approx \mathbf{0.47^\circ\text{C}}\]</span></p>
+<p><strong>Insight:</strong> A 200m waterfall with no wind resistance (super fast flowing water) only heats the water by half a degree! Mechanical energy is “dilute” compared to thermal energy.</p>
+<p>We made a lot of pretty bold assumptions in this problem, and still the water temperature hardly changed. In reality, some of the water will evaporate on the way down, cooling the water. The wind resistance will also slow the water as it falls, reducing the temperature rise. The temperature will rise as a result of mixing and viscous dissipation of the water as it hits the pool below (kinetic energy is transferred to the pool via heat), but we should expect little to no observable temperature change in reality.</p>
+<hr>
+</section>
+<section id="example-2-the-throttling-valve" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Example 2: The Throttling Valve</h1>
+<p><strong>Problem:</strong> A real gas flows through a partially opened valve (a throttle). The pipe is insulated (<span class="math inline">\(Q=0\)</span>), there are no moving parts (<span class="math inline">\(W_s=0\)</span>), and potential/kinetic energy changes are negligible.</p>
+<p><strong>Analysis:</strong> Using the steady-state balance: <span class="math display">\[0 = \dot{m} (\hat{H}_{out} - \hat{H}_{in}) + 0 + 0\]</span> <span class="math display">\[\hat{H}_{out} = \hat{H}_{in}\]</span></p>
+<p>This process is <strong>Isenthalpic</strong> (constant enthalpy).</p>
+<p><strong>Discussion:</strong></p>
+<ul>
+<li><p><strong>Ideal Gas:</strong> Since <span class="math inline">\(H^{IG}\)</span> depends <em>only</em> on <span class="math inline">\(T\)</span>, if <span class="math inline">\(H\)</span> is constant, <span class="math inline">\(T\)</span> must be constant. An ideal gas does not change temperature when pressure drops in a valve!</p></li>
+<li><p><strong>Real Gas:</strong> Since molecules interact (van der Waals forces), expanding a gas requires work against attractive forces. This energy must come from the internal kinetic energy (temperature). Therefore, most real gases <strong>cool down</strong> when throttled (Joule-Thomson effect). This is the principle behind how refrigerators and freezers work (more on this later). However, just as the compressibility factor <span class="math inline">\(Z\)</span> is sometimes greater than unity, gases under the right conditions can actually increase in temperature when throttled. (Think about the repulsive part of the Lennard-Jones potential; in this region, the potential energy of molecules goes <em>down</em> as they are separated, so the kinetic energy goes up).</p></li>
+</ul>
+<p>This connects our two topics: You need a real gas EOS (like van der Waals) to predict the temperature drop in a throttle.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/ejmaginn\.github\.io\/CBE20260-notes\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
