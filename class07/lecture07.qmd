@@ -122,6 +122,7 @@ I have prepared a second notebook that actually solves the roots of the VDW EOS 
 [**View Interactive Notebook**](vdw-TP.ipynb)
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ejmaginn/CBE20260-notes/blob/main/class07/vdw-TP.ipynb)
+-TP
 :::
 
 
