@@ -106,7 +106,7 @@ I have prepared a notebook that plots the VDW EOS for CO$_2$ at a temperature yo
 ::: {.content-visible when-format="html"}
 [**View Interactive Notebook**](VDW-loop.ipynb)
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ejmaginn/CBE20260-notes/blob/main/class07/lecture07_VDW-loop.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ejmaginn/CBE20260-notes/blob/main/class07/VDW-loop.ipynb)
 :::
 
 
@@ -121,7 +121,7 @@ I have prepared a second notebook that actually solves the roots of the VDW EOS 
 ::: {.content-visible when-format="html"}
 [**View Interactive Notebook**](VDW-TP.ipynb)
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ejmaginn/CBE20260-notes/blob/main/class07/lecture07_VDW-TP.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ejmaginn/CBE20260-notes/blob/main/class07/VDW-TP.ipynb)
 :::
 
 
