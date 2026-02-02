@@ -38,7 +38,7 @@ website:
             text: L6 LJ Potential Demo
           - href: class07/VDW-loop.ipynb
             text: L7 VDW loop Demo
-          - href: class07/VDW-TP.ipynb
+          - href: class07/vdw-TP.ipynb
             text: L7 VDW TP Demo
            
           # Add more notebooks here as you create them:  

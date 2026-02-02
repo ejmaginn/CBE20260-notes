@@ -119,9 +119,9 @@ I have prepared a notebook that plots the VDW EOS for CO$_2$ at a temperature yo
 I have prepared a second notebook that actually solves the roots of the VDW EOS and plots these for CO$_2$. Here, you can choose a pressure and temperature and the notebook will solve for the volume roots. We will have more to say about solving cubic equations of state later in the class, but for now you can play with the notebook to get a feel for how this EOS works. 
 
 ::: {.content-visible when-format="html"}
-[**View Interactive Notebook**](VDW-TP.ipynb)
+[**View Interactive Notebook**](vdw-TP.ipynb)
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ejmaginn/CBE20260-notes/blob/main/class07/VDW-TP.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ejmaginn/CBE20260-notes/blob/main/class07/vdw-TP.ipynb)
 :::
 
 
