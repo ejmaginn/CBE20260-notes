@@ -21,6 +21,8 @@ website:
             text: Lecture 5 — Heat Capacity, Enthalpy 
           - href: class06/lecture06.qmd
             text: Lecture 6 — Calculating Internal Energy and Enthalpy Changes; intermolecular forces
+          - href: class07/lecture07.qmd
+            text: Lecture 7 - The van der Waals Equation of State; compressibility factor; open system energy balance
           # Add more lectures here as you create them:
           # - href: class0x/lecture02.qmd
           #   text: Lecture x — Title
