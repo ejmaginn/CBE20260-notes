@@ -61,7 +61,7 @@ OR:
 * Since the attractive energy scales as $\Gamma \propto 1/r^6$, dimensional analysis suggests that the reduction in pressure scales in the same way, which is $\propto 1/\underline{V}^2$.
 
 In either case, we define a parameter **$a$** to represent the strength of attraction.
-$$P_{reduction} = \frac{a}{\underline{V}^2}$$ {#eq-IG2}
+$$3$$ {#eq-IG2}
 
 ## The Result: van der Waals Equation of State (EOS) (1873)
 Combining these two corrections @eq-IG1 and @eq-IG2 results in the famous **van der Waals Equation of State**:
@@ -165,7 +165,7 @@ However, when mass enters or leaves, it carries energy (internal + kinetic + pot
 
 $$
 \begin{aligned}
-\frac{d}{dt} \left [ \left (\hat{U} + \frac{v^2}{2} + gh \right )  \right ] &= 
+\frac{d}{dt} \left [ M \left (\hat{U} + \frac{v^2}{2} + gh \right )  \right ] &= 
 \sum_{j=1}^J \left [\dot{m}_{j,in} \left ( \hat{U}_j +P_j\hat{V}_j + \frac{v_j^2}{2} + gh_j\right )   \right] \\
 &- \sum_{k=1}^K \left [\dot{m}_{k,out} \left ( \hat{U}_k +P_k\hat{V}_k + \frac{v_k^2}{2} + gh_k\right )   \right] \\
 &+ \dot{W}_s + \dot{W}_{EC} + \dot{Q}
@@ -184,7 +184,7 @@ Recall the definition of Enthalpy: $\hat{H} = \hat{U} + P\hat{V}$. By combining 
 
 $$
 \begin{aligned}
-\frac{d}{dt} \left [ \left (\hat{U} + \frac{v^2}{2} + gh \right )  \right ] &= 
+\frac{d}{dt} \left [ M \left (\hat{U} + \frac{v^2}{2} + gh \right )  \right ] &= 
 \sum_{j=1}^J \left [\dot{m}_{j,in} \left ( \hat{H}_j + \frac{v_j^2}{2} + gh_j\right )   \right] \\
 &- \sum_{k=1}^K \left [\dot{m}_{k,out} \left ( \hat{H}_k + \frac{v_k^2}{2} + gh_k\right )   \right] \\
 &+ \dot{W}_s + \dot{W}_{EC} + \dot{Q}
@@ -195,7 +195,7 @@ $$ {#eq-open-ebalance2}
 
 $$
 \begin{aligned}
-\Delta \left [ \left (\hat{U} + \frac{v^2}{2} + gh \right )  \right ] &= 
+\Delta \left [ M \left (\hat{U} + \frac{v^2}{2} + gh \right )  \right ] &= 
 \sum_{j=1}^J \left [{m}_{j,in} \left ( \hat{H}_j + \frac{v_j^2}{2} + gh_j\right )   \right] \\
 &- \sum_{k=1}^K \left [{m}_{k,out} \left ( \hat{H}_k + \frac{v_k^2}{2} + gh_k\right )   \right] \\
 &+ {W}_s + {W}_{EC} + {Q}
@@ -206,10 +206,10 @@ It is important to understand the distinction between @eq-open-ebalance2 and @eq
 
 ### Steady-State Assumption
 For many continuous processes (after startup), the energy of the system does not change with time. We say the system is at *steady-state*. That means
-$$\frac{d}{dt} \left [ \left (\hat{U} + \frac{v^2}{2} + gh \right )  \right ]=0$$ {#eq-steady-state}
+$$\frac{d}{dt} \left [ M \left (\hat{U} + \frac{v^2}{2} + gh \right )  \right ]=0$$ {#eq-steady-state}
 
 and
-$$\Delta \left [ \left (\hat{U} + \frac{v^2}{2} + gh \right )  \right ] =0$$ {#eq-steady-state-delta}
+$$\Delta \left [ M \left (\hat{U} + \frac{v^2}{2} + gh \right )  \right ] =0$$ {#eq-steady-state-delta}
 
 
 ### Steady state, one inlet and one outlet
