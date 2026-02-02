@@ -304,7 +304,7 @@ Fig.&nbsp;1: An image showing the “excluded volume” of molecules having fini
 <ul>
 <li>Since the attractive energy scales as <span class="math inline">\(\Gamma \propto 1/r^6\)</span>, dimensional analysis suggests that the reduction in pressure scales in the same way, which is <span class="math inline">\(\propto 1/\underline{V}^2\)</span>.</li>
 </ul>
-<p>In either case, we define a parameter <strong><span class="math inline">\(a\)</span></strong> to represent the strength of attraction. <span id="eq-IG2"><span class="math display">\[P_{reduction} = \frac{a}{\underline{V}^2} \tag{2}\]</span></span></p>
+<p>In either case, we define a parameter <strong><span class="math inline">\(a\)</span></strong> to represent the strength of attraction. <span id="eq-IG2"><span class="math display">\[3 \tag{2}\]</span></span></p>
 </section>
 <section id="the-result-van-der-waals-equation-of-state-eos-1873" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="the-result-van-der-waals-equation-of-state-eos-1873"><span class="header-section-number">2.3</span> The Result: van der Waals Equation of State (EOS) (1873)</h2>
@@ -388,7 +388,7 @@ Fig.&nbsp;2: Compressibiity factor vs pressure for different isotherms. The liqu
 <p>We start with the First Law for a closed system: <span class="math inline">\(\frac{dE}{dt} = \dot{Q} + \dot{W}\)</span>. However, when mass enters or leaves, it carries energy (internal + kinetic + potential). Thus the general open system energy balance (Dahm &amp; Visco notation) is:</p>
 <p><span id="eq-open-ebalance1"><span class="math display">\[
 \begin{aligned}
-\frac{d}{dt} \left [ \left (\hat{U} + \frac{v^2}{2} + gh \right )  \right ] &amp;=
+\frac{d}{dt} \left [ M \left (\hat{U} + \frac{v^2}{2} + gh \right )  \right ] &amp;=
 \sum_{j=1}^J \left [\dot{m}_{j,in} \left ( \hat{U}_j +P_j\hat{V}_j + \frac{v_j^2}{2} + gh_j\right )   \right] \\
 &amp;- \sum_{k=1}^K \left [\dot{m}_{k,out} \left ( \hat{U}_k +P_k\hat{V}_k + \frac{v_k^2}{2} + gh_k\right )   \right] \\
 &amp;+ \dot{W}_s + \dot{W}_{EC} + \dot{Q}
@@ -403,7 +403,7 @@ Fig.&nbsp;2: Compressibiity factor vs pressure for different isotherms. The liqu
 <p>Recall the definition of Enthalpy: <span class="math inline">\(\hat{H} = \hat{U} + P\hat{V}\)</span>. By combining the internal energy of the stream with the flow work required to move it, we replace <span class="math inline">\(\hat{U}\)</span> and <span class="math inline">\(P\hat{V}\)</span> with <span class="math inline">\(\hat{H}\)</span> for all <em>flowing streams</em>.</p>
 <p><span id="eq-open-ebalance2"><span class="math display">\[
 \begin{aligned}
-\frac{d}{dt} \left [ \left (\hat{U} + \frac{v^2}{2} + gh \right )  \right ] &amp;=
+\frac{d}{dt} \left [ M \left (\hat{U} + \frac{v^2}{2} + gh \right )  \right ] &amp;=
 \sum_{j=1}^J \left [\dot{m}_{j,in} \left ( \hat{H}_j + \frac{v_j^2}{2} + gh_j\right )   \right] \\
 &amp;- \sum_{k=1}^K \left [\dot{m}_{k,out} \left ( \hat{H}_k + \frac{v_k^2}{2} + gh_k\right )   \right] \\
 &amp;+ \dot{W}_s + \dot{W}_{EC} + \dot{Q}
@@ -412,7 +412,7 @@ Fig.&nbsp;2: Compressibiity factor vs pressure for different isotherms. The liqu
 <p><a href="#eq-open-ebalance2" class="quarto-xref">Eq.&nbsp;6</a> is the general time-dependent open system energy balance we will use throughout this class. The integrated time-independent form is given by</p>
 <p><span id="eq-open-ebalance3"><span class="math display">\[
 \begin{aligned}
-\Delta \left [ \left (\hat{U} + \frac{v^2}{2} + gh \right )  \right ] &amp;=
+\Delta \left [ M \left (\hat{U} + \frac{v^2}{2} + gh \right )  \right ] &amp;=
 \sum_{j=1}^J \left [{m}_{j,in} \left ( \hat{H}_j + \frac{v_j^2}{2} + gh_j\right )   \right] \\
 &amp;- \sum_{k=1}^K \left [{m}_{k,out} \left ( \hat{H}_k + \frac{v_k^2}{2} + gh_k\right )   \right] \\
 &amp;+ {W}_s + {W}_{EC} + {Q}
@@ -421,8 +421,8 @@ Fig.&nbsp;2: Compressibiity factor vs pressure for different isotherms. The liqu
 <p>It is important to understand the distinction between <a href="#eq-open-ebalance2" class="quarto-xref">Eq.&nbsp;6</a> and <a href="#eq-open-ebalance3" class="quarto-xref">Eq.&nbsp;7</a>; <a href="#eq-open-ebalance2" class="quarto-xref">Eq.&nbsp;6</a> applies to a process as it occurs in time, while <a href="#eq-open-ebalance3" class="quarto-xref">Eq.&nbsp;7</a> is applied to the before and after state of a thermodynamic process. The dots above the terms in <a href="#eq-open-ebalance2" class="quarto-xref">Eq.&nbsp;6</a> mean energy/time or <em>power</em>.</p>
 <section id="steady-state-assumption" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="steady-state-assumption"><span class="header-section-number">5.2.1</span> Steady-State Assumption</h3>
-<p>For many continuous processes (after startup), the energy of the system does not change with time. We say the system is at <em>steady-state</em>. That means <span id="eq-steady-state"><span class="math display">\[\frac{d}{dt} \left [ \left (\hat{U} + \frac{v^2}{2} + gh \right )  \right ]=0 \tag{8}\]</span></span></p>
-<p>and <span id="eq-steady-state-delta"><span class="math display">\[\Delta \left [ \left (\hat{U} + \frac{v^2}{2} + gh \right )  \right ] =0 \tag{9}\]</span></span></p>
+<p>For many continuous processes (after startup), the energy of the system does not change with time. We say the system is at <em>steady-state</em>. That means <span id="eq-steady-state"><span class="math display">\[\frac{d}{dt} \left [ M \left (\hat{U} + \frac{v^2}{2} + gh \right )  \right ]=0 \tag{8}\]</span></span></p>
+<p>and <span id="eq-steady-state-delta"><span class="math display">\[\Delta \left [ M \left (\hat{U} + \frac{v^2}{2} + gh \right )  \right ] =0 \tag{9}\]</span></span></p>
 </section>
 <section id="steady-state-one-inlet-and-one-outlet" class="level3" data-number="5.2.2">
 <h3 data-number="5.2.2" class="anchored" data-anchor-id="steady-state-one-inlet-and-one-outlet"><span class="header-section-number">5.2.2</span> Steady state, one inlet and one outlet</h3>
