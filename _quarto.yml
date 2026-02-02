@@ -36,6 +36,11 @@ website:
             text: L4 PV Diagram Demo
           - href: class06/lecture06_LJ.ipynb
             text: L6 LJ Potential Demo
+          - href: class07/VDW-loop.ipynb
+            text: L7 VDW loop Demo
+          - href: class07/VDW-TP.ipynb
+            text: L7 VDW TP Demo
+           
           # Add more notebooks here as you create them:  
           #- href: class03/lecture03_example.ipynb
           #  text: L3 Work Modes & Polytropic Expansion
