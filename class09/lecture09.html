@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Edward Maginn">
 
-<title>pv-diagram – CBE 20260 — Course Notes</title>
+<title>Lecture 9: Advanced Open System Energy Balances – CBE 20260 — Course Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -104,6 +70,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -214,127 +209,261 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="PV-diagram.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#review-of-work-equations" id="toc-review-of-work-equations" class="nav-link active" data-scroll-target="#review-of-work-equations"><span class="header-section-number">1</span> Review of Work Equations</a>
+  <ul class="collapse">
+  <li><a href="#pump-work-liquids" id="toc-pump-work-liquids" class="nav-link" data-scroll-target="#pump-work-liquids"><span class="header-section-number">1.1</span> Pump Work (Liquids)</a></li>
+  <li><a href="#compressorturbine-work-gases" id="toc-compressorturbine-work-gases" class="nav-link" data-scroll-target="#compressorturbine-work-gases"><span class="header-section-number">1.2</span> Compressor/Turbine Work (Gases)</a></li>
+  </ul></li>
+  <li><a href="#nozzles-and-diffusers" id="toc-nozzles-and-diffusers" class="nav-link" data-scroll-target="#nozzles-and-diffusers"><span class="header-section-number">2</span> Nozzles and Diffusers</a>
+  <ul class="collapse">
+  <li><a href="#energy-balance-on-a-nozzle" id="toc-energy-balance-on-a-nozzle" class="nav-link" data-scroll-target="#energy-balance-on-a-nozzle"><span class="header-section-number">2.1</span> Energy Balance on a Nozzle</a></li>
+  <li><a href="#example-problem-steam-nozzle" id="toc-example-problem-steam-nozzle" class="nav-link" data-scroll-target="#example-problem-steam-nozzle"><span class="header-section-number">2.2</span> Example Problem: Steam Nozzle</a></li>
+  </ul></li>
+  <li><a href="#steady-state-boiler" id="toc-steady-state-boiler" class="nav-link" data-scroll-target="#steady-state-boiler"><span class="header-section-number">3</span> Steady-State Boiler</a>
+  <ul class="collapse">
+  <li><a href="#problem-setup" id="toc-problem-setup" class="nav-link" data-scroll-target="#problem-setup"><span class="header-section-number">3.1</span> Problem Setup</a></li>
+  </ul></li>
+  <li><a href="#unsteady-state-filling-an-evacuated-tank" id="toc-unsteady-state-filling-an-evacuated-tank" class="nav-link" data-scroll-target="#unsteady-state-filling-an-evacuated-tank"><span class="header-section-number">4</span> Unsteady State: Filling an Evacuated Tank</a>
+  <ul class="collapse">
+  <li><a href="#problem-statement" id="toc-problem-statement" class="nav-link" data-scroll-target="#problem-statement"><span class="header-section-number">4.1</span> Problem Statement</a></li>
+  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis"><span class="header-section-number">4.2</span> Analysis</a></li>
+  <li><a href="#calculation" id="toc-calculation" class="nav-link" data-scroll-target="#calculation"><span class="header-section-number">4.3</span> Calculation</a></li>
+  </ul></li>
+  <li><a href="#example-two-connected-tanks-non-adiabatic" id="toc-example-two-connected-tanks-non-adiabatic" class="nav-link" data-scroll-target="#example-two-connected-tanks-non-adiabatic"><span class="header-section-number">5</span> Example: Two Connected Tanks (Non-Adiabatic)</a>
+  <ul class="collapse">
+  <li><a href="#problem-statement-1" id="toc-problem-statement-1" class="nav-link" data-scroll-target="#problem-statement-1"><span class="header-section-number">5.1</span> Problem Statement</a></li>
+  <li><a href="#part-a-final-pressure-p_f" id="toc-part-a-final-pressure-p_f" class="nav-link" data-scroll-target="#part-a-final-pressure-p_f"><span class="header-section-number">5.2</span> Part A: Final Pressure (<span class="math inline">\(P_f\)</span>)</a></li>
+  <li><a href="#part-b-heat-transfer-q" id="toc-part-b-heat-transfer-q" class="nav-link" data-scroll-target="#part-b-heat-transfer-q"><span class="header-section-number">5.3</span> Part B: Heat Transfer (<span class="math inline">\(Q\)</span>)</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture09.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
 
-
-
-
-<div id="82158e86" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># LECTURE 4: Generating a PV phase diagram</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Script: PV-diagram</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Author: Edward Maginn, CBE 20260</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Description: </span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   This notebook lets you interactively generate PV phase diagrams for</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#   various fluids using the CoolProp library.</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Tip: Run this notebook in Google Colab for easy access to CoolProp.</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Try changing the fluid name in the function call. Look</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># up other fluid names in the CoolProp documentation:</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># https://coolprop.org/fluid_properties/PurePseudoPure.html#list-of-fluids</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Install CoolProp if running in Colab</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> CoolProp</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ImportError</span>:</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="op">%</span>pip install CoolProp</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"CoolProp installed successfully."</span>)</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> CoolProp.CoolProp <span class="im">as</span> CP</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_Pv_diagram(fluid<span class="op">=</span><span class="st">'Water'</span>):</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Generating P-v Diagram for </span><span class="sc">{</span>fluid<span class="sc">}</span><span class="ss">..."</span>)</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 1. Get Critical Point Data</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    T_crit <span class="op">=</span> CP.PropsSI(<span class="st">'Tcrit'</span>, fluid)</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    P_crit <span class="op">=</span> CP.PropsSI(<span class="st">'Pcrit'</span>, fluid)</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 2. Generate the Saturation Dome (Liquid and Vapor lines)</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># We span temperatures from Triple Point up to Critical Point</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    T_min <span class="op">=</span> CP.PropsSI(<span class="st">'Tmin'</span>, fluid)</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    T_vals <span class="op">=</span> np.linspace(T_min, T_crit <span class="op">-</span> <span class="fl">0.1</span>, <span class="dv">100</span>) <span class="co"># Stop just before critical point</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    v_liq <span class="op">=</span> []</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    v_vap <span class="op">=</span> []</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    P_sat <span class="op">=</span> []</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> T <span class="kw">in</span> T_vals:</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Calculate Saturation Pressure at this T</span></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Q is the quality of the fluid: 0 = saturated liquid, 1 = saturated vapor</span></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>        P <span class="op">=</span> CP.PropsSI(<span class="st">'P'</span>, <span class="st">'T'</span>, T, <span class="st">'Q'</span>, <span class="dv">0</span>, fluid)</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>        P_sat.append(P)</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Calculate Saturated Liquid Volume (Q=0)</span></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>        <span class="co"># v = 1 / density</span></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>        rho_l <span class="op">=</span> CP.PropsSI(<span class="st">'D'</span>, <span class="st">'T'</span>, T, <span class="st">'Q'</span>, <span class="dv">0</span>, fluid)</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>        v_liq.append(<span class="dv">1</span><span class="op">/</span>rho_l)</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Calculate Saturated Vapor Volume (Q=1)</span></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>        rho_v <span class="op">=</span> CP.PropsSI(<span class="st">'D'</span>, <span class="st">'T'</span>, T, <span class="st">'Q'</span>, <span class="dv">1</span>, fluid)</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>        v_vap.append(<span class="dv">1</span><span class="op">/</span>rho_v)</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 3. Generate Isotherms (Constant Temperature lines)</span></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Let's plot 3 isotherms: One below crit, one at crit, one above</span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>    <span class="co"># These temperatures are for water; adjust for other fluids as needed</span></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>    isotherms_C <span class="op">=</span> [<span class="dv">300</span>, <span class="fl">373.946</span>, <span class="dv">450</span>] <span class="co"># Temperatures in Celsius</span></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>    <span class="co"># (Note: Water T_crit is approx 373.946 C)</span></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot Dome</span></span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>    plt.plot(v_liq, P_sat, <span class="st">'b-'</span>, label<span class="op">=</span><span class="st">'Saturated Liquid'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>    plt.plot(v_vap, P_sat, <span class="st">'r-'</span>, label<span class="op">=</span><span class="st">'Saturated Vapor'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot Isotherms</span></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>    v_iso <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">100</span>) <span class="co"># Log spacing for volume is better</span></span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> T_c <span class="kw">in</span> isotherms_C:</span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>        T_k <span class="op">=</span> T_c <span class="op">+</span> <span class="fl">273.15</span></span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>        P_iso <span class="op">=</span> []</span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> v <span class="kw">in</span> v_iso:</span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>            <span class="cf">try</span>:</span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Calculate P given T and v (Density)</span></span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>                p_val <span class="op">=</span> CP.PropsSI(<span class="st">'P'</span>, <span class="st">'T'</span>, T_k, <span class="st">'D'</span>, <span class="dv">1</span><span class="op">/</span>v, fluid)</span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>                P_iso.append(p_val)</span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>            <span class="cf">except</span>:</span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>                P_iso.append(<span class="va">None</span>)</span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>        plt.plot(v_iso, P_iso, <span class="st">'--'</span>, label<span class="op">=</span><span class="ss">f'T = </span><span class="sc">{</span>T_c<span class="sc">}</span><span class="ss"> C'</span>)</span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Formatting to match textbook style</span></span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>    plt.xscale(<span class="st">'log'</span>) <span class="co"># Crucial for P-v diagrams</span></span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>    plt.yscale(<span class="st">'log'</span>)</span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">'Specific Volume $v$ ($m^3/kg$)'</span>)</span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">'Pressure $P$ (Pa)'</span>)</span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="ss">f'Log-Log P-v Diagram for </span><span class="sc">{</span>fluid<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>    plt.grid(<span class="va">True</span>, which<span class="op">=</span><span class="st">"both"</span>, ls<span class="op">=</span><span class="st">"-"</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>    plt.legend()</span>
-<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>    plt.axhline(P_crit, color<span class="op">=</span><span class="st">'k'</span>, linestyle<span class="op">=</span><span class="st">':'</span>, label<span class="op">=</span><span class="st">'Critical Pressure'</span>)</span>
-<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
-<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the function</span></span>
-<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>plot_Pv_diagram(<span class="st">'Water'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Generating P-v Diagram for Water...</code></pre>
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lecture 9: Advanced Open System Energy Balances</h1>
+<p class="subtitle lead">CBE 20260 / Thermodynamics I</p>
 </div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="PV-diagram_files/figure-html/cell-2-output-2.png" class="img-fluid figure-img"></p>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Edward Maginn </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="review-of-work-equations" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Review of Work Equations</h1>
+<p>In the last lecture, we looked at steady-state equipment. Let’s briefly recap the key equations for calculating work.</p>
+<section id="pump-work-liquids" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="pump-work-liquids"><span class="header-section-number">1.1</span> Pump Work (Liquids)</h2>
+<p>For a pump moving an incompressible liquid, the specific shaft work is: <span class="math display">\[
+\hat{W}_s = \int_{P_1}^{P_2} \hat{V} dP \approx \hat{V}(P_2 - P_1)
+\]</span> This assumes the process is reversible (frictionless) and adiabatic.</p>
+</section>
+<section id="compressorturbine-work-gases" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="compressorturbine-work-gases"><span class="header-section-number">1.2</span> Compressor/Turbine Work (Gases)</h2>
+<p>The same integral applies (<span class="math inline">\(\hat{W}_s = \int \hat{V} dP\)</span>), but since gases are compressible (<span class="math inline">\(\hat{V}\)</span> changes with <span class="math inline">\(P\)</span>), we cannot simply pull <span class="math inline">\(\hat{V}\)</span> out of the integral. We can use an Equation of State (like the ideal gas law or van der Waals) to express <span class="math inline">\(\hat{V}\)</span> as a function of <span class="math inline">\(P\)</span> and integrate accordingly. However, we typically use the <strong>Enthalpy Balance</strong>: <span class="math display">\[
+\hat{W}_s = \hat{H}_{out} - \hat{H}_{in}
+\]</span> To solve this, we need property tables (like Steam Tables) or an Equation of State written in terms of enthalpy. More on this later in the course.</p>
+<hr>
+</section>
+</section>
+<section id="nozzles-and-diffusers" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Nozzles and Diffusers</h1>
+<p>A <strong>Nozzle</strong> is a device designed to increase fluid velocity at the expense of pressure.</p>
+<p>A <strong>Diffuser</strong> does the opposite: it slows a fluid down to increase its pressure.</p>
+<section id="energy-balance-on-a-nozzle" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="energy-balance-on-a-nozzle"><span class="header-section-number">2.1</span> Energy Balance on a Nozzle</h2>
+<p><strong>Assumptions:</strong></p>
+<ol type="1">
+<li><p>Steady State</p></li>
+<li><p>Adiabatic (<span class="math inline">\(Q=0\)</span>)</p></li>
+<li><p>Passive (<span class="math inline">\(W_s=0\)</span>)</p></li>
+<li><p>Negligible Potential Energy (<span class="math inline">\(\Delta z \approx 0\)</span>)</p></li>
+</ol>
+<p>The balance reduces to a conversion between Enthalpy and Kinetic Energy: <span class="math display">\[
+0 = \dot{m} \left[ (\hat{H}_{in} + \frac{v_{in}^2}{2}) - (\hat{H}_{out} + \frac{v_{out}^2}{2}) \right]
+\]</span> <span class="math display">\[
+\frac{v_{out}^2 - v_{in}^2}{2} = \hat{H}_{in} - \hat{H}_{out}
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Magnitude Check
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Enthalpy changes (<span class="math inline">\(\Delta H\)</span>) are often in kJ/kg (<span class="math inline">\(10^3\)</span> J/kg), while velocity squared (<span class="math inline">\(v^2\)</span>) is in m<span class="math inline">\(^2\)</span>/s<span class="math inline">\(^2\)</span> (J/kg). Small drops in enthalpy result in <strong>massive</strong> increases in velocity. Nozzles are used in rockets and jet engines to achieve very high exit velocities from relatively small enthalpy changes.</p>
+</div>
+</div>
+</section>
+<section id="example-problem-steam-nozzle" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="example-problem-steam-nozzle"><span class="header-section-number">2.2</span> Example Problem: Steam Nozzle</h2>
+<p>Steam enters a nozzle at <span class="math inline">\(P_1 = 40\)</span> bar and <span class="math inline">\(T_1 = 400^\circ\)</span>C with a velocity of <span class="math inline">\(10\)</span> m/s. It exits at <span class="math inline">\(P_2 = 10\)</span> bar and <span class="math inline">\(T_2 = 300^\circ\)</span>C. Calculate the exit velocity.</p>
+<p><strong>Solution:</strong></p>
+<ol type="1">
+<li><p><strong>Inlet State (40 bar, 400<span class="math inline">\(^\circ\)</span>C):</strong> <span class="math inline">\(\hat{H}_1 = 3213.6\)</span> kJ/kg</p></li>
+<li><p><strong>Outlet State (10 bar, 300<span class="math inline">\(^\circ\)</span>C):</strong> <span class="math inline">\(\hat{H}_2 = 3051.2\)</span> kJ/kg</p></li>
+<li><p><strong>Balance:</strong> <span class="math display">\[\frac{v_2^2}{2} = \frac{v_1^2}{2} + (\hat{H}_1 - \hat{H}_2)\]</span> <span class="math display">\[\Delta \hat{H} = 3213.6 - 3051.2 = 162.4 \text{ kJ/kg} = 162,400 \text{ J/kg}\]</span> <span class="math display">\[\frac{v_2^2}{2} = \frac{10^2}{2} + 162,400\]</span> <span class="math display">\[v_2 = \sqrt{2(50 + 162,400)} \approx \mathbf{570 \text{ m/s}}\]</span></p></li>
+</ol>
+<p>Achieving such high velocities requires careful nozzle design to ensure smooth flow and minimize losses. That is the subject of fluid mechanics, but at least thermodynamically, we can see how the energy conversion works.</p>
+<hr>
+</section>
+</section>
+<section id="steady-state-boiler" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Steady-State Boiler</h1>
+<p>Boilers (or steam generators) are designed to add heat to a liquid to turn it into a vapor.</p>
+<div id="fig-water-boiler" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-water-boiler-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/water-boiler.jpeg" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-water-boiler-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;1: Schematic of a boiler. Heat (usually from combustion) is transferred to water in tubes, creating high pressure steam that can be used to power turbines or provide heating. Image: Mohd Faizal Fauzan
+</figcaption>
 </figure>
 </div>
+<section id="problem-setup" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="problem-setup"><span class="header-section-number">3.1</span> Problem Setup</h2>
+<p>Water enters a boiler at steady state.</p>
+<ul>
+<li><p><strong>Assumption:</strong> <span class="math inline">\(\dot{W}_s = 0\)</span> (no moving parts), <span class="math inline">\(\Delta KE \approx 0\)</span>, <span class="math inline">\(\Delta PE \approx 0\)</span>.</p></li>
+<li><p><strong>Balance:</strong> <span class="math display">\[
+\dot{Q} = \dot{m}(\hat{H}_{out} - \hat{H}_{in})
+\]</span></p></li>
+</ul>
+<p>This is straightforward: the heat added equals the change in enthalpy of the stream. This is one reason we defined enthalpy! It tracks heat flow at constant pressure.</p>
+<hr>
+</section>
+</section>
+<section id="unsteady-state-filling-an-evacuated-tank" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Unsteady State: Filling an Evacuated Tank</h1>
+<p>This is a classic problem that demonstrates the concept of <strong>Flow Work</strong>.</p>
+<section id="problem-statement" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="problem-statement"><span class="header-section-number">4.1</span> Problem Statement</h2>
+<p>An evacuated, rigid tank is connected to a steam line carrying steam at <span class="math inline">\(P_{line} = 10\)</span> bar and <span class="math inline">\(T_{line} = 300^\circ\)</span>C. The valve is opened, and steam flows in until the pressure in the tank equals the line pressure. <strong>Calculate the final temperature of the steam in the tank (<span class="math inline">\(T_{tank}\)</span>).</strong></p>
+</section>
+<section id="analysis" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="analysis"><span class="header-section-number">4.2</span> Analysis</h2>
+<p><strong>System:</strong> The Tank (Open System, Unsteady State).</p>
+<p><strong>Mass Balance:</strong> <span class="math display">\[
+\frac{dm_{tank}}{dt} = \dot{m}_{in} \quad \Rightarrow \quad m_{final} - m_{initial} = m_{in}
+\]</span> Since the tank was evacuated, <span class="math inline">\(m_{initial} = 0\)</span>, so <span class="math inline">\(m_{final} = m_{in}\)</span>.</p>
+<p><strong>Energy Balance:</strong> There is no flow out, no work, and no heat transfer (rigid and adiabatic): <span class="math display">\[
+\frac{d(m\hat{U})_{tank}}{dt} = \dot{m}_{in}\hat{H}_{in}
+\]</span> Integrate from state 1 (empty) to state 2 (full): <span class="math display">\[
+m_{final}\hat{U}_{final} - m_{initial}\hat{U}_{initial} = m_{in}\hat{H}_{in}
+\]</span> Since <span class="math inline">\(m_{initial}=0\)</span> and <span class="math inline">\(m_{final}=m_{in}\)</span>, the mass terms cancel: <span class="math display">\[
+\mathbf{\hat{U}_{final} = \hat{H}_{line}}
+\]</span></p>
+<p>This is a curious but important result: <strong>the final internal energy of the fluid in the tank equals the enthalpy of the fluid entering the tank.</strong> This occurs because the fluid must do flow work (<span class="math inline">\(PV\)</span>) to enter the tank.</p>
+</section>
+<section id="calculation" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="calculation"><span class="header-section-number">4.3</span> Calculation</h2>
+<ul>
+<li><p><strong>Line Condition:</strong> 10 bar, 300<span class="math inline">\(^\circ\)</span>C.</p>
+<ul>
+<li>From tables: <span class="math inline">\(\hat{H}_{line} = 3051.2\)</span> kJ/kg.</li>
+</ul></li>
+<li><p><strong>Final Tank Condition:</strong></p>
+<ul>
+<li><p><span class="math inline">\(P_{final} = 10\)</span> bar.</p></li>
+<li><p><span class="math inline">\(\hat{U}_{final} = 3051.2\)</span> kJ/kg.</p></li>
+</ul></li>
+</ul>
+<p>We need to find the temperature where <span class="math inline">\(P=10\)</span> bar and <span class="math inline">\(\hat{U} = 3051.2\)</span>. From Steam Tables at 10 bar:</p>
+<ul>
+<li><p>At <span class="math inline">\(T=400^\circ\)</span>C, <span class="math inline">\(\hat{U} = 2957.3\)</span> kJ/kg.</p></li>
+<li><p>At <span class="math inline">\(T=500^\circ\)</span>C, <span class="math inline">\(\hat{U} = 3124.4\)</span> kJ/kg.</p></li>
+<li><p>Interpolating: <span class="math display">\[
+T_{final} \approx 456^\circ\text{C}
+\]</span></p></li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Conceptual Question
 </div>
 </div>
+<div class="callout-body-container callout-body">
+<p><strong>Why did the temperature rise from <span class="math inline">\(300^\circ\)</span>C to <span class="math inline">\(456^\circ\)</span>C?</strong> The steam in the line had to do <strong>Flow Work</strong> (<span class="math inline">\(PV\)</span>) to push its way into the tank. Since the tank is rigid and adiabatic, that work didn’t leave the system—it was converted into internal energy (increased temperature). The fluid brings its enthalpy (<span class="math inline">\(\hat{H}\)</span>) into the tank. The internal energy (<span class="math inline">\(\hat{U}\)</span>) in the tank increases to match that enthalpy, resulting in a higher temperature.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="example-two-connected-tanks-non-adiabatic" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Example: Two Connected Tanks (Non-Adiabatic)</h1>
+<section id="problem-statement-1" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="problem-statement-1"><span class="header-section-number">5.1</span> Problem Statement</h2>
+<p>We have two rigid tanks connected by a valve. The tanks contain carbon monoxide (CO), which we will model as an ideal gas.</p>
+<ul>
+<li><p><strong>Tank 1:</strong> <span class="math inline">\(m_1 = 2 \text{ kg}\)</span>, <span class="math inline">\(P_1 = 0.7 \text{ bar}\)</span>, <span class="math inline">\(T_1 = 77^\circ\text{C}\)</span> (<span class="math inline">\(350 \text{ K}\)</span>).</p></li>
+<li><p><strong>Tank 2:</strong> <span class="math inline">\(m_2 = 8 \text{ kg}\)</span>, <span class="math inline">\(P_2 = 1.2 \text{ bar}\)</span>, <span class="math inline">\(T_2 = 27^\circ\text{C}\)</span> (<span class="math inline">\(300 \text{ K}\)</span>).</p></li>
+</ul>
+<p>The valve is opened, the gases mix, and the system comes to equilibrium at a measured final temperature of <strong><span class="math inline">\(T_f = 42^\circ\text{C}\)</span> (<span class="math inline">\(315 \text{ K}\)</span>)</strong>.</p>
+<p><strong>Calculate:</strong></p>
+<ol type="1">
+<li><p>The final pressure <span class="math inline">\(P_f\)</span>.</p></li>
+<li><p>The heat transferred <span class="math inline">\(Q\)</span> during the process.</p></li>
+</ol>
+</section>
+<section id="part-a-final-pressure-p_f" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="part-a-final-pressure-p_f"><span class="header-section-number">5.2</span> Part A: Final Pressure (<span class="math inline">\(P_f\)</span>)</h2>
+<p><strong>Analysis:</strong> We know the total mass (<span class="math inline">\(m_{tot} = 10 \text{ kg}\)</span>) and the final temperature (<span class="math inline">\(T_f = 315 \text{ K}\)</span>). To find pressure, we need the total volume <span class="math inline">\(V_{total}\)</span>. Since the tanks are rigid, <span class="math inline">\(V_{total} = V_1 + V_2\)</span>.</p>
+<p>Using the Ideal Gas Law (<span class="math inline">\(PV = mRT_{specific}\)</span>): <span class="math display">\[V_1 = \frac{m_1 R T_1}{P_1} \quad \text{and} \quad V_2 = \frac{m_2 R T_2}{P_2}\]</span></p>
+<p>The final pressure is: <span class="math display">\[P_f = \frac{m_{total} R T_f}{V_{total}} = \frac{(m_1 + m_2) R T_f}{V_1 + V_2}\]</span></p>
+<p>Substitute the expressions for <span class="math inline">\(V_1\)</span> and <span class="math inline">\(V_2\)</span> (note that the specific gas constant <span class="math inline">\(R\)</span> cancels out!): <span class="math display">\[P_f = \frac{(m_1 + m_2) T_f}{\frac{m_1 T_1}{P_1} + \frac{m_2 T_2}{P_2}}\]</span></p>
+<p><strong>Calculation:</strong> * <span class="math inline">\(T_1 = 350 \text{ K}\)</span> * <span class="math inline">\(T_2 = 300 \text{ K}\)</span> * <span class="math inline">\(T_f = 315 \text{ K}\)</span></p>
+<p><span class="math display">\[P_f = \frac{(10 \text{ kg}) (315 \text{ K})}{\left(\frac{2 \cdot 350}{0.7}\right) + \left(\frac{8 \cdot 300}{1.2}\right)}\]</span></p>
+<p><span class="math display">\[P_f = \frac{3150}{\left(\frac{700}{0.7}\right) + \left(\frac{2400}{1.2}\right)} = \frac{3150}{1000 + 2000}\]</span></p>
+<p><span class="math display">\[P_f = \frac{3150}{3000} = \mathbf{1.05 \text{ bar}}\]</span></p>
+<hr>
+</section>
+<section id="part-b-heat-transfer-q" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="part-b-heat-transfer-q"><span class="header-section-number">5.3</span> Part B: Heat Transfer (<span class="math inline">\(Q\)</span>)</h2>
+<p><strong>Analysis:</strong> System: The gas in both tanks (Closed System).</p>
+<ul>
+<li><p>Rigid tanks <span class="math inline">\(\rightarrow W = 0\)</span>.</p></li>
+<li><p>Negligible Kinetic/Potential energy.</p></li>
+</ul>
+<p><strong>Energy Balance:</strong> <span class="math display">\[\Delta U = Q + W\]</span> <span class="math display">\[Q = U_{final} - U_{initial}\]</span> <span class="math display">\[Q = (m_1+m_2)\hat{U}_f - (m_1\hat{U}_1 + m_2\hat{U}_2)\]</span></p>
+<p>Group the terms by mass: <span class="math display">\[Q = m_1(\hat{U}_f - \hat{U}_1) + m_2(\hat{U}_f - \hat{U}_2)\]</span></p>
+<p>For an Ideal Gas, <span class="math inline">\(\Delta \hat{U} = C_v \Delta T\)</span>: <span class="math display">\[Q = m_1 C_v (T_f - T_1) + m_2 C_v (T_f - T_2)\]</span></p>
+<p><strong>Calculation:</strong> For CO, assume constant heat capacity: <span class="math inline">\(C_v \approx 0.745 \text{ kJ/kg}\cdot\text{K}\)</span>.</p>
+<p><span class="math display">\[Q = 2 \text{ kg} \cdot 0.745 \frac{\text{kJ}}{\text{kg K}} (315 - 350) \text{ K} + 8 \text{ kg} \cdot 0.745 \frac{\text{kJ}}{\text{kg K}} (315 - 300) \text{ K}\]</span></p>
+<p><span class="math display">\[Q = 1.49(-35) + 5.96(15)\]</span> <span class="math display">\[Q = -52.15 \text{ kJ} + 89.4 \text{ kJ}\]</span> <span class="math display">\[Q = \mathbf{+37.25 \text{ kJ}}\]</span></p>
+<p><strong>Result:</strong> The system absorbs <strong>37.25 kJ</strong> of heat from the surroundings.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

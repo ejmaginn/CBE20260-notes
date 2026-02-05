@@ -217,6 +217,90 @@
     "text": "# ===================================================================================================\n# LECTURE 7: VDW EOS solver showing solutions for T and P\n# Script: VDW-TP\n# Author: Edward Maginn, CBE 20260\n# Description: \n#   This notebook visualizes the van der Waals equation of state for CO2. It allows \n#   users to interactively change temperature and pressure to see how many real \n#   volume roots exist for the given conditions.\n#   The van der Waals parameters for CO2 are used, and the critical point is highlighted.\n# ====================================================================================\nimport sys\ntry:\n    import google.colab\n    IN_COLAB = True\n    print(\"Running in Google Colab. Installing ipympl...\")\n    %pip install ipympl\n    from google.colab import output\n    output.enable_custom_widget_manager()\nexcept ImportError:\n    IN_COLAB = False\n    print(\"Running locally.\")\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom ipywidgets import interact, FloatSlider\n\n# Constants for CO2\na_CO2 = 3.64  # L^2 bar mol^-2\nb_CO2 = 0.04267 # L mol^-1\nTc_CO2 = 304.13 # K\nPc_CO2 = 73.77  # bar\nR = 0.08314  # L*bar/(mol*K)\n\ndef vdw_pressure(T, V_m, a, b):\n    return (R * T) / (V_m - b) - a / (V_m**2)\n\ndef solve_vdw_roots(P, T, a, b):\n    \"\"\"\n    Finds real volume roots for vdW equation at given P and T.\n    Rearranged cubic form: P*V^3 - (Pb + RT)*V^2 + a*V - ab = 0\n    \"\"\"\n    # Coefficients for cubic polynomial: c3*V^3 + c2*V^2 + c1*V + c0 = 0\n    c3 = P\n    c2 = -(P * b + R * T)\n    c1 = a\n    c0 = -a * b\n    \n    roots = np.roots([c3, c2, c1, c0])\n    \n    # Filter for real roots that are physically meaningful (V &gt; b)\n    valid_roots = [r.real for r in roots if np.isreal(r) and r.real &gt; b]\n    return np.sort(valid_roots)\n\ndef plot_vdw_simulation(T, P_user):\n    \n    # 1. Setup Plot\n    v = np.linspace(b_CO2 * 1.1, 1.0, 1000)\n    P_curve = vdw_pressure(T, v, a_CO2, b_CO2)\n    \n    fig, ax = plt.subplots(figsize=(9, 6))\n    \n    # 2. Plot the Isotherm (Blue Curve)\n    ax.plot(v, P_curve, linewidth=2.5, color='blue', label=f'Isotherm T={T:.1f} K')\n    \n    # 3. Plot the Critical Isotherm (Gray Dashed)\n    P_crit = vdw_pressure(Tc_CO2, v, a_CO2, b_CO2)\n    ax.plot(v, P_crit, '--', color='gray', alpha=0.5, label=f'Critical T={Tc_CO2:.1f} K')\n    \n    # 4. Plot the User's Isobar (Horizontal Line)\n    ax.axhline(P_user, color='black', linestyle=':', linewidth=2, label=f'Isobar P={P_user:.1f} bar')\n    \n    # 5. Find and Plot Intersections\n    roots = solve_vdw_roots(P_user, T, a_CO2, b_CO2)\n    \n    # Plot the roots\n    for i, vol in enumerate(roots):\n        label = \"Roots\" if i == 0 else \"_nolegend_\"\n        ax.plot(vol, P_user, 'ro', markersize=8, zorder=5, label=label)\n        # Annotate the volume values\n        ax.text(vol, P_user + 5, f'{vol:.3f}', horizontalalignment='center', color='red', fontsize=9)\n\n    # 6. Formatting\n    ax.set_ylim(0, 150)\n    ax.set_xlim(0.04, 0.8)\n    # Using V_m to avoid LaTeX error with \\underline\n    ax.set_xlabel('Molar Volume $V_m$ (L/mol)', fontsize=12)\n    ax.set_ylabel('Pressure $P$ (bar)', fontsize=12)\n    ax.set_title(f'van der Waals EOS for CO$_2$ (Roots found: {len(roots)})', fontsize=14)\n    \n    # Highlight Critical Point\n    ax.plot(3*b_CO2, Pc_CO2, 'kD', markersize=5, label='Critical Point')\n    \n    ax.legend(loc='upper right')\n    ax.grid(True, linestyle='--', alpha=0.5)\n    plt.show()\n\n# Interactive Slider\n# T: 250K to 350K\n# P: 10 bar to 120 bar\ninteract(plot_vdw_simulation, \n         T=FloatSlider(value=290, min=250, max=350, step=1.0, description='Temp (K)'),\n         P_user=FloatSlider(value=Pc_CO2, min=10, max=120, step=1.0, description='Press (bar)'));\n\nRunning locally."
   },
   {
+    "objectID": "class09/lecture09.html",
+    "href": "class09/lecture09.html",
+    "title": "Lecture 9: Advanced Open System Energy Balances",
+    "section": "",
+    "text": "In the last lecture, we looked at steady-state equipment. Let’s briefly recap the key equations for calculating work.\n\n\nFor a pump moving an incompressible liquid, the specific shaft work is: \\[\n\\hat{W}_s = \\int_{P_1}^{P_2} \\hat{V} dP \\approx \\hat{V}(P_2 - P_1)\n\\] This assumes the process is reversible (frictionless) and adiabatic.\n\n\n\nThe same integral applies (\\(\\hat{W}_s = \\int \\hat{V} dP\\)), but since gases are compressible (\\(\\hat{V}\\) changes with \\(P\\)), we cannot simply pull \\(\\hat{V}\\) out of the integral. We can use an Equation of State (like the ideal gas law or van der Waals) to express \\(\\hat{V}\\) as a function of \\(P\\) and integrate accordingly. However, we typically use the Enthalpy Balance: \\[\n\\hat{W}_s = \\hat{H}_{out} - \\hat{H}_{in}\n\\] To solve this, we need property tables (like Steam Tables) or an Equation of State written in terms of enthalpy. More on this later in the course."
+  },
+  {
+    "objectID": "class09/lecture09.html#pump-work-liquids",
+    "href": "class09/lecture09.html#pump-work-liquids",
+    "title": "Lecture 9: Advanced Open System Energy Balances",
+    "section": "",
+    "text": "For a pump moving an incompressible liquid, the specific shaft work is: \\[\n\\hat{W}_s = \\int_{P_1}^{P_2} \\hat{V} dP \\approx \\hat{V}(P_2 - P_1)\n\\] This assumes the process is reversible (frictionless) and adiabatic."
+  },
+  {
+    "objectID": "class09/lecture09.html#compressorturbine-work-gases",
+    "href": "class09/lecture09.html#compressorturbine-work-gases",
+    "title": "Lecture 9: Advanced Open System Energy Balances",
+    "section": "",
+    "text": "The same integral applies (\\(\\hat{W}_s = \\int \\hat{V} dP\\)), but since gases are compressible (\\(\\hat{V}\\) changes with \\(P\\)), we cannot simply pull \\(\\hat{V}\\) out of the integral. We can use an Equation of State (like the ideal gas law or van der Waals) to express \\(\\hat{V}\\) as a function of \\(P\\) and integrate accordingly. However, we typically use the Enthalpy Balance: \\[\n\\hat{W}_s = \\hat{H}_{out} - \\hat{H}_{in}\n\\] To solve this, we need property tables (like Steam Tables) or an Equation of State written in terms of enthalpy. More on this later in the course."
+  },
+  {
+    "objectID": "class09/lecture09.html#energy-balance-on-a-nozzle",
+    "href": "class09/lecture09.html#energy-balance-on-a-nozzle",
+    "title": "Lecture 9: Advanced Open System Energy Balances",
+    "section": "2.1 Energy Balance on a Nozzle",
+    "text": "2.1 Energy Balance on a Nozzle\nAssumptions:\n\nSteady State\nAdiabatic (\\(Q=0\\))\nPassive (\\(W_s=0\\))\nNegligible Potential Energy (\\(\\Delta z \\approx 0\\))\n\nThe balance reduces to a conversion between Enthalpy and Kinetic Energy: \\[\n0 = \\dot{m} \\left[ (\\hat{H}_{in} + \\frac{v_{in}^2}{2}) - (\\hat{H}_{out} + \\frac{v_{out}^2}{2}) \\right]\n\\] \\[\n\\frac{v_{out}^2 - v_{in}^2}{2} = \\hat{H}_{in} - \\hat{H}_{out}\n\\]\n\n\n\n\n\n\nNoteMagnitude Check\n\n\n\nEnthalpy changes (\\(\\Delta H\\)) are often in kJ/kg (\\(10^3\\) J/kg), while velocity squared (\\(v^2\\)) is in m\\(^2\\)/s\\(^2\\) (J/kg). Small drops in enthalpy result in massive increases in velocity. Nozzles are used in rockets and jet engines to achieve very high exit velocities from relatively small enthalpy changes."
+  },
+  {
+    "objectID": "class09/lecture09.html#example-problem-steam-nozzle",
+    "href": "class09/lecture09.html#example-problem-steam-nozzle",
+    "title": "Lecture 9: Advanced Open System Energy Balances",
+    "section": "2.2 Example Problem: Steam Nozzle",
+    "text": "2.2 Example Problem: Steam Nozzle\nSteam enters a nozzle at \\(P_1 = 40\\) bar and \\(T_1 = 400^\\circ\\)C with a velocity of \\(10\\) m/s. It exits at \\(P_2 = 10\\) bar and \\(T_2 = 300^\\circ\\)C. Calculate the exit velocity.\nSolution:\n\nInlet State (40 bar, 400\\(^\\circ\\)C): \\(\\hat{H}_1 = 3213.6\\) kJ/kg\nOutlet State (10 bar, 300\\(^\\circ\\)C): \\(\\hat{H}_2 = 3051.2\\) kJ/kg\nBalance: \\[\\frac{v_2^2}{2} = \\frac{v_1^2}{2} + (\\hat{H}_1 - \\hat{H}_2)\\] \\[\\Delta \\hat{H} = 3213.6 - 3051.2 = 162.4 \\text{ kJ/kg} = 162,400 \\text{ J/kg}\\] \\[\\frac{v_2^2}{2} = \\frac{10^2}{2} + 162,400\\] \\[v_2 = \\sqrt{2(50 + 162,400)} \\approx \\mathbf{570 \\text{ m/s}}\\]\n\nAchieving such high velocities requires careful nozzle design to ensure smooth flow and minimize losses. That is the subject of fluid mechanics, but at least thermodynamically, we can see how the energy conversion works."
+  },
+  {
+    "objectID": "class09/lecture09.html#problem-setup",
+    "href": "class09/lecture09.html#problem-setup",
+    "title": "Lecture 9: Advanced Open System Energy Balances",
+    "section": "3.1 Problem Setup",
+    "text": "3.1 Problem Setup\nWater enters a boiler at steady state.\n\nAssumption: \\(\\dot{W}_s = 0\\) (no moving parts), \\(\\Delta KE \\approx 0\\), \\(\\Delta PE \\approx 0\\).\nBalance: \\[\n\\dot{Q} = \\dot{m}(\\hat{H}_{out} - \\hat{H}_{in})\n\\]\n\nThis is straightforward: the heat added equals the change in enthalpy of the stream. This is one reason we defined enthalpy! It tracks heat flow at constant pressure."
+  },
+  {
+    "objectID": "class09/lecture09.html#problem-statement",
+    "href": "class09/lecture09.html#problem-statement",
+    "title": "Lecture 9: Advanced Open System Energy Balances",
+    "section": "4.1 Problem Statement",
+    "text": "4.1 Problem Statement\nAn evacuated, rigid tank is connected to a steam line carrying steam at \\(P_{line} = 10\\) bar and \\(T_{line} = 300^\\circ\\)C. The valve is opened, and steam flows in until the pressure in the tank equals the line pressure. Calculate the final temperature of the steam in the tank (\\(T_{tank}\\))."
+  },
+  {
+    "objectID": "class09/lecture09.html#analysis",
+    "href": "class09/lecture09.html#analysis",
+    "title": "Lecture 9: Advanced Open System Energy Balances",
+    "section": "4.2 Analysis",
+    "text": "4.2 Analysis\nSystem: The Tank (Open System, Unsteady State).\nMass Balance: \\[\n\\frac{dm_{tank}}{dt} = \\dot{m}_{in} \\quad \\Rightarrow \\quad m_{final} - m_{initial} = m_{in}\n\\] Since the tank was evacuated, \\(m_{initial} = 0\\), so \\(m_{final} = m_{in}\\).\nEnergy Balance: There is no flow out, no work, and no heat transfer (rigid and adiabatic): \\[\n\\frac{d(m\\hat{U})_{tank}}{dt} = \\dot{m}_{in}\\hat{H}_{in}\n\\] Integrate from state 1 (empty) to state 2 (full): \\[\nm_{final}\\hat{U}_{final} - m_{initial}\\hat{U}_{initial} = m_{in}\\hat{H}_{in}\n\\] Since \\(m_{initial}=0\\) and \\(m_{final}=m_{in}\\), the mass terms cancel: \\[\n\\mathbf{\\hat{U}_{final} = \\hat{H}_{line}}\n\\]\nThis is a curious but important result: the final internal energy of the fluid in the tank equals the enthalpy of the fluid entering the tank. This occurs because the fluid must do flow work (\\(PV\\)) to enter the tank."
+  },
+  {
+    "objectID": "class09/lecture09.html#calculation",
+    "href": "class09/lecture09.html#calculation",
+    "title": "Lecture 9: Advanced Open System Energy Balances",
+    "section": "4.3 Calculation",
+    "text": "4.3 Calculation\n\nLine Condition: 10 bar, 300\\(^\\circ\\)C.\n\nFrom tables: \\(\\hat{H}_{line} = 3051.2\\) kJ/kg.\n\nFinal Tank Condition:\n\n\\(P_{final} = 10\\) bar.\n\\(\\hat{U}_{final} = 3051.2\\) kJ/kg.\n\n\nWe need to find the temperature where \\(P=10\\) bar and \\(\\hat{U} = 3051.2\\). From Steam Tables at 10 bar:\n\nAt \\(T=400^\\circ\\)C, \\(\\hat{U} = 2957.3\\) kJ/kg.\nAt \\(T=500^\\circ\\)C, \\(\\hat{U} = 3124.4\\) kJ/kg.\nInterpolating: \\[\nT_{final} \\approx 456^\\circ\\text{C}\n\\]\n\n\n\n\n\n\n\nImportantConceptual Question\n\n\n\nWhy did the temperature rise from \\(300^\\circ\\)C to \\(456^\\circ\\)C? The steam in the line had to do Flow Work (\\(PV\\)) to push its way into the tank. Since the tank is rigid and adiabatic, that work didn’t leave the system—it was converted into internal energy (increased temperature). The fluid brings its enthalpy (\\(\\hat{H}\\)) into the tank. The internal energy (\\(\\hat{U}\\)) in the tank increases to match that enthalpy, resulting in a higher temperature."
+  },
+  {
+    "objectID": "class09/lecture09.html#problem-statement-1",
+    "href": "class09/lecture09.html#problem-statement-1",
+    "title": "Lecture 9: Advanced Open System Energy Balances",
+    "section": "5.1 Problem Statement",
+    "text": "5.1 Problem Statement\nWe have two rigid tanks connected by a valve. The tanks contain carbon monoxide (CO), which we will model as an ideal gas.\n\nTank 1: \\(m_1 = 2 \\text{ kg}\\), \\(P_1 = 0.7 \\text{ bar}\\), \\(T_1 = 77^\\circ\\text{C}\\) (\\(350 \\text{ K}\\)).\nTank 2: \\(m_2 = 8 \\text{ kg}\\), \\(P_2 = 1.2 \\text{ bar}\\), \\(T_2 = 27^\\circ\\text{C}\\) (\\(300 \\text{ K}\\)).\n\nThe valve is opened, the gases mix, and the system comes to equilibrium at a measured final temperature of \\(T_f = 42^\\circ\\text{C}\\) (\\(315 \\text{ K}\\)).\nCalculate:\n\nThe final pressure \\(P_f\\).\nThe heat transferred \\(Q\\) during the process."
+  },
+  {
+    "objectID": "class09/lecture09.html#part-a-final-pressure-p_f",
+    "href": "class09/lecture09.html#part-a-final-pressure-p_f",
+    "title": "Lecture 9: Advanced Open System Energy Balances",
+    "section": "5.2 Part A: Final Pressure (\\(P_f\\))",
+    "text": "5.2 Part A: Final Pressure (\\(P_f\\))\nAnalysis: We know the total mass (\\(m_{tot} = 10 \\text{ kg}\\)) and the final temperature (\\(T_f = 315 \\text{ K}\\)). To find pressure, we need the total volume \\(V_{total}\\). Since the tanks are rigid, \\(V_{total} = V_1 + V_2\\).\nUsing the Ideal Gas Law (\\(PV = mRT_{specific}\\)): \\[V_1 = \\frac{m_1 R T_1}{P_1} \\quad \\text{and} \\quad V_2 = \\frac{m_2 R T_2}{P_2}\\]\nThe final pressure is: \\[P_f = \\frac{m_{total} R T_f}{V_{total}} = \\frac{(m_1 + m_2) R T_f}{V_1 + V_2}\\]\nSubstitute the expressions for \\(V_1\\) and \\(V_2\\) (note that the specific gas constant \\(R\\) cancels out!): \\[P_f = \\frac{(m_1 + m_2) T_f}{\\frac{m_1 T_1}{P_1} + \\frac{m_2 T_2}{P_2}}\\]\nCalculation: * \\(T_1 = 350 \\text{ K}\\) * \\(T_2 = 300 \\text{ K}\\) * \\(T_f = 315 \\text{ K}\\)\n\\[P_f = \\frac{(10 \\text{ kg}) (315 \\text{ K})}{\\left(\\frac{2 \\cdot 350}{0.7}\\right) + \\left(\\frac{8 \\cdot 300}{1.2}\\right)}\\]\n\\[P_f = \\frac{3150}{\\left(\\frac{700}{0.7}\\right) + \\left(\\frac{2400}{1.2}\\right)} = \\frac{3150}{1000 + 2000}\\]\n\\[P_f = \\frac{3150}{3000} = \\mathbf{1.05 \\text{ bar}}\\]"
+  },
+  {
+    "objectID": "class09/lecture09.html#part-b-heat-transfer-q",
+    "href": "class09/lecture09.html#part-b-heat-transfer-q",
+    "title": "Lecture 9: Advanced Open System Energy Balances",
+    "section": "5.3 Part B: Heat Transfer (\\(Q\\))",
+    "text": "5.3 Part B: Heat Transfer (\\(Q\\))\nAnalysis: System: The gas in both tanks (Closed System).\n\nRigid tanks \\(\\rightarrow W = 0\\).\nNegligible Kinetic/Potential energy.\n\nEnergy Balance: \\[\\Delta U = Q + W\\] \\[Q = U_{final} - U_{initial}\\] \\[Q = (m_1+m_2)\\hat{U}_f - (m_1\\hat{U}_1 + m_2\\hat{U}_2)\\]\nGroup the terms by mass: \\[Q = m_1(\\hat{U}_f - \\hat{U}_1) + m_2(\\hat{U}_f - \\hat{U}_2)\\]\nFor an Ideal Gas, \\(\\Delta \\hat{U} = C_v \\Delta T\\): \\[Q = m_1 C_v (T_f - T_1) + m_2 C_v (T_f - T_2)\\]\nCalculation: For CO, assume constant heat capacity: \\(C_v \\approx 0.745 \\text{ kJ/kg}\\cdot\\text{K}\\).\n\\[Q = 2 \\text{ kg} \\cdot 0.745 \\frac{\\text{kJ}}{\\text{kg K}} (315 - 350) \\text{ K} + 8 \\text{ kg} \\cdot 0.745 \\frac{\\text{kJ}}{\\text{kg K}} (315 - 300) \\text{ K}\\]\n\\[Q = 1.49(-35) + 5.96(15)\\] \\[Q = -52.15 \\text{ kJ} + 89.4 \\text{ kJ}\\] \\[Q = \\mathbf{+37.25 \\text{ kJ}}\\]\nResult: The system absorbs 37.25 kJ of heat from the surroundings."
+  },
+  {
     "objectID": "class07/lecture07.html",
     "href": "class07/lecture07.html",
     "title": "Lecture 7: The van der Waals EOS and Open System Energy Balances",
