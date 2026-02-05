@@ -90,7 +90,7 @@ Achieving such high velocities requires careful nozzle design to ensure smooth f
 
 Boilers (or steam generators) are designed to add heat to a liquid to turn it into a vapor.
 
-![Schematic of a boiler. Heat (usually from combustion) is transferred to water in tubes, creating high pressure steam that can be used to power turbines or provide heating. Image: Mohd Faizal Fauzan](images/water-boiler.jpeg){#fig-water-boiler width=60%}
+![Schematic of a boiler (or furnace). Heat (usually from combustion) is transferred to water in tubes, creating high pressure steam that can be used to power turbines or provide heating.](images/water-boiler.png){#fig-water-boiler width=60%}
 
 
 ## Problem Setup
