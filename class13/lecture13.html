@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Edward Maginn">
+
+<title>Lecture 13: Calculating Entropy Changes - Closed Systems – CBE 20260 — Course Notes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-950ba19c765f2cec88564589b0edcdee.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">CBE 20260 — Course Notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-lectures" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Lectures</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-lectures">    
+        <li>
+    <a class="dropdown-item" href="../class01/lecture01.html">
+ <span class="dropdown-text">Lecture 1 — Introduction</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class02/lecture02.html">
+ <span class="dropdown-text">Lecture 2 — Systems, Boundaries and Other Basics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class03/lecture03.html">
+ <span class="dropdown-text">Lecture 3 — Forms of Energy and Calculating Work</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class04/lecture04.html">
+ <span class="dropdown-text">Lecture 4 — Fundamental Postulate, States, Phase Rule, and Pure Substance Phase Behaviors</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class05/lecture05.html">
+ <span class="dropdown-text">Lecture 5 — Heat Capacity, Enthalpy</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class06/lecture06.html">
+ <span class="dropdown-text">Lecture 6 — Calculating Internal Energy and Enthalpy Changes; intermolecular forces</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class07/lecture07.html">
+ <span class="dropdown-text">Lecture 7 - The van der Waals Equation of State; compressibility factor; open system energy balance</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class08/lecture08.html">
+ <span class="dropdown-text">Lecture 8 - Open system energy balance applied to process equipment</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class09/lecture09.html">
+ <span class="dropdown-text">Lecture 9 - Advanced Open System Energy Balances</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class10/lecture10.html">
+ <span class="dropdown-text">Lecture 10 - Latent Heat and the Need for a Second Law</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class12/lecture12.html">
+ <span class="dropdown-text">Lecture 12 - Introduction to Entropy and the Second Law</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class13/lecture13.html">
+ <span class="dropdown-text">Lecture 13 - Calculating Entropy Changes for Closed Systems</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-notebooks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Notebooks</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-notebooks">    
+        <li>
+    <a class="dropdown-item" href="../class02/lecture02_example.html">
+ <span class="dropdown-text">L2 Block &amp; Spring Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class03/lecture03_example.html">
+ <span class="dropdown-text">L3 Maxwell-Boltzmann Distribution Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class04/PV-diagram.html">
+ <span class="dropdown-text">L4 PV Diagram Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class06/lecture06_LJ.html">
+ <span class="dropdown-text">L6 LJ Potential Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class07/VDW-loop.html">
+ <span class="dropdown-text">L7 VDW loop Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class07/vdw-TP.html">
+ <span class="dropdown-text">L7 VDW TP Demo</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#review-entropy-and-the-second-law" id="toc-review-entropy-and-the-second-law" class="nav-link active" data-scroll-target="#review-entropy-and-the-second-law"><span class="header-section-number">1</span> Review: Entropy and the Second Law</a></li>
+  <li><a href="#heat-transfer-example-reversible-vs.-irreversible" id="toc-heat-transfer-example-reversible-vs.-irreversible" class="nav-link" data-scroll-target="#heat-transfer-example-reversible-vs.-irreversible"><span class="header-section-number">2</span> Heat Transfer Example: Reversible vs.&nbsp;Irreversible</a>
+  <ul class="collapse">
+  <li><a href="#case-1-reversible-heat-transfer" id="toc-case-1-reversible-heat-transfer" class="nav-link" data-scroll-target="#case-1-reversible-heat-transfer"><span class="header-section-number">2.1</span> Case 1: Reversible Heat Transfer</a></li>
+  <li><a href="#case-2-irreversible-heat-transfer" id="toc-case-2-irreversible-heat-transfer" class="nav-link" data-scroll-target="#case-2-irreversible-heat-transfer"><span class="header-section-number">2.2</span> Case 2: Irreversible Heat Transfer</a></li>
+  <li><a href="#case-3-heat-transfer-from-cold-to-hot" id="toc-case-3-heat-transfer-from-cold-to-hot" class="nav-link" data-scroll-target="#case-3-heat-transfer-from-cold-to-hot"><span class="header-section-number">2.3</span> Case 3: Heat Transfer from Cold to Hot</a></li>
+  </ul></li>
+  <li><a href="#the-fundamental-property-relations" id="toc-the-fundamental-property-relations" class="nav-link" data-scroll-target="#the-fundamental-property-relations"><span class="header-section-number">3</span> The Fundamental Property Relations</a>
+  <ul class="collapse">
+  <li><a href="#relation-to-enthalpy-h" id="toc-relation-to-enthalpy-h" class="nav-link" data-scroll-target="#relation-to-enthalpy-h"><span class="header-section-number">3.1</span> Relation to Enthalpy (<span class="math inline">\(H\)</span>)</a></li>
+  </ul></li>
+  <li><a href="#calculating-entropy-changes" id="toc-calculating-entropy-changes" class="nav-link" data-scroll-target="#calculating-entropy-changes"><span class="header-section-number">4</span> Calculating Entropy Changes</a>
+  <ul class="collapse">
+  <li><a href="#constant-pressure-process-liquids-solids" id="toc-constant-pressure-process-liquids-solids" class="nav-link" data-scroll-target="#constant-pressure-process-liquids-solids"><span class="header-section-number">4.1</span> Constant Pressure Process (Liquids &amp; Solids)</a></li>
+  <li><a href="#constant-volume-process" id="toc-constant-volume-process" class="nav-link" data-scroll-target="#constant-volume-process"><span class="header-section-number">4.2</span> Constant Volume Process</a></li>
+  <li><a href="#ideal-gases-change-in-t-p-and-underlinev" id="toc-ideal-gases-change-in-t-p-and-underlinev" class="nav-link" data-scroll-target="#ideal-gases-change-in-t-p-and-underlinev"><span class="header-section-number">4.3</span> Ideal Gases (Change in T, P, and <span class="math inline">\(\underline{V}\)</span>)</a>
+  <ul class="collapse">
+  <li><a href="#in-terms-of-t-and-underlinev" id="toc-in-terms-of-t-and-underlinev" class="nav-link" data-scroll-target="#in-terms-of-t-and-underlinev"><span class="header-section-number">4.3.1</span> In terms of T and <span class="math inline">\(\underline{V}\)</span>:</a></li>
+  <li><a href="#in-terms-of-t-and-p" id="toc-in-terms-of-t-and-p" class="nav-link" data-scroll-target="#in-terms-of-t-and-p"><span class="header-section-number">4.3.2</span> In terms of T and P:</a></li>
+  </ul></li>
+  <li><a href="#phase-changes-constant-t-and-p" id="toc-phase-changes-constant-t-and-p" class="nav-link" data-scroll-target="#phase-changes-constant-t-and-p"><span class="header-section-number">4.4</span> 4. Phase Changes (Constant T and P)</a></li>
+  </ul></li>
+  <li><a href="#example-entropy-of-condensing-ethanol" id="toc-example-entropy-of-condensing-ethanol" class="nav-link" data-scroll-target="#example-entropy-of-condensing-ethanol"><span class="header-section-number">5</span> Example: Entropy of Condensing Ethanol</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture13.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lecture 13: Calculating Entropy Changes - Closed Systems</h1>
+<p class="subtitle lead">CBE 20260 / Thermodynamics I</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Edward Maginn </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>In this class, we will learn how to calculate entropy changes for closed systems undergoing various processes. We will also revisit the Second Law and clarify some common misconceptions about entropy. Finally, we will show how to calculate entropy changes for ideal gases and when there is a phase change. <strong>Note:</strong> This lecture focuses on closed systems. We will cover entropy changes for open systems in a future lecture.</p>
+<section id="review-entropy-and-the-second-law" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Review: Entropy and the Second Law</h1>
+<p>The Second Law is based on observations of natural processes and can be stated in several equivalent ways. One common statement is:</p>
+<blockquote class="blockquote">
+<p>“In an isolated system, the total entropy can never decrease. It either increases (for real processes) or remains constant in ideal (reversible) cases.”</p>
+</blockquote>
+<p>So what is this thing called entropy? We <strong>defined it</strong> in terms of heat transfer and temperature. The fundamental definition of the entropy change for a closed system is:</p>
+<p><span id="eq-entropy_def"><span class="math display">\[dS = \frac{dQ_{rev}}{T} \tag{1}\]</span></span></p>
+<p>For a general process (reversible or irreversible), we write the entropy balance as:</p>
+<p><span id="eq-entropy_balance"><span class="math display">\[dS = \frac{dQ}{T} + dS_{gen} \tag{2}\]</span></span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(T\)</span>: The absolute temperature at the boundary where heat transfer occurs.</li>
+<li><span class="math inline">\(S_{gen} \ge 0\)</span>: Entropy generation. It is zero for reversible processes and positive for irreversible ones.</li>
+</ul>
+</section>
+<section id="heat-transfer-example-reversible-vs.-irreversible" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Heat Transfer Example: Reversible vs.&nbsp;Irreversible</h1>
+<p>Let’s revisit the heat transfer example to clarify the role of <span class="math inline">\(S_{gen}\)</span>. Consider two bodies, A (Hot) and B (Cold), exchanging heat <span class="math inline">\(Q\)</span>.</p>
+<section id="case-1-reversible-heat-transfer" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="case-1-reversible-heat-transfer"><span class="header-section-number">2.1</span> Case 1: Reversible Heat Transfer</h2>
+<p>Imagine we transfer a small amount of heat <span class="math inline">\(Q\)</span> from A to B reversibly. Since it is done reversibly, the temperature difference between A and B is infinitesimal (<span class="math inline">\(T_A \approx T_B\)</span>). That’s because reversible processes have infinitesimal driving forces and occur infinitely slowly, allowing the system to remain in near-equilibrium states.</p>
+<p>Consider the composite adiabatic system shown in <a href="#fig-AtoB-heat-rev" class="quarto-xref">Fig.&nbsp;1</a>, which includes both A and B. An amount of heat <span class="math inline">\(Q\)</span> is transferred reversibly from A to B.</p>
+<div id="fig-AtoB-heat-rev" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-AtoB-heat-rev-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/AtoB-heat-rev.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-AtoB-heat-rev-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;1: An amount of heat <span class="math inline">\(Q\)</span> is transferred from A to B. The overall system is isolated.
+</figcaption>
+</figure>
+</div>
+<ul>
+<li><span class="math inline">\(\Delta S_A = -Q/T\)</span> (since A is losing heat at temperature <span class="math inline">\(T\)</span>)</li>
+<li><span class="math inline">\(\Delta S_B = +Q/T\)</span> (since B is gaining heat at the same temperature <span class="math inline">\(T\)</span>)</li>
+<li><span class="math inline">\(\Delta S_{total} = \Delta S_A + \Delta S_B = 0\)</span> (entropy is extensive, so we can add them together)</li>
+<li><strong>Result:</strong> <span class="math inline">\(S_{gen} = 0\)</span>.</li>
+</ul>
+<p>Since this was a reversible process, the total entropy change of the isolated system is zero, and there is no entropy generation. This is consistent with the Second Law, which states that reversible processes do not generate entropy.</p>
+</section>
+<section id="case-2-irreversible-heat-transfer" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="case-2-irreversible-heat-transfer"><span class="header-section-number">2.2</span> Case 2: Irreversible Heat Transfer</h2>
+<p>Now, let <span class="math inline">\(T_A &gt; T_B\)</span> (finite difference). This is the “practical” situation in which we have real heat transfer. Heat <span class="math inline">\(Q\)</span> flows spontaneously from A to B. This process is irreversible because it occurs across a finite temperature difference.</p>
+<ul>
+<li>System A loses <span class="math inline">\(Q\)</span> at <span class="math inline">\(T_A\)</span>: <span class="math inline">\(\Delta S_A = -Q/T_A\)</span></li>
+<li>System B gains <span class="math inline">\(Q\)</span> at <span class="math inline">\(T_B\)</span>: <span class="math inline">\(\Delta S_B = +Q/T_B\)</span></li>
+<li>Total entropy change: <span class="math display">\[\Delta S_{total} = \frac{Q}{T_B} - \frac{Q}{T_A} = Q \left( \frac{T_A - T_B}{T_A T_B} \right)\]</span></li>
+</ul>
+<p>Since <span class="math inline">\(T_A &gt; T_B\)</span>, the term in parentheses is positive. Therefore, <span class="math inline">\(\Delta S_{total} &gt; 0\)</span>, which implies <span class="math inline">\(S_{gen} &gt; 0\)</span>. This is consistent with the Second Law, which states that irreversible processes generate entropy and they are “allowed” to occur.</p>
+</section>
+<section id="case-3-heat-transfer-from-cold-to-hot" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="case-3-heat-transfer-from-cold-to-hot"><span class="header-section-number">2.3</span> Case 3: Heat Transfer from Cold to Hot</h2>
+<p>If <span class="math inline">\(Q\)</span> flows spontaneously from A to B, but <span class="math inline">\(T_B &gt; T_A\)</span>, then the total entropy change would be negative: <span class="math display">\[\Delta S_{total} = \frac{Q}{T_B} - \frac{Q}{T_A} = Q \left( \frac{T_A - T_B}{T_A T_B} \right) &lt; 0\]</span> This would imply <span class="math inline">\(S_{gen} &lt; 0\)</span>, which violates the Second Law. Therefore, this process cannot occur spontaneously. (<em>But</em>, we will soon see that we can make this happen by doing work on the system, such as in a refrigerator or heat pump. In that case, the entropy decrease in the cold block is more than compensated by the entropy increase in the surroundings due to the work input, ensuring that the total entropy of the universe still increases. But let’s not worry about that for now. We will cover it in more detail when we discuss open systems and cycles.)</p>
+<p>The three cases described here demonstrate that the definition of entropy given in <a href="#eq-entropy_def" class="quarto-xref">Eq.&nbsp;1</a> is consistent with the observed direction of heat transfer and the Second Law. The First Law (energy conservation) alone does not dictate the direction of heat transfer; it is the Second Law (entropy generation) that determines the spontaneous direction of processes.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Crucial Concept: Local Entropy Can Decrease!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A common misconception is that “entropy always increases.” This is only true for the <strong>universe</strong> (or an isolated system).</p>
+<p>In our heat transfer example (Case 2):</p>
+<ul>
+<li><p><strong>The Hot Block:</strong> Loses heat, so its entropy <strong>decreases</strong> (<span class="math inline">\(\Delta S_{hot} &lt; 0\)</span>). But it is <em>not</em> an isolated system!</p></li>
+<li><p><strong>The Cold Block:</strong> Gains heat, so its entropy <strong>increases</strong> (<span class="math inline">\(\Delta S_{cold} &gt; 0\)</span>).</p></li>
+</ul>
+<p>Because the cold block is at a lower temperature, the term <span class="math inline">\(|Q/T_{cold}|\)</span> is larger than <span class="math inline">\(|Q/T_{hot}|\)</span>. Therefore, the gain in the cold block is <strong>larger</strong> than the loss in the hot block.</p>
+<p><strong>Result:</strong> The negative entropy change for Block A is allowed because the <em>sum</em> is positive: <span class="math display">\[\Delta S_{total} = \underbrace{\Delta S_{hot}}_{(-)} + \underbrace{\Delta S_{cold}}_{(++)} &gt; 0\]</span></p>
+<p>Engineers make use of the fact that local entropy can decrease to design processes for our benefit. For example, refrigerators and heat pumps transfer heat from cold to hot regions, which locally decreases entropy in the cold region, but the overall process still generates entropy in the surroundings, ensuring compliance with the Second Law. We will talk a lot more about this in future lectures when we discuss open systems and cycles.</p>
+</div>
+</div>
+<p>The simple example of heat transfer between two blocks has given us a lot of insight into the concept of entropy and the Second Law. We have seen that entropy is a state function, and that the Second Law dictates the direction of spontaneous processes. We can use the Second Law to determine the direction of any process (not just heat transfer). The motivational examples we discussed earlier (gas expanding from a tank, the mixing of gases) are examples of processes that occur spontaneously because they generate entropy. We also saw that the First Law alone cannot predict the direction of these processes, but the Second Law can. We can’t violate either the First or Second Law for real processes. It would be nice to have a single mathematical relationship that combines the First and Second Laws and to relate entropy to other state variables. This is what we will do next.</p>
+</section>
+</section>
+<section id="the-fundamental-property-relations" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> The Fundamental Property Relations</h1>
+<p>We now derive one of the most useful equations in thermodynamics, relating entropy to other state variables (<span class="math inline">\(U\)</span>, <span class="math inline">\(V\)</span>, <span class="math inline">\(H\)</span>, <span class="math inline">\(P\)</span>).</p>
+<p>Start with the First Law for a closed system undergoing a differential change: <span class="math display">\[dU = dQ + dW\]</span></p>
+<p>The integral form of the First Law is: <span class="math display">\[\Delta U = Q + W\]</span></p>
+<p>Since <span class="math inline">\(U\)</span> is a state function, <span class="math inline">\(\Delta U\)</span> only depends on the values of <span class="math inline">\(U\)</span> at the initial and final states, not on the path taken. However, <span class="math inline">\(Q\)</span> and <span class="math inline">\(W\)</span> <strong>are</strong> path dependent. There are essentially an infinite number of combinations of <span class="math inline">\(Q+W\)</span> that can be taken to get between the initial and final states, as shown in <a href="#fig-paths" class="quarto-xref">Fig.&nbsp;2</a>.</p>
+<div id="fig-paths" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-paths-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/paths.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-paths-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;2: We can choose an infinite number of paths between states 1 and 2. The change in a state variable such as <span class="math inline">\(\Delta U\)</span> will be the same, but the <span class="math inline">\(Q\)</span> and <span class="math inline">\(W\)</span> values will differ.
+</figcaption>
+</figure>
+</div>
+<p>Therefore, we can choose any convenient <span class="math inline">\(Q\)</span> and <span class="math inline">\(W\)</span> path to go between the initial and final states.</p>
+<p>We thus choose the <strong>reversible path</strong>.</p>
+<ol type="1">
+<li><p>Replace work with reversible work: <span class="math inline">\(dW_{rev} = -P dV\)</span></p></li>
+<li><p>Replace heat with reversible heat (from definition of <span class="math inline">\(S\)</span>): <span class="math inline">\(dQ_{rev} = T dS\)</span></p></li>
+</ol>
+<p>This results in the <strong>Fundamental Relation of Thermodynamics</strong> for a closed system:</p>
+<p><span class="math display">\[dU = dQ + dW = dQ_{rev} + dW_{rev} = TdS - PdV\]</span></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>The Fundamental Relation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[dU = TdS - PdV\]</span></p>
+<p>Rearranging to solve for <span class="math inline">\(dS\)</span>: <span class="math display">\[dS = \frac{dU}{T} + \frac{P}{T} dV\]</span></p>
+<p>We just combined the First and Second Laws into a single mathematical relationship! This is an important result. It relates the change in entropy to changes in internal energy and volume, which are state variables. This equation is valid for any process (reversible or irreversible) that connects equilibrium states, even though we assumed reversibility to derive it.</p>
+</div>
+</div>
+<section id="relation-to-enthalpy-h" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="relation-to-enthalpy-h"><span class="header-section-number">3.1</span> Relation to Enthalpy (<span class="math inline">\(H\)</span>)</h2>
+<p>We can derive a similar expression for enthalpy (<span class="math inline">\(H = U + PV\)</span>). Differentiating <span class="math inline">\(H\)</span>: <span class="math display">\[dH = dU + PdV + VdP\]</span> Substitute <span class="math inline">\(dU = TdS - PdV\)</span>: <span class="math display">\[dH = (TdS - PdV) + PdV + VdP\]</span> <span id="eq-dH"><span class="math display">\[dH = TdS + VdP \tag{3}\]</span></span></p>
+<p>Rearranging for <span class="math inline">\(dS\)</span>: <span class="math display">\[dS = \frac{dH}{T} - \frac{V}{T} dP\]</span></p>
+<p><a href="#eq-dH" class="quarto-xref">Eq.&nbsp;3</a> is another fundamental relation that relates changes in enthalpy to changes in entropy and pressure. It also combines the First and Second Laws, but in terms of <span class="math inline">\(H\)</span> instead of <span class="math inline">\(U\)</span>.</p>
+<p><strong>Key Insight:</strong> Since <span class="math inline">\(S\)</span>, <span class="math inline">\(U\)</span>, <span class="math inline">\(H\)</span>, <span class="math inline">\(P\)</span>, <span class="math inline">\(V\)</span>, and <span class="math inline">\(T\)</span> are all <strong>state functions</strong>, these equations <span class="math display">\[dU = TdS - PdV\]</span> and <span class="math display">\[dH = TdS + VdP\]</span> are valid for <strong>ANY</strong> process (reversible or irreversible) that connects equilibrium states, even though we assumed reversibility to derive them.</p>
+</section>
+</section>
+<section id="calculating-entropy-changes" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Calculating Entropy Changes</h1>
+<p>Because <span class="math inline">\(S\)</span> is a state function, we can calculate <span class="math inline">\(\Delta S\)</span> using any convenient path, regardless of the actual process.</p>
+<section id="constant-pressure-process-liquids-solids" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="constant-pressure-process-liquids-solids"><span class="header-section-number">4.1</span> Constant Pressure Process (Liquids &amp; Solids)</h2>
+<p>From <span class="math inline">\(dH = TdS + VdP\)</span>, at constant pressure (<span class="math inline">\(dP=0\)</span>): <span class="math display">\[dH = TdS \implies dS = \frac{dH}{T}\]</span> Since <span class="math inline">\(dH = C_p dT\)</span> (for ideal gases or general substances at constant P without a phase change): <span class="math display">\[dS = \frac{C_p}{T} dT\]</span> Integrating from state 1 to 2: <span class="math display">\[\Delta S = \int_{T_1}^{T_2} \frac{C_p}{T} dT\]</span></p>
+<p>If <span class="math inline">\(C_p\)</span> is constant: <span class="math display">\[\Delta S = C_p \ln\left(\frac{T_2}{T_1}\right)\]</span></p>
+</section>
+<section id="constant-volume-process" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="constant-volume-process"><span class="header-section-number">4.2</span> Constant Volume Process</h2>
+<p>From <span class="math inline">\(dU = TdS - PdV\)</span>, at constant volume (<span class="math inline">\(dV=0\)</span>): <span class="math display">\[dU = TdS \implies dS = \frac{dU}{T}\]</span> Since <span class="math inline">\(dU = C_v dT\)</span> (for ideal gases or general substances at constant V without a phase change): <span class="math display">\[dS = \frac{C_v}{T} dT\]</span> Integrating from state 1 to 2: <span class="math display">\[\Delta S = \int_{T_1}^{T_2} \frac{C_v}{T} dT\]</span></p>
+<p>If <span class="math inline">\(C_v\)</span> is constant: <span class="math display">\[\Delta S = C_v \ln\left(\frac{T_2}{T_1}\right)\]</span></p>
+</section>
+<section id="ideal-gases-change-in-t-p-and-underlinev" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="ideal-gases-change-in-t-p-and-underlinev"><span class="header-section-number">4.3</span> Ideal Gases (Change in T, P, and <span class="math inline">\(\underline{V}\)</span>)</h2>
+<p>For an ideal gas, <span class="math inline">\(P = RT/\underline{V}\)</span> and <span class="math inline">\(\underline{V} = RT/P\)</span>. We can substitute these into the fundamental relations to get general expressions for <span class="math inline">\(\Delta \underline{S}\)</span>. Note that we are using molar volume <span class="math inline">\(\underline{V}\)</span> here, which is convenient to use for ideal gases.</p>
+<section id="in-terms-of-t-and-underlinev" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="in-terms-of-t-and-underlinev"><span class="header-section-number">4.3.1</span> In terms of T and <span class="math inline">\(\underline{V}\)</span>:</h3>
+<p>Start with <span class="math inline">\(d\underline{S} = \frac{d\underline{U}}{T} + \frac{P}{T} d\underline{V} = \frac{C_v}{T} dT + \frac{P}{T} d\underline{V}\)</span>. Substitute <span class="math inline">\(P/T = R/\underline{V}\)</span>: <span class="math display">\[d\underline{S} = \frac{C_v}{T} dT + \frac{R}{\underline{V}} d\underline{V}\]</span> Integrate (assuming constant <span class="math inline">\(C_v\)</span>): <span id="eq-S_ideal_TV"><span class="math display">\[\Delta \underline{S} = C_v \ln\left(\frac{T_2}{T_1}\right) + R \ln\left(\frac{\underline{V}_2}{\underline{V}_1}\right) \tag{4}\]</span></span></p>
+</section>
+<section id="in-terms-of-t-and-p" class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="in-terms-of-t-and-p"><span class="header-section-number">4.3.2</span> In terms of T and P:</h3>
+<p>Start with <span class="math inline">\(d\underline{S} = \frac{C_p}{T} dT - \frac{\underline{V}}{T} dP\)</span>. Substitute <span class="math inline">\(\underline{V}/T = R/P\)</span>: <span class="math display">\[d\underline{S} = \frac{C_p}{T} dT - \frac{R}{P} dP\]</span> Integrate (assuming constant <span class="math inline">\(C_p\)</span>): <span id="eq-S_ideal_TP"><span class="math display">\[\Delta \underline{S} = C_p \ln\left(\frac{T_2}{T_1}\right) - R \ln\left(\frac{P_2}{P_1}\right) \tag{5}\]</span></span></p>
+<p><strong>Caution</strong> <a href="#eq-S_ideal_TV" class="quarto-xref">Eq.&nbsp;4</a> and <a href="#eq-S_ideal_TP" class="quarto-xref">Eq.&nbsp;5</a> are only valid for ideal gases (and when heat capacity is constant). For real gases, the expressions are more complex and depend on the specific equation of state. We will cover this in more detail later.</p>
+</section>
+</section>
+<section id="phase-changes-constant-t-and-p" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="phase-changes-constant-t-and-p"><span class="header-section-number">4.4</span> 4. Phase Changes (Constant T and P)</h2>
+<p>Phase changes (melting, boiling) occur at constant temperature and pressure. Since <span class="math inline">\(P\)</span> is constant, <span class="math inline">\(dQ_{rev} = dH\)</span>. Since <span class="math inline">\(T\)</span> is constant, we can pull it out of the integral: <span class="math display">\[\Delta S_{phase} = \int \frac{dQ_{rev}}{T} = \frac{1}{T} \int dQ_{rev} = \frac{\Delta H_{phase}}{T}\]</span></p>
+<p>For example, the entropy change of vaporization is: <span class="math display">\[\Delta S_{vap} = \frac{\Delta H_{vap}}{T_{sat}}\]</span></p>
+</section>
+</section>
+<section id="example-entropy-of-condensing-ethanol" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Example: Entropy of Condensing Ethanol</h1>
+<p><strong>Problem:</strong> Calculate the entropy change of the universe when 1 mole of ethanol vapor at <span class="math inline">\(78^\circ\)</span>C and 1 atm condenses to liquid at the same conditions. Given: <span class="math inline">\(\Delta H_{vap} = 38.56\)</span> kJ/mol at <span class="math inline">\(78^\circ\)</span>C (<span class="math inline">\(351.15\)</span> K).</p>
+<p><strong>System:</strong> Ethanol</p>
+<p><strong>Surroundings:</strong> The environment that absorbs the heat released by the condensing ethanol.</p>
+<p><strong>1. Entropy Change of System (Ethanol):</strong> Condensation is the reverse of vaporization, so <span class="math inline">\(\Delta H_{cond} = -\Delta H_{vap}\)</span>. <span class="math display">\[\Delta S_{sys} = \frac{\Delta H_{cond}}{T_{sat}} = \frac{-38,560 \text{ J/mol}}{351.15 \text{ K}} = -109.8 \text{ J/mol}\cdot\text{K}\]</span> The entropy decreases because heat left the ethanol during condensation. That is allowed, because the surroundings will absorb the heat from the ethanol and increase its entropy. Let’s calculate how much the surroundings’ entropy increases.</p>
+<p><strong>2. Entropy Change of Surroundings:</strong> The heat released by the ethanol (<span class="math inline">\(Q_{out} = 38.56\)</span> kJ) is absorbed by the surroundings.</p>
+<p>We would need to know the temperature of the surroundings to calculate <span class="math inline">\(\Delta S_{surr}\)</span>.</p>
+<p><strong><em>Reversible Case:</em></strong> Assuming the surroundings are a large reservoir at exactly the same temperature as the condensing ethanol (<span class="math inline">\(78^\circ\)</span>C), then the process is reversible and we can use the same temperature for the surroundings. Note that we use <em>absolute temperature</em> in the calculations: <span class="math display">\[\Delta S_{surr} = \frac{Q_{surr}}{T_{surr}} = \frac{+38,560 \text{ J/mol}}{351.15 \text{ K}} = +109.8 \text{ J/mol}\cdot\text{K}\]</span></p>
+<p>The total entropy change is the sum of the system and surroundings: <span class="math display">\[\Delta S_{total} = \Delta S_{sys} + \Delta S_{surr} = -109.8 + 109.8 = 0\]</span></p>
+<p>As expected for a reversible process, the total entropy change of the universe is zero. However, to make a real process, the ethanol needs to be in contact with a colder medium (e.g.&nbsp;cooling water) to condense. In that case, the surroundings would be at a lower temperature than the ethanol, and the entropy change of the surroundings would be larger than <span class="math inline">\(+109.8\)</span> J/mol·K, resulting in <span class="math inline">\(\Delta S_{total} &gt; 0\)</span> for the real process.</p>
+<p>For example, let’s assume the surroundings are at room temperature (<span class="math inline">\(25^\circ\)</span>C or <span class="math inline">\(298.15\)</span> K). The surroundings are so large that the temperature does not change when heat from the ethanol is absorbed. Then: <span class="math display">\[\Delta S_{surr} = \frac{+38,560 \text{ J/mol}}{298.15 \text{ K}} = +129.3 \text{ J/mol}\cdot\text{K}\]</span></p>
+<p>In this case, <span class="math inline">\(\Delta S_{total} = \Delta S_{sys} + \Delta S_{surr} = -109.8 + 129.3 = +19.5\)</span> J/mol·K. The entropy of the universe increases, because the finite temperature difference between the ethanol and the surroundings creates an irreversible process.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You should note that the larger the difference in temperature between the ethanol and the surroundings, the larger the entropy generation and the more irreversible the process. In the limit as the surroundings’ temperature approaches that of the ethanol, the process becomes reversible and <span class="math inline">\(\Delta S_{total} \to 0\)</span> but the process takes forever to occur. As the surroundings’ temperature becomes much lower than that of the ethanol, the process becomes more and more irreversible and <span class="math inline">\(\Delta S_{total}\)</span> becomes larger and larger, but heat will transfer faster. We will see that the more entropy that is generated (the more irreversible the process is), the less “energy efficient” the process becomes. This is a common tradeoff in engineering design: we can make processes more reversible (and thus more efficient) by reducing the driving forces (e.g.&nbsp;temperature differences), but this also reduces the rate at which the process occurs. Speed costs money in engineering, so we often have to find a balance between efficiency and speed. We will talk more about this in future lectures when we discuss open systems and cycles.</p>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/ejmaginn\.github\.io\/CBE20260-notes\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
