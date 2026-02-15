@@ -31,6 +31,8 @@ website:
             text: Lecture 10 - Latent Heat and the Need for a Second Law
           - href: class12/lecture12.qmd
             text: Lecture 12 - Introduction to Entropy and the Second Law  
+          - href: class13/lecture13.qmd
+            text: Lecture 13 - Calculating Entropy Changes for Closed Systems
           # Add more lectures here as you create them:
           # - href: class0x/lecture02.qmd
           #   text: Lecture x — Title
