@@ -33,6 +33,8 @@ website:
             text: Lecture 12 - Introduction to Entropy and the Second Law  
           - href: class13/lecture13.qmd
             text: Lecture 13 - Calculating Entropy Changes for Closed Systems
+          - href: class14/lecture14.qmd
+            text: Lecture 14 - Entropy Changes for Open Systems   
           # Add more lectures here as you create them:
           # - href: class0x/lecture02.qmd
           #   text: Lecture x — Title
