@@ -31,7 +31,9 @@ Just like the First Law, the Second Law for an open system accounts for:
 4.  Entropy **Generation** (the irreversible part).
 
 
-![System we apply the open system entropy balance to.](images/system.png){#fig-system width=60%}
+![System we apply the open system entropy balance to.](images/system.png){#fig-system width=40%}
+
+
 The general rate form, applied to the system shown in @fig-system is:
 
 $$
