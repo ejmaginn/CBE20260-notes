@@ -30,7 +30,9 @@ Just like the First Law, the Second Law for an open system accounts for:
 
 4.  Entropy **Generation** (the irreversible part).
 
-The general rate form is:
+
+![System we apply the open system entropy balance to.](images/system.png){#fig-system width=60%}
+The general rate form, applied to the system shown in @fig-system is:
 
 $$
 \frac{d (M \hat{S})}{dt} = \sum_{in} \dot{m}_{in} \hat{S}_{in} - \sum_{out} \dot{m}_{out} \hat{S}_{out} + \sum_j \frac{\dot{Q}_j}{T_{j}} + \dot{S}_{gen} 
