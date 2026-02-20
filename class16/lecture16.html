@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Edward Maginn">
 
-<title>vdw-tp – CBE 20260 — Course Notes</title>
+<title>Lecture 16: Heat Engines and the Second Law – CBE 20260 — Course Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,45 +21,10 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -103,11 +69,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
-<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -238,128 +229,176 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="vdw-TP.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction-heat-vs.-work" id="toc-introduction-heat-vs.-work" class="nav-link active" data-scroll-target="#introduction-heat-vs.-work"><span class="header-section-number">1</span> Introduction: Heat vs.&nbsp;Work</a></li>
+  <li><a href="#the-kelvin-planck-device" id="toc-the-kelvin-planck-device" class="nav-link" data-scroll-target="#the-kelvin-planck-device"><span class="header-section-number">2</span> The Kelvin-Planck Device</a>
+  <ul class="collapse">
+  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis"><span class="header-section-number">2.1</span> Analysis</a></li>
+  <li><a href="#the-reverse-kelvin-planck-device" id="toc-the-reverse-kelvin-planck-device" class="nav-link" data-scroll-target="#the-reverse-kelvin-planck-device"><span class="header-section-number">2.2</span> The Reverse Kelvin-Planck Device</a></li>
+  </ul></li>
+  <li><a href="#the-clausius-device" id="toc-the-clausius-device" class="nav-link" data-scroll-target="#the-clausius-device"><span class="header-section-number">3</span> The Clausius Device</a>
+  <ul class="collapse">
+  <li><a href="#the-reverse-clausius-device" id="toc-the-reverse-clausius-device" class="nav-link" data-scroll-target="#the-reverse-clausius-device"><span class="header-section-number">3.1</span> The Reverse Clausius Device</a></li>
+  </ul></li>
+  <li><a href="#the-heat-engine" id="toc-the-heat-engine" class="nav-link" data-scroll-target="#the-heat-engine"><span class="header-section-number">4</span> The Heat Engine</a>
+  <ul class="collapse">
+  <li><a href="#first-law-analysis" id="toc-first-law-analysis" class="nav-link" data-scroll-target="#first-law-analysis"><span class="header-section-number">4.1</span> First Law Analysis</a></li>
+  <li><a href="#second-law-analysis" id="toc-second-law-analysis" class="nav-link" data-scroll-target="#second-law-analysis"><span class="header-section-number">4.2</span> Second Law Analysis</a></li>
+  <li><a href="#combining-first-and-second-laws" id="toc-combining-first-and-second-laws" class="nav-link" data-scroll-target="#combining-first-and-second-laws"><span class="header-section-number">4.3</span> Combining First and Second Laws</a></li>
+  </ul></li>
+  <li><a href="#thermal-efficiency" id="toc-thermal-efficiency" class="nav-link" data-scroll-target="#thermal-efficiency"><span class="header-section-number">5</span> Thermal Efficiency</a>
+  <ul class="collapse">
+  <li><a href="#maximum-reversible-efficiency" id="toc-maximum-reversible-efficiency" class="nav-link" data-scroll-target="#maximum-reversible-efficiency"><span class="header-section-number">5.1</span> Maximum (Reversible) Efficiency</a></li>
+  </ul></li>
+  <li><a href="#lost-work" id="toc-lost-work" class="nav-link" data-scroll-target="#lost-work"><span class="header-section-number">6</span> Lost Work</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture16.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
 
-
-
-
-<div id="94ead3a7" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ===================================================================================================</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># LECTURE 7: VDW EOS solver showing solutions for T and P</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Script: VDW-TP</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Author: Edward Maginn, CBE 20260</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Description: </span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   This notebook visualizes the van der Waals equation of state for CO2. It allows </span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#   users to interactively change temperature and pressure to see how many real </span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   volume roots exist for the given conditions.</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#   The van der Waals parameters for CO2 are used, and the critical point is highlighted.</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ====================================================================================</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> google.colab</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    IN_COLAB <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Running in Google Colab. Installing ipympl..."</span>)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">%</span>pip install ipympl</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> google.colab <span class="im">import</span> output</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    output.enable_custom_widget_manager()</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ImportError</span>:</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    IN_COLAB <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Running locally."</span>)</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ipywidgets <span class="im">import</span> interact, FloatSlider</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Constants for CO2</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>a_CO2 <span class="op">=</span> <span class="fl">3.64</span>  <span class="co"># L^2 bar mol^-2</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>b_CO2 <span class="op">=</span> <span class="fl">0.04267</span> <span class="co"># L mol^-1</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>Tc_CO2 <span class="op">=</span> <span class="fl">304.13</span> <span class="co"># K</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>Pc_CO2 <span class="op">=</span> <span class="fl">73.77</span>  <span class="co"># bar</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> <span class="fl">0.08314</span>  <span class="co"># L*bar/(mol*K)</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> vdw_pressure(T, V_m, a, b):</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (R <span class="op">*</span> T) <span class="op">/</span> (V_m <span class="op">-</span> b) <span class="op">-</span> a <span class="op">/</span> (V_m<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> solve_vdw_roots(P, T, a, b):</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co">    Finds real volume roots for vdW equation at given P and T.</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="co">    Rearranged cubic form: P*V^3 - (Pb + RT)*V^2 + a*V - ab = 0</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Coefficients for cubic polynomial: c3*V^3 + c2*V^2 + c1*V + c0 = 0</span></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    c3 <span class="op">=</span> P</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    c2 <span class="op">=</span> <span class="op">-</span>(P <span class="op">*</span> b <span class="op">+</span> R <span class="op">*</span> T)</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    c1 <span class="op">=</span> a</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    c0 <span class="op">=</span> <span class="op">-</span>a <span class="op">*</span> b</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>    roots <span class="op">=</span> np.roots([c3, c2, c1, c0])</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Filter for real roots that are physically meaningful (V &gt; b)</span></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    valid_roots <span class="op">=</span> [r.real <span class="cf">for</span> r <span class="kw">in</span> roots <span class="cf">if</span> np.isreal(r) <span class="kw">and</span> r.real <span class="op">&gt;</span> b]</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.sort(valid_roots)</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_vdw_simulation(T, P_user):</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 1. Setup Plot</span></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> np.linspace(b_CO2 <span class="op">*</span> <span class="fl">1.1</span>, <span class="fl">1.0</span>, <span class="dv">1000</span>)</span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>    P_curve <span class="op">=</span> vdw_pressure(T, v, a_CO2, b_CO2)</span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">6</span>))</span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 2. Plot the Isotherm (Blue Curve)</span></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>    ax.plot(v, P_curve, linewidth<span class="op">=</span><span class="fl">2.5</span>, color<span class="op">=</span><span class="st">'blue'</span>, label<span class="op">=</span><span class="ss">f'Isotherm T=</span><span class="sc">{</span>T<span class="sc">:.1f}</span><span class="ss"> K'</span>)</span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 3. Plot the Critical Isotherm (Gray Dashed)</span></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>    P_crit <span class="op">=</span> vdw_pressure(Tc_CO2, v, a_CO2, b_CO2)</span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>    ax.plot(v, P_crit, <span class="st">'--'</span>, color<span class="op">=</span><span class="st">'gray'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="ss">f'Critical T=</span><span class="sc">{</span>Tc_CO2<span class="sc">:.1f}</span><span class="ss"> K'</span>)</span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 4. Plot the User's Isobar (Horizontal Line)</span></span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>    ax.axhline(P_user, color<span class="op">=</span><span class="st">'black'</span>, linestyle<span class="op">=</span><span class="st">':'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="ss">f'Isobar P=</span><span class="sc">{</span>P_user<span class="sc">:.1f}</span><span class="ss"> bar'</span>)</span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 5. Find and Plot Intersections</span></span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>    roots <span class="op">=</span> solve_vdw_roots(P_user, T, a_CO2, b_CO2)</span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot the roots</span></span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, vol <span class="kw">in</span> <span class="bu">enumerate</span>(roots):</span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>        label <span class="op">=</span> <span class="st">"Roots"</span> <span class="cf">if</span> i <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">"_nolegend_"</span></span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>        ax.plot(vol, P_user, <span class="st">'ro'</span>, markersize<span class="op">=</span><span class="dv">8</span>, zorder<span class="op">=</span><span class="dv">5</span>, label<span class="op">=</span>label)</span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Annotate the volume values</span></span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>        ax.text(vol, P_user <span class="op">+</span> <span class="dv">5</span>, <span class="ss">f'</span><span class="sc">{</span>vol<span class="sc">:.3f}</span><span class="ss">'</span>, horizontalalignment<span class="op">=</span><span class="st">'center'</span>, color<span class="op">=</span><span class="st">'red'</span>, fontsize<span class="op">=</span><span class="dv">9</span>)</span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 6. Formatting</span></span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>    ax.set_ylim(<span class="dv">0</span>, <span class="dv">150</span>)</span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>    ax.set_xlim(<span class="fl">0.04</span>, <span class="fl">0.8</span>)</span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Using V_m to avoid LaTeX error with \underline</span></span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">'Molar Volume $V_m$ (L/mol)'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">'Pressure $P$ (bar)'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f'van der Waals EOS for CO$_2$ (Roots found: </span><span class="sc">{</span><span class="bu">len</span>(roots)<span class="sc">}</span><span class="ss">)'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Highlight Critical Point</span></span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>    ax.plot(<span class="dv">3</span><span class="op">*</span>b_CO2, Pc_CO2, <span class="st">'kD'</span>, markersize<span class="op">=</span><span class="dv">5</span>, label<span class="op">=</span><span class="st">'Critical Point'</span>)</span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>    ax.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
-<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>    ax.grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
-<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a><span class="co"># Interactive Slider</span></span>
-<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a><span class="co"># T: 250K to 350K</span></span>
-<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a><span class="co"># P: 10 bar to 120 bar</span></span>
-<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>interact(plot_vdw_simulation, </span>
-<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>         T<span class="op">=</span>FloatSlider(value<span class="op">=</span><span class="dv">290</span>, <span class="bu">min</span><span class="op">=</span><span class="dv">250</span>, <span class="bu">max</span><span class="op">=</span><span class="dv">350</span>, step<span class="op">=</span><span class="fl">1.0</span>, description<span class="op">=</span><span class="st">'Temp (K)'</span>),</span>
-<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>         P_user<span class="op">=</span>FloatSlider(value<span class="op">=</span>Pc_CO2, <span class="bu">min</span><span class="op">=</span><span class="dv">10</span>, <span class="bu">max</span><span class="op">=</span><span class="dv">120</span>, step<span class="op">=</span><span class="fl">1.0</span>, description<span class="op">=</span><span class="st">'Press (bar)'</span>))<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Running locally.</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"7d5ab27b35d94a64968adf4c4f72afeb","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lecture 16: Heat Engines and the Second Law</h1>
+<p class="subtitle lead">CBE 20260 / Thermodynamics I</p>
 </div>
 
 
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Edward Maginn </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction-heat-vs.-work" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction: Heat vs.&nbsp;Work</h1>
+<p>So far, we have covered energy and entropy balances for various process equipment (pumps, compressors, turbines, etc.). Now we want to “put it all together” to produce <strong>Work</strong>.</p>
+<p>Why focus on Work? While Heat is useful (warming our homes), <strong>Work</strong> is especially valuable because it is an organized form of energy transfer. We use it to move things (cars, planes), generate electricity, and drive chemical processes.</p>
+<p>There is a fundamental asymmetry between Heat and Work:</p>
+<ol type="1">
+<li><p><strong>Work <span class="math inline">\(\to\)</span> Heat:</strong> Easy. We do this all the time via friction (rubbing hands together), electrical resistance, or Joule’s paddlewheel experiment. It is 100% efficient.</p></li>
+<li><p><strong>Heat <span class="math inline">\(\to\)</span> Work:</strong> Hard. We cannot simply convert 100% of heat into work.</p></li>
+</ol>
+<p>To understand why, we will analyze abstract “devices” that attempt these conversions.</p>
+</section>
+<section id="the-kelvin-planck-device" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> The Kelvin-Planck Device</h1>
+<p>Let’s imagine a steady-state device that takes in Heat (<span class="math inline">\(Q\)</span>) from a single reservoir and converts it entirely into Work (<span class="math inline">\(W\)</span>). We call this a <strong>Kelvin-Planck Device</strong>.</p>
+<section id="analysis" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="analysis"><span class="header-section-number">2.1</span> Analysis</h2>
+<p>Consider this device operating in a cycle (or steady state):</p>
+<p><strong>First Law:</strong> <span class="math display">\[\Delta U = 0 = Q_{in} - W_{out}\]</span> <span class="math display">\[W_{out} = Q_{in}\]</span> According to the First Law, this device is <strong>possible</strong>. Energy is conserved.</p>
+<p><strong>Second Law:</strong> <span class="math display">\[\frac{dS_{sys}}{dt} = \sum \frac{\dot{Q}}{T_b} + \dot{S}_{gen}\]</span> At steady state (<span class="math inline">\(dS/dt = 0\)</span>): <span class="math display">\[0 = \frac{\dot{Q}_{in}}{T} + \dot{S}_{gen}\]</span> <span class="math display">\[\dot{S}_{gen} = -\frac{\dot{Q}_{in}}{T}\]</span></p>
+<p>Since <span class="math inline">\(Q_{in} &gt; 0\)</span> (heat added) and <span class="math inline">\(T &gt; 0\)</span>, this implies: <span class="math display">\[\dot{S}_{gen} &lt; 0\]</span> <strong>This violates the Second Law!</strong> (<span class="math inline">\(\dot{S}_{gen}\)</span> must be <span class="math inline">\(\ge 0\)</span>).</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Kelvin-Planck Statement of the Second Law
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It is impossible to construct a device that operates in a cycle and produces no other effect than the production of work and transfer of heat from a single body. <em>(i.e., You cannot turn Heat 100% into Work).</em></p>
+</div>
+</div>
+</section>
+<section id="the-reverse-kelvin-planck-device" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="the-reverse-kelvin-planck-device"><span class="header-section-number">2.2</span> The Reverse Kelvin-Planck Device</h2>
+<p>What if we reverse the arrows? A device that takes Work and turns it into Heat?</p>
+<ul>
+<li><strong>1st Law:</strong> <span class="math inline">\(Q_{out} = W_{in}\)</span>. (Possible)</li>
+<li><strong>2nd Law:</strong> <span class="math inline">\(0 = \frac{-\dot{Q}_{out}}{T} + \dot{S}_{gen} \implies \dot{S}_{gen} = \frac{\dot{Q}_{out}}{T} &gt; 0\)</span>.</li>
+</ul>
+<p>This is <strong>Possible</strong>. This is simply “friction” or electrical heating. Work can be converted 100% to Heat.</p>
+</section>
+</section>
+<section id="the-clausius-device" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> The Clausius Device</h1>
+<p>Now consider a device that transfers heat from a Cold reservoir (<span class="math inline">\(T_C\)</span>) to a Hot reservoir (<span class="math inline">\(T_H\)</span>) without any work input.</p>
+<p><strong>First Law:</strong> <span class="math inline">\(Q_{in} = Q_{out}\)</span> (Energy conserved). <strong>Second Law:</strong> <span class="math display">\[0 = \frac{Q_C}{T_C} - \frac{Q_H}{T_H} + S_{gen}\]</span> Since <span class="math inline">\(Q_C = Q_H = Q\)</span>: <span class="math display">\[S_{gen} = Q \left( \frac{1}{T_H} - \frac{1}{T_C} \right)\]</span></p>
+<p>Since <span class="math inline">\(T_H &gt; T_C\)</span>, the term <span class="math inline">\((\frac{1}{T_H} - \frac{1}{T_C})\)</span> is <strong>negative</strong>. Therefore, <span class="math inline">\(S_{gen} &lt; 0\)</span>. <strong>Impossible.</strong> Heat cannot spontaneously flow from Cold to Hot.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Clausius Statement of the Second Law
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It is impossible to construct a device that operates in a cycle and produces no other effect than the transfer of heat from a lower-temperature body to a higher-temperature body.</p>
+</div>
+</div>
+<section id="the-reverse-clausius-device" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="the-reverse-clausius-device"><span class="header-section-number">3.1</span> The Reverse Clausius Device</h2>
+<p>If we flow heat from Hot (<span class="math inline">\(T_H\)</span>) to Cold (<span class="math inline">\(T_C\)</span>): <span class="math display">\[S_{gen} = Q \left( \frac{1}{T_C} - \frac{1}{T_H} \right)\]</span> Since <span class="math inline">\(T_H &gt; T_C\)</span>, the term is positive. <span class="math inline">\(S_{gen} &gt; 0\)</span>. <strong>Possible.</strong> Heat naturally flows from Hot to Cold.</p>
+</section>
+</section>
+<section id="the-heat-engine" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> The Heat Engine</h1>
+<p>We have established two facts: 1. We cannot convert Heat 100% to Work (<span class="math inline">\(S_{gen} &lt; 0\)</span>). 2. Heat naturally flows from <span class="math inline">\(T_H\)</span> to <span class="math inline">\(T_C\)</span> (<span class="math inline">\(S_{gen} &gt; 0\)</span>).</p>
+<p><strong>The Engineering Idea:</strong> What if we combine these? What if we take the natural flow of heat from <span class="math inline">\(T_H\)</span> to <span class="math inline">\(T_C\)</span> (which generates entropy) and “bleed off” some of that energy as Work?</p>
+<p>Let’s analyze this <strong>Heat Engine</strong>: * Heat <span class="math inline">\(Q_H\)</span> enters from Hot Reservoir <span class="math inline">\(T_H\)</span>. * Heat <span class="math inline">\(Q_C\)</span> leaves to Cold Reservoir <span class="math inline">\(T_C\)</span>. * Work <span class="math inline">\(W\)</span> is produced.</p>
+<section id="first-law-analysis" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="first-law-analysis"><span class="header-section-number">4.1</span> First Law Analysis</h2>
+<p><span class="math display">\[\Delta U = 0 = Q_H - Q_C - W\]</span> <span class="math display">\[W = Q_H - Q_C\]</span> <em>(Note: Here we define <span class="math inline">\(Q_C\)</span> as a positive magnitude leaving the system).</em></p>
+</section>
+<section id="second-law-analysis" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="second-law-analysis"><span class="header-section-number">4.2</span> Second Law Analysis</h2>
+<p><span class="math display">\[0 = \frac{Q_H}{T_H} - \frac{Q_C}{T_C} + S_{gen}\]</span> Rearranging to solve for <span class="math inline">\(Q_C\)</span>: <span class="math display">\[\frac{Q_C}{T_C} = \frac{Q_H}{T_H} + S_{gen}\]</span> <span class="math display">\[Q_C = T_C \left( \frac{Q_H}{T_H} + S_{gen} \right)\]</span> <span class="math display">\[Q_C = Q_H \frac{T_C}{T_H} + T_C S_{gen}\]</span></p>
+</section>
+<section id="combining-first-and-second-laws" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="combining-first-and-second-laws"><span class="header-section-number">4.3</span> Combining First and Second Laws</h2>
+<p>Substitute the expression for <span class="math inline">\(Q_C\)</span> back into the Work equation (<span class="math inline">\(W = Q_H - Q_C\)</span>):</p>
+<p><span class="math display">\[W = Q_H - \left( Q_H \frac{T_C}{T_H} + T_C S_{gen} \right)\]</span></p>
+<p><span id="eq-work-heat-engine"><span class="math display">\[W = Q_H \left( 1 - \frac{T_C}{T_H} \right) - T_C S_{gen} \tag{1}\]</span></span></p>
+<p>This is a <strong>remarkable result</strong>. It tells us exactly how much Work we can get out of a heat engine.</p>
+<ol type="1">
+<li><strong>The Potential:</strong> The term <span class="math inline">\(Q_H (1 - T_C/T_H)\)</span> represents the <em>maximum possible work</em> allowed by the laws of thermodynamics (when <span class="math inline">\(S_{gen}=0\)</span>).</li>
+<li><strong>The Penalty:</strong> The term <span class="math inline">\(T_C S_{gen}\)</span> reduces the work output.</li>
+</ol>
+</section>
+</section>
+<section id="thermal-efficiency" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Thermal Efficiency</h1>
+<p>We define the thermal efficiency <span class="math inline">\(\eta\)</span> as: <span class="math display">\[\eta = \frac{\text{Benefit}}{\text{Cost}} = \frac{W}{Q_H}\]</span></p>
+<p>Using our derived expression for Work: <span class="math display">\[\eta = \frac{Q_H (1 - T_C/T_H) - T_C S_{gen}}{Q_H}\]</span> <span class="math display">\[\eta = \left( 1 - \frac{T_C}{T_H} \right) - \frac{T_C S_{gen}}{Q_H}\]</span></p>
+<section id="maximum-reversible-efficiency" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="maximum-reversible-efficiency"><span class="header-section-number">5.1</span> Maximum (Reversible) Efficiency</h2>
+<p>If the process is ideal (Reversible, <span class="math inline">\(S_{gen} = 0\)</span>), we get the <strong>Carnot Efficiency</strong>:</p>
+<p><span class="math display">\[\eta_{max} = 1 - \frac{T_C}{T_H}\]</span></p>
+<p>To maximize efficiency, we want: * <span class="math inline">\(T_H\)</span> to be as <strong>High</strong> as possible. * <span class="math inline">\(T_C\)</span> to be as <strong>Low</strong> as possible.</p>
+<p>This explains why power plants use superheated steam (high <span class="math inline">\(T_H\)</span>) and cooling towers/rivers (low <span class="math inline">\(T_C\)</span>).</p>
+</section>
+</section>
+<section id="lost-work" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Lost Work</h1>
+<p>Real engines always have irreversibilities (friction, heat loss, turbulence), so <span class="math inline">\(S_{gen} &gt; 0\)</span>. The difference between the Maximum Work and the Actual Work is called <strong>Lost Work</strong>.</p>
+<p><span class="math display">\[W_{lost} = W_{max} - W_{actual}\]</span> <span class="math display">\[W_{lost} = \left[ Q_H \left( 1 - \frac{T_C}{T_H} \right) \right] - \left[ Q_H \left( 1 - \frac{T_C}{T_H} \right) - T_C S_{gen} \right]\]</span></p>
+<p><span class="math display">\[W_{lost} = T_C S_{gen}\]</span></p>
+<p>This simple equation links the abstract concept of entropy generation directly to lost engineering potential. Every unit of entropy generated destroys our ability to do useful work by an amount proportional to the sink temperature <span class="math inline">\(T_C\)</span>.</p>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

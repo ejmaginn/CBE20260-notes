@@ -8,7 +8,7 @@
 
 <meta name="author" content="Edward Maginn">
 
-<title>Lecture 12: Introduction to Entropy and the Second Law – CBE 20260 — Course Notes</title>
+<title>Lecture 15: Open System Entropy Balance and Efficiency – CBE 20260 — Course Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -233,34 +233,36 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#the-arrow-of-time" id="toc-the-arrow-of-time" class="nav-link active" data-scroll-target="#the-arrow-of-time"><span class="header-section-number">1</span> The Arrow of Time</a>
+  <li><a href="#example-2-adiabatic-compressor-with-isentropic-efficiency" id="toc-example-2-adiabatic-compressor-with-isentropic-efficiency" class="nav-link active" data-scroll-target="#example-2-adiabatic-compressor-with-isentropic-efficiency"><span class="header-section-number">1</span> Example 2: Adiabatic Compressor with Isentropic Efficiency</a>
   <ul class="collapse">
-  <li><a href="#case-1-the-gas-expansion" id="toc-case-1-the-gas-expansion" class="nav-link" data-scroll-target="#case-1-the-gas-expansion"><span class="header-section-number">1.1</span> Case 1: The Gas Expansion</a></li>
-  <li><a href="#case-2-thermal-equilibrium" id="toc-case-2-thermal-equilibrium" class="nav-link" data-scroll-target="#case-2-thermal-equilibrium"><span class="header-section-number">1.2</span> Case 2: Thermal Equilibrium</a></li>
-  <li><a href="#case-3-mixing" id="toc-case-3-mixing" class="nav-link" data-scroll-target="#case-3-mixing"><span class="header-section-number">1.3</span> Case 3: Mixing</a></li>
+  <li><a href="#step-1-determine-the-isentropic-outlet-temperature-t_2prime" id="toc-step-1-determine-the-isentropic-outlet-temperature-t_2prime" class="nav-link" data-scroll-target="#step-1-determine-the-isentropic-outlet-temperature-t_2prime"><span class="header-section-number">1.1</span> Step 1: Determine the Isentropic Outlet Temperature (<span class="math inline">\(T_{2}^\prime\)</span>)</a></li>
+  <li><a href="#step-2-apply-isentropic-efficiency-to-find-actual-t_2" id="toc-step-2-apply-isentropic-efficiency-to-find-actual-t_2" class="nav-link" data-scroll-target="#step-2-apply-isentropic-efficiency-to-find-actual-t_2"><span class="header-section-number">1.2</span> Step 2: Apply Isentropic Efficiency to find Actual <span class="math inline">\(T_2\)</span></a></li>
+  <li><a href="#step-3-calculate-power-requirement" id="toc-step-3-calculate-power-requirement" class="nav-link" data-scroll-target="#step-3-calculate-power-requirement"><span class="header-section-number">1.3</span> Step 3: Calculate Power Requirement</a></li>
   </ul></li>
-  <li><a href="#the-second-law-of-thermodynamics" id="toc-the-second-law-of-thermodynamics" class="nav-link" data-scroll-target="#the-second-law-of-thermodynamics"><span class="header-section-number">2</span> The Second Law of Thermodynamics</a></li>
-  <li><a href="#defining-entropy-mathematically" id="toc-defining-entropy-mathematically" class="nav-link" data-scroll-target="#defining-entropy-mathematically"><span class="header-section-number">3</span> Defining Entropy Mathematically</a>
+  <li><a href="#example-3-quenching-a-workpiece" id="toc-example-3-quenching-a-workpiece" class="nav-link" data-scroll-target="#example-3-quenching-a-workpiece"><span class="header-section-number">2</span> Example 3: Quenching a Workpiece</a>
   <ul class="collapse">
-  <li><a href="#entropy-is-a-state-function" id="toc-entropy-is-a-state-function" class="nav-link" data-scroll-target="#entropy-is-a-state-function"><span class="header-section-number">3.1</span> Entropy is a State Function</a></li>
-  <li><a href="#entropy-generation-s_gen" id="toc-entropy-generation-s_gen" class="nav-link" data-scroll-target="#entropy-generation-s_gen"><span class="header-section-number">3.2</span> Entropy Generation (<span class="math inline">\(S_{gen}\)</span>)</a></li>
+  <li><a href="#step-1-find-final-temperature" id="toc-step-1-find-final-temperature" class="nav-link" data-scroll-target="#step-1-find-final-temperature"><span class="header-section-number">2.1</span> Step 1: Find Final Temperature</a></li>
+  <li><a href="#step-2-entropy-change" id="toc-step-2-entropy-change" class="nav-link" data-scroll-target="#step-2-entropy-change"><span class="header-section-number">2.2</span> Step 2: Entropy Change</a></li>
   </ul></li>
-  <li><a href="#proving-directionality-the-two-blocks" id="toc-proving-directionality-the-two-blocks" class="nav-link" data-scroll-target="#proving-directionality-the-two-blocks"><span class="header-section-number">4</span> Proving Directionality: The Two Blocks</a>
+  <li><a href="#example-4-the-joule-thomson-expansion" id="toc-example-4-the-joule-thomson-expansion" class="nav-link" data-scroll-target="#example-4-the-joule-thomson-expansion"><span class="header-section-number">3</span> Example 4: The Joule-Thomson Expansion</a>
   <ul class="collapse">
-  <li><a href="#scenario-1-heat-flows-from-hot-t_a-to-cold-t_b" id="toc-scenario-1-heat-flows-from-hot-t_a-to-cold-t_b" class="nav-link" data-scroll-target="#scenario-1-heat-flows-from-hot-t_a-to-cold-t_b"><span class="header-section-number">4.1</span> Scenario 1: Heat flows from Hot (<span class="math inline">\(T_A\)</span>) to Cold (<span class="math inline">\(T_B\)</span>)</a></li>
-  <li><a href="#scenario-2-heat-flows-from-cold-t_b-to-hot-t_a" id="toc-scenario-2-heat-flows-from-cold-t_b-to-hot-t_a" class="nav-link" data-scroll-target="#scenario-2-heat-flows-from-cold-t_b-to-hot-t_a"><span class="header-section-number">4.2</span> Scenario 2: Heat flows from Cold (<span class="math inline">\(T_B\)</span>) to Hot (<span class="math inline">\(T_A\)</span>)</a></li>
+  <li><a href="#energy-balance" id="toc-energy-balance" class="nav-link" data-scroll-target="#energy-balance"><span class="header-section-number">3.1</span> Energy Balance</a></li>
+  <li><a href="#does-temperature-change" id="toc-does-temperature-change" class="nav-link" data-scroll-target="#does-temperature-change"><span class="header-section-number">3.2</span> Does Temperature Change?</a>
+  <ul class="collapse">
+  <li><a href="#case-a-ideal-gas" id="toc-case-a-ideal-gas" class="nav-link" data-scroll-target="#case-a-ideal-gas"><span class="header-section-number">3.2.1</span> Case A: Ideal Gas</a></li>
+  <li><a href="#case-b-real-gas" id="toc-case-b-real-gas" class="nav-link" data-scroll-target="#case-b-real-gas"><span class="header-section-number">3.2.2</span> Case B: Real Gas</a></li>
+  <li><a href="#case-c-steam" id="toc-case-c-steam" class="nav-link" data-scroll-target="#case-c-steam"><span class="header-section-number">3.2.3</span> Case C: Steam</a></li>
   </ul></li>
-  <li><a href="#driving-forces-and-entropy-generation" id="toc-driving-forces-and-entropy-generation" class="nav-link" data-scroll-target="#driving-forces-and-entropy-generation"><span class="header-section-number">5</span> Driving Forces and Entropy Generation</a></li>
-  <li><a href="#the-takeaway" id="toc-the-takeaway" class="nav-link" data-scroll-target="#the-takeaway"><span class="header-section-number">6</span> The Takeaway</a></li>
+  </ul></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture12.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture15.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lecture 12: Introduction to Entropy and the Second Law</h1>
+<h1 class="title">Lecture 15: Open System Entropy Balance and Efficiency</h1>
 <p class="subtitle lead">CBE 20260 / Thermodynamics I</p>
 </div>
 
@@ -284,186 +286,169 @@ window.Quarto = {
 </header>
 
 
-<section id="the-arrow-of-time" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> The Arrow of Time</h1>
-<p>In the previous lecture, we established that the First Law of Thermodynamics is a conservation law. It tells us that energy cannot be created or destroyed, only transformed. However, the First Law fails to explain a fundamental aspect of nature: <strong>Directionality</strong>.</p>
-<p>Processes in nature occur spontaneously in one direction but never in the reverse, even though the reverse process would satisfy the First Law. Let’s look at three specific examples.</p>
-<section id="case-1-the-gas-expansion" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="case-1-the-gas-expansion"><span class="header-section-number">1.1</span> Case 1: The Gas Expansion</h2>
-<p>Imagine a rigid, insulated tank containing high-pressure gas (<span class="math inline">\(P_{gas} &gt; P_{atm}\)</span>). We open a valve, and the gas rushes out into the atmosphere. However, we never see the reverse process: air from the room spontaneously rushing back into the tank, re-pressurizing it.</p>
-<div id="fig-tank-emptying" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-tank-emptying-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/tank-emptying.png" class="img-fluid figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tank-emptying-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig.&nbsp;1: Gas can spontaneously flow out of a tank, but not back in.
-</figcaption>
-</figure>
-</div>
+<p>Last class, we applied the open system entropy balance to a compressor with given inlet and exit conditions. We found that the actual exit temperature was higher than the ideal (isentropic) case, and we calculated the power requirement for the compressor along with the entropy generation. Now, we show how to compute the outlet conditions for a compressor with a given isentropic efficiency. We also apply the entropy balance to a few other examples, including quenching a hot workpiece (a closed composite system) and the Joule-Thomson expansion of steam through a valve.</p>
+<section id="example-2-adiabatic-compressor-with-isentropic-efficiency" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Example 2: Adiabatic Compressor with Isentropic Efficiency</h1>
+<p><strong>Problem Statement:</strong> Air enters an adiabatic compressor at <span class="math inline">\(T_1 = 20^\circ\text{C}\)</span> and <span class="math inline">\(P_1 = 1 \text{ bar}\)</span>. It is compressed to a final pressure of <span class="math inline">\(P_2 = 5 \text{ bar}\)</span>. The compressor has an isentropic efficiency of <span class="math inline">\(\eta_{comp} = 80\%\)</span>. The volumetric flow rate at the inlet is <span class="math inline">\(\dot{V}_1 = 1 \text{ m}^3/\text{s}\)</span>. Assume air is an ideal gas with <span class="math inline">\(C_P = \frac{7}{2}R\)</span>.</p>
+<p><strong>Goal:</strong> Determine the actual outlet temperature <span class="math inline">\(T_2\)</span> and the required power <span class="math inline">\(\dot{W}_s\)</span>.</p>
+<section id="step-1-determine-the-isentropic-outlet-temperature-t_2prime" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="step-1-determine-the-isentropic-outlet-temperature-t_2prime"><span class="header-section-number">1.1</span> Step 1: Determine the Isentropic Outlet Temperature (<span class="math inline">\(T_{2}^\prime\)</span>)</h2>
+<p>First, we analyze the “ideal” (reversible, adiabatic) case. For an ideal gas undergoing an isentropic process (<span class="math inline">\(\Delta S = 0\)</span>), the temperature and pressure are related by:</p>
+<p><span class="math display">\[\frac{T_{2}^\prime}{T_1} = \left( \frac{P_2}{P_1} \right)^{R/C_P}\]</span></p>
+<p>Given:</p>
 <ul>
-<li><p><strong>Forward Process:</strong> Gas flows from high pressure to low pressure.</p></li>
-<li><p><strong>Reverse Process:</strong> Air from the room spontaneously rushes back into the tank, re-pressurizing it.</p></li>
-<li><p><strong>First Law Analysis:</strong> If the tank is adiabatic (<span class="math inline">\(Q=0\)</span>) and rigid, energy is conserved in both directions. The First Law does not forbid the air from rushing back in, yet we never see it happen.</p></li>
+<li><p><span class="math inline">\(T_1 = 20^\circ\text{C} = 293.15 \text{ K}\)</span></p></li>
+<li><p><span class="math inline">\(P_1 = 1 \text{ bar}, P_2 = 5 \text{ bar}\)</span></p></li>
+<li><p><span class="math inline">\(C_P = 3.5 R \implies \frac{R}{C_P} = \frac{1}{3.5} \approx 0.2857\)</span></p></li>
 </ul>
+<p><span class="math display">\[T_{2}^\prime = 293.15 \text{ K} \left( \frac{5}{1} \right)^{0.2857}\]</span> <span class="math display">\[T_{2}^\prime = 293.15 (1.5838) = 464.3 \text{ K}\]</span></p>
 </section>
-<section id="case-2-thermal-equilibrium" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="case-2-thermal-equilibrium"><span class="header-section-number">1.2</span> Case 2: Thermal Equilibrium</h2>
-<p>Consider two blocks, Block A (Hot) and Block B (Cold), brought into contact.</p>
-<div id="fig-magic-fridge" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-magic-fridge-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/magic-fridge.png" class="img-fluid figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-magic-fridge-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig.&nbsp;2: Blocks in contact at different temperatures equalize their temperatures; the reverse (spontaneous heating and cooling) is forbidden by the Second Law.
-</figcaption>
-</figure>
-</div>
-<ul>
-<li><p><strong>Forward Process:</strong> Heat flows from A to B until <span class="math inline">\(T_A = T_B\)</span>.</p></li>
-<li><p><strong>Reverse Process:</strong> Two blocks at the same temperature spontaneously separate into a hot block and a cold block.</p></li>
-<li><p><strong>First Law Analysis:</strong> As long as the heat lost by one equals the heat gained by the other (<span class="math inline">\(Q_{hot} = -Q_{cold}\)</span>), energy is conserved. The First Law permits the “Magic Refrigerator,” but nature forbids it.</p></li>
-</ul>
-</section>
-<section id="case-3-mixing" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="case-3-mixing"><span class="header-section-number">1.3</span> Case 3: Mixing</h2>
-<p>Consider a box separated by a partition. On the left are red molecules; on the right are blue molecules. We remove the partition.</p>
-<div id="fig-gas-mixing" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-gas-mixing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/gas-mixing.png" class="img-fluid figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gas-mixing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig.&nbsp;3: Pure substances mix spontaneously but never unmix.
-</figcaption>
-</figure>
-</div>
-<ul>
-<li><p><strong>Forward Process:</strong> The gases mix until they are uniformly distributed.</p></li>
-<li><p><strong>Reverse Process:</strong> The mixed gases spontaneously separate back into pure red and pure blue sides.</p></li>
-<li><p><strong>First Law Analysis:</strong> Mixing is an energy-neutral process for ideal gases. There is no energy barrier preventing un-mixing, yet it never occurs.</p></li>
-</ul>
-</section>
-</section>
-<section id="the-second-law-of-thermodynamics" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> The Second Law of Thermodynamics</h1>
-<p>To account for this “directionality,” we postulate the existence of a new property which is called <strong>Entropy (<span class="math inline">\(S\)</span>)</strong>.</p>
-<p>We can now state the <strong>Second Law of Thermodynamics</strong>:</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>The Second Law
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>There exists a property called entropy (<span class="math inline">\(S\)</span>), which is an intrinsic, extensive property of a system. For an <strong>isolated system</strong>, the change in entropy is always positive or zero. <span class="math display">\[\Delta S_{isolated} \ge 0\]</span></p>
-</div>
-</div>
-<ul>
-<li><p><strong><span class="math inline">\(\Delta S &gt; 0\)</span>:</strong> The process is <strong>Irreversible</strong> (Real, Spontaneous).</p></li>
-<li><p><strong><span class="math inline">\(\Delta S = 0\)</span>:</strong> The process is <strong>Reversible</strong> (Ideal, Equilibrium).</p></li>
-<li><p><strong><span class="math inline">\(\Delta S &lt; 0\)</span>:</strong> The process is <strong>Impossible</strong>.</p></li>
-</ul>
-<p>Mathematically, since entropy is increasing for an isolated system, we say <span class="math display">\[\frac{dS}{dt} &gt; 0\]</span></p>
-<p>In this way, entropy is like time: it always moves forward. The “arrow of time” is the “arrow of increasing entropy.” Unlike the energy “conservation” of the First Law, the Second Law is a “non-decreasing” law. It tells us that entropy can only stay the same or increase, never decrease. Thus we can have entropy <em>generation</em></p>
-<p><span class="math display">\[\frac{dS}{dt} = \dot{S}_{gen} \ge 0\]</span></p>
-<p><strong>Entropy is maximized at equilibrium</strong>, so we can also say that for an isolated system at equilibrium: <span class="math display">\[\frac{dS}{dt} = 0\]</span></p>
-</section>
-<section id="defining-entropy-mathematically" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Defining Entropy Mathematically</h1>
-<p>How do we calculate this property? For a closed system undergoing a process, the differential change in entropy (<span class="math inline">\(dS\)</span>) is related to the heat transfer occurring in a <strong>reversible</strong> path via the following definition:</p>
-<p><span id="eq-S-def"><span class="math display">\[dS = \frac{dQ_{rev}}{T} \tag{1}\]</span></span></p>
-<p>where:</p>
-<ul>
-<li><p><span class="math inline">\(dS\)</span> is the change in entropy of the system.</p></li>
-<li><p><span class="math inline">\(dQ_{rev}\)</span> is the heat transfer entering or leaving the system if the process were carried out reversibly.</p></li>
-<li><p><span class="math inline">\(T\)</span> is the absolute temperature (e.g.&nbsp;Kelvin) at the boundary where heat transfer occurs.</p></li>
-</ul>
-<p>Note that the definition of <span class="math inline">\(dS\)</span> is based on a <strong>reversible</strong> process, even if the actual process is irreversible. This is a crucial point that allows us to calculate entropy changes for any process by imagining a reversible path between the initial and final states. Also, heat fluxes across system boundaries are the only way to change the entropy of a system. Work does not directly change entropy, but it can indirectly affect it by changing the state of the system.</p>
-<section id="entropy-is-a-state-function" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="entropy-is-a-state-function"><span class="header-section-number">3.1</span> Entropy is a State Function</h2>
-<p>Crucially, <span class="math inline">\(S\)</span> is a <strong>State Function</strong>. <span id="eq-S-state-function"><span class="math display">\[\Delta S = S_2 - S_1 = \int_{1}^{2} \frac{dQ_{rev}}{T} \tag{2}\]</span></span> Even if the <em>actual</em> process is irreversible (like the high pressure gas leaving the tank), we calculate <span class="math inline">\(\Delta S\)</span> by imagining a reversible path connecting State 1 and State 2. (We will shortly see that we don’t need to construct imaginary reversible paths in many cases; we can calculate <span class="math inline">\(\Delta S\)</span> directly from state properties).</p>
-</section>
-<section id="entropy-generation-s_gen" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="entropy-generation-s_gen"><span class="header-section-number">3.2</span> Entropy Generation (<span class="math inline">\(S_{gen}\)</span>)</h2>
-<p>For any general process (not necessarily reversible), we write the entropy balance for a closed system as:</p>
-<p><span class="math display">\[dS = \frac{dQ}{T} + dS_{gen}\]</span></p>
-<p>or in rate form: <span class="math display">\[\frac{dS}{dt} =  \frac{\dot{Q}}{T} + \dot{S}_{gen}\]</span></p>
-<p>Note that we have dropped the “reversible” notation on <span class="math inline">\(Q\)</span>, since it is the “actual” heat transfer that occurs in the process. It is possible to have multiple heat flows at different temperatures, in which case there would be multiple <span class="math inline">\(\frac{Q}{T}\)</span> terms, one for each heat flow. The key point is that the total change in entropy of the system is the sum of two contributions:</p>
-<ul>
-<li><span class="math inline">\(\frac{Q}{T}\)</span>: Entropy transferred accompanying heat flow.</li>
-<li><span class="math inline">\(S_{gen}\)</span>: Entropy <strong>generated</strong> inside the system due to irreversibilities (friction, mixing, finite temperature gradients).</li>
-</ul>
-<p><strong>The Second Law requirement is specifically:</strong> <span class="math display">\[S_{gen} \ge 0\]</span></p>
-<p>Obviously, for a reversible process <span class="math display">\[dS = \frac{dQ_{rev}}{T}\]</span> which is <a href="#eq-S-def" class="quarto-xref">Eq.&nbsp;1</a> again.</p>
-</section>
-</section>
-<section id="proving-directionality-the-two-blocks" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Proving Directionality: The Two Blocks</h1>
-<p>Let’s apply this mathematical definition to <strong>Case 2</strong> (the Hot and Cold Blocks) to prove that the Second Law correctly predicts the direction of heat flow.</p>
-<p><strong>System:</strong> Two rigid blocks, A and B, isolated from the surroundings.</p>
-<ul>
-<li><p>Block A is at temperature <span class="math inline">\(T_A\)</span>.</p></li>
-<li><p>Block B is at temperature <span class="math inline">\(T_B\)</span>.</p></li>
-<li><p>A small amount of heat, <span class="math inline">\(|Q|\)</span>, transfers from one to the other.</p></li>
-<li><p>Assume the thermal conductivity of both blocks is very high, to <span class="math inline">\(T\)</span> is uniform within each block.</p></li>
-</ul>
-<p>Since the total system is isolated (adiabatic), <span class="math inline">\(\Delta S_{surr} = 0\)</span>. Therefore, <span class="math inline">\(\Delta S_{total} = \Delta S_A + \Delta S_B\)</span>.</p>
-<p>Using our definition <span class="math inline">\(dS = dQ/T\)</span>: <span class="math display">\[\Delta S_A = \frac{Q_A}{T_A} \quad \text{and} \quad \Delta S_B = \frac{Q_B}{T_B}\]</span></p>
-<p>The First Law for the isolated system is: <span class="math inline">\(\Delta U_A + \Delta U_B = Q_A + Q_B = 0\)</span>. Let’s define the heat flow direction.</p>
-<section id="scenario-1-heat-flows-from-hot-t_a-to-cold-t_b" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="scenario-1-heat-flows-from-hot-t_a-to-cold-t_b"><span class="header-section-number">4.1</span> Scenario 1: Heat flows from Hot (<span class="math inline">\(T_A\)</span>) to Cold (<span class="math inline">\(T_B\)</span>)</h2>
-<p>Let <span class="math inline">\(T_A &gt; T_B\)</span>. Heat leaves A (<span class="math inline">\(Q_A = -Q\)</span>) and enters B (<span class="math inline">\(Q_B = +Q\)</span>).</p>
-<p><span class="math display">\[\Delta S_{total} = \frac{-Q}{T_A} + \frac{Q}{T_B}\]</span> <span class="math display">\[\Delta S_{total} = Q \left( \frac{1}{T_B} - \frac{1}{T_A} \right)\]</span></p>
-<p>Since <span class="math inline">\(T_A &gt; T_B\)</span>, the term <span class="math inline">\((1/T_B)\)</span> is larger than <span class="math inline">\((1/T_A)\)</span>. The term in the parentheses is <strong>positive</strong>. <span class="math display">\[\Delta S_{total} &gt; 0\]</span> <strong>Conclusion:</strong> <span class="math inline">\(S_{gen} &gt; 0\)</span>. The process is <strong>Possible</strong> and Irreversible.</p>
-</section>
-<section id="scenario-2-heat-flows-from-cold-t_b-to-hot-t_a" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="scenario-2-heat-flows-from-cold-t_b-to-hot-t_a"><span class="header-section-number">4.2</span> Scenario 2: Heat flows from Cold (<span class="math inline">\(T_B\)</span>) to Hot (<span class="math inline">\(T_A\)</span>)</h2>
-<p>Let <span class="math inline">\(T_A &gt; T_B\)</span>. Assume heat leaves B (<span class="math inline">\(Q_B = -Q\)</span>) and enters A (<span class="math inline">\(Q_A = +Q\)</span>).</p>
-<p><span class="math display">\[\Delta S_{total} = \frac{Q}{T_A} - \frac{Q}{T_B}\]</span> <span class="math display">\[\Delta S_{total} = Q \left( \frac{1}{T_A} - \frac{1}{T_B} \right)\]</span></p>
-<p>Since <span class="math inline">\(T_A &gt; T_B\)</span>, <span class="math inline">\((1/T_A) &lt; (1/T_B)\)</span>. The term in parentheses is <strong>negative</strong>. <span class="math display">\[\Delta S_{total} &lt; 0\]</span> <strong>Conclusion:</strong> <span class="math inline">\(S_{gen} &lt; 0\)</span>. The process is <strong>Impossible</strong>.</p>
-<p>The math confirms our intuition: Heat flows spontaneously only from hot to cold.</p>
+<section id="step-2-apply-isentropic-efficiency-to-find-actual-t_2" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="step-2-apply-isentropic-efficiency-to-find-actual-t_2"><span class="header-section-number">1.2</span> Step 2: Apply Isentropic Efficiency to find Actual <span class="math inline">\(T_2\)</span></h2>
+<p>The isentropic efficiency for a compressor compares the ideal work to the actual work. Since the compressor is adiabatic (<span class="math inline">\(Q=0\)</span>), work is simply the change in enthalpy. For an ideal gas (<span class="math inline">\(dH = C_P dT\)</span>):</p>
+<p><span class="math display">\[\eta_{comp} = \frac{\dot{W}_{ideal}}{\dot{W}_{actual}} = \frac{H_{2}^\prime - H_1}{H_2 - H_1} = \frac{C_P(T_{2}^\prime - T_1)}{C_P(T_2 - T_1)}\]</span></p>
+<p><span class="math display">\[\eta_{comp} = \frac{T_{2}^\prime - T_1}{T_2 - T_1}\]</span></p>
+<p>Rearranging to solve for the actual outlet temperature <span class="math inline">\(T_2\)</span>:</p>
+<p><span class="math display">\[T_2 - T_1 = \frac{T_{2}^\prime - T_1}{\eta_{comp}}\]</span> <span class="math display">\[T_2 = T_1 + \frac{T_{2}^\prime - T_1}{0.80}\]</span></p>
+<p>Substituting values: <span class="math display">\[T_2 = 293.15 + \frac{464.3 - 293.15}{0.80}\]</span> <span class="math display">\[T_2 = 293.15 + \frac{171.15}{0.80}\]</span> <span class="math display">\[T_2 = 293.15 + 213.9 = \mathbf{507.1 \text{ K}} \quad (233.9^\circ\text{C})\]</span></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Note</span>Reality Check
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A subtle but crucial point</p>
-<p>You might be asking: “The Second Law defines <span class="math inline">\(dS = dQ_{rev}/T\)</span>. But the heat transfer between these blocks is clearly NOT reversible—it’s flowing across a temperature difference! Why are we allowed to use the actual heat transfer <span class="math inline">\(Q\)</span> in the entropy formula?” The answer relies on entropy being a state function.</p>
-<p>The real process (irreversible): Block A loses <span class="math inline">\(Q\)</span> to Block B. The process is messy and irreversible.</p>
-<p>The calculation (reversible path): To calculate <span class="math inline">\(\Delta S\)</span>, we mentally separate the blocks. We imagine we could place an infinite number of blocks between blocks A and B, each at a slightly different temperature <span class="math inline">\(T_A-dT, T_A-2dT, \cdots, T_B\)</span>, and transfer <span class="math inline">\(Q\)</span> through this chain of blocks in a reversible manner. The key point is that we can construct any reversible path we like to calculate <span class="math inline">\(\Delta S\)</span>, as long as it connects the same initial and final states.</p>
-<p>The Result: Since Block A lost the same amount of energy <span class="math inline">\(Q\)</span> at the same temperature <span class="math inline">\(T_A\)</span>, it ends up in the exact same final state as it did in the real process. Therefore, its entropy change is the same. We calculate the entropy change for Block A and Block B individually as if they were acting reversibly, then add them together to find the total entropy change of the universe. The “irreversibility” (entropy generation) shows up in the sum, not in the individual terms. Fortunately, we don’t have to construct these imaginary reversible paths in most cases. We can calculate <span class="math inline">\(\Delta S\)</span> directly from state properties (e.g.&nbsp;<span class="math inline">\(S(T)\)</span>) or from the actual heat transfer and temperature, as we did here. The key point is that the definition of entropy allows us to use reversible paths for calculation, even when the real process is irreversible.</p>
+<p>Notice that <span class="math inline">\(T_{actual} (507.1 \text{ K}) &gt; T_{isentropic} (464.3 \text{ K})\)</span>. This is always true for a compressor. Irreversibilities (friction, turbulence) generate entropy, which manifests as additional heating of the gas, requiring more work input to achieve the same pressure ratio.</p>
 </div>
 </div>
 </section>
+<section id="step-3-calculate-power-requirement" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="step-3-calculate-power-requirement"><span class="header-section-number">1.3</span> Step 3: Calculate Power Requirement</h2>
+<p>To find the power, we first need the molar flow rate from the Ideal Gas Law at the inlet:</p>
+<p><span class="math display">\[\dot{n} = \frac{P_1 \dot{V}_1}{R T_1} = \frac{(10^5 \text{ Pa})(1 \text{ m}^3/\text{s})}{(8.314 \text{ J/mol K})(293.15 \text{ K})} = 41.03 \text{ mol/s}\]</span></p>
+<p>Now, calculate the actual work (power): <span class="math display">\[\dot{W}_{actual} = \dot{n} C_P (T_2 - T_1)\]</span> <span class="math display">\[C_P = 3.5(8.314) = 29.1 \text{ J/mol K}\]</span></p>
+<p><span class="math display">\[\dot{W}_{actual} = (41.03 \text{ mol/s})(29.1 \text{ J/mol K})(507.1 - 293.15 \text{ K})\]</span> <span class="math display">\[\dot{W}_{actual} = 41.03 \cdot 29.1 \cdot 213.95 \approx 255,400 \text{ W}\]</span></p>
+<p><strong>Required Power:</strong> <span class="math inline">\(\mathbf{255.4 \text{ kW}}\)</span></p>
 </section>
-<section id="driving-forces-and-entropy-generation" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Driving Forces and Entropy Generation</h1>
-<p>We stated earlier that <span class="math inline">\(\Delta S = 0\)</span> for a reversible process. A reversible process is one where the “driving forces” (differences in <span class="math inline">\(T\)</span>, <span class="math inline">\(P\)</span>, etc.) are infinitesimal.</p>
-<p>Let’s look at the entropy generation equation for the blocks again: <span class="math display">\[\dot{S}_{gen} = \dot{Q} \left( \frac{1}{T_{cold}} - \frac{1}{T_{hot}} \right) = \dot{Q} \left( \frac{T_{hot} - T_{cold}}{T_{hot}T_{cold}} \right)\]</span></p>
-<p>Let’s assume the heat transfer rate is proportional to the temperature difference (Fourier’s Law): <span class="math inline">\(\dot{Q} = k(T_{hot} - T_{cold})\)</span>.</p>
-<p>Substitute this into the expression: <span class="math display">\[\dot{S}_{gen} = k(T_{hot} - T_{cold}) \left( \frac{T_{hot} - T_{cold}}{T_{hot}T_{cold}} \right)\]</span> <span class="math display">\[\dot{S}_{gen} = \frac{k (T_{hot} - T_{cold})^2}{T_{hot}T_{cold}}\]</span></p>
-<p>If we define the driving force as <span class="math inline">\(\Delta T = T_{hot} - T_{cold}\)</span>: <span class="math display">\[\dot{S}_{gen} \propto (\Delta T)^2\]</span></p>
 </section>
-<section id="the-takeaway" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> The Takeaway</h1>
-<p>Entropy generation (which represents lost work or inefficiency) scales with the <strong>square</strong> of the driving force.</p>
+<section id="example-3-quenching-a-workpiece" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Example 3: Quenching a Workpiece</h1>
+<p>A <span class="math inline">\(5 \text{ kg}\)</span> steel part at <span class="math inline">\(600^\circ\text{C}\)</span> is thrown into a <span class="math inline">\(100 \text{ kg}\)</span> oil bath at <span class="math inline">\(20^\circ\text{C}\)</span>. The tank is insulated. Calculate the total entropy change.</p>
+<ul>
+<li><span class="math inline">\(C_{steel} \approx 0.5 \text{ kJ/kg K}\)</span></li>
+<li><span class="math inline">\(C_{oil} \approx 2.5 \text{ kJ/kg K}\)</span></li>
+</ul>
+<section id="step-1-find-final-temperature" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="step-1-find-final-temperature"><span class="header-section-number">2.1</span> Step 1: Find Final Temperature</h2>
+<p>Energy balance on the <strong>composite system</strong> (closed, adiabatic, no work): <span class="math display">\[\Delta U_{steel} + \Delta U_{oil} = 0\]</span> <span class="math display">\[m_s C_s (T_f - T_{s,i}) + m_o C_o (T_f - T_{o,i}) = 0\]</span></p>
+<p><span class="math display">\[5(0.5)(T_f - 600) + 100(2.5)(T_f - 20) = 0\]</span> <em>(Note: We can use Celsius for <span class="math inline">\(\Delta T\)</span> in energy balances, but NOT for entropy changes when we use logs. When in doubt, however, you can never go wrong using absolute temperatures in Kelvin)</em></p>
+<p>Solving for <span class="math inline">\(T_f\)</span>: <span class="math display">\[2.5(T_f - 600) + 250(T_f - 20) = 0\]</span> <span class="math display">\[252.5 T_f = 1500 + 5000\]</span> <span class="math display">\[T_f \approx 25.7^\circ\text{C}\]</span></p>
+</section>
+<section id="step-2-entropy-change" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="step-2-entropy-change"><span class="header-section-number">2.2</span> Step 2: Entropy Change</h2>
+<p>We must treat the steel and oil as separate sub-systems changing state.</p>
+<ul>
+<li><p><span class="math inline">\(T_{s,i} = 873 \text{ K}\)</span></p></li>
+<li><p><span class="math inline">\(T_{o,i} = 293 \text{ K}\)</span></p></li>
+<li><p><span class="math inline">\(T_f = 298.8 \text{ K}\)</span></p></li>
+</ul>
+<p><strong>Steel (Cooling):</strong> Use the constant pressure formula for solids (and since <span class="math inline">\(C_s\)</span> is given per kg, we can treat it as constant): <span class="math display">\[\Delta S_{steel} = m_s C_s \ln\left(\frac{T_f}{T_{s,i}}\right) = 5(0.5) \ln\left(\frac{298.8}{873}\right) = -2.68 \text{ kJ/K}\]</span></p>
+<p><strong>Oil (Heating):</strong> Similarly, for the oil (constant <span class="math inline">\(C_o\)</span> and volume/pressure): <span class="math display">\[\Delta S_{oil} = m_o C_o \ln\left(\frac{T_f}{T_{o,i}}\right) = 100(2.5) \ln\left(\frac{298.8}{293}\right) = +4.90 \text{ kJ/K}\]</span></p>
+<p><strong>Total Entropy Generation:</strong> <span class="math display">\[S_{gen} = \Delta S_{total} = -2.68 + 4.90 = +2.22 \text{ kJ/K}\]</span></p>
+<p>The process is highly irreversible. The large temperature difference drives the heat transfer, generating significant entropy.</p>
+</section>
+</section>
+<section id="example-4-the-joule-thomson-expansion" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Example 4: The Joule-Thomson Expansion</h1>
+<div id="fig-JT-valve" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-JT-valve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/JT-valve.png" class="img-fluid figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-JT-valve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;1: Schematic of a throttling valve.
+</figcaption>
+</figure>
+</div>
+<p>Consider a fluid flowing through a throttling valve. The pipe is insulated.</p>
+<ul>
+<li><p><span class="math inline">\(\dot{Q} = 0\)</span></p></li>
+<li><p><span class="math inline">\(\dot{W}_s = 0\)</span></p></li>
+<li><p><span class="math inline">\(\Delta KE \approx 0, \Delta PE \approx 0\)</span></p></li>
+</ul>
+<section id="energy-balance" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="energy-balance"><span class="header-section-number">3.1</span> Energy Balance</h2>
+<p><span class="math display">\[\dot{m} (\hat{H}_{in} ) = \dot{m} (\hat{H}_{out})\]</span> <span class="math display">\[\hat{H}_{in} = \hat{H}_{out}\]</span></p>
+<p>The process is <strong>Isenthalpic</strong> (constant enthalpy).</p>
+</section>
+<section id="does-temperature-change" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="does-temperature-change"><span class="header-section-number">3.2</span> Does Temperature Change?</h2>
+<section id="case-a-ideal-gas" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="case-a-ideal-gas"><span class="header-section-number">3.2.1</span> Case A: Ideal Gas</h3>
+<p>For an ideal gas, enthalpy depends only on temperature (<span class="math inline">\(H = H(T)\)</span>). Therefore, if <span class="math inline">\(\hat{H}_{in} = \hat{H}_{out}\)</span>, then: <span class="math display">\[T_{in} = T_{out}\]</span> An ideal gas throttling process results in <strong>no temperature change</strong>.</p>
+<p><strong>Entropy Analysis of Throttling - Ideal Gas</strong> Finally, we can do an entropy analysis of throttling. Since the process is adiabatic and has no work, the only way to satisfy the Second Law is if entropy increases due to irreversibility. <span class="math display">\[\Delta S = S_{out} - S_{in}\]</span> Even if <span class="math inline">\(T\)</span> is constant (ideal gas): <span class="math display">\[\Delta S = -R \ln\left(\frac{P_{out}}{P_{in}}\right)\]</span> Since flow is always from High <span class="math inline">\(P\)</span> to Low <span class="math inline">\(P\)</span> (<span class="math inline">\(P_{out} &lt; P_{in}\)</span>), the term <span class="math inline">\(\ln(P_{out}/P_{in})\)</span> is negative. Therefore, <span class="math inline">\(\Delta S &gt; 0\)</span>.</p>
+<p>The process is irreversible, and entropy is generated due to the sudden expansion and associated turbulence and friction in the valve.</p>
+</section>
+<section id="case-b-real-gas" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="case-b-real-gas"><span class="header-section-number">3.2.2</span> Case B: Real Gas</h3>
+<p>For real substances, <span class="math inline">\(\hat{H}\)</span> depends on both <span class="math inline">\(T\)</span> and <span class="math inline">\(P\)</span>. We define the <strong>Joule-Thomson Coefficient</strong>: <span class="math display">\[\mu_{JT} = \left( \frac{\partial T}{\partial P} \right)_H\]</span></p>
+<ul>
+<li><p>If <span class="math inline">\(\mu_{JT} &gt; 0\)</span>: As pressure drops (<span class="math inline">\(dP &lt; 0\)</span>), temperature drops (<span class="math inline">\(dT &lt; 0\)</span>).</p></li>
+<li><p>If <span class="math inline">\(\mu_{JT} &lt; 0\)</span>: As Pressure drops, temperature rises.</p></li>
+<li><p>When <span class="math inline">\(\mu_{JT} = 0\)</span>: No temperature change (we call this the inversion point).</p></li>
+</ul>
+<p>Depending on conditions, real fluids can either cool or heat upon expansion through a valve. For many gases at room temperature, <span class="math inline">\(\mu_{JT} &gt; 0\)</span> and they cool upon expansion (e.g., nitrogen, oxygen). A good refrigerant will show a large temperature change upon throttling (i.e., large <span class="math inline">\(\mu_{JT}\)</span>). For some gases (e.g., helium, hydrogen), <span class="math inline">\(\mu_{JT} &lt; 0\)</span> at room temperature, so they heat up when throttled. This is related to whether the substance is dominated by attractive or repulsive intermolecular forces at the given conditions.</p>
+<p>We would need an equation of state or property tables to determine the actual temperature change for a real gas undergoing throttling. Here is how you would do it for steam, which is a common working fluid in power plants and often undergoes throttling in turbines and valves.</p>
+</section>
+<section id="case-c-steam" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="case-c-steam"><span class="header-section-number">3.2.3</span> Case C: Steam</h3>
+<p><strong>Problem Statement:</strong> Steam flows through an insulated throttle valve.</p>
+<ul>
+<li><p><strong>Inlet (State 1):</strong> <span class="math inline">\(P_1 = 400 \text{ bar}\)</span>, <span class="math inline">\(T_1 = 500^\circ\text{C}\)</span>.</p></li>
+<li><p><strong>Outlet (State 2):</strong> <span class="math inline">\(P_2 = 1 \text{ bar}\)</span>.</p></li>
+<li><p><strong>Flow Rate:</strong> <span class="math inline">\(\dot{m} = 1 \text{ kg/s}\)</span>.</p></li>
+</ul>
+<p><strong>Goal:</strong> Determine the final temperature <span class="math inline">\(T_2\)</span>.</p>
+<p><strong>Step 1: Energy Balance</strong> We know for a throttling process: <span class="math display">\[\Delta \hat{H} = 0 \implies \hat{H}_1 = \hat{H}_2\]</span></p>
+<p><strong>Step 2: Determine Inlet Enthalpy (<span class="math inline">\(\hat{H}_1\)</span>)</strong> From the steam tables (superheated steam) at <span class="math inline">\(P_1 = 400 \text{ bar}\)</span> and <span class="math inline">\(T_1 = 500^\circ\text{C}\)</span>:</p>
+<p><span class="math display">\[\hat{H}_1 = 2906.5 \text{ kJ/kg}\]</span></p>
+<p><em>(Note: Values may vary slightly depending on the specific steam table used).</em></p>
+<p><strong>Step 3: Determine Outlet Temperature (<span class="math inline">\(T_2\)</span>)</strong> We know two properties at the outlet:</p>
 <ol type="1">
-<li><strong>Large gradients</strong> (large <span class="math inline">\(\Delta T\)</span>) <span class="math inline">\(\rightarrow\)</span> High Entropy Generation <span class="math inline">\(\rightarrow\)</span> Highly Irreversible.</li>
-<li><strong>Small gradients</strong> (small <span class="math inline">\(\Delta T\)</span>) <span class="math inline">\(\rightarrow\)</span> Low Entropy Generation <span class="math inline">\(\rightarrow\)</span> Approaches Reversibility.</li>
+<li><p><strong>Pressure:</strong> <span class="math inline">\(P_2 = 1 \text{ bar}\)</span>.</p></li>
+<li><p><strong>Enthalpy:</strong> <span class="math inline">\(\hat{H}_2 = \hat{H}_1 = 2906.5 \text{ kJ/kg}\)</span>.</p></li>
 </ol>
-<p>This explains why, in our “Grains of Sand” piston example, we needed to make changes in small increments to keep the process reversible. Nature penalizes “rushing” (large driving forces) with large entropy generation.</p>
+<p>Go to the steam tables for <span class="math inline">\(P = 1 \text{ bar}\)</span> (<span class="math inline">\(T_{sat} \approx 99.6^\circ\text{C}\)</span>). Comparing <span class="math inline">\(\hat{H}_2\)</span> to saturation values:</p>
+<ul>
+<li><p><span class="math inline">\(\hat{H}_{liq} \approx 417 \text{ kJ/kg}\)</span></p></li>
+<li><p><span class="math inline">\(\hat{H}_{vap} \approx 2675 \text{ kJ/kg}\)</span></p></li>
+</ul>
+<p>Since <span class="math inline">\(\hat{H}_2 &gt; \hat{H}_{vap}\)</span>, the outlet state is <strong>superheated vapor</strong>.</p>
+<p>Looking at the superheated steam table for <span class="math inline">\(1 \text{ bar}\)</span>:</p>
+<ul>
+<li><p>At <span class="math inline">\(T = 200^\circ\text{C}: \hat{H} = 2875.5 \text{ kJ/kg}\)</span></p></li>
+<li><p>At <span class="math inline">\(T = 250^\circ\text{C}: \hat{H} = 2974.5 \text{ kJ/kg}\)</span></p></li>
+</ul>
+<p>Our target enthalpy (<span class="math inline">\(2906.5\)</span>) lies between these two temperatures. We linearly interpolate:</p>
+<p><span class="math display">\[T_2 = T_{low} + (T_{high} - T_{low}) \frac{\hat{H}_2 - \hat{H}_{low}}{\hat{H}_{high} - \hat{H}_{low}}\]</span></p>
+<p><span class="math display">\[T_2 = 200 + (250 - 200) \frac{2906.5 - 2875.5}{2974.5 - 2875.5}\]</span></p>
+<p><span class="math display">\[T_2 = 200 + 50 \left( \frac{31.0}{99.0} \right)\]</span> <span class="math display">\[T_2 = 200 + 50 (0.3131)\]</span> <span class="math display">\[T_2 = 200 + 15.66\]</span> <span class="math display">\[T_2 = \mathbf{215.7^\circ\text{C}}\]</span></p>
+<p>There is a significant drop in temperature from <span class="math inline">\(500^\circ\text{C}\)</span> to <span class="math inline">\(215.7^\circ\text{C}\)</span> just by expanding through the valve, even though no heat was removed. This is the <strong>Joule-Thomson effect</strong> for a real gas where attractive intermolecular forces dominate (positive <span class="math inline">\(\mu_{JT}\)</span>). Work was done <em>internally</em> to separate the molecules against these attractive forces, consuming internal energy and lowering the temperature.</p>
+<p>We can compute the entropy generation as well.</p>
+<p>From the steam tables:</p>
+<ul>
+<li><p><span class="math inline">\(S_1 = 5.4794 \text{ kJ/kg·K}\)</span> (at <span class="math inline">\(P_1 = 400 \text{ bar}\)</span>, <span class="math inline">\(T_1 = 500^\circ\text{C}\)</span>)</p></li>
+<li><p><span class="math inline">\(S_2 = 7.8979 \text{ kJ/kg·K}\)</span> (at <span class="math inline">\(P_2 = 1 \text{ bar}\)</span>, <span class="math inline">\(T_2 = 215.7^\circ\text{C}\)</span>)</p></li>
+</ul>
+<p>The entropy generation is: <span class="math display">\[\Delta S_{gen} = S_2 - S_1 = 7.8979 - 5.4794 = \mathbf{2.4185 \text{ kJ/kg·K}}\]</span></p>
+<p>This positive entropy generation confirms that the throttling process is irreversible.</p>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->

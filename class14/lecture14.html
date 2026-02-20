@@ -180,6 +180,10 @@ window.Quarto = {
     <a class="dropdown-item" href="../class14/lecture14.html">
  <span class="dropdown-text">Lecture 14 - Entropy Changes for Open Systems</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../class15/lecture15.html">
+ <span class="dropdown-text">Lecture 15 - Open System Entropy Balance and Efficiency</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -239,27 +243,6 @@ window.Quarto = {
   <li><a href="#step-1-first-law-energy-balance" id="toc-step-1-first-law-energy-balance" class="nav-link" data-scroll-target="#step-1-first-law-energy-balance"><span class="header-section-number">3.1</span> Step 1: First Law (Energy Balance)</a></li>
   <li><a href="#step-2-second-law-entropy-generation" id="toc-step-2-second-law-entropy-generation" class="nav-link" data-scroll-target="#step-2-second-law-entropy-generation"><span class="header-section-number">3.2</span> Step 2: Second Law (Entropy Generation)</a></li>
   <li><a href="#isentropic-efficiency" id="toc-isentropic-efficiency" class="nav-link" data-scroll-target="#isentropic-efficiency"><span class="header-section-number">3.3</span> Isentropic Efficiency</a></li>
-  </ul></li>
-  <li><a href="#example-2-adiabatic-compressor-with-isentropic-efficiency" id="toc-example-2-adiabatic-compressor-with-isentropic-efficiency" class="nav-link" data-scroll-target="#example-2-adiabatic-compressor-with-isentropic-efficiency"><span class="header-section-number">4</span> Example 2: Adiabatic Compressor with Isentropic Efficiency</a>
-  <ul class="collapse">
-  <li><a href="#step-1-determine-the-isentropic-outlet-temperature-t_2prime" id="toc-step-1-determine-the-isentropic-outlet-temperature-t_2prime" class="nav-link" data-scroll-target="#step-1-determine-the-isentropic-outlet-temperature-t_2prime"><span class="header-section-number">4.1</span> Step 1: Determine the Isentropic Outlet Temperature (<span class="math inline">\(T_{2}^\prime\)</span>)</a></li>
-  <li><a href="#step-2-apply-isentropic-efficiency-to-find-actual-t_2" id="toc-step-2-apply-isentropic-efficiency-to-find-actual-t_2" class="nav-link" data-scroll-target="#step-2-apply-isentropic-efficiency-to-find-actual-t_2"><span class="header-section-number">4.2</span> Step 2: Apply Isentropic Efficiency to find Actual <span class="math inline">\(T_2\)</span></a></li>
-  <li><a href="#step-3-calculate-power-requirement" id="toc-step-3-calculate-power-requirement" class="nav-link" data-scroll-target="#step-3-calculate-power-requirement"><span class="header-section-number">4.3</span> Step 3: Calculate Power Requirement</a></li>
-  </ul></li>
-  <li><a href="#example-3-quenching-a-workpiece" id="toc-example-3-quenching-a-workpiece" class="nav-link" data-scroll-target="#example-3-quenching-a-workpiece"><span class="header-section-number">5</span> Example 3: Quenching a Workpiece</a>
-  <ul class="collapse">
-  <li><a href="#step-1-find-final-temperature" id="toc-step-1-find-final-temperature" class="nav-link" data-scroll-target="#step-1-find-final-temperature"><span class="header-section-number">5.1</span> Step 1: Find Final Temperature</a></li>
-  <li><a href="#step-2-entropy-change" id="toc-step-2-entropy-change" class="nav-link" data-scroll-target="#step-2-entropy-change"><span class="header-section-number">5.2</span> Step 2: Entropy Change</a></li>
-  </ul></li>
-  <li><a href="#example-4-the-joule-thomson-expansion" id="toc-example-4-the-joule-thomson-expansion" class="nav-link" data-scroll-target="#example-4-the-joule-thomson-expansion"><span class="header-section-number">6</span> Example 4: The Joule-Thomson Expansion</a>
-  <ul class="collapse">
-  <li><a href="#energy-balance" id="toc-energy-balance" class="nav-link" data-scroll-target="#energy-balance"><span class="header-section-number">6.1</span> Energy Balance</a></li>
-  <li><a href="#does-temperature-change" id="toc-does-temperature-change" class="nav-link" data-scroll-target="#does-temperature-change"><span class="header-section-number">6.2</span> Does Temperature Change?</a>
-  <ul class="collapse">
-  <li><a href="#case-a-ideal-gas" id="toc-case-a-ideal-gas" class="nav-link" data-scroll-target="#case-a-ideal-gas"><span class="header-section-number">6.2.1</span> Case A: Ideal Gas</a></li>
-  <li><a href="#case-b-real-gas" id="toc-case-b-real-gas" class="nav-link" data-scroll-target="#case-b-real-gas"><span class="header-section-number">6.2.2</span> Case B: Real Gas</a></li>
-  <li><a href="#case-c-steam" id="toc-case-c-steam" class="nav-link" data-scroll-target="#case-c-steam"><span class="header-section-number">6.2.3</span> Case C: Steam</a></li>
-  </ul></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture14.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -399,169 +382,8 @@ Fig.&nbsp;1: System we apply the open system entropy balance to.
 <p>We can compare the <em>actual</em> work to the <em>ideal</em> (reversible) work. We call this the isentropic efficiency of the compressor: <span class="math display">\[\eta_{comp} = \frac{\dot{W}_{ideal}}{\dot{W}_{actual}}\]</span> This will be less than 1 for a real compressor due to irreversibilities. It is often given as a percentage and is somewhere between 70-90% for typical compressors.</p>
 <p>If the process were reversible (<span class="math inline">\(\Delta S = 0\)</span>), the outlet temperature <span class="math inline">\(T_{2}^\prime\)</span> would be (from <a href="#eq-S_ideal_TP" class="quarto-xref">Eq.&nbsp;3</a> with <span class="math inline">\(\Delta S = 0\)</span>): <span class="math display">\[T_{2}^\prime = T_1 \left(\frac{P_2}{P_1}\right)^{R/C_P} = 290 (10)^{2/7} \approx 560 \text{ K}\]</span></p>
 <p>The actual compressor heats the gas to <span class="math inline">\(600 \text{ K}\)</span>, requiring more work than the ideal case (<span class="math inline">\(560 \text{ K}\)</span>). The irreversibility shows up as a higher outlet temperature and more work input.</p>
-</section>
-</section>
-<section id="example-2-adiabatic-compressor-with-isentropic-efficiency" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Example 2: Adiabatic Compressor with Isentropic Efficiency</h1>
-<p><strong>Problem Statement:</strong> Air enters an adiabatic compressor at <span class="math inline">\(T_1 = 20^\circ\text{C}\)</span> and <span class="math inline">\(P_1 = 1 \text{ bar}\)</span>. It is compressed to a final pressure of <span class="math inline">\(P_2 = 5 \text{ bar}\)</span>. The compressor has an isentropic efficiency of <span class="math inline">\(\eta_{comp} = 80\%\)</span>. The volumetric flow rate at the inlet is <span class="math inline">\(\dot{V}_1 = 1 \text{ m}^3/\text{s}\)</span>. Assume air is an ideal gas with <span class="math inline">\(C_P = \frac{7}{2}R\)</span>.</p>
-<p><strong>Goal:</strong> Determine the actual outlet temperature <span class="math inline">\(T_2\)</span> and the required power <span class="math inline">\(\dot{W}_s\)</span>.</p>
-<section id="step-1-determine-the-isentropic-outlet-temperature-t_2prime" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="step-1-determine-the-isentropic-outlet-temperature-t_2prime"><span class="header-section-number">4.1</span> Step 1: Determine the Isentropic Outlet Temperature (<span class="math inline">\(T_{2}^\prime\)</span>)</h2>
-<p>First, we analyze the “ideal” (reversible, adiabatic) case. For an ideal gas undergoing an isentropic process (<span class="math inline">\(\Delta S = 0\)</span>), the temperature and pressure are related by:</p>
-<p><span class="math display">\[\frac{T_{2}^\prime}{T_1} = \left( \frac{P_2}{P_1} \right)^{R/C_P}\]</span></p>
-<p>Given:</p>
-<ul>
-<li><p><span class="math inline">\(T_1 = 20^\circ\text{C} = 293.15 \text{ K}\)</span></p></li>
-<li><p><span class="math inline">\(P_1 = 1 \text{ bar}, P_2 = 5 \text{ bar}\)</span></p></li>
-<li><p><span class="math inline">\(C_P = 3.5 R \implies \frac{R}{C_P} = \frac{1}{3.5} \approx 0.2857\)</span></p></li>
-</ul>
-<p><span class="math display">\[T_{2}^\prime = 293.15 \text{ K} \left( \frac{5}{1} \right)^{0.2857}\]</span> <span class="math display">\[T_{2}^\prime = 293.15 (1.5838) = 464.3 \text{ K}\]</span></p>
-</section>
-<section id="step-2-apply-isentropic-efficiency-to-find-actual-t_2" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="step-2-apply-isentropic-efficiency-to-find-actual-t_2"><span class="header-section-number">4.2</span> Step 2: Apply Isentropic Efficiency to find Actual <span class="math inline">\(T_2\)</span></h2>
-<p>The isentropic efficiency for a compressor compares the ideal work to the actual work. Since the compressor is adiabatic (<span class="math inline">\(Q=0\)</span>), work is simply the change in enthalpy. For an ideal gas (<span class="math inline">\(dH = C_P dT\)</span>):</p>
-<p><span class="math display">\[\eta_{comp} = \frac{\dot{W}_{ideal}}{\dot{W}_{actual}} = \frac{H_{2}^\prime - H_1}{H_2 - H_1} = \frac{C_P(T_{2}^\prime - T_1)}{C_P(T_2 - T_1)}\]</span></p>
-<p><span class="math display">\[\eta_{comp} = \frac{T_{2}^\prime - T_1}{T_2 - T_1}\]</span></p>
-<p>Rearranging to solve for the actual outlet temperature <span class="math inline">\(T_2\)</span>:</p>
-<p><span class="math display">\[T_2 - T_1 = \frac{T_{2}^\prime - T_1}{\eta_{comp}}\]</span> <span class="math display">\[T_2 = T_1 + \frac{T_{2}^\prime - T_1}{0.80}\]</span></p>
-<p>Substituting values: <span class="math display">\[T_2 = 293.15 + \frac{464.3 - 293.15}{0.80}\]</span> <span class="math display">\[T_2 = 293.15 + \frac{171.15}{0.80}\]</span> <span class="math display">\[T_2 = 293.15 + 213.9 = \mathbf{507.1 \text{ K}} \quad (233.9^\circ\text{C})\]</span></p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Reality Check
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Notice that <span class="math inline">\(T_{actual} (507.1 \text{ K}) &gt; T_{isentropic} (464.3 \text{ K})\)</span>. This is always true for a compressor. Irreversibilities (friction, turbulence) generate entropy, which manifests as additional heating of the gas, requiring more work input to achieve the same pressure ratio.</p>
-</div>
-</div>
-</section>
-<section id="step-3-calculate-power-requirement" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="step-3-calculate-power-requirement"><span class="header-section-number">4.3</span> Step 3: Calculate Power Requirement</h2>
-<p>To find the power, we first need the molar flow rate from the Ideal Gas Law at the inlet:</p>
-<p><span class="math display">\[\dot{n} = \frac{P_1 \dot{V}_1}{R T_1} = \frac{(10^5 \text{ Pa})(1 \text{ m}^3/\text{s})}{(8.314 \text{ J/mol K})(293.15 \text{ K})} = 41.03 \text{ mol/s}\]</span></p>
-<p>Now, calculate the actual work (power): <span class="math display">\[\dot{W}_{actual} = \dot{n} C_P (T_2 - T_1)\]</span> <span class="math display">\[C_P = 3.5(8.314) = 29.1 \text{ J/mol K}\]</span></p>
-<p><span class="math display">\[\dot{W}_{actual} = (41.03 \text{ mol/s})(29.1 \text{ J/mol K})(507.1 - 293.15 \text{ K})\]</span> <span class="math display">\[\dot{W}_{actual} = 41.03 \cdot 29.1 \cdot 213.95 \approx 255,400 \text{ W}\]</span></p>
-<p><strong>Required Power:</strong> <span class="math inline">\(\mathbf{255.4 \text{ kW}}\)</span></p>
-</section>
-</section>
-<section id="example-3-quenching-a-workpiece" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Example 3: Quenching a Workpiece</h1>
-<p>A <span class="math inline">\(5 \text{ kg}\)</span> steel part at <span class="math inline">\(600^\circ\text{C}\)</span> is thrown into a <span class="math inline">\(100 \text{ kg}\)</span> oil bath at <span class="math inline">\(20^\circ\text{C}\)</span>. The tank is insulated. Calculate the total entropy change.</p>
-<ul>
-<li><span class="math inline">\(C_{steel} \approx 0.5 \text{ kJ/kg K}\)</span></li>
-<li><span class="math inline">\(C_{oil} \approx 2.5 \text{ kJ/kg K}\)</span></li>
-</ul>
-<section id="step-1-find-final-temperature" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="step-1-find-final-temperature"><span class="header-section-number">5.1</span> Step 1: Find Final Temperature</h2>
-<p>Energy balance on the <strong>composite system</strong> (closed, adiabatic, no work): <span class="math display">\[\Delta U_{steel} + \Delta U_{oil} = 0\]</span> <span class="math display">\[m_s C_s (T_f - T_{s,i}) + m_o C_o (T_f - T_{o,i}) = 0\]</span></p>
-<p><span class="math display">\[5(0.5)(T_f - 600) + 100(2.5)(T_f - 20) = 0\]</span> <em>(Note: We can use Celsius for <span class="math inline">\(\Delta T\)</span> in energy balances, but NOT for entropy changes when we use logs. When in doubt, however, you can never go wrong using absolute temperatures in Kelvin)</em></p>
-<p>Solving for <span class="math inline">\(T_f\)</span>: <span class="math display">\[2.5(T_f - 600) + 250(T_f - 20) = 0\]</span> <span class="math display">\[252.5 T_f = 1500 + 5000\]</span> <span class="math display">\[T_f \approx 25.7^\circ\text{C}\]</span></p>
-</section>
-<section id="step-2-entropy-change" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="step-2-entropy-change"><span class="header-section-number">5.2</span> Step 2: Entropy Change</h2>
-<p>We must treat the steel and oil as separate sub-systems changing state.</p>
-<ul>
-<li><p><span class="math inline">\(T_{s,i} = 873 \text{ K}\)</span></p></li>
-<li><p><span class="math inline">\(T_{o,i} = 293 \text{ K}\)</span></p></li>
-<li><p><span class="math inline">\(T_f = 298.8 \text{ K}\)</span></p></li>
-</ul>
-<p><strong>Steel (Cooling):</strong> Use the constant pressure formula for solids (and since <span class="math inline">\(C_s\)</span> is given per kg, we can treat it as constant): <span class="math display">\[\Delta S_{steel} = m_s C_s \ln\left(\frac{T_f}{T_{s,i}}\right) = 5(0.5) \ln\left(\frac{298.8}{873}\right) = -2.68 \text{ kJ/K}\]</span></p>
-<p><strong>Oil (Heating):</strong> Similarly, for the oil (constant <span class="math inline">\(C_o\)</span> and volume/pressure): <span class="math display">\[\Delta S_{oil} = m_o C_o \ln\left(\frac{T_f}{T_{o,i}}\right) = 100(2.5) \ln\left(\frac{298.8}{293}\right) = +4.90 \text{ kJ/K}\]</span></p>
-<p><strong>Total Entropy Generation:</strong> <span class="math display">\[S_{gen} = \Delta S_{total} = -2.68 + 4.90 = +2.22 \text{ kJ/K}\]</span></p>
-<p>The process is highly irreversible. The large temperature difference drives the heat transfer, generating significant entropy.</p>
-</section>
-</section>
-<section id="example-4-the-joule-thomson-expansion" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Example 4: The Joule-Thomson Expansion</h1>
-<div id="fig-JT-valve" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-JT-valve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/JT-valve.png" class="img-fluid figure-img" style="width:40.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-JT-valve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig.&nbsp;2: Schematic of a throttling valve.
-</figcaption>
-</figure>
-</div>
-<p>Consider a fluid flowing through a throttling valve. The pipe is insulated.</p>
-<ul>
-<li><p><span class="math inline">\(\dot{Q} = 0\)</span></p></li>
-<li><p><span class="math inline">\(\dot{W}_s = 0\)</span></p></li>
-<li><p><span class="math inline">\(\Delta KE \approx 0, \Delta PE \approx 0\)</span></p></li>
-</ul>
-<section id="energy-balance" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="energy-balance"><span class="header-section-number">6.1</span> Energy Balance</h2>
-<p><span class="math display">\[\dot{m} (\hat{H}_{in} ) = \dot{m} (\hat{H}_{out})\]</span> <span class="math display">\[\hat{H}_{in} = \hat{H}_{out}\]</span></p>
-<p>The process is <strong>Isenthalpic</strong> (constant enthalpy).</p>
-</section>
-<section id="does-temperature-change" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="does-temperature-change"><span class="header-section-number">6.2</span> Does Temperature Change?</h2>
-<section id="case-a-ideal-gas" class="level3" data-number="6.2.1">
-<h3 data-number="6.2.1" class="anchored" data-anchor-id="case-a-ideal-gas"><span class="header-section-number">6.2.1</span> Case A: Ideal Gas</h3>
-<p>For an ideal gas, enthalpy depends only on temperature (<span class="math inline">\(H = H(T)\)</span>). Therefore, if <span class="math inline">\(\hat{H}_{in} = \hat{H}_{out}\)</span>, then: <span class="math display">\[T_{in} = T_{out}\]</span> An ideal gas throttling process results in <strong>no temperature change</strong>.</p>
-<p><strong>Entropy Analysis of Throttling - Ideal Gas</strong> Finally, we can do an entropy analysis of throttling. Since the process is adiabatic and has no work, the only way to satisfy the Second Law is if entropy increases due to irreversibility. <span class="math display">\[\Delta S = S_{out} - S_{in}\]</span> Even if <span class="math inline">\(T\)</span> is constant (ideal gas): <span class="math display">\[\Delta S = -R \ln\left(\frac{P_{out}}{P_{in}}\right)\]</span> Since flow is always from High <span class="math inline">\(P\)</span> to Low <span class="math inline">\(P\)</span> (<span class="math inline">\(P_{out} &lt; P_{in}\)</span>), the term <span class="math inline">\(\ln(P_{out}/P_{in})\)</span> is negative. Therefore, <span class="math inline">\(\Delta S &gt; 0\)</span>.</p>
-<p>The process is irreversible, and entropy is generated due to the sudden expansion and associated turbulence and friction in the valve.</p>
-</section>
-<section id="case-b-real-gas" class="level3" data-number="6.2.2">
-<h3 data-number="6.2.2" class="anchored" data-anchor-id="case-b-real-gas"><span class="header-section-number">6.2.2</span> Case B: Real Gas</h3>
-<p>For real substances, <span class="math inline">\(\hat{H}\)</span> depends on both <span class="math inline">\(T\)</span> and <span class="math inline">\(P\)</span>. We define the <strong>Joule-Thomson Coefficient</strong>: <span class="math display">\[\mu_{JT} = \left( \frac{\partial T}{\partial P} \right)_H\]</span></p>
-<ul>
-<li><p>If <span class="math inline">\(\mu_{JT} &gt; 0\)</span>: As pressure drops (<span class="math inline">\(dP &lt; 0\)</span>), temperature drops (<span class="math inline">\(dT &lt; 0\)</span>).</p></li>
-<li><p>If <span class="math inline">\(\mu_{JT} &lt; 0\)</span>: As Pressure drops, temperature rises.</p></li>
-<li><p>When <span class="math inline">\(\mu_{JT} = 0\)</span>: No temperature change (we call this the inversion point).</p></li>
-</ul>
-<p>Depending on conditions, real fluids can either cool or heat upon expansion through a valve. For many gases at room temperature, <span class="math inline">\(\mu_{JT} &gt; 0\)</span> and they cool upon expansion (e.g., nitrogen, oxygen). A good refrigerant will show a large temperature change upon throttling (i.e., large <span class="math inline">\(\mu_{JT}\)</span>). For some gases (e.g., helium, hydrogen), <span class="math inline">\(\mu_{JT} &lt; 0\)</span> at room temperature, so they heat up when throttled. This is related to whether the substance is dominated by attractive or repulsive intermolecular forces at the given conditions.</p>
-<p>We would need an equation of state or property tables to determine the actual temperature change for a real gas undergoing throttling. Here is how you would do it for steam, which is a common working fluid in power plants and often undergoes throttling in turbines and valves.</p>
-</section>
-<section id="case-c-steam" class="level3" data-number="6.2.3">
-<h3 data-number="6.2.3" class="anchored" data-anchor-id="case-c-steam"><span class="header-section-number">6.2.3</span> Case C: Steam</h3>
-<p><strong>Problem Statement:</strong> Steam flows through an insulated throttle valve.</p>
-<ul>
-<li><p><strong>Inlet (State 1):</strong> <span class="math inline">\(P_1 = 400 \text{ bar}\)</span>, <span class="math inline">\(T_1 = 500^\circ\text{C}\)</span>.</p></li>
-<li><p><strong>Outlet (State 2):</strong> <span class="math inline">\(P_2 = 1 \text{ bar}\)</span>.</p></li>
-<li><p><strong>Flow Rate:</strong> <span class="math inline">\(\dot{m} = 1 \text{ kg/s}\)</span>.</p></li>
-</ul>
-<p><strong>Goal:</strong> Determine the final temperature <span class="math inline">\(T_2\)</span>.</p>
-<p><strong>Step 1: Energy Balance</strong> We know for a throttling process: <span class="math display">\[\Delta \hat{H} = 0 \implies \hat{H}_1 = \hat{H}_2\]</span></p>
-<p><strong>Step 2: Determine Inlet Enthalpy (<span class="math inline">\(\hat{H}_1\)</span>)</strong> From the steam tables (superheated steam) at <span class="math inline">\(P_1 = 400 \text{ bar}\)</span> and <span class="math inline">\(T_1 = 500^\circ\text{C}\)</span>:</p>
-<p><span class="math display">\[\hat{H}_1 = 2906.5 \text{ kJ/kg}\]</span></p>
-<p><em>(Note: Values may vary slightly depending on the specific steam table used).</em></p>
-<p><strong>Step 3: Determine Outlet Temperature (<span class="math inline">\(T_2\)</span>)</strong> We know two properties at the outlet:</p>
-<ol type="1">
-<li><p><strong>Pressure:</strong> <span class="math inline">\(P_2 = 1 \text{ bar}\)</span>.</p></li>
-<li><p><strong>Enthalpy:</strong> <span class="math inline">\(\hat{H}_2 = \hat{H}_1 = 2906.5 \text{ kJ/kg}\)</span>.</p></li>
-</ol>
-<p>Go to the steam tables for <span class="math inline">\(P = 1 \text{ bar}\)</span> (<span class="math inline">\(T_{sat} \approx 99.6^\circ\text{C}\)</span>). Comparing <span class="math inline">\(\hat{H}_2\)</span> to saturation values:</p>
-<ul>
-<li><p><span class="math inline">\(\hat{H}_{liq} \approx 417 \text{ kJ/kg}\)</span></p></li>
-<li><p><span class="math inline">\(\hat{H}_{vap} \approx 2675 \text{ kJ/kg}\)</span></p></li>
-</ul>
-<p>Since <span class="math inline">\(\hat{H}_2 &gt; \hat{H}_{vap}\)</span>, the outlet state is <strong>superheated vapor</strong>.</p>
-<p>Looking at the superheated steam table for <span class="math inline">\(1 \text{ bar}\)</span>:</p>
-<ul>
-<li><p>At <span class="math inline">\(T = 200^\circ\text{C}: \hat{H} = 2875.5 \text{ kJ/kg}\)</span></p></li>
-<li><p>At <span class="math inline">\(T = 250^\circ\text{C}: \hat{H} = 2974.5 \text{ kJ/kg}\)</span></p></li>
-</ul>
-<p>Our target enthalpy (<span class="math inline">\(2906.5\)</span>) lies between these two temperatures. We linearly interpolate:</p>
-<p><span class="math display">\[T_2 = T_{low} + (T_{high} - T_{low}) \frac{\hat{H}_2 - \hat{H}_{low}}{\hat{H}_{high} - \hat{H}_{low}}\]</span></p>
-<p><span class="math display">\[T_2 = 200 + (250 - 200) \frac{2906.5 - 2875.5}{2974.5 - 2875.5}\]</span></p>
-<p><span class="math display">\[T_2 = 200 + 50 \left( \frac{31.0}{99.0} \right)\]</span> <span class="math display">\[T_2 = 200 + 50 (0.3131)\]</span> <span class="math display">\[T_2 = 200 + 15.66\]</span> <span class="math display">\[T_2 = \mathbf{215.7^\circ\text{C}}\]</span></p>
-<p>There is a significant drop in temperature from <span class="math inline">\(500^\circ\text{C}\)</span> to <span class="math inline">\(215.7^\circ\text{C}\)</span> just by expanding through the valve, even though no heat was removed. This is the <strong>Joule-Thomson effect</strong> for a real gas where attractive intermolecular forces dominate (positive <span class="math inline">\(\mu_{JT}\)</span>). Work was done <em>internally</em> to separate the molecules against these attractive forces, consuming internal energy and lowering the temperature.</p>
-<p>We can compute the entropy generation as well.</p>
-<p>From the steam tables:</p>
-<ul>
-<li><p><span class="math inline">\(S_1 = 5.4794 \text{ kJ/kg·K}\)</span> (at <span class="math inline">\(P_1 = 400 \text{ bar}\)</span>, <span class="math inline">\(T_1 = 500^\circ\text{C}\)</span>)</p></li>
-<li><p><span class="math inline">\(S_2 = 7.8979 \text{ kJ/kg·K}\)</span> (at <span class="math inline">\(P_2 = 1 \text{ bar}\)</span>, <span class="math inline">\(T_2 = 215.7^\circ\text{C}\)</span>)</p></li>
-</ul>
-<p>The entropy generation is: <span class="math display">\[\Delta S_{gen} = S_2 - S_1 = 7.8979 - 5.4794 = \mathbf{2.4185 \text{ kJ/kg·K}}\]</span></p>
-<p>This positive entropy generation confirms that the throttling process is irreversible.</p>
 
 
-</section>
 </section>
 </section>
 
