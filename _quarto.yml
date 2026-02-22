@@ -57,6 +57,8 @@ website:
             text: L7 VDW loop Demo
           - href: class07/vdw-TP.ipynb
             text: L7 VDW TP Demo
+          - href: class14/Quenching_entropy.ipynb
+            text: L14 Quenching Entropy Demo 
            
           # Add more notebooks here as you create them:  
           #- href: class03/lecture03_example.ipynb

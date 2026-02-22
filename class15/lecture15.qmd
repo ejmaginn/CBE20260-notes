@@ -14,7 +14,7 @@ execute:
 ---
 Last class, we applied the open system entropy balance to a compressor with given inlet and exit conditions. We found that the actual exit temperature was higher than the ideal (isentropic) case, and we calculated the power requirement for the compressor along with the entropy generation. Now, we show how to compute the outlet conditions for a compressor with a given isentropic efficiency. We also apply the  entropy balance to a few other examples, including quenching a hot workpiece (a closed composite system) and the Joule-Thomson expansion of steam through a valve.
 
-# Example 2: Adiabatic Compressor with Isentropic Efficiency
+# Example: Adiabatic Compressor with Isentropic Efficiency
 
 **Problem Statement:**
 Air enters an adiabatic compressor at $T_1 = 20^\circ\text{C}$ and $P_1 = 1 \text{ bar}$. It is compressed to a final pressure of $P_2 = 5 \text{ bar}$. The compressor has an isentropic efficiency of $\eta_{comp} = 80\%$. The volumetric flow rate at the inlet is $\dot{V}_1 = 1 \text{ m}^3/\text{s}$.
@@ -76,51 +76,8 @@ $$\dot{W}_{actual} = 41.03 \cdot 29.1 \cdot 213.95 \approx 255,400 \text{ W}$$
 **Required Power:** $\mathbf{255.4 \text{ kW}}$
 
 
-# Example 3: Quenching a Workpiece
 
-A $5 \text{ kg}$ steel part at $600^\circ\text{C}$ is thrown into a $100 \text{ kg}$ oil bath at $20^\circ\text{C}$. The tank is insulated. Calculate the total entropy change.
-
-* $C_{steel} \approx 0.5 \text{ kJ/kg K}$
-* $C_{oil} \approx 2.5 \text{ kJ/kg K}$
-
-
-
-## Step 1: Find Final Temperature
-Energy balance on the **composite system** (closed, adiabatic, no work):
-$$\Delta U_{steel} + \Delta U_{oil} = 0$$
-$$m_s C_s (T_f - T_{s,i}) + m_o C_o (T_f - T_{o,i}) = 0$$
-
-$$5(0.5)(T_f - 600) + 100(2.5)(T_f - 20) = 0$$
-*(Note: We can use Celsius for $\Delta T$ in energy balances, but NOT for entropy changes when we use logs. When in doubt, however, you can never go wrong using absolute temperatures in Kelvin)*
-
-Solving for $T_f$:
-$$2.5(T_f - 600) + 250(T_f - 20) = 0$$
-$$252.5 T_f = 1500 + 5000$$
-$$T_f \approx 25.7^\circ\text{C}$$
-
-## Step 2: Entropy Change
-We must treat the steel and oil as separate sub-systems changing state.
-
-* $T_{s,i} = 873 \text{ K}$
-
-* $T_{o,i} = 293 \text{ K}$
-
-* $T_f = 298.8 \text{ K}$
-
-**Steel (Cooling):**
-Use the constant pressure formula for solids (and since $C_s$ is given per kg, we can treat it as constant):
-$$\Delta S_{steel} = m_s C_s \ln\left(\frac{T_f}{T_{s,i}}\right) = 5(0.5) \ln\left(\frac{298.8}{873}\right) = -2.68 \text{ kJ/K}$$
-
-**Oil (Heating):**
-Similarly, for the oil (constant $C_o$ and volume/pressure):
-$$\Delta S_{oil} = m_o C_o \ln\left(\frac{T_f}{T_{o,i}}\right) = 100(2.5) \ln\left(\frac{298.8}{293}\right) = +4.90 \text{ kJ/K}$$
-
-**Total Entropy Generation:**
-$$S_{gen} = \Delta S_{total} = -2.68 + 4.90 = +2.22 \text{ kJ/K}$$
-
-The process is highly irreversible. The large temperature difference drives the heat transfer, generating significant entropy.
-
-# Example 4: The Joule-Thomson Expansion
+# Example: The Joule-Thomson Expansion
 
 ![Schematic of a throttling valve.](images/JT-valve.png){#fig-JT-valve width=40%}
 
