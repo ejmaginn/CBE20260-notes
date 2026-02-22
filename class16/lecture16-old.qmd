@@ -1,0 +1,167 @@
+---
+title: "Lecture 16: Heat Engines and the Second Law"
+subtitle: "CBE 20260 / Thermodynamics I"
+author: "Edward Maginn"
+format:
+  html:
+    toc: true
+    number-sections: true
+  pdf:
+    toc: true
+    number-sections: true
+execute:
+  echo: false
+---
+
+# Introduction: Heat vs. Work
+
+So far, we have covered energy and entropy balances for various pieces of process equipment (pumps, compressors, turbines, etc.). Now we want to "put it all together" to produce **Work**.
+
+Why focus on Work?
+While Heat is useful (warming our homes), **Work** is especially valuable because it is an organized form of energy transfer. We use it to move things (cars, planes), generate electricity, and drive chemical processes.
+
+There is a fundamental asymmetry between heat and work:
+
+1.  **Work $\to$ Heat:** Easy. We do this all the time via friction (rubbing hands together), electrical resistance, or Joule's paddlewheel experiment. It is 100% efficient.
+
+2.  **Heat $\to$ Work:** Hard. We cannot simply convert 100% of heat into work.
+
+To understand why, we will analyze abstract "devices" that attempt these conversions.
+
+# The Kelvin-Planck Device
+
+Let's imagine a steady-state cyclic device that takes in heat ($Q$) from a single reservoir and converts it entirely into work ($W$). We call this a **Kelvin-Planck Device**.
+
+
+
+## Analysis
+Consider this device operating in a cycle (or steady state):
+
+**First Law:**
+$$\Delta U = 0 = Q_{in} + W_{out}$$
+$$W_{out} = Q_{in}$$
+According to the First Law, this device is **possible**. Energy is conserved.
+
+**Second Law:**
+$$\frac{dS_{sys}}{dt} = \sum \frac{\dot{Q}}{T_b} + \dot{S}_{gen}$$
+At steady state ($dS/dt = 0$):
+$$0 = \frac{\dot{Q}_{in}}{T} + \dot{S}_{gen}$$
+$$\dot{S}_{gen} = -\frac{\dot{Q}_{in}}{T}$$
+
+Since $Q_{in} > 0$ (heat added) and $T > 0$, this implies:
+$$\dot{S}_{gen} < 0$$
+**This violates the Second Law!** ($\dot{S}_{gen}$ must be $\ge 0$).
+
+::: {.callout-important}
+## Kelvin-Planck Statement of the Second Law
+It is impossible to construct a device that operates in a cycle and produces no other effect than the production of work and transfer of heat from a single body.
+*(i.e., You cannot turn Heat 100% into Work).*
+:::
+
+## The Reverse Kelvin-Planck Device
+What if we reverse the arrows? A device that takes Work and turns it into Heat?
+
+* **1st Law:** $Q_{out} = W_{in}$. (Possible)
+* **2nd Law:** $0 = \frac{-\dot{Q}_{out}}{T} + \dot{S}_{gen} \implies \dot{S}_{gen} = \frac{\dot{Q}_{out}}{T} > 0$.
+
+This is **Possible**. This is simply "friction" or electrical heating. Work can be converted 100% to Heat.
+
+# The Clausius Device
+
+Now consider a device that transfers heat from a Cold reservoir ($T_C$) to a Hot reservoir ($T_H$) without any work input.
+
+
+
+**First Law:** $Q_{in} = Q_{out}$ (Energy conserved).
+**Second Law:**
+$$0 = \frac{Q_C}{T_C} - \frac{Q_H}{T_H} + S_{gen}$$
+Since $Q_C = Q_H = Q$:
+$$S_{gen} = Q \left( \frac{1}{T_H} - \frac{1}{T_C} \right)$$
+
+Since $T_H > T_C$, the term $(\frac{1}{T_H} - \frac{1}{T_C})$ is **negative**.
+Therefore, $S_{gen} < 0$.
+**Impossible.** Heat cannot spontaneously flow from Cold to Hot.
+
+::: {.callout-important}
+## Clausius Statement of the Second Law
+It is impossible to construct a device that operates in a cycle and produces no other effect than the transfer of heat from a lower-temperature body to a higher-temperature body.
+:::
+
+## The Reverse Clausius Device
+If we flow heat from Hot ($T_H$) to Cold ($T_C$):
+$$S_{gen} = Q \left( \frac{1}{T_C} - \frac{1}{T_H} \right)$$
+Since $T_H > T_C$, the term is positive. $S_{gen} > 0$.
+**Possible.** Heat naturally flows from Hot to Cold.
+
+# The Heat Engine
+
+We have established two facts:
+1.  We cannot convert Heat 100% to Work ($S_{gen} < 0$).
+2.  Heat naturally flows from $T_H$ to $T_C$ ($S_{gen} > 0$).
+
+**The Engineering Idea:**
+What if we combine these? What if we take the natural flow of heat from $T_H$ to $T_C$ (which generates entropy) and "bleed off" some of that energy as Work?
+
+
+
+Let's analyze this **Heat Engine**:
+* Heat $Q_H$ enters from Hot Reservoir $T_H$.
+* Heat $Q_C$ leaves to Cold Reservoir $T_C$.
+* Work $W$ is produced.
+
+## First Law Analysis
+$$\Delta U = 0 = Q_H - Q_C - W$$
+$$W = Q_H - Q_C$$
+*(Note: Here we define $Q_C$ as a positive magnitude leaving the system).*
+
+## Second Law Analysis
+$$0 = \frac{Q_H}{T_H} - \frac{Q_C}{T_C} + S_{gen}$$
+Rearranging to solve for $Q_C$:
+$$\frac{Q_C}{T_C} = \frac{Q_H}{T_H} + S_{gen}$$
+$$Q_C = T_C \left( \frac{Q_H}{T_H} + S_{gen} \right)$$
+$$Q_C = Q_H \frac{T_C}{T_H} + T_C S_{gen}$$
+
+## Combining First and Second Laws
+Substitute the expression for $Q_C$ back into the Work equation ($W = Q_H - Q_C$):
+
+$$W = Q_H - \left( Q_H \frac{T_C}{T_H} + T_C S_{gen} \right)$$
+
+$$W = Q_H \left( 1 - \frac{T_C}{T_H} \right) - T_C S_{gen}$$ {#eq-work-heat-engine}
+
+This is a **remarkable result**. It tells us exactly how much Work we can get out of a heat engine.
+
+1.  **The Potential:** The term $Q_H (1 - T_C/T_H)$ represents the *maximum possible work* allowed by the laws of thermodynamics (when $S_{gen}=0$).
+2.  **The Penalty:** The term $T_C S_{gen}$ reduces the work output.
+
+# Thermal Efficiency
+
+We define the thermal efficiency $\eta$ as:
+$$\eta = \frac{\text{Benefit}}{\text{Cost}} = \frac{W}{Q_H}$$
+
+Using our derived expression for Work:
+$$\eta = \frac{Q_H (1 - T_C/T_H) - T_C S_{gen}}{Q_H}$$
+$$\eta = \left( 1 - \frac{T_C}{T_H} \right) - \frac{T_C S_{gen}}{Q_H}$$
+
+## Maximum (Reversible) Efficiency
+If the process is ideal (Reversible, $S_{gen} = 0$), we get the **Carnot Efficiency**:
+
+$$\eta_{max} = 1 - \frac{T_C}{T_H}$$
+
+To maximize efficiency, we want:
+* $T_H$ to be as **High** as possible.
+* $T_C$ to be as **Low** as possible.
+
+This explains why power plants use superheated steam (high $T_H$) and cooling towers/rivers (low $T_C$).
+
+# Lost Work
+
+Real engines always have irreversibilities (friction, heat loss, turbulence), so $S_{gen} > 0$.
+The difference between the Maximum Work and the Actual Work is called **Lost Work**.
+
+$$W_{lost} = W_{max} - W_{actual}$$
+$$W_{lost} = \left[ Q_H \left( 1 - \frac{T_C}{T_H} \right) \right] - \left[ Q_H \left( 1 - \frac{T_C}{T_H} \right) - T_C S_{gen} \right]$$
+
+$$W_{lost} = T_C S_{gen}$$
+
+This simple equation links the abstract concept of entropy generation directly to lost engineering potential. Every unit of entropy generated destroys our ability to do useful work by an amount proportional to the sink temperature $T_C$.
+

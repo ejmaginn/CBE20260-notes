@@ -37,8 +37,8 @@ website:
             text: Lecture 14 - Entropy Changes for Open Systems   
           - href: class15/lecture15.qmd
             text: Lecture 15 - Open System Entropy Balance and Efficiency
-         # - href: class16/lecture16.qmd
-         #   text: Lecture 16 - Heat Engines and the Second Law  
+          - href: class16/lecture16.qmd
+            text: Lecture 16 - Heat Engines and the Second Law  
               
           # Add more lectures here as you create them:
           # - href: class0x/lecture02.qmd
