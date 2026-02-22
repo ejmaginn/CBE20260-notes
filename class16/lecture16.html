@@ -184,6 +184,10 @@ window.Quarto = {
     <a class="dropdown-item" href="../class15/lecture15.html">
  <span class="dropdown-text">Lecture 15 - Open System Entropy Balance and Efficiency</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../class16/lecture16.html">
+ <span class="dropdown-text">Lecture 16 - Heat Engines and the Second Law</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -247,11 +251,11 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#the-reverse-clausius-device" id="toc-the-reverse-clausius-device" class="nav-link" data-scroll-target="#the-reverse-clausius-device"><span class="header-section-number">3.1</span> The Reverse Clausius Device</a></li>
   </ul></li>
-  <li><a href="#the-heat-engine" id="toc-the-heat-engine" class="nav-link" data-scroll-target="#the-heat-engine"><span class="header-section-number">4</span> The Heat Engine</a>
+  <li><a href="#the-cyclic-heat-engine" id="toc-the-cyclic-heat-engine" class="nav-link" data-scroll-target="#the-cyclic-heat-engine"><span class="header-section-number">4</span> The Cyclic Heat Engine</a>
   <ul class="collapse">
   <li><a href="#first-law-analysis" id="toc-first-law-analysis" class="nav-link" data-scroll-target="#first-law-analysis"><span class="header-section-number">4.1</span> First Law Analysis</a></li>
   <li><a href="#second-law-analysis" id="toc-second-law-analysis" class="nav-link" data-scroll-target="#second-law-analysis"><span class="header-section-number">4.2</span> Second Law Analysis</a></li>
-  <li><a href="#combining-first-and-second-laws" id="toc-combining-first-and-second-laws" class="nav-link" data-scroll-target="#combining-first-and-second-laws"><span class="header-section-number">4.3</span> Combining First and Second Laws</a></li>
+  <li><a href="#solving-for-work" id="toc-solving-for-work" class="nav-link" data-scroll-target="#solving-for-work"><span class="header-section-number">4.3</span> Solving for Work</a></li>
   </ul></li>
   <li><a href="#thermal-efficiency" id="toc-thermal-efficiency" class="nav-link" data-scroll-target="#thermal-efficiency"><span class="header-section-number">5</span> Thermal Efficiency</a>
   <ul class="collapse">
@@ -292,24 +296,52 @@ window.Quarto = {
 
 <section id="introduction-heat-vs.-work" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introduction: Heat vs.&nbsp;Work</h1>
-<p>So far, we have covered energy and entropy balances for various process equipment (pumps, compressors, turbines, etc.). Now we want to “put it all together” to produce <strong>Work</strong>.</p>
-<p>Why focus on Work? While Heat is useful (warming our homes), <strong>Work</strong> is especially valuable because it is an organized form of energy transfer. We use it to move things (cars, planes), generate electricity, and drive chemical processes.</p>
-<p>There is a fundamental asymmetry between Heat and Work:</p>
+<p>So far, we have covered energy and entropy balances for various pieces of process equipment (pumps, compressors, turbines, etc.). Now we want to “put it all together” to produce <strong>Work</strong>.</p>
+<p>Why focus on work? While heat is useful (warming our homes), <strong>work</strong> is especially valuable because it is an organized form of energy transfer. We use it to move things (cars, planes), generate electricity, and drive chemical processes.</p>
+<p>There is a fundamental asymmetry between heat and work:</p>
 <ol type="1">
-<li><p><strong>Work <span class="math inline">\(\to\)</span> Heat:</strong> Easy. We do this all the time via friction (rubbing hands together), electrical resistance, or Joule’s paddlewheel experiment. It is 100% efficient.</p></li>
-<li><p><strong>Heat <span class="math inline">\(\to\)</span> Work:</strong> Hard. We cannot simply convert 100% of heat into work.</p></li>
+<li><strong>Work <span class="math inline">\(\to\)</span> Heat:</strong> Easy. We do this all the time via friction (rubbing hands together), electrical resistance, or Joule’s paddlewheel experiment. It is 100% efficient.</li>
+<li><strong>Heat <span class="math inline">\(\to\)</span> Work:</strong> Hard. We cannot simply convert 100% of heat into work.</li>
 </ol>
 <p>To understand why, we will analyze abstract “devices” that attempt these conversions.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>IUPAC Sign Convention Reminder
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Remember, in this class we use the IUPAC sign convention:</p>
+<ul>
+<li><p><span class="math inline">\(Q &gt; 0\)</span>: Heat is transferred <strong>into</strong> the system.</p></li>
+<li><p><span class="math inline">\(W &gt; 0\)</span>: Work is done <strong>on</strong> the system.</p></li>
+<li><p>Therefore, a device that <em>produces</em> work will have <span class="math inline">\(W &lt; 0\)</span>, and a device that <em>rejects</em> heat will have <span class="math inline">\(Q &lt; 0\)</span>.</p></li>
+</ul>
+</div>
+</div>
 </section>
 <section id="the-kelvin-planck-device" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> The Kelvin-Planck Device</h1>
-<p>Let’s imagine a steady-state device that takes in Heat (<span class="math inline">\(Q\)</span>) from a single reservoir and converts it entirely into Work (<span class="math inline">\(W\)</span>). We call this a <strong>Kelvin-Planck Device</strong>.</p>
+<p>Let’s imagine a steady-state device that takes in heat (<span class="math inline">\(Q\)</span>) from a single thermal reservoir at temperature <span class="math inline">\(T\)</span> and converts it entirely into work (<span class="math inline">\(W\)</span>). We call this a <strong>Kelvin-Planck Device</strong>.</p>
+<div id="fig-KP-device" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-KP-device-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/KP-device.png" class="img-fluid figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-KP-device-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;1: A “Kelvin-Planck” device.
+</figcaption>
+</figure>
+</div>
 <section id="analysis" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="analysis"><span class="header-section-number">2.1</span> Analysis</h2>
-<p>Consider this device operating in a cycle (or steady state):</p>
-<p><strong>First Law:</strong> <span class="math display">\[\Delta U = 0 = Q_{in} - W_{out}\]</span> <span class="math display">\[W_{out} = Q_{in}\]</span> According to the First Law, this device is <strong>possible</strong>. Energy is conserved.</p>
-<p><strong>Second Law:</strong> <span class="math display">\[\frac{dS_{sys}}{dt} = \sum \frac{\dot{Q}}{T_b} + \dot{S}_{gen}\]</span> At steady state (<span class="math inline">\(dS/dt = 0\)</span>): <span class="math display">\[0 = \frac{\dot{Q}_{in}}{T} + \dot{S}_{gen}\]</span> <span class="math display">\[\dot{S}_{gen} = -\frac{\dot{Q}_{in}}{T}\]</span></p>
-<p>Since <span class="math inline">\(Q_{in} &gt; 0\)</span> (heat added) and <span class="math inline">\(T &gt; 0\)</span>, this implies: <span class="math display">\[\dot{S}_{gen} &lt; 0\]</span> <strong>This violates the Second Law!</strong> (<span class="math inline">\(\dot{S}_{gen}\)</span> must be <span class="math inline">\(\ge 0\)</span>).</p>
+<p>Consider this device operating in a cycle (i.e.&nbsp;steady state). Let’s apply our balances:</p>
+<p><strong>First Law:</strong> <span class="math display">\[\Delta U = 0 = Q + W \implies W = -Q\]</span> If the device takes in heat (<span class="math inline">\(Q &gt; 0\)</span>), then <span class="math inline">\(W &lt; 0\)</span>. This means work is produced by the system. According to the First Law, this device is <strong>possible</strong>. Energy is conserved.</p>
+<p><strong>Second Law:</strong> <span class="math display">\[\Delta S = 0 = \frac{Q}{T} + S_{gen}\]</span> <span class="math display">\[S_{gen} = -\frac{Q}{T}\]</span></p>
+<p>Since <span class="math inline">\(Q &gt; 0\)</span> (heat added) and absolute temperature <span class="math inline">\(T &gt; 0\)</span>, this implies: <span class="math display">\[S_{gen} &lt; 0\]</span> <strong>This violates the Second Law!</strong> Entropy generation (<span class="math inline">\(S_{gen}\)</span>) must be <span class="math inline">\(\ge 0\)</span>.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -320,25 +352,47 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>It is impossible to construct a device that operates in a cycle and produces no other effect than the production of work and transfer of heat from a single body. <em>(i.e., You cannot turn Heat 100% into Work).</em></p>
+<p>It is impossible to construct a device that operates in a cycle and produces no other effect than the production of work and transfer of heat from a single body. <em>(i.e., You cannot turn heat 100% into work).</em></p>
 </div>
 </div>
 </section>
 <section id="the-reverse-kelvin-planck-device" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="the-reverse-kelvin-planck-device"><span class="header-section-number">2.2</span> The Reverse Kelvin-Planck Device</h2>
-<p>What if we reverse the arrows? A device that takes Work and turns it into Heat?</p>
+<p>What if we reverse the arrows? A device that takes work in and turns it entirely into heat rejected to a reservoir?</p>
+<div id="fig-KP-rev" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-KP-rev-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/KP-rev.png" class="img-fluid figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-KP-rev-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;2: A “Reverse Kelvin-Planck” device.
+</figcaption>
+</figure>
+</div>
 <ul>
-<li><strong>1st Law:</strong> <span class="math inline">\(Q_{out} = W_{in}\)</span>. (Possible)</li>
-<li><strong>2nd Law:</strong> <span class="math inline">\(0 = \frac{-\dot{Q}_{out}}{T} + \dot{S}_{gen} \implies \dot{S}_{gen} = \frac{\dot{Q}_{out}}{T} &gt; 0\)</span>.</li>
+<li><p><strong>1st Law:</strong> <span class="math inline">\(\Delta U = 0 = Q + W \implies Q = -W\)</span>. If work is put in (<span class="math inline">\(W &gt; 0\)</span>), heat is rejected (<span class="math inline">\(Q &lt; 0\)</span>). This is <strong>Possible</strong> from an energy balance perspective.</p></li>
+<li><p><strong>2nd Law:</strong> <span class="math inline">\(\Delta S = 0 = \frac{Q}{T} + S_{gen} \implies S_{gen} = -\frac{Q}{T}\)</span>. Since <span class="math inline">\(Q &lt; 0\)</span>, <span class="math inline">\(S_{gen} &gt; 0\)</span>.</p></li>
 </ul>
-<p>This is <strong>Possible</strong>. This is simply “friction” or electrical heating. Work can be converted 100% to Heat.</p>
+<p>Since <span class="math inline">\(Q &lt; 0\)</span>, the term <span class="math inline">\(-\frac{Q}{T}\)</span> is positive, meaning <span class="math inline">\(S_{gen} &gt; 0\)</span>. This is <strong>Possible</strong>. This suggests that work <em>can</em> be converted 100% to heat. An electrical resistor is a perfect example of this.</p>
 </section>
 </section>
 <section id="the-clausius-device" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> The Clausius Device</h1>
-<p>Now consider a device that transfers heat from a Cold reservoir (<span class="math inline">\(T_C\)</span>) to a Hot reservoir (<span class="math inline">\(T_H\)</span>) without any work input.</p>
-<p><strong>First Law:</strong> <span class="math inline">\(Q_{in} = Q_{out}\)</span> (Energy conserved). <strong>Second Law:</strong> <span class="math display">\[0 = \frac{Q_C}{T_C} - \frac{Q_H}{T_H} + S_{gen}\]</span> Since <span class="math inline">\(Q_C = Q_H = Q\)</span>: <span class="math display">\[S_{gen} = Q \left( \frac{1}{T_H} - \frac{1}{T_C} \right)\]</span></p>
-<p>Since <span class="math inline">\(T_H &gt; T_C\)</span>, the term <span class="math inline">\((\frac{1}{T_H} - \frac{1}{T_C})\)</span> is <strong>negative</strong>. Therefore, <span class="math inline">\(S_{gen} &lt; 0\)</span>. <strong>Impossible.</strong> Heat cannot spontaneously flow from Cold to Hot.</p>
+<p>Now consider a device that transfers heat from a cold reservoir (<span class="math inline">\(T_C\)</span>) to a hot reservoir (<span class="math inline">\(T_H\)</span>) without any work input.</p>
+<div id="fig-clausius" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-clausius-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/clausius.png" class="img-fluid figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-clausius-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;3: A “Clausius” device.
+</figcaption>
+</figure>
+</div>
+<p>In <a href="#fig-clausius" class="quarto-xref">Fig.&nbsp;3</a>, 2 is the cold (C) reservoir and 1 is the hot (H) reservoir. Heat flows from 2 to 1, which is the opposite of the natural direction of heat flow.</p>
+<p><strong>First Law:</strong> <span class="math display">\[0 = Q_H + Q_C + W\]</span> Since there is no work (<span class="math inline">\(W = 0\)</span>), <span class="math inline">\(Q_H = -Q_C\)</span>. Heat is absorbed from the cold reservoir (<span class="math inline">\(Q_C &gt; 0\)</span>) and rejected to the hot reservoir (<span class="math inline">\(Q_H &lt; 0\)</span>). This is <strong>Possible</strong> from an energy balance perspective.</p>
+<p><strong>Second Law:</strong> <span class="math display">\[0 = \frac{Q_H}{T_H} + \frac{Q_C}{T_C} + S_{gen}\]</span> Substitute <span class="math inline">\(Q_H = -Q_C\)</span>: <span class="math display">\[0 = -\frac{Q_C}{T_H} + \frac{Q_C}{T_C} + S_{gen}\]</span> <span class="math display">\[S_{gen} = -Q_C \left( \frac{1}{T_C} - \frac{1}{T_H} \right)\]</span></p>
+<p>Since <span class="math inline">\(T_H &gt; T_C\)</span>, the term <span class="math inline">\((\frac{1}{T_C} - \frac{1}{T_H})\)</span> is <strong>positive</strong>. Because <span class="math inline">\(Q_C &gt; 0\)</span>, the entire right side is negative. Therefore, <span class="math inline">\(S_{gen} &lt; 0\)</span>. <strong>Impossible.</strong> Heat cannot spontaneously flow from cold to hot.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -352,52 +406,90 @@ window.Quarto = {
 <p>It is impossible to construct a device that operates in a cycle and produces no other effect than the transfer of heat from a lower-temperature body to a higher-temperature body.</p>
 </div>
 </div>
+<p><em>(Note: We can show that a Clausius device is conceptually identical to a combined Kelvin-Planck and reverse Kelvin-Planck device!) Since the KP device is not allowed, neither is a Clausius device</em></p>
 <section id="the-reverse-clausius-device" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="the-reverse-clausius-device"><span class="header-section-number">3.1</span> The Reverse Clausius Device</h2>
-<p>If we flow heat from Hot (<span class="math inline">\(T_H\)</span>) to Cold (<span class="math inline">\(T_C\)</span>): <span class="math display">\[S_{gen} = Q \left( \frac{1}{T_C} - \frac{1}{T_H} \right)\]</span> Since <span class="math inline">\(T_H &gt; T_C\)</span>, the term is positive. <span class="math inline">\(S_{gen} &gt; 0\)</span>. <strong>Possible.</strong> Heat naturally flows from Hot to Cold.</p>
+<p>A “Reverse Clausius” device is one that allows heat to flow naturally from hot (<span class="math inline">\(T_H\)</span>) to cold (<span class="math inline">\(T_C\)</span>). This is a common process in nature.</p>
+<div id="fig-Clausius-inv" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Clausius-inv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/Clausius-inv.png" class="img-fluid figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Clausius-inv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;4: A “Reverse Clausius” device.
+</figcaption>
+</figure>
+</div>
+<p>Let’s do a thermodynamic analysis anyway. <span class="math inline">\(Q_H &gt; 0\)</span> (heat in) and <span class="math inline">\(Q_C &lt; 0\)</span> (heat out). <span class="math display">\[S_{gen} = -Q_H \left( \frac{1}{T_H} - \frac{1}{T_C} \right)\]</span> Since <span class="math inline">\((1/T_H - 1/T_C)\)</span> is negative, and <span class="math inline">\(Q_H &gt; 0\)</span>, <span class="math inline">\(S_{gen} &gt; 0\)</span>. <strong>Possible.</strong> Heat naturally flows from hot to cold.</p>
 </section>
 </section>
-<section id="the-heat-engine" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> The Heat Engine</h1>
-<p>We have established two facts: 1. We cannot convert Heat 100% to Work (<span class="math inline">\(S_{gen} &lt; 0\)</span>). 2. Heat naturally flows from <span class="math inline">\(T_H\)</span> to <span class="math inline">\(T_C\)</span> (<span class="math inline">\(S_{gen} &gt; 0\)</span>).</p>
-<p><strong>The Engineering Idea:</strong> What if we combine these? What if we take the natural flow of heat from <span class="math inline">\(T_H\)</span> to <span class="math inline">\(T_C\)</span> (which generates entropy) and “bleed off” some of that energy as Work?</p>
-<p>Let’s analyze this <strong>Heat Engine</strong>: * Heat <span class="math inline">\(Q_H\)</span> enters from Hot Reservoir <span class="math inline">\(T_H\)</span>. * Heat <span class="math inline">\(Q_C\)</span> leaves to Cold Reservoir <span class="math inline">\(T_C\)</span>. * Work <span class="math inline">\(W\)</span> is produced.</p>
+<section id="the-cyclic-heat-engine" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> The Cyclic Heat Engine</h1>
+<p>We have established three facts:</p>
+<ol type="1">
+<li><p>We can convert work 100% to heat (reverse KP device is possible).</p></li>
+<li><p>We cannot convert heat 100% to work (<span class="math inline">\(S_{gen} &lt; 0\)</span>).</p></li>
+<li><p>Heat naturally flows from <span class="math inline">\(T_H\)</span> to <span class="math inline">\(T_C\)</span> (<span class="math inline">\(S_{gen} &gt; 0\)</span>).</p></li>
+</ol>
+<p><strong>The Engineering Idea:</strong> What if we take the natural flow of heat from <span class="math inline">\(T_H\)</span> to <span class="math inline">\(T_C\)</span> (which generates positive entropy) and “bleed off” some of that energy as work?</p>
+<div id="fig-QH-QC-W" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-QH-QC-W-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/QH-QC-W.png" class="img-fluid figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-QH-QC-W-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;5: A heat engine.
+</figcaption>
+</figure>
+</div>
+<p>Let’s analyze this <strong>Heat Engine</strong>:</p>
+<ul>
+<li><p>Heat <span class="math inline">\(Q_H\)</span> enters from hot reservoir <span class="math inline">\(T_H\)</span> (<span class="math inline">\(Q_H &gt; 0\)</span>).</p></li>
+<li><p>Heat <span class="math inline">\(Q_C\)</span> leaves to cold reservoir <span class="math inline">\(T_C\)</span> (<span class="math inline">\(Q_C &lt; 0\)</span>).</p></li>
+<li><p>Work <span class="math inline">\(W\)</span> is produced (<span class="math inline">\(W &lt; 0\)</span>).</p></li>
+</ul>
 <section id="first-law-analysis" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="first-law-analysis"><span class="header-section-number">4.1</span> First Law Analysis</h2>
-<p><span class="math display">\[\Delta U = 0 = Q_H - Q_C - W\]</span> <span class="math display">\[W = Q_H - Q_C\]</span> <em>(Note: Here we define <span class="math inline">\(Q_C\)</span> as a positive magnitude leaving the system).</em></p>
+<p><span class="math display">\[0 = Q_H + Q_C + W\]</span> Solving for <span class="math inline">\(Q_C\)</span>: <span class="math display">\[Q_C = -W - Q_H\]</span></p>
 </section>
 <section id="second-law-analysis" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="second-law-analysis"><span class="header-section-number">4.2</span> Second Law Analysis</h2>
-<p><span class="math display">\[0 = \frac{Q_H}{T_H} - \frac{Q_C}{T_C} + S_{gen}\]</span> Rearranging to solve for <span class="math inline">\(Q_C\)</span>: <span class="math display">\[\frac{Q_C}{T_C} = \frac{Q_H}{T_H} + S_{gen}\]</span> <span class="math display">\[Q_C = T_C \left( \frac{Q_H}{T_H} + S_{gen} \right)\]</span> <span class="math display">\[Q_C = Q_H \frac{T_C}{T_H} + T_C S_{gen}\]</span></p>
+<p><span class="math display">\[0 = \frac{Q_H}{T_H} + \frac{Q_C}{T_C} + S_{gen}\]</span></p>
+<p>Substitute the First Law expression for <span class="math inline">\(Q_C\)</span> into the Second Law: <span class="math display">\[0 = \frac{Q_H}{T_H} + \frac{-W - Q_H}{T_C} + S_{gen}\]</span></p>
+<p>Multiply the entire equation by <span class="math inline">\(T_C\)</span>: <span class="math display">\[0 = Q_H \frac{T_C}{T_H} - W - Q_H + T_C S_{gen}\]</span></p>
 </section>
-<section id="combining-first-and-second-laws" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="combining-first-and-second-laws"><span class="header-section-number">4.3</span> Combining First and Second Laws</h2>
-<p>Substitute the expression for <span class="math inline">\(Q_C\)</span> back into the Work equation (<span class="math inline">\(W = Q_H - Q_C\)</span>):</p>
-<p><span class="math display">\[W = Q_H - \left( Q_H \frac{T_C}{T_H} + T_C S_{gen} \right)\]</span></p>
-<p><span id="eq-work-heat-engine"><span class="math display">\[W = Q_H \left( 1 - \frac{T_C}{T_H} \right) - T_C S_{gen} \tag{1}\]</span></span></p>
-<p>This is a <strong>remarkable result</strong>. It tells us exactly how much Work we can get out of a heat engine.</p>
+<section id="solving-for-work" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="solving-for-work"><span class="header-section-number">4.3</span> Solving for Work</h2>
+<p>Now, solve the equation for <span class="math inline">\(W\)</span>:</p>
+<p><span id="eq-work-heat-engine"><span class="math display">\[W = Q_H \left( \frac{T_C}{T_H} - 1 \right) + T_C S_{gen} \tag{1}\]</span></span></p>
+<p>Let’s look closely at this <strong>amazing result</strong>. Because <span class="math inline">\(T_H &gt; T_C\)</span>, the term <span class="math inline">\((\frac{T_C}{T_H} - 1)\)</span> is negative. Since <span class="math inline">\(Q_H &gt; 0\)</span>, the first part of the right side is negative (meaning work is produced). However, <span class="math inline">\(T_C S_{gen}\)</span> is always positive. This positive term makes <span class="math inline">\(W\)</span> <em>less negative</em>.</p>
 <ol type="1">
-<li><strong>The Potential:</strong> The term <span class="math inline">\(Q_H (1 - T_C/T_H)\)</span> represents the <em>maximum possible work</em> allowed by the laws of thermodynamics (when <span class="math inline">\(S_{gen}=0\)</span>).</li>
-<li><strong>The Penalty:</strong> The term <span class="math inline">\(T_C S_{gen}\)</span> reduces the work output.</li>
+<li><strong>The Potential:</strong> The term <span class="math inline">\(Q_H (\frac{T_C}{T_H} - 1)\)</span> represents the <em>maximum possible work</em> produced by the laws of thermodynamics (when <span class="math inline">\(S_{gen}=0\)</span>).</li>
+<li><strong>The Reality:</strong> The term <span class="math inline">\(T_C S_{gen}\)</span> represents the <em>penalty</em> for irreversibility. It reduces the actual work produced compared to the ideal maximum.</li>
 </ol>
 </section>
 </section>
 <section id="thermal-efficiency" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Thermal Efficiency</h1>
-<p>We define the thermal efficiency <span class="math inline">\(\eta\)</span> as: <span class="math display">\[\eta = \frac{\text{Benefit}}{\text{Cost}} = \frac{W}{Q_H}\]</span></p>
-<p>Using our derived expression for Work: <span class="math display">\[\eta = \frac{Q_H (1 - T_C/T_H) - T_C S_{gen}}{Q_H}\]</span> <span class="math display">\[\eta = \left( 1 - \frac{T_C}{T_H} \right) - \frac{T_C S_{gen}}{Q_H}\]</span></p>
+<p>We define the thermal efficiency <span class="math inline">\(\eta\)</span> as: <span class="math display">\[\eta = \frac{\text{Benefit}}{\text{Cost}}\]</span></p>
+<p>The benefit is the work produced (magnitude <span class="math inline">\(-W\)</span>), and the cost is the heat put in (<span class="math inline">\(Q_H\)</span>): <span class="math display">\[\eta = \frac{-W}{Q_H}\]</span></p>
+<p>Using our derived expression for work: <span class="math display">\[\eta = \frac{- \left[ Q_H \left( \frac{T_C}{T_H} - 1 \right) + T_C S_{gen} \right]}{Q_H}\]</span> <span class="math display">\[\eta = \left( 1 - \frac{T_C}{T_H} \right) - \frac{T_C S_{gen}}{Q_H}\]</span></p>
 <section id="maximum-reversible-efficiency" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="maximum-reversible-efficiency"><span class="header-section-number">5.1</span> Maximum (Reversible) Efficiency</h2>
-<p>If the process is ideal (Reversible, <span class="math inline">\(S_{gen} = 0\)</span>), we get the <strong>Carnot Efficiency</strong>:</p>
+<p>If the process is perfectly reversible (<span class="math inline">\(S_{gen} = 0\)</span>), we get the theoretical maximum efficiency, known as the <strong>Carnot Efficiency</strong>:</p>
 <p><span class="math display">\[\eta_{max} = 1 - \frac{T_C}{T_H}\]</span></p>
-<p>To maximize efficiency, we want: * <span class="math inline">\(T_H\)</span> to be as <strong>High</strong> as possible. * <span class="math inline">\(T_C\)</span> to be as <strong>Low</strong> as possible.</p>
-<p>This explains why power plants use superheated steam (high <span class="math inline">\(T_H\)</span>) and cooling towers/rivers (low <span class="math inline">\(T_C\)</span>).</p>
+<p>To maximize efficiency, we want:</p>
+<ul>
+<li><p><span class="math inline">\(T_H \to \infty\)</span> (The heat source should be as hot as possible).</p></li>
+<li><p><span class="math inline">\(T_C \to 0\)</span> (Discharge heat to as cold a sink as possible).</p></li>
+</ul>
+<p>This explains why power plants use superheated steam (high <span class="math inline">\(T_H\)</span>) and cooling towers or cold lakes (low <span class="math inline">\(T_C\)</span>).</p>
 </section>
 </section>
 <section id="lost-work" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> Lost Work</h1>
-<p>Real engines always have irreversibilities (friction, heat loss, turbulence), so <span class="math inline">\(S_{gen} &gt; 0\)</span>. The difference between the Maximum Work and the Actual Work is called <strong>Lost Work</strong>.</p>
-<p><span class="math display">\[W_{lost} = W_{max} - W_{actual}\]</span> <span class="math display">\[W_{lost} = \left[ Q_H \left( 1 - \frac{T_C}{T_H} \right) \right] - \left[ Q_H \left( 1 - \frac{T_C}{T_H} \right) - T_C S_{gen} \right]\]</span></p>
+<p>Real engines always have irreversibilities (friction, heat loss, turbulence), so <span class="math inline">\(S_{gen} &gt; 0\)</span>. The difference between the maximum (or ideal) work produced and the actual work produced is called <strong>Lost Work</strong>.</p>
+<p><span class="math display">\[W_{lost} = (-W_{max}) - (-W_{actual})\]</span> <span class="math display">\[W_{lost} = \left[ Q_H \left( 1 - \frac{T_C}{T_H} \right) \right] - \left[ Q_H \left( 1 - \frac{T_C}{T_H} \right) - T_C S_{gen} \right]\]</span></p>
 <p><span class="math display">\[W_{lost} = T_C S_{gen}\]</span></p>
 <p>This simple equation links the abstract concept of entropy generation directly to lost engineering potential. Every unit of entropy generated destroys our ability to do useful work by an amount proportional to the sink temperature <span class="math inline">\(T_C\)</span>.</p>
 
