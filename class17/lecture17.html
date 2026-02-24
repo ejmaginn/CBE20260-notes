@@ -8,7 +8,7 @@
 
 <meta name="author" content="Edward Maginn">
 
-<title>Lecture 16: Heat Engines and the Second Law – CBE 20260 — Course Notes</title>
+<title>Lecture 17: The Carnot Cycle and Practical Heat Engines – CBE 20260 — Course Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -245,36 +245,40 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction-heat-vs.-work" id="toc-introduction-heat-vs.-work" class="nav-link active" data-scroll-target="#introduction-heat-vs.-work"><span class="header-section-number">1</span> Introduction: Heat vs.&nbsp;Work</a></li>
-  <li><a href="#the-kelvin-planck-device" id="toc-the-kelvin-planck-device" class="nav-link" data-scroll-target="#the-kelvin-planck-device"><span class="header-section-number">2</span> The Kelvin-Planck Device</a>
+  <li><a href="#introduction-the-limits-of-heat-engines" id="toc-introduction-the-limits-of-heat-engines" class="nav-link active" data-scroll-target="#introduction-the-limits-of-heat-engines"><span class="header-section-number">1</span> Introduction: The Limits of Heat Engines</a></li>
+  <li><a href="#the-carnot-cycle" id="toc-the-carnot-cycle" class="nav-link" data-scroll-target="#the-carnot-cycle"><span class="header-section-number">2</span> The Carnot Cycle</a>
   <ul class="collapse">
-  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis"><span class="header-section-number">2.1</span> Analysis</a></li>
-  <li><a href="#the-reverse-kelvin-planck-device" id="toc-the-reverse-kelvin-planck-device" class="nav-link" data-scroll-target="#the-reverse-kelvin-planck-device"><span class="header-section-number">2.2</span> The Reverse Kelvin-Planck Device</a></li>
-  </ul></li>
-  <li><a href="#the-clausius-device" id="toc-the-clausius-device" class="nav-link" data-scroll-target="#the-clausius-device"><span class="header-section-number">3</span> The Clausius Device</a>
+  <li><a href="#p-v-representation-of-the-carnot-cycle" id="toc-p-v-representation-of-the-carnot-cycle" class="nav-link" data-scroll-target="#p-v-representation-of-the-carnot-cycle"><span class="header-section-number">2.1</span> P-V Representation of the Carnot Cycle</a></li>
+  <li><a href="#mathematical-analysis-of-the-carnot-cycle-ideal-gas" id="toc-mathematical-analysis-of-the-carnot-cycle-ideal-gas" class="nav-link" data-scroll-target="#mathematical-analysis-of-the-carnot-cycle-ideal-gas"><span class="header-section-number">2.2</span> Mathematical Analysis of the Carnot Cycle (Ideal Gas)</a>
   <ul class="collapse">
-  <li><a href="#the-reverse-clausius-device" id="toc-the-reverse-clausius-device" class="nav-link" data-scroll-target="#the-reverse-clausius-device"><span class="header-section-number">3.1</span> The Reverse Clausius Device</a></li>
+  <li><a href="#step-1-state-a-to-b-reversible-isothermal-expansion-at-t_h" id="toc-step-1-state-a-to-b-reversible-isothermal-expansion-at-t_h" class="nav-link" data-scroll-target="#step-1-state-a-to-b-reversible-isothermal-expansion-at-t_h"><span class="header-section-number">2.2.1</span> Step 1: State A <span class="math inline">\(\to\)</span> B (Reversible Isothermal Expansion at <span class="math inline">\(T_H\)</span>)</a></li>
+  <li><a href="#step-2-state-b-to-c-reversible-adiabatic-expansion" id="toc-step-2-state-b-to-c-reversible-adiabatic-expansion" class="nav-link" data-scroll-target="#step-2-state-b-to-c-reversible-adiabatic-expansion"><span class="header-section-number">2.2.2</span> Step 2: State B <span class="math inline">\(\to\)</span> C (Reversible Adiabatic Expansion)</a></li>
+  <li><a href="#step-3-state-c-to-d-reversible-isothermal-compression-at-t_c" id="toc-step-3-state-c-to-d-reversible-isothermal-compression-at-t_c" class="nav-link" data-scroll-target="#step-3-state-c-to-d-reversible-isothermal-compression-at-t_c"><span class="header-section-number">2.2.3</span> Step 3: State C <span class="math inline">\(\to\)</span> D (Reversible Isothermal Compression at <span class="math inline">\(T_C\)</span>)</a></li>
+  <li><a href="#step-4-state-d-to-a-reversible-adiabatic-compression" id="toc-step-4-state-d-to-a-reversible-adiabatic-compression" class="nav-link" data-scroll-target="#step-4-state-d-to-a-reversible-adiabatic-compression"><span class="header-section-number">2.2.4</span> Step 4: State D <span class="math inline">\(\to\)</span> A (Reversible Adiabatic Compression)</a></li>
+  <li><a href="#net-work-and-cycle-efficiency" id="toc-net-work-and-cycle-efficiency" class="nav-link" data-scroll-target="#net-work-and-cycle-efficiency"><span class="header-section-number">2.2.5</span> Net Work and Cycle Efficiency</a></li>
   </ul></li>
-  <li><a href="#the-cyclic-heat-engine" id="toc-the-cyclic-heat-engine" class="nav-link" data-scroll-target="#the-cyclic-heat-engine"><span class="header-section-number">4</span> The Cyclic Heat Engine</a>
+  <li><a href="#t-s-representation-of-the-carnot-cycle" id="toc-t-s-representation-of-the-carnot-cycle" class="nav-link" data-scroll-target="#t-s-representation-of-the-carnot-cycle"><span class="header-section-number">2.3</span> T-S Representation of the Carnot Cycle</a></li>
+  <li><a href="#why-dont-we-use-the-carnot-cycle" id="toc-why-dont-we-use-the-carnot-cycle" class="nav-link" data-scroll-target="#why-dont-we-use-the-carnot-cycle"><span class="header-section-number">2.4</span> Why don’t we use the Carnot Cycle?</a></li>
+  </ul></li>
+  <li><a href="#designing-a-practical-heat-engine" id="toc-designing-a-practical-heat-engine" class="nav-link" data-scroll-target="#designing-a-practical-heat-engine"><span class="header-section-number">3</span> Designing a Practical Heat Engine</a>
   <ul class="collapse">
-  <li><a href="#first-law-analysis" id="toc-first-law-analysis" class="nav-link" data-scroll-target="#first-law-analysis"><span class="header-section-number">4.1</span> First Law Analysis</a></li>
-  <li><a href="#second-law-analysis" id="toc-second-law-analysis" class="nav-link" data-scroll-target="#second-law-analysis"><span class="header-section-number">4.2</span> Second Law Analysis</a></li>
-  <li><a href="#solving-for-work" id="toc-solving-for-work" class="nav-link" data-scroll-target="#solving-for-work"><span class="header-section-number">4.3</span> Solving for Work</a></li>
+  <li><a href="#attempt-1-the-open-loop-steam-turbine" id="toc-attempt-1-the-open-loop-steam-turbine" class="nav-link" data-scroll-target="#attempt-1-the-open-loop-steam-turbine"><span class="header-section-number">3.1</span> Attempt 1: The Open-Loop Steam Turbine</a></li>
+  <li><a href="#attempt-2-closing-the-loop-with-a-compressor" id="toc-attempt-2-closing-the-loop-with-a-compressor" class="nav-link" data-scroll-target="#attempt-2-closing-the-loop-with-a-compressor"><span class="header-section-number">3.2</span> Attempt 2: Closing the Loop with a Compressor</a></li>
+  <li><a href="#attempt-3-the-rankine-cycle-condensing" id="toc-attempt-3-the-rankine-cycle-condensing" class="nav-link" data-scroll-target="#attempt-3-the-rankine-cycle-condensing"><span class="header-section-number">3.3</span> Attempt 3: The Rankine Cycle (Condensing)</a></li>
   </ul></li>
-  <li><a href="#thermal-efficiency" id="toc-thermal-efficiency" class="nav-link" data-scroll-target="#thermal-efficiency"><span class="header-section-number">5</span> Thermal Efficiency</a>
+  <li><a href="#the-rankine-cycle" id="toc-the-rankine-cycle" class="nav-link" data-scroll-target="#the-rankine-cycle"><span class="header-section-number">4</span> The Rankine Cycle</a>
   <ul class="collapse">
-  <li><a href="#maximum-reversible-efficiency" id="toc-maximum-reversible-efficiency" class="nav-link" data-scroll-target="#maximum-reversible-efficiency"><span class="header-section-number">5.1</span> Maximum (Reversible) Efficiency</a></li>
+  <li><a href="#cycle-thermodynamics" id="toc-cycle-thermodynamics" class="nav-link" data-scroll-target="#cycle-thermodynamics"><span class="header-section-number">4.1</span> Cycle Thermodynamics</a></li>
   </ul></li>
-  <li><a href="#lost-work" id="toc-lost-work" class="nav-link" data-scroll-target="#lost-work"><span class="header-section-number">6</span> Lost Work</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture16.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture17.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lecture 16: Heat Engines and the Second Law</h1>
+<h1 class="title">Lecture 17: The Carnot Cycle and Practical Heat Engines</h1>
 <p class="subtitle lead">CBE 20260 / Thermodynamics I</p>
 </div>
 
@@ -298,206 +302,183 @@ window.Quarto = {
 </header>
 
 
-<section id="introduction-heat-vs.-work" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Introduction: Heat vs.&nbsp;Work</h1>
-<p>So far, we have covered energy and entropy balances for various pieces of process equipment (pumps, compressors, turbines, etc.). Now we want to “put it all together” to produce <strong>Work</strong>.</p>
-<p>Why focus on work? While heat is useful (warming our homes), <strong>work</strong> is especially valuable because it is an organized form of energy transfer. We use it to move things (cars, planes), generate electricity, and drive chemical processes.</p>
-<p>There is a fundamental asymmetry between heat and work:</p>
+<section id="introduction-the-limits-of-heat-engines" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction: The Limits of Heat Engines</h1>
+<p>In our last lecture, we used the First and Second Laws of Thermodynamics to determine that the work output of any cyclic heat engine is given by:</p>
+<p><span class="math display">\[W = Q_H \left( \frac{T_C}{T_H} - 1 \right) + T_C S_{gen}\]</span></p>
+<p>We defined the thermal efficiency (<span class="math inline">\(\eta = \frac{-W}{Q_H}\)</span>) and found that if a process is perfectly reversible (<span class="math inline">\(S_{gen} = 0\)</span>), we achieve the maximum possible efficiency:</p>
+<p><span class="math display">\[\eta^{rev} = 1 - \frac{T_C}{T_H}\]</span></p>
+<p>This tells us the <em>best</em> that thermodynamics will allow. But is it actually possible to build a device that achieves this?</p>
+</section>
+<section id="the-carnot-cycle" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> The Carnot Cycle</h1>
+<p>In 1824, a French military engineer named Sadi Carnot published “Reflections on the Motive Power of Heat.” He proposed a hypothetical, idealized thermodynamic cycle that achieves exactly this maximum reversible efficiency.</p>
+<p>The <strong>Carnot Cycle</strong> accomplishes this in four distinct, fully reversible steps. Let’s trace these steps for a closed system containing an ideal gas. (An ideal gas is not necessary, but it makes the analysis simpler and more intuitive). See <a href="#fig-carnot" class="quarto-xref">Fig.&nbsp;1</a>.</p>
 <ol type="1">
-<li><strong>Work <span class="math inline">\(\to\)</span> Heat:</strong> Easy. We do this all the time via friction (rubbing hands together), electrical resistance, or Joule’s paddlewheel experiment. It is 100% efficient.</li>
-<li><strong>Heat <span class="math inline">\(\to\)</span> Work:</strong> Hard. We cannot simply convert 100% of heat into work.</li>
+<li><strong>Reversible Isothermal Expansion:</strong> The system is placed in contact with a hot reservoir at <span class="math inline">\(T_H\)</span>. As the gas expands, it absorbs heat <span class="math inline">\(Q_H\)</span> (<span class="math inline">\(Q_H &gt; 0\)</span>). The system does work on the surroundings (<span class="math inline">\(W_1 &lt; 0\)</span>).</li>
+<li><strong>Reversible Adiabatic Expansion:</strong> The system is insulated (<span class="math inline">\(Q = 0\)</span>). The gas continues to expand, doing more work (<span class="math inline">\(W_2 &lt; 0\)</span>), causing its temperature to drop from <span class="math inline">\(T_H\)</span> down to <span class="math inline">\(T_C\)</span>.</li>
+<li><strong>Reversible Isothermal Compression:</strong> The system is placed in contact with a cold reservoir at <span class="math inline">\(T_C\)</span>. The surroundings do work to compress the gas (<span class="math inline">\(W_3 &gt; 0\)</span>), and heat <span class="math inline">\(Q_C\)</span> is rejected to the cold bath (<span class="math inline">\(Q_C &lt; 0\)</span>).</li>
+<li><strong>Reversible Adiabatic Compression:</strong> The system is insulated again (<span class="math inline">\(Q = 0\)</span>). The surroundings do more work to compress the gas (<span class="math inline">\(W_4 &gt; 0\)</span>), raising its temperature from <span class="math inline">\(T_C\)</span> back to <span class="math inline">\(T_H\)</span> to complete the cycle.</li>
 </ol>
-<p>To understand why, we will analyze abstract “devices” that attempt these conversions.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div id="fig-carnot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-carnot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/carnot.jpg" class="img-fluid figure-img" style="width:40.0%">
 </div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>IUPAC Sign Convention Reminder
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-carnot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;1: The 4-steps of the Carnot cycle (image from Dahm and Visco)
+</figcaption>
+</figure>
 </div>
+<section id="p-v-representation-of-the-carnot-cycle" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="p-v-representation-of-the-carnot-cycle"><span class="header-section-number">2.1</span> P-V Representation of the Carnot Cycle</h2>
+<p>We can plot these four steps on a Pressure-Volume (<span class="math inline">\(P-V\)</span>) diagram.</p>
+<div id="fig-carnot-Pv" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-carnot-Pv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/PV-carnot.jpg" class="img-fluid figure-img" style="width:40.0%">
 </div>
-<div class="callout-body-container callout-body">
-<p>Remember, in this class we use the IUPAC sign convention:</p>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-carnot-Pv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;2: The Carnot cycle on a <span class="math inline">\(P-V\)</span> diagram (image from Dahm and Visco).
+</figcaption>
+</figure>
+</div>
+<p>In <a href="#fig-carnot-Pv" class="quarto-xref">Fig.&nbsp;2</a>, the net work produced (<span class="math inline">\(-W_{net}\)</span>) is the area enclosed by the cycle curve (<span class="math inline">\(\int P dV\)</span>).</p>
+</section>
+<section id="mathematical-analysis-of-the-carnot-cycle-ideal-gas" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="mathematical-analysis-of-the-carnot-cycle-ideal-gas"><span class="header-section-number">2.2</span> Mathematical Analysis of the Carnot Cycle (Ideal Gas)</h2>
+<p>To prove that this cycle achieves the maximum theoretical efficiency, let’s step through the First Law energy balances for each of the four steps, assuming a closed system containing 1 mole of an ideal gas.</p>
+<p>Recall for an ideal gas:</p>
 <ul>
-<li><p><span class="math inline">\(Q &gt; 0\)</span>: Heat is transferred <strong>into</strong> the system.</p></li>
-<li><p><span class="math inline">\(W &gt; 0\)</span>: Work is done <strong>on</strong> the system.</p></li>
-<li><p>Therefore, a device that <em>produces</em> work will have <span class="math inline">\(W &lt; 0\)</span>, and a device that <em>rejects</em> heat will have <span class="math inline">\(Q &lt; 0\)</span>.</p></li>
+<li><p>Internal energy only depends on temperature: <span class="math inline">\(dU = C_v dT\)</span></p></li>
+<li><p>Isothermal processes have <span class="math inline">\(\Delta U = 0\)</span></p></li>
+<li><p>Reversible work is <span class="math inline">\(W = -\int P dV\)</span></p></li>
 </ul>
-</div>
-</div>
-</section>
-<section id="the-kelvin-planck-device" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> The Kelvin-Planck Device</h1>
-<p>Let’s imagine a steady-state device that takes in heat (<span class="math inline">\(Q\)</span>) from a single thermal reservoir at temperature <span class="math inline">\(T\)</span> and converts it entirely into work (<span class="math inline">\(W\)</span>). We call this a <strong>Kelvin-Planck Device</strong>.</p>
-<div id="fig-KP-device" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-KP-device-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/KP-device.png" class="img-fluid figure-img" style="width:40.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-KP-device-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig.&nbsp;1: A “Kelvin-Planck” device.
-</figcaption>
-</figure>
-</div>
-<section id="analysis" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="analysis"><span class="header-section-number">2.1</span> Analysis</h2>
-<p>Consider this device operating in a cycle (i.e.&nbsp;steady state). Let’s apply our balances:</p>
-<p><strong>First Law:</strong> <span class="math display">\[\Delta U = 0 = Q + W \implies W = -Q\]</span> If the device takes in heat (<span class="math inline">\(Q &gt; 0\)</span>), then <span class="math inline">\(W &lt; 0\)</span>. This means work is produced by the system. According to the First Law, this device is <strong>possible</strong>. Energy is conserved.</p>
-<p><strong>Second Law:</strong> <span class="math display">\[\Delta S = 0 = \frac{Q}{T} + S_{gen}\]</span> <span class="math display">\[S_{gen} = -\frac{Q}{T}\]</span></p>
-<p>Since <span class="math inline">\(Q &gt; 0\)</span> (heat added) and absolute temperature <span class="math inline">\(T &gt; 0\)</span>, this implies: <span class="math display">\[S_{gen} &lt; 0\]</span> <strong>This violates the Second Law!</strong> Entropy generation (<span class="math inline">\(S_{gen}\)</span>) must be <span class="math inline">\(\ge 0\)</span>.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Kelvin-Planck Statement of the Second Law
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>It is impossible to construct a device that operates in a cycle and produces no other effect than the production of work and transfer of heat from a single body. <em>(i.e., You cannot turn heat 100% into work).</em></p>
-</div>
-</div>
-</section>
-<section id="the-reverse-kelvin-planck-device" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="the-reverse-kelvin-planck-device"><span class="header-section-number">2.2</span> The Reverse Kelvin-Planck Device</h2>
-<p>What if we reverse the arrows? A device that takes work in and turns it entirely into heat rejected to a reservoir?</p>
-<div id="fig-KP-rev" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-KP-rev-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/KP-rev.png" class="img-fluid figure-img" style="width:40.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-KP-rev-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig.&nbsp;2: A “Reverse Kelvin-Planck” device.
-</figcaption>
-</figure>
-</div>
+<p>Let’s label the four corners of the cycle (<a href="#fig-carnot-Pv" class="quarto-xref">Fig.&nbsp;2</a>) on the <span class="math inline">\(P-V\)</span> diagram as States A, B, C, and D. Note we use molar quantities here, so <span class="math inline">\(V\)</span> is the molar volume (no underline for simplicity). The ideal gas law applies at each state: <span class="math inline">\(P V = R T\)</span>.</p>
+<section id="step-1-state-a-to-b-reversible-isothermal-expansion-at-t_h" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="step-1-state-a-to-b-reversible-isothermal-expansion-at-t_h"><span class="header-section-number">2.2.1</span> Step 1: State A <span class="math inline">\(\to\)</span> B (Reversible Isothermal Expansion at <span class="math inline">\(T_H\)</span>)</h3>
+<p>The gas expands isothermally at the hot temperature <span class="math inline">\(T_H\)</span>.</p>
 <ul>
-<li><p><strong>1st Law:</strong> <span class="math inline">\(\Delta U = 0 = Q + W \implies Q = -W\)</span>. If work is put in (<span class="math inline">\(W &gt; 0\)</span>), heat is rejected (<span class="math inline">\(Q &lt; 0\)</span>). This is <strong>Possible</strong> from an energy balance perspective.</p></li>
-<li><p><strong>2nd Law:</strong> <span class="math inline">\(\Delta S = 0 = \frac{Q}{T} + S_{gen} \implies S_{gen} = -\frac{Q}{T}\)</span>. Since <span class="math inline">\(Q &lt; 0\)</span>, <span class="math inline">\(S_{gen} &gt; 0\)</span>.</p></li>
+<li><p><strong>Internal Energy:</strong> Since <span class="math inline">\(\Delta T = 0\)</span>, <span class="math inline">\(\Delta U_{AB} = 0\)</span>.</p></li>
+<li><p><strong>Work:</strong> <span class="math display">\[W_{AB} = -\int_{V_A}^{V_B} P dV = -\int_{V_A}^{V_B} \frac{R T_H}{V} dV = -R T_H \ln \left( \frac{V_B}{V_A} \right)\]</span> Using Boyle’s Law (<span class="math inline">\(P_A V_A = P_B V_B\)</span>), we can substitute pressures for volumes: <span class="math inline">\(\frac{V_B}{V_A} = \frac{P_A}{P_B}\)</span>. <span class="math display">\[W_{AB} = -R T_H \ln \left( \frac{P_A}{P_B} \right) = R T_H \ln \left( \frac{P_B}{P_A} \right)\]</span></p>
+<p><em>(Since <span class="math inline">\(P_B &lt; P_A\)</span> during expansion, <span class="math inline">\(W_{AB}\)</span> is negative, meaning the system does work).</em></p></li>
+<li><p><strong>Heat:</strong> From the First Law (<span class="math inline">\(\Delta U = Q + W = 0\)</span>), we get <span class="math inline">\(Q_H = -W_{AB}\)</span>: <span class="math display">\[Q_H = R T_H \ln \left( \frac{P_A}{P_B} \right)\]</span></p>
+<p><em>(This value is positive, confirming heat enters the system).</em></p></li>
 </ul>
-<p>Since <span class="math inline">\(Q &lt; 0\)</span>, the term <span class="math inline">\(-\frac{Q}{T}\)</span> is positive, meaning <span class="math inline">\(S_{gen} &gt; 0\)</span>. This is <strong>Possible</strong>. This suggests that work <em>can</em> be converted 100% to heat. An electrical resistor is a perfect example of this.</p>
+</section>
+<section id="step-2-state-b-to-c-reversible-adiabatic-expansion" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="step-2-state-b-to-c-reversible-adiabatic-expansion"><span class="header-section-number">2.2.2</span> Step 2: State B <span class="math inline">\(\to\)</span> C (Reversible Adiabatic Expansion)</h3>
+<p>The gas continues to expand, but now it is insulated, and the temperature drops from <span class="math inline">\(T_H\)</span> to <span class="math inline">\(T_C\)</span>.</p>
+<ul>
+<li><p><strong>Heat:</strong> <span class="math inline">\(Q_{BC} = 0\)</span> (Adiabatic).</p></li>
+<li><p><strong>Work &amp; Internal Energy:</strong> <span class="math display">\[\Delta U_{BC} = W_{BC} = \int_{T_H}^{T_C} C_v dT = C_v(T_C - T_H)\]</span></p>
+<p><em>(Since <span class="math inline">\(T_C &lt; T_H\)</span>, <span class="math inline">\(W_{BC}\)</span> is negative), confirming the system continues to do work on the surroundings.</em></p></li>
+</ul>
+</section>
+<section id="step-3-state-c-to-d-reversible-isothermal-compression-at-t_c" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="step-3-state-c-to-d-reversible-isothermal-compression-at-t_c"><span class="header-section-number">2.2.3</span> Step 3: State C <span class="math inline">\(\to\)</span> D (Reversible Isothermal Compression at <span class="math inline">\(T_C\)</span>)</h3>
+<p>The gas is compressed isothermally at the cold temperature <span class="math inline">\(T_C\)</span>, rejecting heat.</p>
+<ul>
+<li><p><strong>Internal Energy:</strong> Since <span class="math inline">\(\Delta T = 0\)</span>, <span class="math inline">\(\Delta U_{CD} = 0\)</span>.</p></li>
+<li><p><strong>Work:</strong> Similar to Step 1: <span class="math display">\[W_{CD} = -R T_C \ln \left( \frac{V_D}{V_C} \right) = R T_C \ln \left( \frac{P_D}{P_C} \right)\]</span></p>
+<p><em>(Since <span class="math inline">\(P_D &gt; P_C\)</span> during compression, <span class="math inline">\(W_{CD}\)</span> is positive, meaning work is done on the system).</em></p></li>
+<li><p><strong>Heat:</strong> <span class="math inline">\(Q_C = -W_{CD}\)</span>: <span class="math display">\[Q_C = R T_C \ln \left( \frac{P_C}{P_D} \right)\]</span></p>
+<p><em>(This value is negative, confirming heat leaves the system).</em></p></li>
+</ul>
+</section>
+<section id="step-4-state-d-to-a-reversible-adiabatic-compression" class="level3" data-number="2.2.4">
+<h3 data-number="2.2.4" class="anchored" data-anchor-id="step-4-state-d-to-a-reversible-adiabatic-compression"><span class="header-section-number">2.2.4</span> Step 4: State D <span class="math inline">\(\to\)</span> A (Reversible Adiabatic Compression)</h3>
+<p>The gas is compressed further while insulated, returning its temperature from <span class="math inline">\(T_C\)</span> back to <span class="math inline">\(T_H\)</span>.</p>
+<ul>
+<li><p><strong>Heat:</strong> <span class="math inline">\(Q_{DA} = 0\)</span> (Adiabatic).</p></li>
+<li><p><strong>Work &amp; Internal Energy:</strong> <span class="math display">\[\Delta U_{DA} = W_{DA} = \int_{T_C}^{T_H} C_v dT = C_v(T_H - T_C)\]</span></p>
+<p><em>(Since <span class="math inline">\(T_H &gt; T_C\)</span>, <span class="math inline">\(W_{DA}\)</span> is positive).</em></p></li>
+</ul>
+</section>
+<section id="net-work-and-cycle-efficiency" class="level3" data-number="2.2.5">
+<h3 data-number="2.2.5" class="anchored" data-anchor-id="net-work-and-cycle-efficiency"><span class="header-section-number">2.2.5</span> Net Work and Cycle Efficiency</h3>
+<p>Let’s look at the net work of the entire cycle: <span class="math display">\[W_{net} = W_{AB} + W_{BC} + W_{CD} + W_{DA}\]</span></p>
+<p>Notice that the adiabatic work terms perfectly cancel each other out: <span class="math inline">\(W_{BC} + W_{DA} = C_v(T_C - T_H) + C_v(T_H - T_C) = 0\)</span>.</p>
+<p>Thus, the net work depends only on the isothermal steps: <span class="math display">\[W_{net} = R T_H \ln \left( \frac{P_B}{P_A} \right) + R T_C \ln \left( \frac{P_D}{P_C} \right)\]</span></p>
+<p>We can relate this to the ideal efficiency in several ways. One way is to recognize that the constant temperature work terms are <span class="math inline">\(Q_H = -W_{AB}\)</span> and <span class="math inline">\(Q_C = -W_{CD}\)</span>, so</p>
+<p><span id="eq-work-net"><span class="math display">\[W_{net} = Q_H + Q_C \tag{1}\]</span></span></p>
+<p>Then, the thermal efficiency is: <span class="math display">\[\eta = \frac{-W_{net}}{Q_H} = \frac{Q_H + Q_C}{Q_H} = 1 + \frac{Q_C}{Q_H}\]</span></p>
+<p>The steady-state entropy balance for the cycle is: <span class="math display">\[0 = \frac{Q_H}{T_H} + \frac{Q_C}{T_C}\]</span> Rearranging gives: <span class="math display">\[\frac{Q_C}{Q_H} = -\frac{T_C}{T_H}\]</span> Substituting this into the efficiency equation: <span class="math display">\[\eta = 1 + \frac{Q_C}{Q_H} = 1 + \left( -\frac{T_C}{T_H} \right) = 1 - \frac{T_C}{T_H}\]</span></p>
+<p>This is the maximum theoretical efficiency, confirming that the Carnot cycle achieves the ideal limit set by the Second Law of Thermodynamics.</p>
 </section>
 </section>
-<section id="the-clausius-device" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> The Clausius Device</h1>
-<p>Now consider a device that transfers heat from a cold reservoir (<span class="math inline">\(T_C\)</span>) to a hot reservoir (<span class="math inline">\(T_H\)</span>) without any work input.</p>
-<div id="fig-clausius" class="quarto-float quarto-figure quarto-figure-center anchored">
+<section id="t-s-representation-of-the-carnot-cycle" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="t-s-representation-of-the-carnot-cycle"><span class="header-section-number">2.3</span> T-S Representation of the Carnot Cycle</h2>
+<p>We can also plot the Carnot cycle on a Temperature-Entropy (<span class="math inline">\(T-S\)</span>) diagram.</p>
+<div id="fig-carnot-Ts" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-clausius-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/clausius.png" class="img-fluid figure-img" style="width:40.0%">
+<div aria-describedby="fig-carnot-Ts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/TS-carnot.jpg" class="img-fluid figure-img" style="width:40.0%">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-clausius-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig.&nbsp;3: A “Clausius” device.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-carnot-Ts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;3: The Carnot cycle on a <span class="math inline">\(T-S\)</span> diagram (image from Dahm and Visco).
 </figcaption>
 </figure>
 </div>
-<p>In <a href="#fig-clausius" class="quarto-xref">Fig.&nbsp;3</a>, 2 is the cold (C) reservoir and 1 is the hot (H) reservoir. Heat flows from 2 to 1, which is the opposite of the natural direction of heat flow.</p>
-<p><strong>First Law:</strong> <span class="math display">\[0 = Q_H + Q_C + W\]</span> Since there is no work (<span class="math inline">\(W = 0\)</span>), <span class="math inline">\(Q_H = -Q_C\)</span>. Heat is absorbed from the cold reservoir (<span class="math inline">\(Q_C &gt; 0\)</span>) and rejected to the hot reservoir (<span class="math inline">\(Q_H &lt; 0\)</span>). This is <strong>Possible</strong> from an energy balance perspective.</p>
-<p><strong>Second Law:</strong> <span class="math display">\[0 = \frac{Q_H}{T_H} + \frac{Q_C}{T_C} + S_{gen}\]</span> Substitute <span class="math inline">\(Q_H = -Q_C\)</span>: <span class="math display">\[0 = -\frac{Q_C}{T_H} + \frac{Q_C}{T_C} + S_{gen}\]</span> <span class="math display">\[S_{gen} = -Q_C \left( \frac{1}{T_C} - \frac{1}{T_H} \right)\]</span></p>
-<p>Since <span class="math inline">\(T_H &gt; T_C\)</span>, the term <span class="math inline">\((\frac{1}{T_C} - \frac{1}{T_H})\)</span> is <strong>positive</strong>. Because <span class="math inline">\(Q_C &gt; 0\)</span>, the entire right side is negative. Therefore, <span class="math inline">\(S_{gen} &lt; 0\)</span>. <strong>Impossible.</strong> Heat cannot spontaneously flow from cold to hot.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Clausius Statement of the Second Law
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>It is impossible to construct a device that operates in a cycle and produces no other effect than the transfer of heat from a lower-temperature body to a higher-temperature body.</p>
-</div>
-</div>
-<p><em>(Note: We can show that a Clausius device is conceptually identical to a combined Kelvin-Planck and reverse Kelvin-Planck device!) Since the KP device is not allowed, neither is a Clausius device</em></p>
-<section id="the-reverse-clausius-device" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="the-reverse-clausius-device"><span class="header-section-number">3.1</span> The Reverse Clausius Device</h2>
-<p>A “Reverse Clausius” device is one that allows heat to flow naturally from hot (<span class="math inline">\(T_H\)</span>) to cold (<span class="math inline">\(T_C\)</span>). This is a common process in nature.</p>
-<div id="fig-Clausius-inv" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-Clausius-inv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/Clausius-inv.png" class="img-fluid figure-img" style="width:40.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Clausius-inv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig.&nbsp;4: A “Reverse Clausius” device.
-</figcaption>
-</figure>
-</div>
-<p>Let’s do a thermodynamic analysis anyway. <span class="math inline">\(Q_H &gt; 0\)</span> (heat in) and <span class="math inline">\(Q_C &lt; 0\)</span> (heat out). <span class="math display">\[S_{gen} = -Q_H \left( \frac{1}{T_H} - \frac{1}{T_C} \right)\]</span> Since <span class="math inline">\((1/T_H - 1/T_C)\)</span> is negative, and <span class="math inline">\(Q_H &gt; 0\)</span>, <span class="math inline">\(S_{gen} &gt; 0\)</span>. <strong>Possible.</strong> Heat naturally flows from hot to cold.</p>
+<p>The <span class="math inline">\(T-S\)</span> diagram for a Carnot cycle is beautifully simple: a perfect rectangle.</p>
+<ul>
+<li><p>Steps 1 and 3 are horizontal lines (constant <span class="math inline">\(T\)</span>).</p></li>
+<li><p>Steps 2 and 4 are vertical lines (reversible + adiabatic = isentropic, <span class="math inline">\(\Delta S = 0\)</span>).</p></li>
+<li><p>The area inside the rectangle represents the net heat added (<span class="math inline">\(Q_H + Q_C\)</span>), which by the First Law equals the net work produced (magnitude <span class="math inline">\(-W_{net}\)</span>).</p></li>
+</ul>
 </section>
-</section>
-<section id="the-cyclic-heat-engine" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> The Cyclic Heat Engine</h1>
-<p>We have established three facts:</p>
+<section id="why-dont-we-use-the-carnot-cycle" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="why-dont-we-use-the-carnot-cycle"><span class="header-section-number">2.4</span> Why don’t we use the Carnot Cycle?</h2>
+<p>If the Carnot cycle gives the maximum efficiency, why don’t our real power plants use it? It is entirely impractical for large-scale power generation:</p>
 <ol type="1">
-<li><p>We can convert work 100% to heat (reverse KP device is possible).</p></li>
-<li><p>We cannot convert heat 100% to work (<span class="math inline">\(S_{gen} &lt; 0\)</span>).</p></li>
-<li><p>Heat naturally flows from <span class="math inline">\(T_H\)</span> to <span class="math inline">\(T_C\)</span> (<span class="math inline">\(S_{gen} &gt; 0\)</span>).</p></li>
+<li><p><strong>Isothermal heat transfer is incredibly slow.</strong> To transfer heat without a temperature gradient requires essentially infinite time or infinitely large heat exchangers.</p></li>
+<li><p><strong>Hardware limitations.</strong> Achieving the Carnot cycle with a boiling/condensing fluid (like steam) would require compressing a two-phase liquid-vapor mixture, which severely damages compressors.</p></li>
 </ol>
-<p><strong>The Engineering Idea:</strong> What if we take the natural flow of heat from <span class="math inline">\(T_H\)</span> to <span class="math inline">\(T_C\)</span> (which generates positive entropy) and “bleed off” some of that energy as work?</p>
-<div id="fig-QH-QC-W" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-QH-QC-W-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/QH-QC-W.png" class="img-fluid figure-img" style="width:40.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-QH-QC-W-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig.&nbsp;5: A heat engine.
-</figcaption>
-</figure>
-</div>
-<p>Let’s analyze this <strong>Heat Engine</strong>:</p>
-<ul>
-<li><p>Heat <span class="math inline">\(Q_H\)</span> enters from hot reservoir <span class="math inline">\(T_H\)</span> (<span class="math inline">\(Q_H &gt; 0\)</span>).</p></li>
-<li><p>Heat <span class="math inline">\(Q_C\)</span> leaves to cold reservoir <span class="math inline">\(T_C\)</span> (<span class="math inline">\(Q_C &lt; 0\)</span>).</p></li>
-<li><p>Work <span class="math inline">\(W\)</span> is produced (<span class="math inline">\(W &lt; 0\)</span>).</p></li>
-</ul>
-<section id="first-law-analysis" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="first-law-analysis"><span class="header-section-number">4.1</span> First Law Analysis</h2>
-<p><span class="math display">\[0 = Q_H + Q_C + W\]</span> Solving for <span class="math inline">\(Q_C\)</span>: <span class="math display">\[Q_C = -W - Q_H\]</span></p>
+<p>The Carnot cycle is an <em>idealization</em>—a theoretical ceiling, not a practical blueprint.</p>
 </section>
-<section id="second-law-analysis" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="second-law-analysis"><span class="header-section-number">4.2</span> Second Law Analysis</h2>
-<p><span class="math display">\[0 = \frac{Q_H}{T_H} + \frac{Q_C}{T_C} + S_{gen}\]</span></p>
-<p>Substitute the First Law expression for <span class="math inline">\(Q_C\)</span> into the Second Law: <span class="math display">\[0 = \frac{Q_H}{T_H} + \frac{-W - Q_H}{T_C} + S_{gen}\]</span></p>
-<p>Multiply the entire equation by <span class="math inline">\(T_C\)</span>: <span class="math display">\[0 = Q_H \frac{T_C}{T_H} - W - Q_H + T_C S_{gen}\]</span></p>
 </section>
-<section id="solving-for-work" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="solving-for-work"><span class="header-section-number">4.3</span> Solving for Work</h2>
-<p>Now, solve the equation for <span class="math inline">\(W\)</span>:</p>
-<p><span id="eq-work-heat-engine"><span class="math display">\[W = Q_H \left( \frac{T_C}{T_H} - 1 \right) + T_C S_{gen} \tag{1}\]</span></span></p>
-<p>Let’s look closely at this <strong>amazing result</strong>. Because <span class="math inline">\(T_H &gt; T_C\)</span>, the term <span class="math inline">\((\frac{T_C}{T_H} - 1)\)</span> is negative. Since <span class="math inline">\(Q_H &gt; 0\)</span>, the first part of the right side is negative (meaning work is produced). However, <span class="math inline">\(T_C S_{gen}\)</span> is always positive. This positive term makes <span class="math inline">\(W\)</span> <em>less negative</em>.</p>
+<section id="designing-a-practical-heat-engine" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Designing a Practical Heat Engine</h1>
+<p>Let’s design a practical heat engine from scratch, applying engineering logic.</p>
+<section id="attempt-1-the-open-loop-steam-turbine" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="attempt-1-the-open-loop-steam-turbine"><span class="header-section-number">3.1</span> Attempt 1: The Open-Loop Steam Turbine</h2>
+<p>We know turbines are great at extracting work from expanding high-pressure gas. So, let’s heat water in a boiler to make high-pressure steam, run it through a turbine to generate work, and vent the exhaust to the atmosphere.</p>
+<p><strong>The Problem:</strong> We are constantly losing our working fluid! Boilers require highly purified, treated water so they don’t scale. Purifying millions of gallons of water a day just to vent it as steam is prohibitively expensive. It is also a huge waste of water. We <em>must</em> recover the fluid.</p>
+</section>
+<section id="attempt-2-closing-the-loop-with-a-compressor" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="attempt-2-closing-the-loop-with-a-compressor"><span class="header-section-number">3.2</span> Attempt 2: Closing the Loop with a Compressor</h2>
+<p>To close the loop, we need to take the low-pressure steam exiting the turbine and push it back into the high-pressure boiler. Can we just use a gas compressor?</p>
+<p>Recall from our open-system mechanical energy balance for reversible flow: <span class="math display">\[W \approx \int \hat{V} dP\]</span></p>
+<p>The work required to change the pressure of a fluid scales directly with its specific volume (<span class="math inline">\(\hat{V}\)</span>). Low-pressure steam is a vapor with a <em>huge</em> specific volume. The work required by the compressor (<span class="math inline">\(W_{comp} &gt; 0\)</span>) would be massive—so large that it would consume almost all the work produced by the turbine (<span class="math inline">\(W_{turb} &lt; 0\)</span>). We would generate basically zero net power!</p>
+</section>
+<section id="attempt-3-the-rankine-cycle-condensing" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="attempt-3-the-rankine-cycle-condensing"><span class="header-section-number">3.3</span> Attempt 3: The Rankine Cycle (Condensing)</h2>
+<p>How do we shrink the specific volume (<span class="math inline">\(\hat{V}\)</span>) of the fluid before we pump it back to the boiler? <strong>We condense it</strong> by removing heat from it.</p>
+<p>Liquid water is roughly <strong>1000 times denser</strong> than steam. If we add a condenser after the turbine to cool the steam into a liquid, the specific volume <span class="math inline">\(\hat{V}\)</span> drops by three orders of magnitude.</p>
+<p>Consequently, the work required to pump liquid water to high pressure is tiny compared to the work required to compress steam. (<span class="math inline">\(W_{pump} \ll W_{compressor}\)</span>).</p>
+<p>This brilliant engineering workaround—spending a little cooling water to drastically reduce the mechanical work of pressurization while recycling the working fluid—gives us the <strong>Rankine Cycle</strong>.</p>
+</section>
+</section>
+<section id="the-rankine-cycle" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> The Rankine Cycle</h1>
+<p>The Rankine cycle is the basic operating cycle for the vast majority of power plants in the world (coal, nuclear, natural gas, and concentrated solar).</p>
+<p>It consists of four steady-state open-system components:</p>
 <ol type="1">
-<li><strong>The Potential:</strong> The term <span class="math inline">\(Q_H (\frac{T_C}{T_H} - 1)\)</span> represents the <em>maximum possible work</em> produced by the laws of thermodynamics (when <span class="math inline">\(S_{gen}=0\)</span>).</li>
-<li><strong>The Reality:</strong> The term <span class="math inline">\(T_C S_{gen}\)</span> represents the <em>penalty</em> for irreversibility. It reduces the actual work produced compared to the ideal maximum.</li>
+<li><strong>Pump:</strong> Liquid water is compressed to high pressure. (Adiabatic, <span class="math inline">\(W_{pump} &gt; 0, Q = 0\)</span>).</li>
+<li><strong>Boiler:</strong> High-pressure liquid enters and is heated at constant pressure to become superheated steam. (<span class="math inline">\(W = 0, Q_{boiler} &gt; 0\)</span>).</li>
+<li><strong>Turbine:</strong> High-pressure steam expands to low pressure, driving a shaft to produce work. (Adiabatic, <span class="math inline">\(W_{turb} &lt; 0, Q = 0\)</span>).</li>
+<li><strong>Condenser:</strong> Low-pressure exhaust steam is cooled at constant pressure to become a saturated liquid. (<span class="math inline">\(W = 0, Q_{cond} &lt; 0\)</span>).</li>
 </ol>
-</section>
-</section>
-<section id="thermal-efficiency" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Thermal Efficiency</h1>
-<p>We define the thermal efficiency <span class="math inline">\(\eta\)</span> as: <span class="math display">\[\eta = \frac{\text{Benefit}}{\text{Cost}}\]</span></p>
-<p>The benefit is the work produced (magnitude <span class="math inline">\(-W\)</span>), and the cost is the heat put in (<span class="math inline">\(Q_H\)</span>): <span class="math display">\[\eta = \frac{-W}{Q_H}\]</span></p>
-<p>Using our derived expression for work: <span class="math display">\[\eta = \frac{- \left[ Q_H \left( \frac{T_C}{T_H} - 1 \right) + T_C S_{gen} \right]}{Q_H}\]</span> <span class="math display">\[\eta = \left( 1 - \frac{T_C}{T_H} \right) - \frac{T_C S_{gen}}{Q_H}\]</span></p>
-<section id="maximum-reversible-efficiency" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="maximum-reversible-efficiency"><span class="header-section-number">5.1</span> Maximum (Reversible) Efficiency</h2>
-<p>If the process is perfectly reversible (<span class="math inline">\(S_{gen} = 0\)</span>), we get the theoretical maximum efficiency, known as the <strong>Carnot Efficiency</strong>:</p>
-<p><span class="math display">\[\eta_{max} = 1 - \frac{T_C}{T_H}\]</span></p>
-<p>To maximize efficiency, we want:</p>
-<ul>
-<li><p><span class="math inline">\(T_H \to \infty\)</span> (The heat source should be as hot as possible).</p></li>
-<li><p><span class="math inline">\(T_C \to 0\)</span> (Discharge heat to as cold a sink as possible).</p></li>
-</ul>
-<p>This explains why power plants use superheated steam (high <span class="math inline">\(T_H\)</span>) and cooling towers or cold lakes (low <span class="math inline">\(T_C\)</span>).</p>
-</section>
-</section>
-<section id="lost-work" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Lost Work</h1>
-<p>Real engines always have irreversibilities (friction, heat loss, turbulence), so <span class="math inline">\(S_{gen} &gt; 0\)</span>. The difference between the maximum (or ideal) work produced and the actual work produced is called <strong>Lost Work</strong>.</p>
-<p><span class="math display">\[W_{lost} = (-W_{max}) - (-W_{actual})\]</span> <span class="math display">\[W_{lost} = \left[ Q_H \left( 1 - \frac{T_C}{T_H} \right) \right] - \left[ Q_H \left( 1 - \frac{T_C}{T_H} \right) - T_C S_{gen} \right]\]</span></p>
-<p><span class="math display">\[W_{lost} = T_C S_{gen}\]</span></p>
-<p>This simple equation links the abstract concept of entropy generation directly to lost engineering potential. Every unit of entropy generated destroys our ability to do useful work by an amount proportional to the sink temperature <span class="math inline">\(T_C\)</span>.</p>
+<section id="cycle-thermodynamics" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="cycle-thermodynamics"><span class="header-section-number">4.1</span> Cycle Thermodynamics</h2>
+<p>Let’s perform an energy balance on the entire closed loop at steady state: <span class="math display">\[\Delta U_{cycle} = 0 = Q_{boiler} + Q_{cond} + W_{turb} + W_{pump}\]</span></p>
+<p>The net work of the cycle is: <span class="math display">\[W_{net} = W_{turb} + W_{pump}\]</span> <em>(Note: Since <span class="math inline">\(W_{turb}\)</span> is a large negative number and <span class="math inline">\(W_{pump}\)</span> is a small positive number, <span class="math inline">\(W_{net}\)</span> will be negative, indicating net work is produced).</em></p>
+<p>The thermal efficiency of the Rankine cycle is the benefit (net work out) divided by the cost (heat purchased for the boiler):</p>
+<p><span class="math display">\[\eta = \frac{-W_{net}}{Q_{boiler}} = \frac{-(W_{turb} + W_{pump})}{Q_{boiler}}\]</span></p>
+<p>Notice that there is heat discharged (<span class="math inline">\(Q_{cond}\)</span>) during condensation, which means this is not a Kelvin-Planck device. In the next lecture, we will use the steam tables to calculate the exact enthalpies at each step of this cycle and determine the efficiency of a real power plant!</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
