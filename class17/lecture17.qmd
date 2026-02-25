@@ -15,6 +15,10 @@ execute:
 
 # Introduction: The Limits of Heat Engines
 
+> "The production of heat alone is not sufficient to give birth to impelling power: it is necessary that there should also be cold; without it, the heat would be useless" 
+> 
+> — Sadi Carnot
+
 In our last lecture, we used the First and Second Laws of Thermodynamics to determine that the work output of any cyclic heat engine is given by:
 
 $$W = Q_H \left( \frac{T_C}{T_H} - 1 \right) + T_C S_{gen}$$

@@ -41,6 +41,8 @@ website:
             text: Lecture 16 - Heat Engines and the Second Law  
           - href: class17/lecture17.qmd
             text: Lecture 17 - Carnot Cycle and Practical Heat Engines  
+          - href: class18/lecture18.qmd
+            text: Lecture 18 - Rankine Cycle Analysis and Efficiency  
               
           # Add more lectures here as you create them:
           # - href: class0x/lecture02.qmd
