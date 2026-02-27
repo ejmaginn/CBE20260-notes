@@ -65,7 +65,7 @@ Let's set up a table to track the properties of our fluid at each state. You sho
 
 ---
 
-## Step 1: The Turbine (State 2 $\to$ State 3)
+## The Turbine (State 2 $\to$ State 3)
 
 ### State 2 Properties
 From the superheated steam tables at $60 \text{ bar}$ ($6.0 \text{ MPa}$) and $500^\circ\text{C}$:
@@ -112,7 +112,10 @@ $\hat{S}_3 = 7.4884 \text{ kJ/kg}\cdot\text{K}$ and $T_3 = 125.1^\circ\text{C}$.
 
 ---
 
-## Step 2: The Pump (State 4 $\to$ State 1)
+## Condenser Analysis (State 3 $\to$ State 4)
+The condenser is a heat exchanger that removes heat from the turbine exhaust to condense it back into a liquid. We will assume the condenser is at constant pressure and the exit is saturated liquid (there is no advantage to cool the liquid further), so we find the exit conditions from the saturated steam tables. At $1 \text{ bar}$, the saturation temperature is $T_{4} = 99.6^\circ\text{C}$, the saturated enthalpy is $\hat{H}_{4} = 417.5 \text{ kJ/kg}$ and the saturation entropy of the liquid is $\hat{S}_{4} = 1.3026 \text{ kJ/kg}\cdot\text{K}$. Add these values to the state table.
+
+## The Pump (State 4 $\to$ State 1)
 
 ### State 4 Properties
 Saturated liquid at $1 \text{ bar}$.
