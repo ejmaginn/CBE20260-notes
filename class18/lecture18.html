@@ -253,19 +253,20 @@ window.Quarto = {
   <li><a href="#example-problem-evaluating-a-real-rankine-cycle" id="toc-example-problem-evaluating-a-real-rankine-cycle" class="nav-link" data-scroll-target="#example-problem-evaluating-a-real-rankine-cycle"><span class="header-section-number">2</span> Example Problem: Evaluating a Real Rankine Cycle</a>
   <ul class="collapse">
   <li><a href="#cycle-state-table-initial" id="toc-cycle-state-table-initial" class="nav-link" data-scroll-target="#cycle-state-table-initial"><span class="header-section-number">2.1</span> Cycle State Table (Initial)</a></li>
-  <li><a href="#step-1-the-turbine-state-2-to-state-3" id="toc-step-1-the-turbine-state-2-to-state-3" class="nav-link" data-scroll-target="#step-1-the-turbine-state-2-to-state-3"><span class="header-section-number">2.2</span> Step 1: The Turbine (State 2 <span class="math inline">\(\to\)</span> State 3)</a>
+  <li><a href="#the-turbine-state-2-to-state-3" id="toc-the-turbine-state-2-to-state-3" class="nav-link" data-scroll-target="#the-turbine-state-2-to-state-3"><span class="header-section-number">2.2</span> The Turbine (State 2 <span class="math inline">\(\to\)</span> State 3)</a>
   <ul class="collapse">
   <li><a href="#state-2-properties" id="toc-state-2-properties" class="nav-link" data-scroll-target="#state-2-properties"><span class="header-section-number">2.2.1</span> State 2 Properties</a></li>
   <li><a href="#reversible-turbine-analysis" id="toc-reversible-turbine-analysis" class="nav-link" data-scroll-target="#reversible-turbine-analysis"><span class="header-section-number">2.2.2</span> Reversible Turbine Analysis</a></li>
   <li><a href="#actual-turbine-analysis" id="toc-actual-turbine-analysis" class="nav-link" data-scroll-target="#actual-turbine-analysis"><span class="header-section-number">2.2.3</span> Actual Turbine Analysis</a></li>
   </ul></li>
-  <li><a href="#step-2-the-pump-state-4-to-state-1" id="toc-step-2-the-pump-state-4-to-state-1" class="nav-link" data-scroll-target="#step-2-the-pump-state-4-to-state-1"><span class="header-section-number">2.3</span> Step 2: The Pump (State 4 <span class="math inline">\(\to\)</span> State 1)</a>
+  <li><a href="#condenser-analysis-state-3-to-state-4" id="toc-condenser-analysis-state-3-to-state-4" class="nav-link" data-scroll-target="#condenser-analysis-state-3-to-state-4"><span class="header-section-number">2.3</span> Condenser Analysis (State 3 <span class="math inline">\(\to\)</span> State 4)</a></li>
+  <li><a href="#the-pump-state-4-to-state-1" id="toc-the-pump-state-4-to-state-1" class="nav-link" data-scroll-target="#the-pump-state-4-to-state-1"><span class="header-section-number">2.4</span> The Pump (State 4 <span class="math inline">\(\to\)</span> State 1)</a>
   <ul class="collapse">
-  <li><a href="#state-4-properties" id="toc-state-4-properties" class="nav-link" data-scroll-target="#state-4-properties"><span class="header-section-number">2.3.1</span> State 4 Properties</a></li>
-  <li><a href="#reversible-pump-analysis" id="toc-reversible-pump-analysis" class="nav-link" data-scroll-target="#reversible-pump-analysis"><span class="header-section-number">2.3.2</span> Reversible Pump Analysis</a></li>
-  <li><a href="#actual-pump-analysis" id="toc-actual-pump-analysis" class="nav-link" data-scroll-target="#actual-pump-analysis"><span class="header-section-number">2.3.3</span> Actual Pump Analysis</a></li>
+  <li><a href="#state-4-properties" id="toc-state-4-properties" class="nav-link" data-scroll-target="#state-4-properties"><span class="header-section-number">2.4.1</span> State 4 Properties</a></li>
+  <li><a href="#reversible-pump-analysis" id="toc-reversible-pump-analysis" class="nav-link" data-scroll-target="#reversible-pump-analysis"><span class="header-section-number">2.4.2</span> Reversible Pump Analysis</a></li>
+  <li><a href="#actual-pump-analysis" id="toc-actual-pump-analysis" class="nav-link" data-scroll-target="#actual-pump-analysis"><span class="header-section-number">2.4.3</span> Actual Pump Analysis</a></li>
   </ul></li>
-  <li><a href="#completed-cycle-state-table" id="toc-completed-cycle-state-table" class="nav-link" data-scroll-target="#completed-cycle-state-table"><span class="header-section-number">2.4</span> Completed Cycle State Table</a></li>
+  <li><a href="#completed-cycle-state-table" id="toc-completed-cycle-state-table" class="nav-link" data-scroll-target="#completed-cycle-state-table"><span class="header-section-number">2.5</span> Completed Cycle State Table</a></li>
   </ul></li>
   <li><a href="#cycle-performance" id="toc-cycle-performance" class="nav-link" data-scroll-target="#cycle-performance"><span class="header-section-number">3</span> Cycle Performance</a>
   <ul class="collapse">
@@ -408,8 +409,8 @@ Fig.&nbsp;1: A simple Rankine cycle, consisting of a boiler, turbine, compressor
 </table>
 <hr>
 </section>
-<section id="step-1-the-turbine-state-2-to-state-3" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="step-1-the-turbine-state-2-to-state-3"><span class="header-section-number">2.2</span> Step 1: The Turbine (State 2 <span class="math inline">\(\to\)</span> State 3)</h2>
+<section id="the-turbine-state-2-to-state-3" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="the-turbine-state-2-to-state-3"><span class="header-section-number">2.2</span> The Turbine (State 2 <span class="math inline">\(\to\)</span> State 3)</h2>
 <section id="state-2-properties" class="level3" data-number="2.2.1">
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="state-2-properties"><span class="header-section-number">2.2.1</span> State 2 Properties</h3>
 <p>From the superheated steam tables at <span class="math inline">\(60 \text{ bar}\)</span> (<span class="math inline">\(6.0 \text{ MPa}\)</span>) and <span class="math inline">\(500^\circ\text{C}\)</span>:</p>
@@ -441,10 +442,14 @@ Fig.&nbsp;1: A simple Rankine cycle, consisting of a boiler, turbine, compressor
 <hr>
 </section>
 </section>
-<section id="step-2-the-pump-state-4-to-state-1" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="step-2-the-pump-state-4-to-state-1"><span class="header-section-number">2.3</span> Step 2: The Pump (State 4 <span class="math inline">\(\to\)</span> State 1)</h2>
-<section id="state-4-properties" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="state-4-properties"><span class="header-section-number">2.3.1</span> State 4 Properties</h3>
+<section id="condenser-analysis-state-3-to-state-4" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="condenser-analysis-state-3-to-state-4"><span class="header-section-number">2.3</span> Condenser Analysis (State 3 <span class="math inline">\(\to\)</span> State 4)</h2>
+<p>The condenser is a heat exchanger that removes heat from the turbine exhaust to condense it back into a liquid. We will assume the condenser is at constant pressure and the exit is saturated liquid (there is no advantage to cool the liquid further), so we find the exit conditions from the saturated steam tables. At <span class="math inline">\(1 \text{ bar}\)</span>, the saturation temperature is <span class="math inline">\(T_{4} = 99.6^\circ\text{C}\)</span>, the saturated enthalpy is <span class="math inline">\(\hat{H}_{4} = 417.5 \text{ kJ/kg}\)</span> and the saturation entropy of the liquid is <span class="math inline">\(\hat{S}_{4} = 1.3026 \text{ kJ/kg}\cdot\text{K}\)</span>. Add these values to the state table.</p>
+</section>
+<section id="the-pump-state-4-to-state-1" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="the-pump-state-4-to-state-1"><span class="header-section-number">2.4</span> The Pump (State 4 <span class="math inline">\(\to\)</span> State 1)</h2>
+<section id="state-4-properties" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="state-4-properties"><span class="header-section-number">2.4.1</span> State 4 Properties</h3>
 <p>Saturated liquid at <span class="math inline">\(1 \text{ bar}\)</span>.</p>
 <ul>
 <li><p><span class="math inline">\(T_4 = 99.6^\circ\text{C}\)</span></p></li>
@@ -453,19 +458,19 @@ Fig.&nbsp;1: A simple Rankine cycle, consisting of a boiler, turbine, compressor
 <li><p><span class="math inline">\(\hat{V}_4 \approx 0.001043 \text{ m}^3/\text{kg}\)</span> We estimate this from the saturated liquid specific volume at <span class="math inline">\(1 \text{ bar}\)</span>.</p></li>
 </ul>
 </section>
-<section id="reversible-pump-analysis" class="level3" data-number="2.3.2">
-<h3 data-number="2.3.2" class="anchored" data-anchor-id="reversible-pump-analysis"><span class="header-section-number">2.3.2</span> Reversible Pump Analysis</h3>
+<section id="reversible-pump-analysis" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="reversible-pump-analysis"><span class="header-section-number">2.4.2</span> Reversible Pump Analysis</h3>
 <p>For an incompressible liquid, the reversible pump work is equal to <span class="math inline">\(\int \hat{V} dP\)</span>: <span class="math display">\[W_{P,rev} = \hat{V}_4 (P_1 - P_4) = 0.001043 \frac{\text{m}^3}{\text{kg}} \times (60 - 1) \text{ bar} \times \frac{100 \text{ kPa}}{1 \text{ bar}}\]</span> <span class="math display">\[W_{P,rev} = +6.15 \text{ kJ/kg}\]</span> <em>(Notice how small this is compared to the turbine work! This is the brilliance of the Rankine cycle).</em></p>
 </section>
-<section id="actual-pump-analysis" class="level3" data-number="2.3.3">
-<h3 data-number="2.3.3" class="anchored" data-anchor-id="actual-pump-analysis"><span class="header-section-number">2.3.3</span> Actual Pump Analysis</h3>
+<section id="actual-pump-analysis" class="level3" data-number="2.4.3">
+<h3 data-number="2.4.3" class="anchored" data-anchor-id="actual-pump-analysis"><span class="header-section-number">2.4.3</span> Actual Pump Analysis</h3>
 <p>Using the pump efficiency (<span class="math inline">\(\eta_P = 0.75\)</span>): <span class="math display">\[W_P = \frac{W_{P,rev}}{\eta_P} = \frac{6.15}{0.75} = +8.2 \text{ kJ/kg}\]</span></p>
 <p>Calculate the actual boiler inlet enthalpy (<span class="math inline">\(\hat{H}_1\)</span>): <span class="math display">\[\hat{H}_1 = \hat{H}_4 + W_P = 417.46 + 8.2 = 425.7 \text{ kJ/kg}\]</span> <em>(At <span class="math inline">\(60 \text{ bar}\)</span> and this enthalpy, we can find <span class="math inline">\(\hat{S}_1 \approx 1.324 \text{ kJ/kg}\cdot\text{K}\)</span>)</em>.</p>
 <hr>
 </section>
 </section>
-<section id="completed-cycle-state-table" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="completed-cycle-state-table"><span class="header-section-number">2.4</span> Completed Cycle State Table</h2>
+<section id="completed-cycle-state-table" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="completed-cycle-state-table"><span class="header-section-number">2.5</span> Completed Cycle State Table</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 14%">
