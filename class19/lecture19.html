@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Edward Maginn">
+
+<title>Lecture 19: Improving Rankine Cycle Efficiency – CBE 20260 — Course Notes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-950ba19c765f2cec88564589b0edcdee.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">CBE 20260 — Course Notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-lectures" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Lectures</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-lectures">    
+        <li>
+    <a class="dropdown-item" href="../class01/lecture01.html">
+ <span class="dropdown-text">Lecture 1 — Introduction</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class02/lecture02.html">
+ <span class="dropdown-text">Lecture 2 — Systems, Boundaries and Other Basics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class03/lecture03.html">
+ <span class="dropdown-text">Lecture 3 — Forms of Energy and Calculating Work</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class04/lecture04.html">
+ <span class="dropdown-text">Lecture 4 — Fundamental Postulate, States, Phase Rule, and Pure Substance Phase Behaviors</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class05/lecture05.html">
+ <span class="dropdown-text">Lecture 5 — Heat Capacity, Enthalpy</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class06/lecture06.html">
+ <span class="dropdown-text">Lecture 6 — Calculating Internal Energy and Enthalpy Changes; intermolecular forces</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class07/lecture07.html">
+ <span class="dropdown-text">Lecture 7 - The van der Waals Equation of State; compressibility factor; open system energy balance</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class08/lecture08.html">
+ <span class="dropdown-text">Lecture 8 - Open system energy balance applied to process equipment</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class09/lecture09.html">
+ <span class="dropdown-text">Lecture 9 - Advanced Open System Energy Balances</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class10/lecture10.html">
+ <span class="dropdown-text">Lecture 10 - Latent Heat and the Need for a Second Law</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class12/lecture12.html">
+ <span class="dropdown-text">Lecture 12 - Introduction to Entropy and the Second Law</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class13/lecture13.html">
+ <span class="dropdown-text">Lecture 13 - Calculating Entropy Changes for Closed Systems</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class14/lecture14.html">
+ <span class="dropdown-text">Lecture 14 - Entropy Changes for Open Systems</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class15/lecture15.html">
+ <span class="dropdown-text">Lecture 15 - Open System Entropy Balance and Efficiency</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class16/lecture16.html">
+ <span class="dropdown-text">Lecture 16 - Heat Engines and the Second Law</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class17/lecture17.html">
+ <span class="dropdown-text">Lecture 17 - Carnot Cycle and Practical Heat Engines</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class18/lecture18.html">
+ <span class="dropdown-text">Lecture 18 - Rankine Cycle Analysis and Efficiency</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class19/lecture19.html">
+ <span class="dropdown-text">Lecture 19 - Improving Rankine Cycle Efficiency</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-notebooks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Notebooks</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-notebooks">    
+        <li>
+    <a class="dropdown-item" href="../class02/lecture02_example.html">
+ <span class="dropdown-text">L2 Block &amp; Spring Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class03/lecture03_example.html">
+ <span class="dropdown-text">L3 Maxwell-Boltzmann Distribution Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class04/PV-diagram.html">
+ <span class="dropdown-text">L4 PV Diagram Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class06/lecture06_LJ.html">
+ <span class="dropdown-text">L6 LJ Potential Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class07/VDW-loop.html">
+ <span class="dropdown-text">L7 VDW loop Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class07/vdw-TP.html">
+ <span class="dropdown-text">L7 VDW TP Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class14/Quenching_entropy.html">
+ <span class="dropdown-text">L14 Quenching Entropy Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class19/rankine-regen.html">
+ <span class="dropdown-text">L19 Regenerative Rankine Cycle Demo</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction-addressing-cycle-irreversibilities" id="toc-introduction-addressing-cycle-irreversibilities" class="nav-link active" data-scroll-target="#introduction-addressing-cycle-irreversibilities"><span class="header-section-number">1</span> Introduction: Addressing Cycle Irreversibilities</a></li>
+  <li><a href="#the-regenerative-rankine-cycle-feedwater-pre-heating" id="toc-the-regenerative-rankine-cycle-feedwater-pre-heating" class="nav-link" data-scroll-target="#the-regenerative-rankine-cycle-feedwater-pre-heating"><span class="header-section-number">2</span> The Regenerative Rankine Cycle (Feedwater Pre-Heating)</a>
+  <ul class="collapse">
+  <li><a href="#example-calculation-open-feedwater-heater" id="toc-example-calculation-open-feedwater-heater" class="nav-link" data-scroll-target="#example-calculation-open-feedwater-heater"><span class="header-section-number">2.1</span> Example Calculation: Open Feedwater Heater</a>
+  <ul class="collapse">
+  <li><a href="#step-1-the-high-pressure-turbine-stream-5-to-6" id="toc-step-1-the-high-pressure-turbine-stream-5-to-6" class="nav-link" data-scroll-target="#step-1-the-high-pressure-turbine-stream-5-to-6"><span class="header-section-number">2.1.1</span> Step 1: The High-Pressure Turbine (Stream 5 <span class="math inline">\(\to\)</span> 6)</a></li>
+  <li><a href="#step-2-the-low-pressure-turbine-stream-8-to-9" id="toc-step-2-the-low-pressure-turbine-stream-8-to-9" class="nav-link" data-scroll-target="#step-2-the-low-pressure-turbine-stream-8-to-9"><span class="header-section-number">2.1.2</span> Step 2: The Low-Pressure Turbine (Stream 8 <span class="math inline">\(\to\)</span> 9)</a></li>
+  <li><a href="#step-3-condenser-and-pump-1-stream-9-to-10-to-11" id="toc-step-3-condenser-and-pump-1-stream-9-to-10-to-11" class="nav-link" data-scroll-target="#step-3-condenser-and-pump-1-stream-9-to-10-to-11"><span class="header-section-number">2.1.3</span> Step 3: Condenser and Pump 1 (Stream 9 <span class="math inline">\(\to\)</span> 10 <span class="math inline">\(\to\)</span> 11)</a></li>
+  <li><a href="#step-4-the-open-feedwater-heater-stream-7-stream-11-to-stream-12" id="toc-step-4-the-open-feedwater-heater-stream-7-stream-11-to-stream-12" class="nav-link" data-scroll-target="#step-4-the-open-feedwater-heater-stream-7-stream-11-to-stream-12"><span class="header-section-number">2.1.4</span> Step 4: The Open Feedwater Heater (Stream 7 + Stream 11 <span class="math inline">\(\to\)</span> Stream 12)</a></li>
+  <li><a href="#step-5-boiler-feed-pump-stream-12-to-13" id="toc-step-5-boiler-feed-pump-stream-12-to-13" class="nav-link" data-scroll-target="#step-5-boiler-feed-pump-stream-12-to-13"><span class="header-section-number">2.1.5</span> Step 5: Boiler Feed Pump (Stream 12 <span class="math inline">\(\to\)</span> 13)</a></li>
+  </ul></li>
+  <li><a href="#cycle-performance-the-payoff" id="toc-cycle-performance-the-payoff" class="nav-link" data-scroll-target="#cycle-performance-the-payoff"><span class="header-section-number">2.2</span> Cycle Performance: The Payoff</a>
+  <ul class="collapse">
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">2.2.1</span> Conclusion</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#other-enhancements-reheating" id="toc-other-enhancements-reheating" class="nav-link" data-scroll-target="#other-enhancements-reheating"><span class="header-section-number">3</span> Other Enhancements: Reheating</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture19.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lecture 19: Improving Rankine Cycle Efficiency</h1>
+<p class="subtitle lead">CBE 20260 / Thermodynamics I</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Edward Maginn </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction-addressing-cycle-irreversibilities" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction: Addressing Cycle Irreversibilities</h1>
+<p>In Lecture 18, we calculated the thermal efficiency of a simple Rankine cycle operating between 60 bar and 1 bar, as shown in <a href="#fig-rankine" class="quarto-xref">Fig.&nbsp;1</a>. We found the thermal efficiency to be roughly <strong>23%</strong>, while the Carnot efficiency limit for the same temperature range is about <strong>52%</strong>.</p>
+<div id="fig-rankine" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rankine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/basic-rankine.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rankine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;1: A basic Rankine cycle with boiler, turbine, condenser, and pump.
+</figcaption>
+</figure>
+</div>
+<p>When we performed an entropy generation analysis, we discovered the primary culprit for lost work: the <strong>boiler</strong>. Adding heat from a <span class="math inline">\(500^\circ\text{C}\)</span> source into subcooled liquid water entering at <span class="math inline">\(\sim 100^\circ\text{C}\)</span> creates a massive temperature gradient, which is highly irreversible. There was also significant lost work associated with the turbine. As you might imagine, extensive engineering design and optimization goes into improving the efficiency of real power plants by reducing these irreversibilities. Here, we will explore one strategy for improving cycle efficiency: <strong>regeneration</strong>. Your Senior Design course will show you more systematic methods for doing process optimization, but we will get a taste of it here by modifying the simple Rankine cycle to include a feedwater heater.</p>
+<hr>
+</section>
+<section id="the-regenerative-rankine-cycle-feedwater-pre-heating" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> The Regenerative Rankine Cycle (Feedwater Pre-Heating)</h1>
+<p>Instead of relying solely on the boiler to heat the cold liquid from the condenser, what if we added a second turbine, a second pump, and a feedwater heater (FWH) to the process? The high pressure steam is partially expanded through the first high pressure turbine (HPT). A portion of the low pressure steam exiting the HPT is split off and used to pre-heat the boiler feed water in a heat exchanger, while the remaining steam continues through a second low pressure turbine (LPT) where more work is extracted. The exhaust from the LPT is sent to the condenser, where heat is rejected. The condensed liquid is pumped to a higher pressure and mixed with the steam exhaust from the HPT in the heat exchanger. The liquid exiting the heat exchanger is then pumped up to the boiler pressure. A schematic diagram of this process is shown in <a href="#fig-regenerative" class="quarto-xref">Fig.&nbsp;2</a>. New stream numbers are shown, with the old stream numbers from the simple cycle in parentheses for reference.</p>
+<div id="fig-regenerative" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-regenerative-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/modified_rankine.png" class="img-fluid figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-regenerative-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;2: A schematic of a regenerative Rankine cycle with an open feedwater heater.
+</figcaption>
+</figure>
+</div>
+<p>This process is called <strong>regeneration</strong>. The device where the mixing occurs is an <strong>Open Feedwater Heater (FWH)</strong> (a direct-contact heat exchanger), shown schematically in <a href="#fig-fwh" class="quarto-xref">Fig.&nbsp;3</a>. The FWH allows the feedwater to be pre-heated before it enters the boiler, which reduces the temperature gradient in the boiler and therefore reduces the irreversibility associated with heat transfer in the boiler. This is a common strategy for improving cycle efficiency in real power plants, and it can be implemented with a single feedwater heater or multiple feedwater heaters (with multiple extraction points from the turbine or turbines). The FWH also allows the water to be deaerated, which removes dissolved oxygen that can cause corrosion in the boiler. The image in <a href="#fig-fwh" class="quarto-xref">Fig.&nbsp;3</a> shows the basic operation. The FWH is esentially a big mixing chamber where the hot steam and cold water are mixed together to produce hot liquid water at the desired temperature and pressure. Control valves are used to adjust the mass flow rates of the steam and water to achieve the desired outlet conditions. Makeup water is added to the system to “make up” for any losses in the system.</p>
+<div id="fig-fwh" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fwh-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/openFW.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fwh-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;3: A schematic of an open feedwater heater.
+</figcaption>
+</figure>
+</div>
+<p>Let’s re-do the thermodynamic analysis of the Rankine cycle with regeneration. We will use the same boiler and condenser conditions as before, but we will add a FWH that takes some of the steam from the HPT at 10 bar to pre-heat the boiler feedwater, while the rest is fed to the LPT. We will assume the water leaving the FWH is a saturated liquid at 10 bar. Because we are splitting the fluid stream, we must track the mass fraction of steam flowing through each component. Let <span class="math inline">\(y\)</span> be the fraction of steam exiting the HPT that is sent to the FWH, and therefore <span class="math inline">\(1-y\)</span> is the fraction of steam that continues through to the LPT and to the condenser. We will perform our analysis on a per kg basis. Refer to <a href="#fig-regenerative" class="quarto-xref">Fig.&nbsp;2</a> for stream labels and flow paths. The key steps are:</p>
+<ul>
+<li><p>1 kg of steam exits the boiler at 60 bar, <span class="math inline">\(500^\circ\text{C}\)</span> and enters the high-pressure turbine (stream 5). It then exits the HPT (stream 6) at 10 bar.</p></li>
+<li><p><span class="math inline">\(y\)</span> kg is sent to the FWH (stream 7).</p></li>
+<li><p>(1 - <span class="math inline">\(y\)</span>) kg continues through to the low-pressure turbine (stream 8) and the LPT exhaust is fed to the condenser (stream 9).</p></li>
+<li><p>The fluid exits the condenser as saturated liquid at 1 bar (stream 10) and is pumped to 10 bar where it enters the FWH (stream 11).</p></li>
+<li><p>Stream 7 and 11 are mixed at constant pressure 10 bar in the FWH to produce saturated liquid at 10 bar (stream 12), which is then pumped up to the boiler pressure 60 bar (stream 13).</p></li>
+</ul>
+<section id="example-calculation-open-feedwater-heater" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="example-calculation-open-feedwater-heater"><span class="header-section-number">2.1</span> Example Calculation: Open Feedwater Heater</h2>
+<p>We will use the same basic operating conditions at the Rankine cycle from Lecture 18 to see the impact of these changes on the thermal efficiency.</p>
+<section id="step-1-the-high-pressure-turbine-stream-5-to-6" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="step-1-the-high-pressure-turbine-stream-5-to-6"><span class="header-section-number">2.1.1</span> Step 1: The High-Pressure Turbine (Stream 5 <span class="math inline">\(\to\)</span> 6)</h3>
+<ul>
+<li><strong>Stream 5 (Boiler Out):</strong> 60 bar, <span class="math inline">\(500^\circ\text{C}\)</span>.
+<ul>
+<li><span class="math inline">\(\hat{H}_5 = 3422.2 \text{ kJ/kg}\)</span></li>
+<li><span class="math inline">\(\hat{S}_5 = 6.8826 \text{ kJ/kg}\cdot\text{K}\)</span></li>
+</ul></li>
+<li><strong>Stream 6 (HP Turbine Out/Extraction):</strong> 10 bar.
+<ul>
+<li><p>Ideal <span class="math inline">\(\hat{S}_6' = 6.8826 \text{ kJ/kg}\cdot\text{K} \implies \hat{H}_6' \approx 2921.4 \text{ kJ/kg}\)</span> (superheated)</p></li>
+<li><p>Actual HPT Work: <span class="math inline">\(W_{HP} = 0.75 \times (2921.4 - 3422.2) = \mathbf{-375.6 \text{ kJ/kg}}\)</span></p></li>
+<li><p>Actual <span class="math inline">\(\hat{H}_6 = 3422.2 - 375.6 = 3046.6 \text{ kJ/kg}\)</span> (At 10 bar, this is approx <span class="math inline">\(300^\circ\text{C}\)</span> with <span class="math inline">\(\hat{S}_6 \approx 7.124 \text{ kJ/kg}\cdot\text{K}\)</span>).</p></li>
+<li><p><strong>Note</strong> Streams 7 and 8 have the same properties as stream 6, since they are just split from the same stream. The mass flow rates will differ, however.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="step-2-the-low-pressure-turbine-stream-8-to-9" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="step-2-the-low-pressure-turbine-stream-8-to-9"><span class="header-section-number">2.1.2</span> Step 2: The Low-Pressure Turbine (Stream 8 <span class="math inline">\(\to\)</span> 9)</h3>
+<p><em>(Note: Only <span class="math inline">\(1-y\)</span> mass fraction flows through here).</em></p>
+<ul>
+<li><strong>Stream 9 (LP Turbine Out):</strong> 1 bar.
+<ul>
+<li>Ideal <span class="math inline">\(\hat{S}_9' = \hat{S}_8 = 7.124 \text{ kJ/kg}\cdot\text{K} \implies x \approx 0.961 \implies \hat{H}_9' = 2587.4 \text{ kJ/kg}\)</span></li>
+<li>Actual LP Work: <span class="math inline">\(W_{LP} = 0.75 \times (2587.4 - 3046.6) = \mathbf{-344.4 \text{ kJ/kg}}\)</span></li>
+<li>Actual <span class="math inline">\(\hat{H}_9 = 3046.6 - 344.4 = 2702.2 \text{ kJ/kg}\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="step-3-condenser-and-pump-1-stream-9-to-10-to-11" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="step-3-condenser-and-pump-1-stream-9-to-10-to-11"><span class="header-section-number">2.1.3</span> Step 3: Condenser and Pump 1 (Stream 9 <span class="math inline">\(\to\)</span> 10 <span class="math inline">\(\to\)</span> 11)</h3>
+<p><em>(Note: Only <span class="math inline">\(1-y\)</span> mass fraction flows through here).</em></p>
+<ul>
+<li><p><strong>Stream 10 (Condenser Out):</strong> 1 bar, sat liquid. <span class="math inline">\(\hat{H}_{10} = 417.46 \text{ kJ/kg}\)</span>, <span class="math inline">\(\hat{V}_{10} = 0.001043 \text{ m}^3/\text{kg}\)</span></p></li>
+<li><p><strong>Pump 1 (to FWH pressure):</strong> 1 to 10 bar.</p>
+<ul>
+<li>Reversible Work = <span class="math inline">\(0.001043 \times (10 - 1) \times 100 = 0.94 \text{ kJ/kg}\)</span></li>
+<li>Actual <span class="math inline">\(W_{P1} = 0.94 / 0.75 = \mathbf{+1.25 \text{ kJ/kg}}\)</span></li>
+<li><span class="math inline">\(\hat{H}_{11} = 417.46 + 1.25 = 418.71 \text{ kJ/kg}\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="step-4-the-open-feedwater-heater-stream-7-stream-11-to-stream-12" class="level3" data-number="2.1.4">
+<h3 data-number="2.1.4" class="anchored" data-anchor-id="step-4-the-open-feedwater-heater-stream-7-stream-11-to-stream-12"><span class="header-section-number">2.1.4</span> Step 4: The Open Feedwater Heater (Stream 7 + Stream 11 <span class="math inline">\(\to\)</span> Stream 12)</h3>
+<p>The FWH mixes hot steam from Stream 7 with cold water from Stream 11 to produce saturated liquid at 10 bar (Stream 12).</p>
+<ul>
+<li><strong>Stream 12 (FWH Out):</strong> 10 bar, sat liquid. <span class="math inline">\(\hat{H}_{12} = 762.6 \text{ kJ/kg}\)</span></li>
+</ul>
+<p><strong>Energy Balance on FWH (to find <span class="math inline">\(y\)</span>):</strong></p>
+<p>Since we specified that the FWH produces saturated liquid at 10 bar (stream 12), we have to solve for the fraction of steam redirected from HPT to the FWH via an energy balance. We know the enthalpies of streams 7, 11, and 12 so <span class="math inline">\(y\)</span> is the only unknown in the following equation: <span class="math display">\[y \hat{H}_7 + (1-y) \hat{H}_{11} = \hat{H}_{12}\]</span> <span class="math display">\[y (3046.6) + (1-y) (418.71) = 762.6\]</span> <span class="math display">\[y (2627.89) = 343.89 \implies \mathbf{y = 0.1309}\]</span> <em>(We bleed about 13.1% of the steam from the HPT to the heater, with the rest going to the LPT).</em></p>
+</section>
+<section id="step-5-boiler-feed-pump-stream-12-to-13" class="level3" data-number="2.1.5">
+<h3 data-number="2.1.5" class="anchored" data-anchor-id="step-5-boiler-feed-pump-stream-12-to-13"><span class="header-section-number">2.1.5</span> Step 5: Boiler Feed Pump (Stream 12 <span class="math inline">\(\to\)</span> 13)</h3>
+<p><em>(Note: The full mass flow goes through here).</em></p>
+<ul>
+<li><p><strong>Stream 12 Volume:</strong> <span class="math inline">\(\hat{V}_{12} = 0.001127 \text{ m}^3/\text{kg}\)</span></p></li>
+<li><p><strong>Pump 2 (to Boiler pressure):</strong> 10 to 60 bar.</p>
+<ul>
+<li>Reversible Work = <span class="math inline">\(0.001127 \times (60 - 10) \times 100 = 5.64 \text{ kJ/kg}\)</span></li>
+<li>Actual <span class="math inline">\(W_{P2} = 5.64 / 0.75 = \mathbf{+7.51 \text{ kJ/kg}}\)</span></li>
+<li><span class="math inline">\(\hat{H}_{13} = 762.6 + 7.51 = 770.11 \text{ kJ/kg}\)</span> <em>(Notice how much hotter (higher in enthalpy) the water entering the boiler is now!)</em></li>
+</ul></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="cycle-performance-the-payoff" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="cycle-performance-the-payoff"><span class="header-section-number">2.2</span> Cycle Performance: The Payoff</h2>
+<p>Let’s calculate the overall heat and work <strong>per kg of steam leaving the boiler</strong>:</p>
+<p><strong>Turbine Work:</strong> <span class="math display">\[W_{turb} = W_{HP} + (1-y)W_{LP} = -375.6 + (1 - 0.1309)(-344.4) = \mathbf{-674.9 \text{ kJ/kg}}\]</span> <em>(We produce slightly less total work than the simple cycle’s -693.5 kJ/kg because we robbed the LP turbine of some steam).</em></p>
+<p><strong>Pump Work:</strong> <span class="math display">\[W_{pump} = (1-y)W_{P1} + W_{P2} = (0.8691)(1.25) + 7.51 = \mathbf{+8.60 \text{ kJ/kg}}\]</span></p>
+<p><strong>Net Work:</strong> <span class="math display">\[W_{net} = -674.9 + 8.60 = \mathbf{-666.3 \text{ kJ/kg}}\]</span></p>
+<p><strong>Heat Added (Boiler):</strong> Because we pre-heated the water, we need to buy significantly less heat! <span class="math display">\[Q_H = \hat{H}_5 - \hat{H}_{13} = 3422.2 - 770.11 = \mathbf{+2652.1 \text{ kJ/kg}}\]</span> <em>(Compared to +2996.5 kJ/kg in the simple cycle).</em></p>
+<p><strong>New Thermal Efficiency:</strong> <span class="math display">\[\eta = \frac{-W_{net}}{Q_H} = \frac{666.3}{2652.1} = \mathbf{0.2512 \implies 25.1\%}\]</span></p>
+<section id="conclusion" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">2.2.1</span> Conclusion</h3>
+<p>This relatively simple process modification raised the cycle efficiency from <strong>22.87% to 25.1%</strong> without changing the operating conditions. That is a relative improvement of nearly 10%! For a multi-megawatt power plant, this translates to millions of dollars in fuel savings and a massive reduction in greenhouse gas emissions. The price we had to pay was a slightly more complex system with an additional turbine, pump, and heat exchanger, but the efficiency gain is likely well worth it. Real power plants often use multiple feedwater heaters and multiple extraction points to further optimize the cycle performance. A full engineering analysis would have to balance the cost of additional equipment and maintenance with the fuel savings to determine the optimal design. Actual power plants can achieve thermal efficiencies of 40-45%, which suggests there are many more opportunities for improvement beyond the single feedwater heater we analyzed here.</p>
+<hr>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Jupyter Notebook Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I have prepared an interactive Jupyter Notebook that solves the regenerative Rankine cycle problem, and also allows you to adjust the cycle conditions and see how the cycle efficiency changes as a function of the mass fraction <span class="math inline">\(y\)</span> sent to the feedwater heater as well as the boiler and condenser conditions. Note that the notebook uses CoolProp to calculate the properties of water and steam, so you can easily modify the cycle conditions and see how the results change. You can also see how the entropy of each stream changes as a function of <span class="math inline">\(y\)</span> to get a better understanding of where the irreversibilities are occurring in the cycle. The actual numbers will differ slightly from the hand calculations above because of the use of CoolProp, which is more accurate than the steam tables we used for the hand calculations, but the overall trends and conclusions will be the same.</p>
+<p><a href="../class19/rankine-regen.html"><strong>View Interactive Notebook (.ipynb)</strong></a></p>
+<p><a href="https://colab.research.google.com/github/ejmaginn/CBE20260-notes/blob/main/class19/rankine-regen.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid"></a></p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="other-enhancements-reheating" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Other Enhancements: Reheating</h1>
+<p>Another common strategy to improve efficiency (and protect turbine blades from water droplet erosion) is to use <strong>Multiple Turbines with Reheating</strong>.</p>
+<p>Instead of letting the steam expand all the way from boiler pressure down to condenser pressure in one step, we:</p>
+<ol type="1">
+<li><p>Expand the steam partially in a High-Pressure Turbine.</p></li>
+<li><p>Send the steam <em>back</em> to the boiler to be reheated at constant pressure (e.g., back up to <span class="math inline">\(500^\circ\text{C}\)</span>).</p></li>
+<li><p>Expand it the rest of the way in a Low-Pressure Turbine.</p></li>
+</ol>
+<p>This increases the average temperature of heat addition, raising the thermal efficiency. It also ensures the exhaust steam stays dry and superheated, preventing wear and tear on the turbine blades. Real power plants often combine both Reheating and Regeneration simultaneously!</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/ejmaginn\.github\.io\/CBE20260-notes\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
