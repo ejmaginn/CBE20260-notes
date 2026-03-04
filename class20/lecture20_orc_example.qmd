@@ -1,0 +1,50 @@
+---
+title: "Lecture 20: Organic Rankine Cycle Example"
+author: "Edward Maginn"
+format: pptx
+---
+
+## Worked Example: Data Center Waste Heat Recovery
+
+Let's evaluate an ORC designed to recover waste heat from a server farm. The hot exhaust air from the servers is used to boil a refrigerant, **R-134a**.
+
+
+
+**Operating Conditions:**
+* **Boiler (evaporator):** Operates at $10 \text{ bar}$. At this pressure, R-134a boils at approximately $39.4^\circ\text{C}$, which is perfect for absorbing heat from $45^\circ\text{C}$ data center exhaust. Saturated vapor exits.
+* **Condenser:** Operates at $5 \text{ bar}$. Condenses at approximately $15.7^\circ\text{C}$, allowing heat rejection to cooling water. Saturated liquid exits.
+* **Ideal Components:** For simplicity, assume the turbine and pump are perfectly reversible ($\eta = 1.0$).
+
+## Cycle Analysis: Turbine Expansion
+
+Let's use the R-134a thermodynamic tables to find the states:
+
+* **State 2 (Boiler Out / Turbine In):** Sat. Vapor at $10 \text{ bar}$.
+  * $\hat{H}_2 \approx 271.0 \text{ kJ/kg}$
+  * $\hat{S}_2 \approx 0.910 \text{ kJ/kg}\cdot\text{K}$
+
+* **State 3 (Turbine Out / Condenser In):** Isentropic expansion to $5 \text{ bar}$.
+  * $\hat{S}_3 = \hat{S}_2 = 0.910 \text{ kJ/kg}\cdot\text{K}$
+  * *(From tables at 5 bar, this entropy is slightly inside the vapor dome, $x \approx 0.98$)*
+  * $\hat{H}_3 \approx 260.0 \text{ kJ/kg}$
+  * **Turbine Work:** $W_{turb} = \hat{H}_2 - \hat{H}_3 = 271.0 - 260.0 = \mathbf{+11.0 \text{ kJ/kg}}$
+
+## Cycle Analysis: Pumping
+
+* **State 4 (Condenser Out / Pump In):** Sat. Liquid at $5 \text{ bar}$.
+  * $\hat{H}_4 \approx 71.0 \text{ kJ/kg}$
+  * $\hat{V}_4 \approx 0.0008 \text{ m}^3/\text{kg}$
+
+* **State 1 (Pump Out / Boiler In):** Pumped to $10 \text{ bar}$.
+  * $W_{pump} = \hat{V}_4(P_{boiler} - P_{cond})$
+  * $W_{pump} = (0.0008)(10 - 5)\times 100 \approx \mathbf{+0.4 \text{ kJ/kg}}$
+  * $\hat{H}_1 = \hat{H}_4 + W_{pump} = 71.0 + 0.4 = \mathbf{71.4 \text{ kJ/kg}}$
+
+## Efficiency Calculation
+
+* **Net Work:** $$W_{net} = W_{turb} + W_{pump} = -11.0 + 0.4 = \mathbf{-10.6 \text{ kJ/kg}}$$
+* **Heat Added:** $$Q_H = \hat{H}_2 - \hat{H}_1 = 271.0 - 71.4 = \mathbf{+199.6 \text{ kJ/kg}}$$
+* **Thermal Efficiency:** $$\eta = \frac{10.6}{199.6} = \mathbf{0.053} \implies \mathbf{5.3\%}$$
+
+**Is 5.3% terrible?** Not necessarily! 
+The Carnot efficiency for these temperatures ($T_H = 39.4^\circ\text{C} = 312.5 \text{ K}$, $T_C = 15.7^\circ\text{C} = 288.8 \text{ K}$) is only $\eta_{max} = 1 - (288.8/312.5) = 7.6\%$. We are getting free power out of heat that would otherwise just be vented into the atmosphere!

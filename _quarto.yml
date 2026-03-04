@@ -45,6 +45,8 @@ website:
             text: Lecture 18 - Rankine Cycle Analysis and Efficiency  
           - href: class19/lecture19.qmd
             text: Lecture 19 - Improving Rankine Cycle Efficiency
+          - href: class20/lecture20.qmd
+            text: Lecture 20 - Organic Rankine Cycles and Internal Combustion Engines
               
           # Add more lectures here as you create them:
           # - href: class0x/lecture02.qmd

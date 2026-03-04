@@ -1,0 +1,96 @@
+---
+title: "Lecture 19: Improving Rankine Cycle Efficiency"
+author: "Edward Maginn"
+format: pptx
+---
+
+## Analyzing the High-Pressure Turbine (HPT)
+
+
+
+* **Stream 5 (Boiler Out / HPT In):** 60 bar, 500°C.
+    * $\hat{H}_5 = 3422.2 \text{ kJ/kg}$
+    * $\hat{S}_5 = 6.8826 \text{ kJ/kg}\cdot\text{K}$
+* **Stream 6 (HPT Out):** 10 bar.
+    * Ideal expansion ($\hat{S}_6' = \hat{S}_5$): $\implies \hat{H}_6' \approx 2921.4 \text{ kJ/kg}$
+    * Actual HPT Work ($\eta = 0.75$): 
+      $$W_{HP} = 0.75 \times (2921.4 - 3422.2) = -375.6 \text{ kJ/kg}$$
+    * Actual Enthalpy: $\hat{H}_6 = 3422.2 - 375.6 = 3046.6 \text{ kJ/kg}$ 
+      *(At 10 bar, this is approx 300°C with $\hat{S}_6 \approx 7.124 \text{ kJ/kg}\cdot\text{K}$)*
+
+## Splitting the Flow (The Extraction Tee)
+
+* **The Split:** Stream 6 leaves the HP Turbine and immediately splits.
+* **Stream 7 (To Feedwater Heater):**
+    * Mass fraction = $y$
+    * Properties remain identical to Stream 6: $\hat{H}_7 = 3046.6 \text{ kJ/kg}$, 10 bar.
+* **Stream 8 (To Low-Pressure Turbine):**
+    * Mass fraction = $1 - y$
+    * Properties remain identical to Stream 6: $\hat{H}_8 = 3046.6 \text{ kJ/kg}$, 10 bar.
+* **Key Takeaway:** Splitting a stream changes the mass flow rate, but it **does not** change the intensive thermodynamic properties ($\hat{H}$, $\hat{S}$, $T$, $P$).
+
+## Analyzing the Low-Pressure Turbine (LPT)
+
+
+
+* **Stream 8 (LPT In):** 10 bar, $\hat{H}_8 = 3046.6 \text{ kJ/kg}$, $\hat{S}_8 = 7.124 \text{ kJ/kg}\cdot\text{K}$
+* **Stream 9 (LPT Out / Condenser In):** 1 bar.
+    * Ideal expansion ($\hat{S}_9' = \hat{S}_8$): $\implies \hat{H}_9' = 2587.4 \text{ kJ/kg}$ *(Two-phase mixture)*
+    * Actual LPT Work per kg of steam passing through it ($\eta = 0.75$):
+      $$W_{LP} = 0.75 \times (2587.4 - 3046.6) = -344.4 \text{ kJ/kg}$$
+    * Actual Enthalpy: $\hat{H}_9 = 3046.6 - 344.4 = 2702.2 \text{ kJ/kg}$
+* **Important:** The *total* work from the LPT depends on the mass fraction: $(1-y) W_{LP}$
+
+## Condensation and the First Pump
+
+* **Stream 10 (Condenser Out):** 1 bar, Saturated Liquid.
+    * $\hat{H}_{10} = 417.4 \text{ kJ/kg}$
+    * $\hat{V}_{10} = 0.001043 \text{ m}^3\text{/kg}$
+* **Pump 1 (Condensate Pump):** Pressurizes from 1 bar to 10 bar.
+    * Ideal Pump Work: $W_{P1,ideal} = \hat{V} \Delta P \approx +0.94 \text{ kJ/kg}$
+    * Actual Pump Work ($\eta = 0.75$): $W_{P1} = 0.94 / 0.75 = +1.25 \text{ kJ/kg}$
+* **Stream 11 (Pump 1 Out / OFWH In):** 10 bar, Subcooled Liquid.
+    * $\hat{H}_{11} = 417.4 + 1.25 = 418.65 \text{ kJ/kg}$
+    * Mass fraction = $1 - y$
+
+## Mixing in the Open Feedwater Heater (OFWH)
+
+
+
+* **The Goal:** Mix hot extracted steam (Stream 7) with cold condensate (Stream 11) to produce a saturated liquid at 10 bar.
+* **Stream 12 (OFWH Out):** 10 bar, Saturated Liquid.
+    * $\hat{H}_{12} = 762.6 \text{ kJ/kg}$
+    * Mass fraction = $1.0$ *(The streams have recombined!)*
+* **Why do this?** Stream 12 is much hotter ($762.6 \text{ kJ/kg}$) than the unheated condensate ($418.65 \text{ kJ/kg}$). We are saving the boiler from having to do this heating!
+
+## Energy Balance on the OFWH
+
+* We must find the exact fraction of steam ($y$) to extract so the mixture perfectly reaches the saturated liquid state.
+* **Steady-State Energy Balance (Adiabatic OFWH):**
+  $$y \hat{H}_7 + (1-y) \hat{H}_{11} = 1.0 \hat{H}_{12}$$
+* **Solve for $y$:**
+  $$y = \frac{\hat{H}_{12} - \hat{H}_{11}}{\hat{H}_7 - \hat{H}_{11}}$$
+  $$y = \frac{762.6 - 418.65}{3046.6 - 418.65} = \frac{343.95}{2627.95}$$
+  $$y = 0.131$$ *(We extract 13.1% of the steam)*
+
+## Final Compression and Heat Addition
+
+* **Pump 2 (Boiler Feed Pump):** Pressurizes Stream 12 from 10 bar to 60 bar.
+    * Ideal Work: $W_{P2,ideal} = \hat{V}_{12} \Delta P \approx +5.63 \text{ kJ/kg}$
+    * Actual Work ($\eta = 0.75$): $W_{P2} = 5.63 / 0.75 = +7.51 \text{ kJ/kg}$
+* **Stream 13 (Boiler In):** 60 bar, Subcooled Liquid.
+    * $\hat{H}_{13} = 762.6 + 7.51 = 770.11 \text{ kJ/kg}$
+* **Boiler Heat Input ($Q_H$):**
+  $$Q_H = \hat{H}_5 - \hat{H}_{13} = 3422.2 - 770.11 = +2652.1 \text{ kJ/kg}$$
+
+## Calculating Total Efficiency
+
+* **Total Work Out (Turbines):**
+  $$W_{turb} = W_{HP} + (1-y)W_{LP}$$
+  $$W_{turb} = -375.6 + (1 - 0.131)(-344.4) = -674.8 \text{ kJ/kg}$$
+* **Total Work In (Pumps):**
+  $$W_{pump} = (1-y)W_{P1} + W_{P2}$$
+  $$W_{pump} = (0.869)(1.25) + 7.51 = +8.6 \text{ kJ/kg}$$
+* **Net Work:** $W_{net} = -674.8 + 8.6 = -666.2 \text{ kJ/kg}$
+* **Thermal Efficiency:**
+  $$\eta = \frac{-W_{net}}{Q_H} = \frac{666.2}{2652.1} = 0.251 \text{ (25.1\%)}$$
