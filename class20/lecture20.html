@@ -8,7 +8,7 @@
 
 <meta name="author" content="Edward Maginn">
 
-<title>Lecture 19: Improving Rankine Cycle Efficiency – CBE 20260 — Course Notes</title>
+<title>Lecture 20: Organic Rankine Cycles and Internal Combustion Engines – CBE 20260 — Course Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -261,32 +261,31 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction-addressing-cycle-irreversibilities" id="toc-introduction-addressing-cycle-irreversibilities" class="nav-link active" data-scroll-target="#introduction-addressing-cycle-irreversibilities"><span class="header-section-number">1</span> Introduction: Addressing Cycle Irreversibilities</a></li>
-  <li><a href="#the-regenerative-rankine-cycle-feedwater-pre-heating" id="toc-the-regenerative-rankine-cycle-feedwater-pre-heating" class="nav-link" data-scroll-target="#the-regenerative-rankine-cycle-feedwater-pre-heating"><span class="header-section-number">2</span> The Regenerative Rankine Cycle (Feedwater Pre-Heating)</a>
+  <li><a href="#introduction-beyond-traditional-steam" id="toc-introduction-beyond-traditional-steam" class="nav-link active" data-scroll-target="#introduction-beyond-traditional-steam"><span class="header-section-number">1</span> Introduction: Beyond Traditional Steam</a></li>
+  <li><a href="#the-organic-rankine-cycle-orc" id="toc-the-organic-rankine-cycle-orc" class="nav-link" data-scroll-target="#the-organic-rankine-cycle-orc"><span class="header-section-number">2</span> The Organic Rankine Cycle (ORC)</a>
   <ul class="collapse">
-  <li><a href="#example-calculation-open-feedwater-heater" id="toc-example-calculation-open-feedwater-heater" class="nav-link" data-scroll-target="#example-calculation-open-feedwater-heater"><span class="header-section-number">2.1</span> Example Calculation: Open Feedwater Heater</a>
+  <li><a href="#worked-example-data-center-waste-heat-recovery" id="toc-worked-example-data-center-waste-heat-recovery" class="nav-link" data-scroll-target="#worked-example-data-center-waste-heat-recovery"><span class="header-section-number">2.1</span> Worked Example: Data Center Waste Heat Recovery</a>
   <ul class="collapse">
-  <li><a href="#step-1-the-high-pressure-turbine-stream-5-to-6" id="toc-step-1-the-high-pressure-turbine-stream-5-to-6" class="nav-link" data-scroll-target="#step-1-the-high-pressure-turbine-stream-5-to-6"><span class="header-section-number">2.1.1</span> Step 1: The High-Pressure Turbine (Stream 5 <span class="math inline">\(\to\)</span> 6)</a></li>
-  <li><a href="#step-2-the-low-pressure-turbine-stream-8-to-9" id="toc-step-2-the-low-pressure-turbine-stream-8-to-9" class="nav-link" data-scroll-target="#step-2-the-low-pressure-turbine-stream-8-to-9"><span class="header-section-number">2.1.2</span> Step 2: The Low-Pressure Turbine (Stream 8 <span class="math inline">\(\to\)</span> 9)</a></li>
-  <li><a href="#step-3-condenser-and-pump-1-stream-9-to-10-to-11" id="toc-step-3-condenser-and-pump-1-stream-9-to-10-to-11" class="nav-link" data-scroll-target="#step-3-condenser-and-pump-1-stream-9-to-10-to-11"><span class="header-section-number">2.1.3</span> Step 3: Condenser and Pump 1 (Stream 9 <span class="math inline">\(\to\)</span> 10 <span class="math inline">\(\to\)</span> 11)</a></li>
-  <li><a href="#step-4-the-open-feedwater-heater-stream-7-stream-11-to-stream-12" id="toc-step-4-the-open-feedwater-heater-stream-7-stream-11-to-stream-12" class="nav-link" data-scroll-target="#step-4-the-open-feedwater-heater-stream-7-stream-11-to-stream-12"><span class="header-section-number">2.1.4</span> Step 4: The Open Feedwater Heater (Stream 7 + Stream 11 <span class="math inline">\(\to\)</span> Stream 12)</a></li>
-  <li><a href="#step-5-boiler-feed-pump-stream-12-to-13" id="toc-step-5-boiler-feed-pump-stream-12-to-13" class="nav-link" data-scroll-target="#step-5-boiler-feed-pump-stream-12-to-13"><span class="header-section-number">2.1.5</span> Step 5: Boiler Feed Pump (Stream 12 <span class="math inline">\(\to\)</span> 13)</a></li>
-  </ul></li>
-  <li><a href="#cycle-performance-the-payoff" id="toc-cycle-performance-the-payoff" class="nav-link" data-scroll-target="#cycle-performance-the-payoff"><span class="header-section-number">2.2</span> Cycle Performance: The Payoff</a>
-  <ul class="collapse">
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">2.2.1</span> Conclusion</a></li>
+  <li><a href="#cycle-analysis" id="toc-cycle-analysis" class="nav-link" data-scroll-target="#cycle-analysis"><span class="header-section-number">2.1.1</span> Cycle Analysis</a></li>
+  <li><a href="#efficiency-calculation" id="toc-efficiency-calculation" class="nav-link" data-scroll-target="#efficiency-calculation"><span class="header-section-number">2.1.2</span> Efficiency Calculation</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#other-enhancements-reheating" id="toc-other-enhancements-reheating" class="nav-link" data-scroll-target="#other-enhancements-reheating"><span class="header-section-number">3</span> Other Enhancements: Reheating</a></li>
+  <li><a href="#motive-power-and-air-standard-cycles" id="toc-motive-power-and-air-standard-cycles" class="nav-link" data-scroll-target="#motive-power-and-air-standard-cycles"><span class="header-section-number">3</span> Motive Power and Air-Standard Cycles</a>
+  <ul class="collapse">
+  <li><a href="#the-air-standard-assumptions" id="toc-the-air-standard-assumptions" class="nav-link" data-scroll-target="#the-air-standard-assumptions"><span class="header-section-number">3.1</span> The Air-Standard Assumptions</a></li>
+  </ul></li>
+  <li><a href="#the-otto-cycle-spark-ignition" id="toc-the-otto-cycle-spark-ignition" class="nav-link" data-scroll-target="#the-otto-cycle-spark-ignition"><span class="header-section-number">4</span> The Otto Cycle (Spark-Ignition)</a></li>
+  <li><a href="#the-diesel-cycle-compression-ignition" id="toc-the-diesel-cycle-compression-ignition" class="nav-link" data-scroll-target="#the-diesel-cycle-compression-ignition"><span class="header-section-number">5</span> The Diesel Cycle (Compression-Ignition)</a></li>
+  <li><a href="#gas-turbines-and-the-brayton-cycle" id="toc-gas-turbines-and-the-brayton-cycle" class="nav-link" data-scroll-target="#gas-turbines-and-the-brayton-cycle"><span class="header-section-number">6</span> Gas Turbines and the Brayton Cycle</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture19.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture20.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lecture 19: Improving Rankine Cycle Efficiency</h1>
+<h1 class="title">Lecture 20: Organic Rankine Cycles and Internal Combustion Engines</h1>
 <p class="subtitle lead">CBE 20260 / Thermodynamics I</p>
 </div>
 
@@ -310,163 +309,211 @@ window.Quarto = {
 </header>
 
 
-<section id="introduction-addressing-cycle-irreversibilities" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Introduction: Addressing Cycle Irreversibilities</h1>
-<p>In Lecture 18, we calculated the thermal efficiency of a simple Rankine cycle operating between 60 bar and 1 bar, as shown in <a href="#fig-rankine" class="quarto-xref">Fig.&nbsp;1</a>. We found the thermal efficiency to be roughly <strong>23%</strong>, while the Carnot efficiency limit for the same temperature range is about <strong>52%</strong>.</p>
-<div id="fig-rankine" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-rankine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/basic-rankine.png" class="img-fluid figure-img" style="width:50.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rankine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig.&nbsp;1: A basic Rankine cycle with boiler, turbine, condenser, and pump.
-</figcaption>
-</figure>
-</div>
-<p>When we performed an entropy generation analysis, we discovered the primary culprit for lost work: the <strong>boiler</strong>. Adding heat from a <span class="math inline">\(500^\circ\text{C}\)</span> source into subcooled liquid water entering at <span class="math inline">\(\sim 100^\circ\text{C}\)</span> creates a massive temperature gradient, which is highly irreversible. There was also significant lost work associated with the turbine. As you might imagine, extensive engineering design and optimization goes into improving the efficiency of real power plants by reducing these irreversibilities. Here, we will explore one strategy for improving cycle efficiency: <strong>regeneration</strong>. Your Senior Design course will show you more systematic methods for doing process optimization, but we will get a taste of it here by modifying the simple Rankine cycle to include a feedwater heater.</p>
+<section id="introduction-beyond-traditional-steam" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction: Beyond Traditional Steam</h1>
+<p>Over the last few lectures, we thoroughly analyzed the steam Rankine cycle. We saw how engineering modifications like regeneration and reheating can push a power plant’s efficiency higher.</p>
+<p>However, the traditional steam Rankine cycle has significant limitations:</p>
+<ol type="1">
+<li><p><strong>Requires High-Grade Heat:</strong> Water boils at <span class="math inline">\(100^\circ\text{C}\)</span> at atmospheric pressure. To get good efficiency, we need highly pressurized, extremely hot steam (<span class="math inline">\(&gt;400^\circ\text{C}\)</span>). This requires burning fossil fuels, using nuclear fission, or having highly concentrated solar energy. We cannot easily run a standard steam power plant off low-temperature “waste” heat.</p></li>
+<li><p><strong>Stationary &amp; Heavy:</strong> Boilers are massive heat exchangers. The system requires large amounts of fluid and substantial infrastructure. You cannot put a coal-fired Rankine cycle in a passenger car and expect good performance (despite early 20th-century attempts at steam cars!).</p></li>
+</ol>
+<p>Today, we will look at how to overcome these limitations using alternative working fluids and entirely different thermodynamic cycles.</p>
 <hr>
 </section>
-<section id="the-regenerative-rankine-cycle-feedwater-pre-heating" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> The Regenerative Rankine Cycle (Feedwater Pre-Heating)</h1>
-<p>Instead of relying solely on the boiler to heat the cold liquid from the condenser, what if we added a second turbine, a second pump, and a feedwater heater (FWH) to the process? The high pressure steam is partially expanded through the first high pressure turbine (HPT). A portion of the low pressure steam exiting the HPT is split off and used to pre-heat the boiler feed water in a heat exchanger, while the remaining steam continues through a second low pressure turbine (LPT) where more work is extracted. The exhaust from the LPT is sent to the condenser, where heat is rejected. The condensed liquid is pumped to a higher pressure and mixed with the steam exhaust from the HPT in the heat exchanger. The liquid exiting the heat exchanger is then pumped up to the boiler pressure. A schematic diagram of this process is shown in <a href="#fig-regenerative" class="quarto-xref">Fig.&nbsp;2</a>. New stream numbers are shown, with the old stream numbers from the simple cycle in parentheses for reference.</p>
-<div id="fig-regenerative" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-regenerative-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/modified_rankine.png" class="img-fluid figure-img" style="width:70.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-regenerative-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig.&nbsp;2: A schematic of a regenerative Rankine cycle with an open feedwater heater.
-</figcaption>
-</figure>
-</div>
-<p>This process is called <strong>regeneration</strong>. The device where the mixing occurs is an <strong>Open Feedwater Heater (FWH)</strong> (a direct-contact heat exchanger), shown schematically in <a href="#fig-fwh" class="quarto-xref">Fig.&nbsp;3</a>. The FWH allows the feedwater to be pre-heated before it enters the boiler, which reduces the temperature gradient in the boiler and therefore reduces the irreversibility associated with heat transfer in the boiler. This is a common strategy for improving cycle efficiency in real power plants, and it can be implemented with a single feedwater heater or multiple feedwater heaters (with multiple extraction points from the turbine or turbines). The FWH also allows the water to be deaerated, which removes dissolved oxygen that can cause corrosion in the boiler. The image in <a href="#fig-fwh" class="quarto-xref">Fig.&nbsp;3</a> shows the basic operation. The FWH is esentially a big mixing chamber where the hot steam and cold water are mixed together to produce hot liquid water at the desired temperature and pressure. Control valves are used to adjust the mass flow rates of the steam and water to achieve the desired outlet conditions. Makeup water is added to the system to “make up” for any losses in the system.</p>
-<div id="fig-fwh" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-fwh-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/openFW.png" class="img-fluid figure-img" style="width:50.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fwh-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig.&nbsp;3: A schematic of an open feedwater heater.
-</figcaption>
-</figure>
-</div>
-<p>Let’s re-do the thermodynamic analysis of the Rankine cycle with regeneration. We will use the same boiler and condenser conditions as before, but we will add a FWH that takes some of the steam from the HPT at 10 bar to pre-heat the boiler feedwater, while the rest is fed to the LPT. We will assume the water leaving the FWH is a saturated liquid at 10 bar. Because we are splitting the fluid stream, we must track the mass fraction of steam flowing through each component. Let <span class="math inline">\(y\)</span> be the fraction of steam exiting the HPT that is sent to the FWH, and therefore <span class="math inline">\(1-y\)</span> is the fraction of steam that continues through to the LPT and to the condenser. We will perform our analysis on a per kg basis. Refer to <a href="#fig-regenerative" class="quarto-xref">Fig.&nbsp;2</a> for stream labels and flow paths. The key steps are:</p>
+<section id="the-organic-rankine-cycle-orc" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> The Organic Rankine Cycle (ORC)</h1>
+<p>What if we have a source of “low-grade” heat? For example:</p>
 <ul>
-<li><p>1 kg of steam exits the boiler at 60 bar, <span class="math inline">\(500^\circ\text{C}\)</span> and enters the high-pressure turbine (stream 5). It then exits the HPT (stream 6) at 10 bar.</p></li>
-<li><p><span class="math inline">\(y\)</span> kg is sent to the FWH (stream 7).</p></li>
-<li><p>(1 - <span class="math inline">\(y\)</span>) kg continues through to the low-pressure turbine (stream 8) and the LPT exhaust is fed to the condenser (stream 9).</p></li>
-<li><p>The fluid exits the condenser as saturated liquid at 1 bar (stream 10) and is pumped to 10 bar where it enters the FWH (stream 11).</p></li>
-<li><p>Stream 7 and 11 are mixed at constant pressure 10 bar in the FWH to produce saturated liquid at 10 bar (stream 12), which is then pumped up to the boiler pressure 60 bar (stream 13).</p></li>
+<li><p>Geothermal vents (<span class="math inline">\(80^\circ\text{C} - 150^\circ\text{C}\)</span>)</p></li>
+<li><p>Warm surface seawater (Ocean Thermal Energy Conversion)</p></li>
+<li><p><strong>Waste heat from a massive data center</strong> (<span class="math inline">\(\sim 45^\circ\text{C}\)</span>)</p></li>
 </ul>
-<section id="example-calculation-open-feedwater-heater" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="example-calculation-open-feedwater-heater"><span class="header-section-number">2.1</span> Example Calculation: Open Feedwater Heater</h2>
-<p>We will use the same basic operating conditions at the Rankine cycle from Lecture 18 to see the impact of these changes on the thermal efficiency.</p>
-<section id="step-1-the-high-pressure-turbine-stream-5-to-6" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="step-1-the-high-pressure-turbine-stream-5-to-6"><span class="header-section-number">2.1.1</span> Step 1: The High-Pressure Turbine (Stream 5 <span class="math inline">\(\to\)</span> 6)</h3>
+<p>Water will not boil effectively at these temperatures unless we pull a massive vacuum. The solution is the <strong>Organic Rankine Cycle (ORC)</strong>.</p>
+<p>An ORC operates exactly like a standard Rankine cycle (boiler <span class="math inline">\(\to\)</span> turbine <span class="math inline">\(\to\)</span> condenser <span class="math inline">\(\to\)</span> pump), but instead of water, we use an “organic” fluid—typically a refrigerant or hydrocarbon—that has a much lower boiling point than water.</p>
+<section id="worked-example-data-center-waste-heat-recovery" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="worked-example-data-center-waste-heat-recovery"><span class="header-section-number">2.1</span> Worked Example: Data Center Waste Heat Recovery</h2>
+<p>Let’s evaluate an ORC designed to recover waste heat from a server farm. The hot exhaust air from the servers is used to boil a refrigerant, <strong>R-134a</strong>.</p>
+<p><strong>Operating Conditions:</strong></p>
 <ul>
-<li><strong>Stream 5 (Boiler Out):</strong> 60 bar, <span class="math inline">\(500^\circ\text{C}\)</span>.
+<li><p><strong>Boiler (evaporator):</strong> Operates at <span class="math inline">\(10 \text{ bar}\)</span>. At this pressure, R-134a boils at approximately <span class="math inline">\(39.4^\circ\text{C}\)</span>, which is perfect for absorbing heat from <span class="math inline">\(45^\circ\text{C}\)</span> data center exhaust. Saturated vapor exits the boiler.</p></li>
+<li><p><strong>Condenser:</strong> Operates at <span class="math inline">\(5 \text{ bar}\)</span>. At this pressure, R-134a condenses at approximately <span class="math inline">\(15.7^\circ\text{C}\)</span>, allowing heat rejection to cooling water or a local body of water. Saturated liquid exits the condenser.</p></li>
+<li><p><strong>Ideal Components:</strong> For simplicity, assume the turbine and pump are perfectly reversible (<span class="math inline">\(\eta = 1.0\)</span>).</p></li>
+</ul>
+<section id="cycle-analysis" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="cycle-analysis"><span class="header-section-number">2.1.1</span> Cycle Analysis</h3>
+<p>Let’s use the R-134a thermodynamic tables to find the states (values are approximate) or you can write a Python script using CoolProp to get more accurate values:</p>
 <ul>
-<li><span class="math inline">\(\hat{H}_5 = 3422.2 \text{ kJ/kg}\)</span></li>
-<li><span class="math inline">\(\hat{S}_5 = 6.8826 \text{ kJ/kg}\cdot\text{K}\)</span></li>
+<li><strong>State 2 (Boiler Out / Turbine In):</strong> Sat. Vapor at <span class="math inline">\(10 \text{ bar}\)</span>.
+<ul>
+<li><span class="math inline">\(\hat{H}_2 \approx 271.0 \text{ kJ/kg}\)</span></li>
+<li><span class="math inline">\(\hat{S}_2 \approx 0.910 \text{ kJ/kg}\cdot\text{K}\)</span></li>
 </ul></li>
-<li><strong>Stream 6 (HP Turbine Out/Extraction):</strong> 10 bar.
+<li><strong>State 3 (Turbine Out / Condenser In):</strong> Isentropic expansion to <span class="math inline">\(5 \text{ bar}\)</span>.
 <ul>
-<li><p>Ideal <span class="math inline">\(\hat{S}_6' = 6.8826 \text{ kJ/kg}\cdot\text{K} \implies \hat{H}_6' \approx 2921.4 \text{ kJ/kg}\)</span> (superheated)</p></li>
-<li><p>Actual HPT Work: <span class="math inline">\(W_{HP} = 0.75 \times (2921.4 - 3422.2) = \mathbf{-375.6 \text{ kJ/kg}}\)</span></p></li>
-<li><p>Actual <span class="math inline">\(\hat{H}_6 = 3422.2 - 375.6 = 3046.6 \text{ kJ/kg}\)</span> (At 10 bar, this is approx <span class="math inline">\(300^\circ\text{C}\)</span> with <span class="math inline">\(\hat{S}_6 \approx 7.124 \text{ kJ/kg}\cdot\text{K}\)</span>).</p></li>
-<li><p><strong>Note</strong> Streams 7 and 8 have the same properties as stream 6, since they are just split from the same stream. The mass flow rates will differ, however.</p></li>
+<li><span class="math inline">\(\hat{S}_3 = \hat{S}_2 = 0.910 \text{ kJ/kg}\cdot\text{K}\)</span></li>
+<li><em>(From tables at 5 bar, this entropy is slightly inside the vapor dome, <span class="math inline">\(x \approx 0.98\)</span>)</em></li>
+<li><span class="math inline">\(\hat{H}_3 \approx 260.0 \text{ kJ/kg}\)</span></li>
+<li><strong>Turbine Work:</strong> <span class="math inline">\(W_{turb} = \hat{H}_3 - \hat{H}_2 = 260.0 - 271.0 = \mathbf{-11.0 \text{ kJ/kg}}\)</span></li>
+</ul></li>
+<li><strong>State 4 (Condenser Out / Pump In):</strong> Sat. Liquid at <span class="math inline">\(5 \text{ bar}\)</span>.
+<ul>
+<li><span class="math inline">\(\hat{H}_4 \approx 71.0 \text{ kJ/kg}\)</span></li>
+<li><span class="math inline">\(\hat{V}_4 \approx 0.0008 \text{ m}^3/\text{kg}\)</span></li>
+</ul></li>
+<li><strong>State 1 (Pump Out / Boiler In):</strong> Pumped to <span class="math inline">\(10 \text{ bar}\)</span>.
+<ul>
+<li><span class="math inline">\(W_{pump} = \hat{V}_4(P_{boiler} - P_{cond}) = (0.0008)(10 - 5)\times 100 \approx \mathbf{+0.4 \text{ kJ/kg}}\)</span></li>
+<li><span class="math inline">\(\hat{H}_1 = \hat{H}_4 + W_{pump} = 71.0 + 0.4 = \mathbf{71.4 \text{ kJ/kg}}\)</span></li>
 </ul></li>
 </ul>
 </section>
-<section id="step-2-the-low-pressure-turbine-stream-8-to-9" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="step-2-the-low-pressure-turbine-stream-8-to-9"><span class="header-section-number">2.1.2</span> Step 2: The Low-Pressure Turbine (Stream 8 <span class="math inline">\(\to\)</span> 9)</h3>
-<p><em>(Note: Only <span class="math inline">\(1-y\)</span> mass fraction flows through here).</em></p>
+<section id="efficiency-calculation" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="efficiency-calculation"><span class="header-section-number">2.1.2</span> Efficiency Calculation</h3>
 <ul>
-<li><strong>Stream 9 (LP Turbine Out):</strong> 1 bar.
-<ul>
-<li>Ideal <span class="math inline">\(\hat{S}_9' = \hat{S}_8 = 7.124 \text{ kJ/kg}\cdot\text{K} \implies x \approx 0.961 \implies \hat{H}_9' = 2587.4 \text{ kJ/kg}\)</span></li>
-<li>Actual LP Work: <span class="math inline">\(W_{LP} = 0.75 \times (2587.4 - 3046.6) = \mathbf{-344.4 \text{ kJ/kg}}\)</span></li>
-<li>Actual <span class="math inline">\(\hat{H}_9 = 3046.6 - 344.4 = 2702.2 \text{ kJ/kg}\)</span></li>
-</ul></li>
+<li><strong>Net Work:</strong> <span class="math inline">\(W_{net} = W_{turb} + W_{pump} = -11.0 + 0.4 = \mathbf{-10.6 \text{ kJ/kg}}\)</span></li>
+<li><strong>Heat Added:</strong> <span class="math inline">\(Q_H = \hat{H}_2 - \hat{H}_1 = 271.0 - 71.4 = \mathbf{+199.6 \text{ kJ/kg}}\)</span></li>
+<li><strong>Thermal Efficiency:</strong> <span class="math inline">\(\eta = \frac{10.6}{199.6} = \mathbf{0.053} \implies \mathbf{5.3\%}\)</span></li>
 </ul>
-</section>
-<section id="step-3-condenser-and-pump-1-stream-9-to-10-to-11" class="level3" data-number="2.1.3">
-<h3 data-number="2.1.3" class="anchored" data-anchor-id="step-3-condenser-and-pump-1-stream-9-to-10-to-11"><span class="header-section-number">2.1.3</span> Step 3: Condenser and Pump 1 (Stream 9 <span class="math inline">\(\to\)</span> 10 <span class="math inline">\(\to\)</span> 11)</h3>
-<p><em>(Note: Only <span class="math inline">\(1-y\)</span> mass fraction flows through here).</em></p>
-<ul>
-<li><p><strong>Stream 10 (Condenser Out):</strong> 1 bar, sat liquid. <span class="math inline">\(\hat{H}_{10} = 417.46 \text{ kJ/kg}\)</span>, <span class="math inline">\(\hat{V}_{10} = 0.001043 \text{ m}^3/\text{kg}\)</span></p></li>
-<li><p><strong>Pump 1 (to FWH pressure):</strong> 1 to 10 bar.</p>
-<ul>
-<li>Reversible Work = <span class="math inline">\(0.001043 \times (10 - 1) \times 100 = 0.94 \text{ kJ/kg}\)</span></li>
-<li>Actual <span class="math inline">\(W_{P1} = 0.94 / 0.75 = \mathbf{+1.25 \text{ kJ/kg}}\)</span></li>
-<li><span class="math inline">\(\hat{H}_{11} = 417.46 + 1.25 = 418.71 \text{ kJ/kg}\)</span></li>
-</ul></li>
-</ul>
-</section>
-<section id="step-4-the-open-feedwater-heater-stream-7-stream-11-to-stream-12" class="level3" data-number="2.1.4">
-<h3 data-number="2.1.4" class="anchored" data-anchor-id="step-4-the-open-feedwater-heater-stream-7-stream-11-to-stream-12"><span class="header-section-number">2.1.4</span> Step 4: The Open Feedwater Heater (Stream 7 + Stream 11 <span class="math inline">\(\to\)</span> Stream 12)</h3>
-<p>The FWH mixes hot steam from Stream 7 with cold water from Stream 11 to produce saturated liquid at 10 bar (Stream 12).</p>
-<ul>
-<li><strong>Stream 12 (FWH Out):</strong> 10 bar, sat liquid. <span class="math inline">\(\hat{H}_{12} = 762.6 \text{ kJ/kg}\)</span></li>
-</ul>
-<p><strong>Energy Balance on FWH (to find <span class="math inline">\(y\)</span>):</strong></p>
-<p>Since we specified that the FWH produces saturated liquid at 10 bar (stream 12), we have to solve for the fraction of steam redirected from HPT to the FWH via an energy balance. We know the enthalpies of streams 7, 11, and 12 so <span class="math inline">\(y\)</span> is the only unknown in the following equation: <span class="math display">\[y \hat{H}_7 + (1-y) \hat{H}_{11} = \hat{H}_{12}\]</span> <span class="math display">\[y (3046.6) + (1-y) (418.71) = 762.6\]</span> <span class="math display">\[y (2627.89) = 343.89 \implies \mathbf{y = 0.1309}\]</span> <em>(We bleed about 13.1% of the steam from the HPT to the heater, with the rest going to the LPT).</em></p>
-</section>
-<section id="step-5-boiler-feed-pump-stream-12-to-13" class="level3" data-number="2.1.5">
-<h3 data-number="2.1.5" class="anchored" data-anchor-id="step-5-boiler-feed-pump-stream-12-to-13"><span class="header-section-number">2.1.5</span> Step 5: Boiler Feed Pump (Stream 12 <span class="math inline">\(\to\)</span> 13)</h3>
-<p><em>(Note: The full mass flow goes through here).</em></p>
-<ul>
-<li><p><strong>Stream 12 Volume:</strong> <span class="math inline">\(\hat{V}_{12} = 0.001127 \text{ m}^3/\text{kg}\)</span></p></li>
-<li><p><strong>Pump 2 (to Boiler pressure):</strong> 10 to 60 bar.</p>
-<ul>
-<li>Reversible Work = <span class="math inline">\(0.001127 \times (60 - 10) \times 100 = 5.64 \text{ kJ/kg}\)</span></li>
-<li>Actual <span class="math inline">\(W_{P2} = 5.64 / 0.75 = \mathbf{+7.51 \text{ kJ/kg}}\)</span></li>
-<li><span class="math inline">\(\hat{H}_{13} = 762.6 + 7.51 = 770.11 \text{ kJ/kg}\)</span> <em>(Notice how much hotter (higher in enthalpy) the water entering the boiler is now!)</em></li>
-</ul></li>
-</ul>
+<p><strong>Is 5.3% terrible?</strong> Not necessarily! The Carnot efficiency for these temperatures (<span class="math inline">\(T_H = 39.4^\circ\text{C} = 312.5 \text{ K}\)</span>, <span class="math inline">\(T_C = 15.7^\circ\text{C} = 288.8 \text{ K}\)</span>) is only <span class="math inline">\(\eta_{max} = 1 - (288.8/312.5) = 7.6\%\)</span>. We are getting free power out of heat that would otherwise just be vented into the atmosphere!</p>
 <hr>
 </section>
 </section>
-<section id="cycle-performance-the-payoff" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="cycle-performance-the-payoff"><span class="header-section-number">2.2</span> Cycle Performance: The Payoff</h2>
-<p>Let’s calculate the overall heat and work <strong>per kg of steam leaving the boiler</strong>:</p>
-<p><strong>Turbine Work:</strong> <span class="math display">\[W_{turb} = W_{HP} + (1-y)W_{LP} = -375.6 + (1 - 0.1309)(-344.4) = \mathbf{-674.9 \text{ kJ/kg}}\]</span> <em>(We produce slightly less total work than the simple cycle’s -693.5 kJ/kg because we robbed the LP turbine of some steam).</em></p>
-<p><strong>Pump Work:</strong> <span class="math display">\[W_{pump} = (1-y)W_{P1} + W_{P2} = (0.8691)(1.25) + 7.51 = \mathbf{+8.60 \text{ kJ/kg}}\]</span></p>
-<p><strong>Net Work:</strong> <span class="math display">\[W_{net} = -674.9 + 8.60 = \mathbf{-666.3 \text{ kJ/kg}}\]</span></p>
-<p><strong>Heat Added (Boiler):</strong> Because we pre-heated the water, we need to buy significantly less heat! <span class="math display">\[Q_H = \hat{H}_5 - \hat{H}_{13} = 3422.2 - 770.11 = \mathbf{+2652.1 \text{ kJ/kg}}\]</span> <em>(Compared to +2996.5 kJ/kg in the simple cycle).</em></p>
-<p><strong>New Thermal Efficiency:</strong> <span class="math display">\[\eta = \frac{-W_{net}}{Q_H} = \frac{666.3}{2652.1} = \mathbf{0.2512 \implies 25.1\%}\]</span></p>
-<section id="conclusion" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">2.2.1</span> Conclusion</h3>
-<p>This relatively simple process modification raised the cycle efficiency from <strong>22.87% to 25.1%</strong> without changing the operating conditions. That is a relative improvement of nearly 10%! For a multi-megawatt power plant, this translates to millions of dollars in fuel savings and a massive reduction in greenhouse gas emissions. The price we had to pay was a slightly more complex system with an additional turbine, pump, and heat exchanger, but the efficiency gain is likely well worth it. Real power plants often use multiple feedwater heaters and multiple extraction points to further optimize the cycle performance. A full engineering analysis would have to balance the cost of additional equipment and maintenance with the fuel savings to determine the optimal design. Actual power plants can achieve thermal efficiencies of 40-45%, which suggests there are many more opportunities for improvement beyond the single feedwater heater we analyzed here.</p>
+</section>
+<section id="motive-power-and-air-standard-cycles" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Motive Power and Air-Standard Cycles</h1>
+<p>If we want to power a car or an airplane, we care about the <strong>power-to-weight ratio</strong>. We cannot afford to carry a boiler, a condenser, and tons of cooling water.</p>
+<p>The solution is the <strong>Internal Combustion Engine (ICE)</strong>. Instead of heating a fluid through a wall (external combustion), we ignite fuel directly <em>inside</em> the working fluid (air). The hot combustion gases expand, do work, and are immediately exhausted. The atmosphere acts as an giant condenser and source of fresh working fluid.</p>
+<section id="the-air-standard-assumptions" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="the-air-standard-assumptions"><span class="header-section-number">3.1</span> The Air-Standard Assumptions</h2>
+<p>Real combustion is chemically complex (open system, changing mass, changing composition). To properly model this system requires sophisticated computational methods. To model an ICE using simple thermodynamics, we use the <strong>Air-Standard Assumptions</strong>:</p>
+<ol type="1">
+<li><p>The working fluid is pure air, treated as an ideal gas.</p></li>
+<li><p>The engine operates in a <em>closed loop</em> (the exhaust air is assumed to be cooled and fed back into the intake).</p></li>
+<li><p>The combustion process is replaced by an external heat addition step (<span class="math inline">\(Q_H\)</span>).</p></li>
+<li><p>The exhaust process is replaced by an external heat rejection step (<span class="math inline">\(Q_C\)</span>).</p></li>
+<li><p>All processes are internally reversible.</p></li>
+</ol>
+<p>While these are pretty drastic assumptions, they allow us to analyze the thermodynamics of an ICE using the same tools we’ve developed for Rankine cycles. We will see that the idealized cycles we get from these assumptions (Otto, Diesel, Brayton) capture the essential physics and efficiency trends of real engines.</p>
 <hr>
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
+</section>
+</section>
+<section id="the-otto-cycle-spark-ignition" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> The Otto Cycle (Spark-Ignition)</h1>
+<p>The Otto cycle models your standard gasoline car engine. It is a four-stroke piston-cylinder device.</p>
+<div id="fig-otto-air" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-otto-air-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/otto-air.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-otto-air-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;1: Image of the air-standard Otto cycle PV diagram along with the 4 steps: isentropic compression, isochoric heat addition, isentropic expansion, isochoric heat rejection.
+</figcaption>
+</figure>
+</div>
+<p><strong>The 4 Ideal Steps:</strong> 1. <strong>State 1 <span class="math inline">\(\to\)</span> 2: Isentropic Compression.</strong> The piston compresses the air/fuel mixture. (<span class="math inline">\(W &gt; 0, Q=0\)</span>).</p>
+<ol start="2" type="1">
+<li><p><strong>State 2 <span class="math inline">\(\to\)</span> 3: Isochoric Heat Addition.</strong> The spark plug fires. Combustion happens so fast that the piston hasn’t moved yet. Volume is constant (<span class="math inline">\(v=C\)</span>). Heat is added (<span class="math inline">\(Q_H &gt; 0\)</span>).</p></li>
+<li><p><strong>State 3 <span class="math inline">\(\to\)</span> 4: Isentropic Expansion (Power Stroke).</strong> The high-pressure gas pushes the piston down, doing useful work. (<span class="math inline">\(W &lt; 0, Q=0\)</span>).</p></li>
+<li><p><strong>State 4 <span class="math inline">\(\to\)</span> 1: Isochoric Heat Rejection.</strong> The exhaust valve opens, pressure drops instantly at constant volume. Heat is rejected (<span class="math inline">\(Q_C &lt; 0\)</span>).</p></li>
+</ol>
+<p><strong>Efficiency of the Otto Cycle:</strong> By applying the ideal gas relations to these steps, the efficiency depends entirely on the <strong>compression ratio (<span class="math inline">\(r = V_1 / V_2\)</span>)</strong>:</p>
+<p><span class="math display">\[\eta_{Otto} = 1 - \frac{1}{r^{\gamma - 1}}\]</span> <em>(where <span class="math inline">\(\gamma = C_p / C_v\)</span>)</em></p>
+<p>To get more efficiency, car manufacturers want to increase <span class="math inline">\(r\)</span>. However, if you compress a gas too much, it gets hot. If it gets too hot, the gasoline auto-ignites before the spark plug fires. This is called <strong>engine knock</strong> and it destroys engines. This physical limit leads us to the Diesel cycle.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Derivation: Otto Cycle Efficiency">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Jupyter Notebook Example
+<span class="screen-reader-only">Note</span>Derivation: Otto Cycle Efficiency
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p>I have prepared an interactive Jupyter Notebook that solves the regenerative Rankine cycle problem, and also allows you to adjust the cycle conditions and see how the cycle efficiency changes as a function of the mass fraction <span class="math inline">\(y\)</span> sent to the feedwater heater as well as the boiler and condenser conditions. Note that the notebook uses CoolProp to calculate the properties of water and steam, so you can easily modify the cycle conditions and see how the results change. You can also see how the entropy of each stream changes as a function of <span class="math inline">\(y\)</span> to get a better understanding of where the irreversibilities are occurring in the cycle. The actual numbers will differ slightly from the hand calculations above because of the use of CoolProp, which is more accurate than the steam tables we used for the hand calculations, but the overall trends and conclusions will be the same.</p>
-<p><a href="../class19/rankine-regen.html"><strong>View Interactive Notebook (.ipynb)</strong></a></p>
-<p><a href="https://colab.research.google.com/github/ejmaginn/CBE20260-notes/blob/main/class19/rankine-regen.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid"></a></p>
+<p>The thermal efficiency of any heat engine is defined as the net work divided by the heat added: <span class="math display">\[\eta = \frac{-W_{net}}{Q_H} = \frac{Q_H + Q_C}{Q_H} = 1 + \frac{Q_C}{Q_H}\]</span></p>
+<p><strong>Step A: Define Heat Added and Rejected</strong> In the Otto cycle, heat is added and rejected at <strong>constant volume</strong> (isochoric processes). Using the First Law for a closed system (<span class="math inline">\(Q = \Delta U\)</span> when <span class="math inline">\(W=0\)</span>), and assuming an ideal gas (<span class="math inline">\(\Delta U = C_v \Delta T\)</span>):</p>
+<ul>
+<li><p><strong>Heat Added (State 2 <span class="math inline">\(\to\)</span> 3):</strong> <span class="math inline">\(Q_H = C_v(T_3 - T_2)\)</span></p></li>
+<li><p><strong>Heat Rejected (State 4 <span class="math inline">\(\to\)</span> 1):</strong> <span class="math inline">\(Q_C = C_v(T_1 - T_4)\)</span></p></li>
+</ul>
+<p>Substitute these into the efficiency equation: <span class="math display">\[\eta_{Otto} = 1 + \frac{C_v(T_1 - T_4)}{C_v(T_3 - T_2)} = 1 + \frac{T_1 - T_4}{T_3 - T_2}\]</span></p>
+<p><strong>Step B: Use Isentropic Relations</strong> To simplify this, we relate the temperatures using the isentropic compression and expansion steps. For an ideal gas undergoing an isentropic process, you can show that <span class="math inline">\(T \cdot V^{\gamma-1} = \text{constant}\)</span> where <span class="math inline">\(\gamma = C_p / C_v\)</span>.</p>
+<p>We define the <strong>compression ratio, <span class="math inline">\(r\)</span></strong>: <span class="math display">\[r = \frac{V_1}{V_2} = \frac{V_4}{V_3}\]</span></p>
+<p><em>(Since <span class="math inline">\(V_1=V_4\)</span> and <span class="math inline">\(V_2=V_3\)</span>)</em></p>
+<ul>
+<li><strong>Compression (1 <span class="math inline">\(\to\)</span> 2):</strong> <span class="math inline">\(\frac{T_2}{T_1} = \left(\frac{V_1}{V_2}\right)^{\gamma-1} = r^{\gamma-1}\)</span></li>
+<li><strong>Expansion (3 <span class="math inline">\(\to\)</span> 4):</strong> <span class="math inline">\(\frac{T_3}{T_4} = \left(\frac{V_4}{V_3}\right)^{\gamma-1} = r^{\gamma-1}\)</span></li>
+</ul>
+<p>Since both temperature ratios equal <span class="math inline">\(r^{\gamma-1}\)</span>, we know that: <span class="math display">\[\frac{T_2}{T_1} = \frac{T_3}{T_4} \implies \frac{T_4}{T_1} = \frac{T_3}{T_2}\]</span></p>
+<p><strong>Step C: Simplify the Efficiency Equation</strong> Let’s factor out <span class="math inline">\(T_1\)</span> from the numerator and <span class="math inline">\(T_2\)</span> from the denominator of our efficiency equation: <span class="math display">\[\eta_{Otto} = 1 - \frac{T_1 \left( \frac{T_4}{T_1} - 1 \right)}{T_2 \left( \frac{T_3}{T_2} - 1 \right)}\]</span></p>
+<p>Because we proved <span class="math inline">\(\frac{T_4}{T_1} = \frac{T_3}{T_2}\)</span>, the terms in the parentheses are identical and perfectly cancel out! <span class="math display">\[\eta_{Otto} = 1 - \frac{T_1}{T_2}\]</span></p>
+<p>Substitute our isentropic relationship (<span class="math inline">\(\frac{T_1}{T_2} = \frac{1}{r^{\gamma-1}}\)</span>) to get the final result: <span class="math display">\[\eta_{Otto} = 1 - \frac{1}{r^{\gamma-1}}\]</span></p>
 </div>
 </div>
+</div>
+<p>We observe that the efficiency of the Otto cycle depends solely on the compression ratio <span class="math inline">\(r\)</span> and the specific heat ratio <span class="math inline">\(\gamma\)</span>. To increase efficiency, we want to increase <span class="math inline">\(r\)</span>, but this is limited by engine knock (pre-combustion of the gasoline). This is why typical gasoline engines have compression ratios around 8-12.</p>
+<div id="fig-otto-eff" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-otto-eff-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/otto-eff.jpg" class="img-fluid figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-otto-eff-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;2: Plot of the efficiency of an air-standard Otto cycle as a function of compression ratio.
+</figcaption>
+</figure>
+</div>
+<hr>
 </section>
-</section>
-</section>
-<section id="other-enhancements-reheating" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Other Enhancements: Reheating</h1>
-<p>Another common strategy to improve efficiency (and protect turbine blades from water droplet erosion) is to use <strong>Multiple Turbines with Reheating</strong>.</p>
-<p>Instead of letting the steam expand all the way from boiler pressure down to condenser pressure in one step, we:</p>
+<section id="the-diesel-cycle-compression-ignition" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> The Diesel Cycle (Compression-Ignition)</h1>
+<p>To achieve higher efficiencies without engine knock, the Diesel cycle changes the fuel delivery method.</p>
+<p>Instead of compressing a mixture of air and fuel and igniting it with a spark, a diesel engine compresses <em>only pure air</em>. It compresses it so much (<span class="math inline">\(r = 15 \text{ to } 20\)</span>) that the air becomes incredibly hot. At the top of the stroke, fuel is injected. Because the air is so hot, the fuel auto-ignites immediately upon entering.</p>
+<p><strong>The Key Difference:</strong> Because fuel is injected steadily as the piston starts to expand, the combustion (heat addition) occurs at <strong>Constant Pressure (Isobaric)</strong> rather than constant volume.</p>
+<div id="fig-diesel-air" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-diesel-air-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/diesel-air.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-diesel-air-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;3: A PV diagram for an air-standard Diesel cycle.
+</figcaption>
+</figure>
+</div>
 <ol type="1">
-<li><p>Expand the steam partially in a High-Pressure Turbine.</p></li>
-<li><p>Send the steam <em>back</em> to the boiler to be reheated at constant pressure (e.g., back up to <span class="math inline">\(500^\circ\text{C}\)</span>).</p></li>
-<li><p>Expand it the rest of the way in a Low-Pressure Turbine.</p></li>
+<li><strong>1 <span class="math inline">\(\to\)</span> 2:</strong> Isentropic Compression (only air).</li>
+<li><strong>2 <span class="math inline">\(\to\)</span> 3:</strong> <strong>Isobaric Heat Addition</strong> (fuel injected and burns).</li>
+<li><strong>3 <span class="math inline">\(\to\)</span> 4:</strong> Isentropic Expansion (power stroke).</li>
+<li><strong>4 <span class="math inline">\(\to\)</span> 1:</strong> Isochoric Heat Rejection (exhaust).</li>
 </ol>
-<p>This increases the average temperature of heat addition, raising the thermal efficiency. It also ensures the exhaust steam stays dry and superheated, preventing wear and tear on the turbine blades. Real power plants often combine both Reheating and Regeneration simultaneously!</p>
+<p>It can be shown that the efficiency of a Diesel cycle is given by:</p>
+<p><span class="math display">\[\eta_{Diesel} = 1 - \frac{1}{\gamma} \left [ \frac{
+\left (\frac{1}{r_e} \right )^\gamma - \left (\frac{1}{r_c} \right )^\gamma}
+{1/r_e - 1/r_c} \right ]\]</span></p>
+<p>where <span class="math inline">\(r_e = V_4/V_3\)</span> is the expansion ratio and <span class="math inline">\(r_c = V_1/V_2\)</span> is the compression ratio. Diesel engines are generally more efficient than Otto engines primarily because their design allows them to operate at much higher compression ratios.</p>
+<hr>
+</section>
+<section id="gas-turbines-and-the-brayton-cycle" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Gas Turbines and the Brayton Cycle</h1>
+<p>Piston engines are great for cars, but for massive power output (like the Indeck plant in Niles, MI) or jet propulsion, we use <strong>Gas Turbines</strong>. These operate on the <strong>Brayton Cycle</strong>.</p>
+<p>Unlike piston engines, gas turbines are steady-flow, open-system devices.</p>
+<ol type="1">
+<li><p><strong>Compressor (1 <span class="math inline">\(\to\)</span> 2):</strong> Air is drawn in and compressed isentropically.</p></li>
+<li><p><strong>Combustor (2 <span class="math inline">\(\to\)</span> 3):</strong> Fuel is added and burned at constant pressure (<span class="math inline">\(Q_H\)</span>).</p></li>
+<li><p><strong>Turbine (3 <span class="math inline">\(\to\)</span> 4):</strong> Hot gases expand isentropically through a turbine, generating work. A large portion of this work is used simply to drive the compressor on the same shaft!</p></li>
+<li><p><strong>Exhaust (4 <span class="math inline">\(\to\)</span> 1):</strong> Hot gases are vented (isobaric heat rejection).</p></li>
+</ol>
+<div id="fig-brayton" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-brayton-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/brayton.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-brayton-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;4: A Brayton cycle and air-standard PV and TS representations. Image from NASA.
+</figcaption>
+</figure>
+</div>
+<p>In modern power plants (like Indeck Niles), they use a <strong>Combined Cycle</strong>. The exhaust gas from the Brayton cycle (gas turbine) is still very hot (often <span class="math inline">\(&gt;500^\circ\text{C}\)</span>). Instead of venting it, they run it through a heat exchanger to boil water, which then drives a standard steam Rankine cycle! This combination can push overall plant efficiencies well past 60%.</p>
 
 
 </section>
