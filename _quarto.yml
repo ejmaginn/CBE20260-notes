@@ -47,6 +47,8 @@ website:
             text: Lecture 19 - Improving Rankine Cycle Efficiency
           - href: class20/lecture20.qmd
             text: Lecture 20 - Organic Rankine Cycles and Internal Combustion Engines
+          - href: class21/lecture21.qmd
+            text: Lecture 21 - Introduction to Cooling and Refrigeration
               
           # Add more lectures here as you create them:
           # - href: class0x/lecture02.qmd

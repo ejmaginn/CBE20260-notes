@@ -1,0 +1,129 @@
+---
+title: "Lecture 21: Introduction to Cooling and Refrigeration"
+subtitle: "CBE 20260 / Thermodynamics I"
+author: "Edward Maginn"
+format:
+  html:
+    toc: true
+    number-sections: true
+  pdf:
+    toc: true
+    number-sections: true
+execute:
+  echo: false
+---
+
+# Introduction: How Do You Make Things Cold?
+
+Up until now, we have focused on generating power from a heat source. But what if our goal is the opposite? What if we want to take a space and make it colder than its surroundings? 
+
+Historically, humanity relied on **ice harvesting**. In the 19th century, ice was cut from frozen lakes in the winter, insulated with sawdust, and shipped globally. While effective, it was highly dependent on geography and season, and could only provide cooling of small spaces (e.g., "iceboxes").
+
+The simplest active cooling technology relies on **Evaporative Cooling**. 
+When a liquid evaporates, it must absorb the enthalpy of vaporization ($\Delta H_{vap}$). If water evaporates off your skin, it absorbs that heat from your body, cooling you down. This is why sweating is an effective cooling mechanism. We can also use this principle to provide cooling.
+
+* **Misters and Swamp Coolers:** Misters spray fine water droplets into the air. As the water evaporates, it cools the surrounding air. "Swamp coolers" pull hot, dry air through a wet pad. The air is cooled by evaporation before it enters the building.
+
+* **The Limitation:** Evaporative cooling only works well in *dry* climates. The lowest temperature you can achieve this way is the **Wet Bulb Temperature**. In a humid environment (like a midwestern summer or Florida most of the time), the air is already saturated with water vapor, evaporation is minimal, and swamp coolers are completely ineffective. Moreover, this technology is effective in dry climates where water is scarce, which is a major drawback. Finally, evaporative cooling cannot achieve temperatures below the wet bulb temperature, which limits its usefulness for many applications. For example, you cannot use evaporative cooling to make ice or to cool a freezer. 
+
+To achieve reliable cooling anywhere, we need a closed thermodynamic cycle.
+
+---
+
+# The Heat Engine in Reverse
+
+Recall the Clausius statement of the Second Law of Thermodynamics: *It is impossible for heat to flow spontaneously from a colder body to a hotter body.*
+
+However, heat *can* be made to flow from cold to hot if we input **work**. A refrigerator is simply a heat engine running in reverse.
+
+
+
+Instead of taking in heat to produce work, a refrigeration cycle:
+
+1. Absorbs heat ($Q_c$) from a cold space (e.g., the inside of a fridge at $3^\circ\text{C}$).
+
+2. Receives a work input ($W_{in}$) in the form of electricity.
+
+3. Rejects heat ($Q_h$) to a hot space (e.g., the kitchen at $25^\circ\text{C}$).
+
+From the First Law (Energy Balance) for the cycle:
+$$Q_h = Q_c + W_{in} \implies W_{in} = Q_h - Q_c$$
+
+## The Coefficient of Performance (COP)
+
+For heat engines, we measured success using thermal efficiency ($\eta = W_{net}/Q_{in}$). Because refrigerators *consume* work to move heat, efficiency is framed differently. We use the **Coefficient of Performance (COP)**.
+
+$$COP_R = \frac{\text{Desired Output}}{\text{Required Input}} = \frac{Q_c}{W_{in}}$$
+
+Unlike thermal efficiency, **COP can be (and usually is) greater than 1!** You are not creating energy; you are simply *moving* more thermal energy than the mechanical energy you put in.
+
+::: {.callout-note title="Derivation: The Carnot COP"}
+Just like the Carnot heat engine, there is a theoretical maximum performance for a refrigerator. For a completely reversible cycle, the entropy generation is zero:
+$$\Delta S_{cycle} = \frac{Q_h}{T_h} - \frac{Q_c}{T_c} = 0 \implies \frac{Q_h}{Q_c} = \frac{T_h}{T_c}$$
+
+Substitute $W_{in} = Q_h - Q_c$ into the COP definition:
+$$COP_{R} = \frac{Q_c}{Q_h - Q_c} = \frac{1}{\frac{Q_h}{Q_c} - 1}$$
+
+For a reversible (Carnot) refrigerator, substitute the temperature ratio:
+$$COP_{R,rev} = \frac{1}{\frac{T_h}{T_c} - 1} = \frac{T_c}{T_h - T_c}$$
+*(Note: Temperatures MUST be in Kelvin!)*
+:::
+
+**Quick Example:** A refrigerator maintains a freezer at $-10^\circ\text{C}$ ($263 \text{ K}$) in a $30^\circ\text{C}$ ($303 \text{ K}$) room. What is the maximum possible COP?
+$$COP_{R,rev} = \frac{263}{303 - 263} = \frac{263}{40} = \mathbf{6.575}$$
+This means for every $1 \text{ kJ}$ of electricity the compressor uses, you could ideally remove $6.575 \text{ kJ}$ of heat from the freezer! Real refrigerators typically have a COP around $2$ to $4$ due to irreversibilities.
+
+---
+
+# Joule-Thomson Expansion: Making Fluids Cold
+
+To build our refrigerator, we need a way to make the working fluid colder than the inside of the fridge so heat will transfer into it. We do this using a **throttling valve**.
+
+When a fluid flows through a restriction (a cracked valve, a porous plug, or a capillary tube) without any heat transfer or work being extracted, the process is **isenthalpic** ($\Delta H = 0$).
+
+Will the temperature of the fluid drop when its pressure drops? That depends on a property called the **Joule-Thomson Coefficient ($\mu_{JT}$)**:
+$$\mu_{JT} = \left( \frac{\partial T}{\partial P} \right)_H$$
+
+* If $\mu_{JT} > 0$, the fluid cools as it expands.
+* If $\mu_{JT} < 0$, the fluid actually heats up as it expands! (This happens to Hydrogen and Helium at room temperature).
+
+For refrigeration, we choose fluids and operating conditions where $\mu_{JT}$ is strongly positive. By forcing a high-pressure liquid refrigerant through a tiny valve, the pressure drops drastically, causing a portion of the liquid to flash into vapor. The energy required to vaporize that liquid comes from the fluid itself, plunging its temperature.
+
+## The Pressure-Enthalpy (P-H) Diagram
+
+Because throttling is isenthalpic ($\Delta H = 0$), analyzing refrigeration cycles on a Temperature-Entropy ($T-s$) diagram is clumsy. Instead, the industry standard is the **Pressure-Enthalpy (P-H) Diagram**.
+
+
+
+On a P-H diagram:
+* Constant pressure processes (boiling/condensing) are **horizontal lines**.
+* Isenthalpic processes (throttling) are **vertical lines**.
+
+---
+
+# The Vapor-Compression Refrigeration Cycle
+
+Putting it all together gives us the standard cycle used in almost every household refrigerator, air conditioner, and industrial chiller.
+
+
+
+The ideal cycle consists of four steps:
+1. **Compressor (1 $\to$ 2):** Cold, low-pressure saturated vapor is compressed to a high pressure and temperature. The process is assumed to be isentropic ($s_1 = s_2$). $W_{in} = H_2 - H_1$.
+2. **Condenser (2 $\to$ 3):** The hot, high-pressure vapor enters a heat exchanger (the coils on the back of your fridge). It cools and condenses into a saturated liquid at constant pressure, rejecting heat to the room. $Q_h = H_2 - H_3$.
+3. **Expansion Valve (3 $\to$ 4):** The high-pressure liquid is throttled through a valve. It expands isenthalpically ($H_3 = H_4$). The pressure drops, and it flashes into a very cold liquid-vapor mixture.
+4. **Evaporator (4 $\to$ 1):** The cold mixture passes through coils inside the fridge. Because it is colder than the fridge, it absorbs heat, boiling completely into a saturated vapor at constant pressure. $Q_c = H_1 - H_4$.
+
+---
+
+# Refrigerant Molecules and Environmental Impact
+
+To make this cycle work, we cannot use water. We need a fluid with a boiling point well below $0^\circ\text{C}$ at atmospheric pressure, and a critical temperature well above room temperature. 
+
+**A Brief History of Refrigerants:**
+* **Early 1900s:** Ammonia ($\text{NH}_3$), Sulfur Dioxide ($\text{SO}_2$), and Propane. These worked, but were highly toxic or explosive. Leaks were occasionally fatal.
+* **1930s (CFCs):** Chemists invented Chlorofluorocarbons (like Freon-12 / R-12). They were non-toxic, non-flammable, and had perfect thermodynamic properties. They revolutionized air conditioning.
+* **1980s (The Ozone Hole):** We discovered that the chlorine in CFCs was destroying the Earth's ozone layer. The Montreal Protocol banned them. They had an **Ozone Depletion Potential (ODP) of 1.0**.
+* **1990s (HCFCs & HFCs):** We transitioned to Hydrofluorocarbons like R-134a. Because they contain no chlorine, their **ODP is exactly 0**. 
+* **Today (The GWP Problem):** While R-134a saves the ozone layer, it is a massive greenhouse gas. Its **Global Warming Potential (GWP)** is 1,430 times worse than $CO_2$. 
+
+Modern engineering is currently shifting again—this time toward hydrofluoroolefins (HFOs) or returning to natural refrigerants like $CO_2$ and Isobutane to minimize both ODP and GWP.
