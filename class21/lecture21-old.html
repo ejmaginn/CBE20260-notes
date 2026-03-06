@@ -8,7 +8,7 @@
 
 <meta name="author" content="Edward Maginn">
 
-<title>Lecture 15: Open System Entropy Balance and Efficiency – CBE 20260 — Course Notes</title>
+<title>Lecture 21: Introduction to Cooling and Refrigeration – CBE 20260 — Course Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -265,31 +265,26 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#example-adiabatic-compressor-with-isentropic-efficiency" id="toc-example-adiabatic-compressor-with-isentropic-efficiency" class="nav-link active" data-scroll-target="#example-adiabatic-compressor-with-isentropic-efficiency"><span class="header-section-number">1</span> Example: Adiabatic Compressor with Isentropic Efficiency</a>
+  <li><a href="#introduction-how-do-you-make-things-cold" id="toc-introduction-how-do-you-make-things-cold" class="nav-link active" data-scroll-target="#introduction-how-do-you-make-things-cold"><span class="header-section-number">1</span> Introduction: How Do You Make Things Cold?</a></li>
+  <li><a href="#the-heat-engine-in-reverse" id="toc-the-heat-engine-in-reverse" class="nav-link" data-scroll-target="#the-heat-engine-in-reverse"><span class="header-section-number">2</span> The Heat Engine in Reverse</a>
   <ul class="collapse">
-  <li><a href="#step-1-determine-the-isentropic-outlet-temperature-t_2prime" id="toc-step-1-determine-the-isentropic-outlet-temperature-t_2prime" class="nav-link" data-scroll-target="#step-1-determine-the-isentropic-outlet-temperature-t_2prime"><span class="header-section-number">1.1</span> Step 1: Determine the Isentropic Outlet Temperature (<span class="math inline">\(T_{2}^\prime\)</span>)</a></li>
-  <li><a href="#step-2-apply-isentropic-efficiency-to-find-actual-t_2" id="toc-step-2-apply-isentropic-efficiency-to-find-actual-t_2" class="nav-link" data-scroll-target="#step-2-apply-isentropic-efficiency-to-find-actual-t_2"><span class="header-section-number">1.2</span> Step 2: Apply Isentropic Efficiency to find Actual <span class="math inline">\(T_2\)</span></a></li>
-  <li><a href="#step-3-calculate-power-requirement" id="toc-step-3-calculate-power-requirement" class="nav-link" data-scroll-target="#step-3-calculate-power-requirement"><span class="header-section-number">1.3</span> Step 3: Calculate Power Requirement</a></li>
+  <li><a href="#the-coefficient-of-performance-cop" id="toc-the-coefficient-of-performance-cop" class="nav-link" data-scroll-target="#the-coefficient-of-performance-cop"><span class="header-section-number">2.1</span> The Coefficient of Performance (COP)</a></li>
   </ul></li>
-  <li><a href="#example-the-joule-thomson-expansion" id="toc-example-the-joule-thomson-expansion" class="nav-link" data-scroll-target="#example-the-joule-thomson-expansion"><span class="header-section-number">2</span> Example: The Joule-Thomson Expansion</a>
+  <li><a href="#joule-thomson-expansion-making-fluids-cold" id="toc-joule-thomson-expansion-making-fluids-cold" class="nav-link" data-scroll-target="#joule-thomson-expansion-making-fluids-cold"><span class="header-section-number">3</span> Joule-Thomson Expansion: Making Fluids Cold</a>
   <ul class="collapse">
-  <li><a href="#energy-balance" id="toc-energy-balance" class="nav-link" data-scroll-target="#energy-balance"><span class="header-section-number">2.1</span> Energy Balance</a></li>
-  <li><a href="#does-temperature-change" id="toc-does-temperature-change" class="nav-link" data-scroll-target="#does-temperature-change"><span class="header-section-number">2.2</span> Does Temperature Change?</a>
-  <ul class="collapse">
-  <li><a href="#case-a-ideal-gas" id="toc-case-a-ideal-gas" class="nav-link" data-scroll-target="#case-a-ideal-gas"><span class="header-section-number">2.2.1</span> Case A: Ideal Gas</a></li>
-  <li><a href="#case-b-real-gas" id="toc-case-b-real-gas" class="nav-link" data-scroll-target="#case-b-real-gas"><span class="header-section-number">2.2.2</span> Case B: Real Gas</a></li>
-  <li><a href="#case-c-steam" id="toc-case-c-steam" class="nav-link" data-scroll-target="#case-c-steam"><span class="header-section-number">2.2.3</span> Case C: Steam</a></li>
+  <li><a href="#the-pressure-enthalpy-p-h-diagram" id="toc-the-pressure-enthalpy-p-h-diagram" class="nav-link" data-scroll-target="#the-pressure-enthalpy-p-h-diagram"><span class="header-section-number">3.1</span> The Pressure-Enthalpy (P-H) Diagram</a></li>
   </ul></li>
-  </ul></li>
+  <li><a href="#the-vapor-compression-refrigeration-cycle" id="toc-the-vapor-compression-refrigeration-cycle" class="nav-link" data-scroll-target="#the-vapor-compression-refrigeration-cycle"><span class="header-section-number">4</span> The Vapor-Compression Refrigeration Cycle</a></li>
+  <li><a href="#refrigerant-molecules-and-environmental-impact" id="toc-refrigerant-molecules-and-environmental-impact" class="nav-link" data-scroll-target="#refrigerant-molecules-and-environmental-impact"><span class="header-section-number">5</span> Refrigerant Molecules and Environmental Impact</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture15.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture21-old.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lecture 15: Open System Entropy Balance and Efficiency</h1>
+<h1 class="title">Lecture 21: Introduction to Cooling and Refrigeration</h1>
 <p class="subtitle lead">CBE 20260 / Thermodynamics I</p>
 </div>
 
@@ -313,142 +308,83 @@ window.Quarto = {
 </header>
 
 
-<p>Last class, we applied the open system entropy balance to a compressor with given inlet and exit conditions. We found that the actual exit temperature was higher than the ideal (isentropic) case, and we calculated the power requirement for the compressor along with the entropy generation. Now, we show how to compute the outlet conditions for a compressor with a given isentropic efficiency. We also apply the entropy balance to a few other examples, including quenching a hot workpiece (a closed composite system) and the Joule-Thomson expansion of steam through a valve.</p>
-<section id="example-adiabatic-compressor-with-isentropic-efficiency" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Example: Adiabatic Compressor with Isentropic Efficiency</h1>
-<p><strong>Problem Statement:</strong> Air enters an adiabatic compressor at <span class="math inline">\(T_1 = 20^\circ\text{C}\)</span> and <span class="math inline">\(P_1 = 1 \text{ bar}\)</span>. It is compressed to a final pressure of <span class="math inline">\(P_2 = 5 \text{ bar}\)</span>. The compressor has an isentropic efficiency of <span class="math inline">\(\eta_{comp} = 80\%\)</span>. The volumetric flow rate at the inlet is <span class="math inline">\(\dot{V}_1 = 1 \text{ m}^3/\text{s}\)</span>. Assume air is an ideal gas with <span class="math inline">\(C_P = \frac{7}{2}R\)</span>.</p>
-<p><strong>Goal:</strong> Determine the actual outlet temperature <span class="math inline">\(T_2\)</span> and the required power <span class="math inline">\(\dot{W}_s\)</span>.</p>
-<section id="step-1-determine-the-isentropic-outlet-temperature-t_2prime" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="step-1-determine-the-isentropic-outlet-temperature-t_2prime"><span class="header-section-number">1.1</span> Step 1: Determine the Isentropic Outlet Temperature (<span class="math inline">\(T_{2}^\prime\)</span>)</h2>
-<p>First, we analyze the “ideal” (reversible, adiabatic) case. For an ideal gas undergoing an isentropic process (<span class="math inline">\(\Delta S = 0\)</span>), the temperature and pressure are related by:</p>
-<p><span class="math display">\[\frac{T_{2}^\prime}{T_1} = \left( \frac{P_2}{P_1} \right)^{R/C_P}\]</span></p>
-<p>Given:</p>
+<section id="introduction-how-do-you-make-things-cold" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction: How Do You Make Things Cold?</h1>
+<p>Up until now, we have focused on generating power from a heat source. But what if our goal is the opposite? What if we want to take a space and make it colder than its surroundings?</p>
+<p>Historically, humanity relied on <strong>ice harvesting</strong>. In the 19th century, ice was cut from frozen lakes in the winter, insulated with sawdust, and shipped globally. While effective, it was highly dependent on geography and season, and could only provide cooling of small spaces (e.g., “iceboxes”).</p>
+<p>The simplest active cooling technology relies on <strong>Evaporative Cooling</strong>. When a liquid evaporates, it must absorb the enthalpy of vaporization (<span class="math inline">\(\Delta H_{vap}\)</span>). If water evaporates off your skin, it absorbs that heat from your body, cooling you down. This is why sweating is an effective cooling mechanism. We can also use this principle to provide cooling.</p>
 <ul>
-<li><p><span class="math inline">\(T_1 = 20^\circ\text{C} = 293.15 \text{ K}\)</span></p></li>
-<li><p><span class="math inline">\(P_1 = 1 \text{ bar}, P_2 = 5 \text{ bar}\)</span></p></li>
-<li><p><span class="math inline">\(C_P = 3.5 R \implies \frac{R}{C_P} = \frac{1}{3.5} \approx 0.2857\)</span></p></li>
+<li><p><strong>Misters and Swamp Coolers:</strong> Misters spray fine water droplets into the air. As the water evaporates, it cools the surrounding air. “Swamp coolers” pull hot, dry air through a wet pad. The air is cooled by evaporation before it enters the building.</p></li>
+<li><p><strong>The Limitation:</strong> Evaporative cooling only works well in <em>dry</em> climates. The lowest temperature you can achieve this way is the <strong>Wet Bulb Temperature</strong>. In a humid environment (like a midwestern summer or Florida most of the time), the air is already saturated with water vapor, evaporation is minimal, and swamp coolers are completely ineffective. Moreover, this technology is effective in dry climates where water is scarce, which is a major drawback. Finally, evaporative cooling cannot achieve temperatures below the wet bulb temperature, which limits its usefulness for many applications. For example, you cannot use evaporative cooling to make ice or to cool a freezer.</p></li>
 </ul>
-<p><span class="math display">\[T_{2}^\prime = 293.15 \text{ K} \left( \frac{5}{1} \right)^{0.2857}\]</span> <span class="math display">\[T_{2}^\prime = 293.15 (1.5838) = 464.3 \text{ K}\]</span></p>
+<p>To achieve reliable cooling anywhere, we need a closed thermodynamic cycle.</p>
+<hr>
 </section>
-<section id="step-2-apply-isentropic-efficiency-to-find-actual-t_2" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="step-2-apply-isentropic-efficiency-to-find-actual-t_2"><span class="header-section-number">1.2</span> Step 2: Apply Isentropic Efficiency to find Actual <span class="math inline">\(T_2\)</span></h2>
-<p>The isentropic efficiency for a compressor compares the ideal work to the actual work. Since the compressor is adiabatic (<span class="math inline">\(Q=0\)</span>), work is simply the change in enthalpy. For an ideal gas (<span class="math inline">\(dH = C_P dT\)</span>):</p>
-<p><span class="math display">\[\eta_{comp} = \frac{\dot{W}_{ideal}}{\dot{W}_{actual}} = \frac{H_{2}^\prime - H_1}{H_2 - H_1} = \frac{C_P(T_{2}^\prime - T_1)}{C_P(T_2 - T_1)}\]</span></p>
-<p><span class="math display">\[\eta_{comp} = \frac{T_{2}^\prime - T_1}{T_2 - T_1}\]</span></p>
-<p>Rearranging to solve for the actual outlet temperature <span class="math inline">\(T_2\)</span>:</p>
-<p><span class="math display">\[T_2 - T_1 = \frac{T_{2}^\prime - T_1}{\eta_{comp}}\]</span> <span class="math display">\[T_2 = T_1 + \frac{T_{2}^\prime - T_1}{0.80}\]</span></p>
-<p>Substituting values: <span class="math display">\[T_2 = 293.15 + \frac{464.3 - 293.15}{0.80}\]</span> <span class="math display">\[T_2 = 293.15 + \frac{171.15}{0.80}\]</span> <span class="math display">\[T_2 = 293.15 + 213.9 = \mathbf{507.1 \text{ K}} \quad (233.9^\circ\text{C})\]</span></p>
-<div class="callout callout-style-default callout-note callout-titled">
+<section id="the-heat-engine-in-reverse" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> The Heat Engine in Reverse</h1>
+<p>Recall the Clausius statement of the Second Law of Thermodynamics: <em>It is impossible for heat to flow spontaneously from a colder body to a hotter body.</em></p>
+<p>However, heat <em>can</em> be made to flow from cold to hot if we input <strong>work</strong>. A refrigerator is simply a heat engine running in reverse.</p>
+<p>Instead of taking in heat to produce work, a refrigeration cycle:</p>
+<ol type="1">
+<li><p>Absorbs heat (<span class="math inline">\(Q_c\)</span>) from a cold space (e.g., the inside of a fridge at <span class="math inline">\(3^\circ\text{C}\)</span>).</p></li>
+<li><p>Receives a work input (<span class="math inline">\(W_{in}\)</span>) in the form of electricity.</p></li>
+<li><p>Rejects heat (<span class="math inline">\(Q_h\)</span>) to a hot space (e.g., the kitchen at <span class="math inline">\(25^\circ\text{C}\)</span>).</p></li>
+</ol>
+<p>From the First Law (Energy Balance) for the cycle: <span class="math display">\[Q_h = Q_c + W_{in} \implies W_{in} = Q_h - Q_c\]</span></p>
+<section id="the-coefficient-of-performance-cop" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="the-coefficient-of-performance-cop"><span class="header-section-number">2.1</span> The Coefficient of Performance (COP)</h2>
+<p>For heat engines, we measured success using thermal efficiency (<span class="math inline">\(\eta = W_{net}/Q_{in}\)</span>). Because refrigerators <em>consume</em> work to move heat, efficiency is framed differently. We use the <strong>Coefficient of Performance (COP)</strong>.</p>
+<p><span class="math display">\[COP_R = \frac{\text{Desired Output}}{\text{Required Input}} = \frac{Q_c}{W_{in}}\]</span></p>
+<p>Unlike thermal efficiency, <strong>COP can be (and usually is) greater than 1!</strong> You are not creating energy; you are simply <em>moving</em> more thermal energy than the mechanical energy you put in.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Derivation: The Carnot COP">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Reality Check
+<span class="screen-reader-only">Note</span>Derivation: The Carnot COP
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Notice that <span class="math inline">\(T_{actual} (507.1 \text{ K}) &gt; T_{isentropic} (464.3 \text{ K})\)</span>. This is always true for a compressor. Irreversibilities (friction, turbulence) generate entropy, which manifests as additional heating of the gas, requiring more work input to achieve the same pressure ratio.</p>
+<p>Just like the Carnot heat engine, there is a theoretical maximum performance for a refrigerator. For a completely reversible cycle, the entropy generation is zero: <span class="math display">\[\Delta S_{cycle} = \frac{Q_h}{T_h} - \frac{Q_c}{T_c} = 0 \implies \frac{Q_h}{Q_c} = \frac{T_h}{T_c}\]</span></p>
+<p>Substitute <span class="math inline">\(W_{in} = Q_h - Q_c\)</span> into the COP definition: <span class="math display">\[COP_{R} = \frac{Q_c}{Q_h - Q_c} = \frac{1}{\frac{Q_h}{Q_c} - 1}\]</span></p>
+<p>For a reversible (Carnot) refrigerator, substitute the temperature ratio: <span class="math display">\[COP_{R,rev} = \frac{1}{\frac{T_h}{T_c} - 1} = \frac{T_c}{T_h - T_c}\]</span> <em>(Note: Temperatures MUST be in Kelvin!)</em></p>
 </div>
 </div>
-</section>
-<section id="step-3-calculate-power-requirement" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="step-3-calculate-power-requirement"><span class="header-section-number">1.3</span> Step 3: Calculate Power Requirement</h2>
-<p>To find the power, we first need the molar flow rate from the Ideal Gas Law at the inlet:</p>
-<p><span class="math display">\[\dot{n} = \frac{P_1 \dot{V}_1}{R T_1} = \frac{(10^5 \text{ Pa})(1 \text{ m}^3/\text{s})}{(8.314 \text{ J/mol K})(293.15 \text{ K})} = 41.03 \text{ mol/s}\]</span></p>
-<p>Now, calculate the actual work (power): <span class="math display">\[\dot{W}_{actual} = \dot{n} C_P (T_2 - T_1)\]</span> <span class="math display">\[C_P = 3.5(8.314) = 29.1 \text{ J/mol K}\]</span></p>
-<p><span class="math display">\[\dot{W}_{actual} = (41.03 \text{ mol/s})(29.1 \text{ J/mol K})(507.1 - 293.15 \text{ K})\]</span> <span class="math display">\[\dot{W}_{actual} = 41.03 \cdot 29.1 \cdot 213.95 \approx 255,400 \text{ W}\]</span></p>
-<p><strong>Required Power:</strong> <span class="math inline">\(\mathbf{255.4 \text{ kW}}\)</span></p>
+<p><strong>Quick Example:</strong> A refrigerator maintains a freezer at <span class="math inline">\(-10^\circ\text{C}\)</span> (<span class="math inline">\(263 \text{ K}\)</span>) in a <span class="math inline">\(30^\circ\text{C}\)</span> (<span class="math inline">\(303 \text{ K}\)</span>) room. What is the maximum possible COP? <span class="math display">\[COP_{R,rev} = \frac{263}{303 - 263} = \frac{263}{40} = \mathbf{6.575}\]</span> This means for every <span class="math inline">\(1 \text{ kJ}\)</span> of electricity the compressor uses, you could ideally remove <span class="math inline">\(6.575 \text{ kJ}\)</span> of heat from the freezer! Real refrigerators typically have a COP around <span class="math inline">\(2\)</span> to <span class="math inline">\(4\)</span> due to irreversibilities.</p>
+<hr>
 </section>
 </section>
-<section id="example-the-joule-thomson-expansion" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Example: The Joule-Thomson Expansion</h1>
-<div id="fig-JT-valve" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-JT-valve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/JT-valve.png" class="img-fluid figure-img" style="width:40.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-JT-valve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig.&nbsp;1: Schematic of a throttling valve.
-</figcaption>
-</figure>
-</div>
-<p>Consider a fluid flowing through a throttling valve. The pipe is insulated.</p>
+<section id="joule-thomson-expansion-making-fluids-cold" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Joule-Thomson Expansion: Making Fluids Cold</h1>
+<p>To build our refrigerator, we need a way to make the working fluid colder than the inside of the fridge so heat will transfer into it. We do this using a <strong>throttling valve</strong>.</p>
+<p>When a fluid flows through a restriction (a cracked valve, a porous plug, or a capillary tube) without any heat transfer or work being extracted, the process is <strong>isenthalpic</strong> (<span class="math inline">\(\Delta H = 0\)</span>).</p>
+<p>Will the temperature of the fluid drop when its pressure drops? That depends on a property called the <strong>Joule-Thomson Coefficient (<span class="math inline">\(\mu_{JT}\)</span>)</strong>: <span class="math display">\[\mu_{JT} = \left( \frac{\partial T}{\partial P} \right)_H\]</span></p>
 <ul>
-<li><p><span class="math inline">\(\dot{Q} = 0\)</span></p></li>
-<li><p><span class="math inline">\(\dot{W}_s = 0\)</span></p></li>
-<li><p><span class="math inline">\(\Delta KE \approx 0, \Delta PE \approx 0\)</span></p></li>
+<li>If <span class="math inline">\(\mu_{JT} &gt; 0\)</span>, the fluid cools as it expands.</li>
+<li>If <span class="math inline">\(\mu_{JT} &lt; 0\)</span>, the fluid actually heats up as it expands! (This happens to Hydrogen and Helium at room temperature).</li>
 </ul>
-<section id="energy-balance" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="energy-balance"><span class="header-section-number">2.1</span> Energy Balance</h2>
-<p><span class="math display">\[\dot{m} (\hat{H}_{in} ) = \dot{m} (\hat{H}_{out})\]</span> <span class="math display">\[\hat{H}_{in} = \hat{H}_{out}\]</span></p>
-<p>The process is <strong>Isenthalpic</strong> (constant enthalpy).</p>
+<p>For refrigeration, we choose fluids and operating conditions where <span class="math inline">\(\mu_{JT}\)</span> is strongly positive. By forcing a high-pressure liquid refrigerant through a tiny valve, the pressure drops drastically, causing a portion of the liquid to flash into vapor. The energy required to vaporize that liquid comes from the fluid itself, plunging its temperature.</p>
+<section id="the-pressure-enthalpy-p-h-diagram" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="the-pressure-enthalpy-p-h-diagram"><span class="header-section-number">3.1</span> The Pressure-Enthalpy (P-H) Diagram</h2>
+<p>Because throttling is isenthalpic (<span class="math inline">\(\Delta H = 0\)</span>), analyzing refrigeration cycles on a Temperature-Entropy (<span class="math inline">\(T-s\)</span>) diagram is clumsy. Instead, the industry standard is the <strong>Pressure-Enthalpy (P-H) Diagram</strong>.</p>
+<p>On a P-H diagram: * Constant pressure processes (boiling/condensing) are <strong>horizontal lines</strong>. * Isenthalpic processes (throttling) are <strong>vertical lines</strong>.</p>
+<hr>
 </section>
-<section id="does-temperature-change" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="does-temperature-change"><span class="header-section-number">2.2</span> Does Temperature Change?</h2>
-<section id="case-a-ideal-gas" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="case-a-ideal-gas"><span class="header-section-number">2.2.1</span> Case A: Ideal Gas</h3>
-<p>For an ideal gas, enthalpy depends only on temperature (<span class="math inline">\(H = H(T)\)</span>). Therefore, if <span class="math inline">\(\hat{H}_{in} = \hat{H}_{out}\)</span>, then: <span class="math display">\[T_{in} = T_{out}\]</span> An ideal gas throttling process results in <strong>no temperature change</strong>.</p>
-<p><strong>Entropy Analysis of Throttling - Ideal Gas</strong> Finally, we can do an entropy analysis of throttling. Since the process is adiabatic and has no work, the only way to satisfy the Second Law is if entropy increases due to irreversibility. <span class="math display">\[\Delta S = S_{out} - S_{in}\]</span> Even if <span class="math inline">\(T\)</span> is constant (ideal gas): <span class="math display">\[\Delta S = -R \ln\left(\frac{P_{out}}{P_{in}}\right)\]</span> Since flow is always from High <span class="math inline">\(P\)</span> to Low <span class="math inline">\(P\)</span> (<span class="math inline">\(P_{out} &lt; P_{in}\)</span>), the term <span class="math inline">\(\ln(P_{out}/P_{in})\)</span> is negative. Therefore, <span class="math inline">\(\Delta S &gt; 0\)</span>.</p>
-<p>The process is irreversible, and entropy is generated due to the sudden expansion and associated turbulence and friction in the valve.</p>
 </section>
-<section id="case-b-real-gas" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="case-b-real-gas"><span class="header-section-number">2.2.2</span> Case B: Real Gas</h3>
-<p>For real substances, <span class="math inline">\(\hat{H}\)</span> depends on both <span class="math inline">\(T\)</span> and <span class="math inline">\(P\)</span>. We define the <strong>Joule-Thomson Coefficient</strong>: <span class="math display">\[\mu_{JT} = \left( \frac{\partial T}{\partial P} \right)_H\]</span></p>
-<ul>
-<li><p>If <span class="math inline">\(\mu_{JT} &gt; 0\)</span>: As pressure drops (<span class="math inline">\(dP &lt; 0\)</span>), temperature drops (<span class="math inline">\(dT &lt; 0\)</span>).</p></li>
-<li><p>If <span class="math inline">\(\mu_{JT} &lt; 0\)</span>: As Pressure drops, temperature rises.</p></li>
-<li><p>When <span class="math inline">\(\mu_{JT} = 0\)</span>: No temperature change (we call this the inversion point).</p></li>
-</ul>
-<p>Depending on conditions, real fluids can either cool or heat upon expansion through a valve. For many gases at room temperature, <span class="math inline">\(\mu_{JT} &gt; 0\)</span> and they cool upon expansion (e.g., nitrogen, oxygen). A good refrigerant will show a large temperature change upon throttling (i.e., large <span class="math inline">\(\mu_{JT}\)</span>). For some gases (e.g., helium, hydrogen), <span class="math inline">\(\mu_{JT} &lt; 0\)</span> at room temperature, so they heat up when throttled. This is related to whether the substance is dominated by attractive or repulsive intermolecular forces at the given conditions.</p>
-<p>We would need an equation of state or property tables to determine the actual temperature change for a real gas undergoing throttling. Here is how you would do it for steam, which is a common working fluid in power plants and often undergoes throttling in turbines and valves.</p>
+<section id="the-vapor-compression-refrigeration-cycle" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> The Vapor-Compression Refrigeration Cycle</h1>
+<p>Putting it all together gives us the standard cycle used in almost every household refrigerator, air conditioner, and industrial chiller.</p>
+<p>The ideal cycle consists of four steps: 1. <strong>Compressor (1 <span class="math inline">\(\to\)</span> 2):</strong> Cold, low-pressure saturated vapor is compressed to a high pressure and temperature. The process is assumed to be isentropic (<span class="math inline">\(s_1 = s_2\)</span>). <span class="math inline">\(W_{in} = H_2 - H_1\)</span>. 2. <strong>Condenser (2 <span class="math inline">\(\to\)</span> 3):</strong> The hot, high-pressure vapor enters a heat exchanger (the coils on the back of your fridge). It cools and condenses into a saturated liquid at constant pressure, rejecting heat to the room. <span class="math inline">\(Q_h = H_2 - H_3\)</span>. 3. <strong>Expansion Valve (3 <span class="math inline">\(\to\)</span> 4):</strong> The high-pressure liquid is throttled through a valve. It expands isenthalpically (<span class="math inline">\(H_3 = H_4\)</span>). The pressure drops, and it flashes into a very cold liquid-vapor mixture. 4. <strong>Evaporator (4 <span class="math inline">\(\to\)</span> 1):</strong> The cold mixture passes through coils inside the fridge. Because it is colder than the fridge, it absorbs heat, boiling completely into a saturated vapor at constant pressure. <span class="math inline">\(Q_c = H_1 - H_4\)</span>.</p>
+<hr>
 </section>
-<section id="case-c-steam" class="level3" data-number="2.2.3">
-<h3 data-number="2.2.3" class="anchored" data-anchor-id="case-c-steam"><span class="header-section-number">2.2.3</span> Case C: Steam</h3>
-<p><strong>Problem Statement:</strong> Steam flows through an insulated throttle valve.</p>
-<ul>
-<li><p><strong>Inlet (State 1):</strong> <span class="math inline">\(P_1 = 400 \text{ bar}\)</span>, <span class="math inline">\(T_1 = 500^\circ\text{C}\)</span>.</p></li>
-<li><p><strong>Outlet (State 2):</strong> <span class="math inline">\(P_2 = 1 \text{ bar}\)</span>.</p></li>
-<li><p><strong>Flow Rate:</strong> <span class="math inline">\(\dot{m} = 1 \text{ kg/s}\)</span>.</p></li>
-</ul>
-<p><strong>Goal:</strong> Determine the final temperature <span class="math inline">\(T_2\)</span>.</p>
-<p><strong>Step 1: Energy Balance</strong> We know for a throttling process: <span class="math display">\[\Delta \hat{H} = 0 \implies \hat{H}_1 = \hat{H}_2\]</span></p>
-<p><strong>Step 2: Determine Inlet Enthalpy (<span class="math inline">\(\hat{H}_1\)</span>)</strong> From the steam tables (superheated steam) at <span class="math inline">\(P_1 = 400 \text{ bar}\)</span> and <span class="math inline">\(T_1 = 500^\circ\text{C}\)</span>:</p>
-<p><span class="math display">\[\hat{H}_1 = 2906.5 \text{ kJ/kg}\]</span></p>
-<p><em>(Note: Values may vary slightly depending on the specific steam table used).</em></p>
-<p><strong>Step 3: Determine Outlet Temperature (<span class="math inline">\(T_2\)</span>)</strong> We know two properties at the outlet:</p>
-<ol type="1">
-<li><p><strong>Pressure:</strong> <span class="math inline">\(P_2 = 1 \text{ bar}\)</span>.</p></li>
-<li><p><strong>Enthalpy:</strong> <span class="math inline">\(\hat{H}_2 = \hat{H}_1 = 2906.5 \text{ kJ/kg}\)</span>.</p></li>
-</ol>
-<p>Go to the steam tables for <span class="math inline">\(P = 1 \text{ bar}\)</span> (<span class="math inline">\(T_{sat} \approx 99.6^\circ\text{C}\)</span>). Comparing <span class="math inline">\(\hat{H}_2\)</span> to saturation values:</p>
-<ul>
-<li><p><span class="math inline">\(\hat{H}_{liq} \approx 417 \text{ kJ/kg}\)</span></p></li>
-<li><p><span class="math inline">\(\hat{H}_{vap} \approx 2675 \text{ kJ/kg}\)</span></p></li>
-</ul>
-<p>Since <span class="math inline">\(\hat{H}_2 &gt; \hat{H}_{vap}\)</span>, the outlet state is <strong>superheated vapor</strong>.</p>
-<p>Looking at the superheated steam table for <span class="math inline">\(1 \text{ bar}\)</span>:</p>
-<ul>
-<li><p>At <span class="math inline">\(T = 200^\circ\text{C}: \hat{H} = 2875.5 \text{ kJ/kg}\)</span></p></li>
-<li><p>At <span class="math inline">\(T = 250^\circ\text{C}: \hat{H} = 2974.5 \text{ kJ/kg}\)</span></p></li>
-</ul>
-<p>Our target enthalpy (<span class="math inline">\(2906.5\)</span>) lies between these two temperatures. We linearly interpolate:</p>
-<p><span class="math display">\[T_2 = T_{low} + (T_{high} - T_{low}) \frac{\hat{H}_2 - \hat{H}_{low}}{\hat{H}_{high} - \hat{H}_{low}}\]</span></p>
-<p><span class="math display">\[T_2 = 200 + (250 - 200) \frac{2906.5 - 2875.5}{2974.5 - 2875.5}\]</span></p>
-<p><span class="math display">\[T_2 = 200 + 50 \left( \frac{31.0}{99.0} \right)\]</span> <span class="math display">\[T_2 = 200 + 50 (0.3131)\]</span> <span class="math display">\[T_2 = 200 + 15.66\]</span> <span class="math display">\[T_2 = \mathbf{215.7^\circ\text{C}}\]</span></p>
-<p>There is a significant drop in temperature from <span class="math inline">\(500^\circ\text{C}\)</span> to <span class="math inline">\(215.7^\circ\text{C}\)</span> just by expanding through the valve, even though no heat was removed. This is the <strong>Joule-Thomson effect</strong> for a real gas where attractive intermolecular forces dominate (positive <span class="math inline">\(\mu_{JT}\)</span>). Work was done <em>internally</em> to separate the molecules against these attractive forces, consuming internal energy and lowering the temperature.</p>
-<p>We can compute the entropy generation as well.</p>
-<p>From the steam tables:</p>
-<ul>
-<li><p><span class="math inline">\(S_1 = 5.4794 \text{ kJ/kg·K}\)</span> (at <span class="math inline">\(P_1 = 400 \text{ bar}\)</span>, <span class="math inline">\(T_1 = 500^\circ\text{C}\)</span>)</p></li>
-<li><p><span class="math inline">\(S_2 = 7.8979 \text{ kJ/kg·K}\)</span> (at <span class="math inline">\(P_2 = 1 \text{ bar}\)</span>, <span class="math inline">\(T_2 = 215.7^\circ\text{C}\)</span>)</p></li>
-</ul>
-<p>The entropy generation is: <span class="math display">\[\Delta S_{gen} = S_2 - S_1 = 7.8979 - 5.4794 = \mathbf{2.4185 \text{ kJ/kg·K}}\]</span></p>
-<p>This positive entropy generation confirms that the throttling process is irreversible.</p>
+<section id="refrigerant-molecules-and-environmental-impact" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Refrigerant Molecules and Environmental Impact</h1>
+<p>To make this cycle work, we cannot use water. We need a fluid with a boiling point well below <span class="math inline">\(0^\circ\text{C}\)</span> at atmospheric pressure, and a critical temperature well above room temperature.</p>
+<p><strong>A Brief History of Refrigerants:</strong> * <strong>Early 1900s:</strong> Ammonia (<span class="math inline">\(\text{NH}_3\)</span>), Sulfur Dioxide (<span class="math inline">\(\text{SO}_2\)</span>), and Propane. These worked, but were highly toxic or explosive. Leaks were occasionally fatal. * <strong>1930s (CFCs):</strong> Chemists invented Chlorofluorocarbons (like Freon-12 / R-12). They were non-toxic, non-flammable, and had perfect thermodynamic properties. They revolutionized air conditioning. * <strong>1980s (The Ozone Hole):</strong> We discovered that the chlorine in CFCs was destroying the Earth’s ozone layer. The Montreal Protocol banned them. They had an <strong>Ozone Depletion Potential (ODP) of 1.0</strong>. * <strong>1990s (HCFCs &amp; HFCs):</strong> We transitioned to Hydrofluorocarbons like R-134a. Because they contain no chlorine, their <strong>ODP is exactly 0</strong>. * <strong>Today (The GWP Problem):</strong> While R-134a saves the ozone layer, it is a massive greenhouse gas. Its <strong>Global Warming Potential (GWP)</strong> is 1,430 times worse than <span class="math inline">\(CO_2\)</span>.</p>
+<p>Modern engineering is currently shifting again—this time toward hydrofluoroolefins (HFOs) or returning to natural refrigerants like <span class="math inline">\(CO_2\)</span> and Isobutane to minimize both ODP and GWP.</p>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->
