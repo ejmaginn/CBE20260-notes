@@ -49,6 +49,8 @@ website:
             text: Lecture 20 - Organic Rankine Cycles and Internal Combustion Engines
           - href: class21/lecture21.qmd
             text: Lecture 21 - Introduction to Cooling and Refrigeration
+          - href: class22/lecture22.qmd
+            text: Lecture 22 - Modeling Vapor Compression Cycles and Liquefaction
               
           # Add more lectures here as you create them:
           # - href: class0x/lecture02.qmd
@@ -71,6 +73,8 @@ website:
             text: L14 Quenching Entropy Demo 
           - href: class19/rankine-regen.ipynb
             text: L19 Regenerative Rankine Cycle Demo
+          - href: class22/vapor-compression-cycle.ipynb
+            text: L22 Vapor Compression Cycle Demo
            
           # Add more notebooks here as you create them:  
           #- href: class03/lecture03_example.ipynb
