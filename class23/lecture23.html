@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Edward Maginn">
+
+<title>Lecture 23: The Mathematics of Thermodynamics and Thermodynamic Potentials – CBE 20260 — Course Notes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-950ba19c765f2cec88564589b0edcdee.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">CBE 20260 — Course Notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-lectures" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Lectures</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-lectures">    
+        <li>
+    <a class="dropdown-item" href="../class01/lecture01.html">
+ <span class="dropdown-text">Lecture 1 — Introduction</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class02/lecture02.html">
+ <span class="dropdown-text">Lecture 2 — Systems, Boundaries and Other Basics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class03/lecture03.html">
+ <span class="dropdown-text">Lecture 3 — Forms of Energy and Calculating Work</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class04/lecture04.html">
+ <span class="dropdown-text">Lecture 4 — Fundamental Postulate, States, Phase Rule, and Pure Substance Phase Behaviors</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class05/lecture05.html">
+ <span class="dropdown-text">Lecture 5 — Heat Capacity, Enthalpy</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class06/lecture06.html">
+ <span class="dropdown-text">Lecture 6 — Calculating Internal Energy and Enthalpy Changes; intermolecular forces</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class07/lecture07.html">
+ <span class="dropdown-text">Lecture 7 - The van der Waals Equation of State; compressibility factor; open system energy balance</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class08/lecture08.html">
+ <span class="dropdown-text">Lecture 8 - Open system energy balance applied to process equipment</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class09/lecture09.html">
+ <span class="dropdown-text">Lecture 9 - Advanced Open System Energy Balances</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class10/lecture10.html">
+ <span class="dropdown-text">Lecture 10 - Latent Heat and the Need for a Second Law</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class12/lecture12.html">
+ <span class="dropdown-text">Lecture 12 - Introduction to Entropy and the Second Law</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class13/lecture13.html">
+ <span class="dropdown-text">Lecture 13 - Calculating Entropy Changes for Closed Systems</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class14/lecture14.html">
+ <span class="dropdown-text">Lecture 14 - Entropy Changes for Open Systems</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class15/lecture15.html">
+ <span class="dropdown-text">Lecture 15 - Open System Entropy Balance and Efficiency</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class16/lecture16.html">
+ <span class="dropdown-text">Lecture 16 - Heat Engines and the Second Law</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class17/lecture17.html">
+ <span class="dropdown-text">Lecture 17 - Carnot Cycle and Practical Heat Engines</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class18/lecture18.html">
+ <span class="dropdown-text">Lecture 18 - Rankine Cycle Analysis and Efficiency</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class19/lecture19.html">
+ <span class="dropdown-text">Lecture 19 - Improving Rankine Cycle Efficiency</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class20/lecture20.html">
+ <span class="dropdown-text">Lecture 20 - Organic Rankine Cycles and Internal Combustion Engines</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class21/lecture21.html">
+ <span class="dropdown-text">Lecture 21 - Introduction to Cooling and Refrigeration</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class22/lecture22.html">
+ <span class="dropdown-text">Lecture 22 - Modeling Vapor Compression Cycles and Liquefaction</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class23/lecture23.html">
+ <span class="dropdown-text">Lecture 23 - The Mathematics of Thermodynamics and Thermodynamic Potentials</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-notebooks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Notebooks</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-notebooks">    
+        <li>
+    <a class="dropdown-item" href="../class02/lecture02_example.html">
+ <span class="dropdown-text">L2 Block &amp; Spring Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class03/lecture03_example.html">
+ <span class="dropdown-text">L3 Maxwell-Boltzmann Distribution Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class04/PV-diagram.html">
+ <span class="dropdown-text">L4 PV Diagram Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class06/lecture06_LJ.html">
+ <span class="dropdown-text">L6 LJ Potential Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class07/VDW-loop.html">
+ <span class="dropdown-text">L7 VDW loop Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class07/vdw-TP.html">
+ <span class="dropdown-text">L7 VDW TP Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class14/Quenching_entropy.html">
+ <span class="dropdown-text">L14 Quenching Entropy Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class19/rankine-regen.html">
+ <span class="dropdown-text">L19 Regenerative Rankine Cycle Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class22/vapor-compression-cycle.html">
+ <span class="dropdown-text">L22 Vapor Compression Cycle Demo</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction-moving-from-concepts-to-mathematics" id="toc-introduction-moving-from-concepts-to-mathematics" class="nav-link active" data-scroll-target="#introduction-moving-from-concepts-to-mathematics"><span class="header-section-number">1</span> Introduction: Moving from Concepts to Mathematics</a></li>
+  <li><a href="#the-fundamental-equation-of-thermodynamics" id="toc-the-fundamental-equation-of-thermodynamics" class="nav-link" data-scroll-target="#the-fundamental-equation-of-thermodynamics"><span class="header-section-number">2</span> The Fundamental Equation of Thermodynamics</a></li>
+  <li><a href="#math-review-exact-differentials" id="toc-math-review-exact-differentials" class="nav-link" data-scroll-target="#math-review-exact-differentials"><span class="header-section-number">3</span> Math Review: Exact Differentials</a></li>
+  <li><a href="#legendre-transforms-creating-new-potentials" id="toc-legendre-transforms-creating-new-potentials" class="nav-link" data-scroll-target="#legendre-transforms-creating-new-potentials"><span class="header-section-number">4</span> Legendre Transforms: Creating New Potentials</a>
+  <ul class="collapse">
+  <li><a href="#the-mathematical-problem" id="toc-the-mathematical-problem" class="nav-link" data-scroll-target="#the-mathematical-problem"><span class="header-section-number">4.1</span> The Mathematical Problem</a></li>
+  <li><a href="#the-legendre-solution" id="toc-the-legendre-solution" class="nav-link" data-scroll-target="#the-legendre-solution"><span class="header-section-number">4.2</span> The Legendre Solution</a></li>
+  <li><a href="#a-fundamental-thermodynamic-potential-in-terms-of-s-and-p-fsp" id="toc-a-fundamental-thermodynamic-potential-in-terms-of-s-and-p-fsp" class="nav-link" data-scroll-target="#a-fundamental-thermodynamic-potential-in-terms-of-s-and-p-fsp"><span class="header-section-number">4.3</span> 1. A fundamental thermodynamic potential in terms of <span class="math inline">\(S\)</span> and <span class="math inline">\(P\)</span>: <span class="math inline">\(F(S,P)\)</span></a></li>
+  <li><a href="#a-fundamental-thermodynamic-potential-in-terms-of-t-and-v-ftv" id="toc-a-fundamental-thermodynamic-potential-in-terms-of-t-and-v-ftv" class="nav-link" data-scroll-target="#a-fundamental-thermodynamic-potential-in-terms-of-t-and-v-ftv"><span class="header-section-number">4.4</span> 2. A fundamental thermodynamic potential in terms of <span class="math inline">\(T\)</span> and <span class="math inline">\(V\)</span>: <span class="math inline">\(F(T,V)\)</span></a></li>
+  <li><a href="#gibbs-free-energy-gtp" id="toc-gibbs-free-energy-gtp" class="nav-link" data-scroll-target="#gibbs-free-energy-gtp"><span class="header-section-number">4.5</span> 3. Gibbs Free Energy <span class="math inline">\(G(T,P)\)</span></a></li>
+  </ul></li>
+  <li><a href="#the-thermodynamic-square" id="toc-the-thermodynamic-square" class="nav-link" data-scroll-target="#the-thermodynamic-square"><span class="header-section-number">5</span> The Thermodynamic Square</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture23.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lecture 23: The Mathematics of Thermodynamics and Thermodynamic Potentials</h1>
+<p class="subtitle lead">CBE 20260 / Thermodynamics I</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Edward Maginn </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction-moving-from-concepts-to-mathematics" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction: Moving from Concepts to Mathematics</h1>
+<p>So far in this course, we have used the 1st and 2nd Laws to analyze equipment (turbines, pumps, heat exchangers) and thermodynamic cycles (Rankine, Brayton, vapor compression). To do this, we relied heavily on <strong>tables and charts</strong> to find properties like internal energy (<span class="math inline">\(U\)</span>), enthalpy (<span class="math inline">\(H\)</span>), and entropy (<span class="math inline">\(S\)</span>).</p>
+<p>But where do those tables come from? If you invent a new refrigerant tomorrow, how do you populate its thermodynamic table? You cannot stick a meter into a tank to measure its internal energy or entropy. You can only measure <strong>temperature (<span class="math inline">\(T\)</span>), pressure (<span class="math inline">\(P\)</span>), and volume (<span class="math inline">\(V\)</span>)</strong>. You also can’t measure every possible state of the system to fill out a table. Instead, you need a mathematical framework to <strong>rewrite thermodynamics in terms of measurable variables</strong>.</p>
+<p>Starting today, we will learn the underlying mathematics that allow us to calculate unmeasurable properties (<span class="math inline">\(U, H, S\)</span>) entirely from measurable ones (<span class="math inline">\(P, V, T\)</span> and heat capacity, <span class="math inline">\(C_p\)</span>).</p>
+<hr>
+</section>
+<section id="the-fundamental-equation-of-thermodynamics" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> The Fundamental Equation of Thermodynamics</h1>
+<p>Let’s combine the First and Second Laws for a closed, single-component system. From the First Law (energy balance): <span id="eq-1stlaw"><span class="math display">\[dU = \delta Q + \delta W \tag{1}\]</span></span></p>
+<p>If we assume a <strong>reversible process</strong> where only expansion/compression work is done <span id="eq-1stlaw-rev"><span class="math display">\[dU = \delta Q_{rev} + \delta W_{rev} \tag{2}\]</span></span></p>
+<ul>
+<li>From the 2nd Law: <span class="math inline">\(\delta Q_{rev} = T dS\)</span></li>
+<li>Mechanical Work: <span class="math inline">\(\delta W_{rev} = -P dV\)</span></li>
+</ul>
+<p>Substituting these in yields the <strong>Fundamental Equation of Thermodynamics</strong>: <span id="eq-fundamental"><span class="math display">\[dU = T dS - P dV \tag{3}\]</span></span></p>
+<blockquote class="blockquote">
+<p><strong>Crucial Note:</strong> Even though we derived this assuming a reversible process, <span class="math inline">\(U\)</span>, <span class="math inline">\(S\)</span>, and <span class="math inline">\(V\)</span> are all <strong>state functions</strong>. Therefore, this equation holds true for <em>any</em> process between two equilibrium states, reversible or irreversible!</p>
+</blockquote>
+<p>This equation shows us that the “natural” independent variables for internal energy are entropy and volume: <span class="math inline">\(U = U(S, V)\)</span>.</p>
+<hr>
+</section>
+<section id="math-review-exact-differentials" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Math Review: Exact Differentials</h1>
+<p>Because <span class="math inline">\(U\)</span>, <span class="math inline">\(S\)</span>, and <span class="math inline">\(V\)</span> are state functions, their differentials are <strong>exact</strong>. From multivariable calculus, if we have a function <span class="math inline">\(F(x,y)\)</span>, its total differential is: <span id="eq-exact-diff"><span class="math display">\[dF = \left( \frac{\partial F}{\partial x} \right)_y dx + \left( \frac{\partial F}{\partial y} \right)_x dy \tag{4}\]</span></span></p>
+<p>Let’s define the partial derivatives as coefficients: <span class="math display">\[M(x,y) \equiv \left( \frac{\partial F}{\partial x} \right)_y \quad \text{and} \quad N(x,y) \equiv \left( \frac{\partial F}{\partial y} \right)_x\]</span> So, <span class="math inline">\(dF = M dx + N dy\)</span>.</p>
+<p>A fundamental property of exact differentials is that the mixed second partial derivatives must be equal. This means the order of differentiation does not matter: <span class="math display">\[\left( \frac{\partial M}{\partial y} \right)_x = \left( \frac{\partial N}{\partial x} \right)_y\]</span> <em>(Keep this in your back pocket. We will use this exact property in an upcoming lecture to derive the Maxwell Relations!)</em></p>
+<p>Applying this total differential framework to the fundamental equation <a href="#eq-fundamental" class="quarto-xref">Eq.&nbsp;3</a>, we immediately see that: <span class="math display">\[ dU = \left( \frac{\partial U}{\partial S} \right)_V dS + \left( \frac{\partial U}{\partial V} \right)_S dV\]</span> or that <span id="eq-T"><span class="math display">\[T = \left( \frac{\partial U}{\partial S} \right)_V \tag{5}\]</span></span></p>
+<p><span id="eq-P"><span class="math display">\[-P = \left( \frac{\partial U}{\partial V} \right)_S \tag{6}\]</span></span></p>
+<p>Temperature and pressure are simply the partial derivatives (or slopes) of the internal energy surface!</p>
+<hr>
+</section>
+<section id="legendre-transforms-creating-new-potentials" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Legendre Transforms: Creating New Potentials</h1>
+<p>The function <span class="math inline">\(U(S,V)\)</span> contains all the fundamental thermodynamic information about a system. However, <span class="math inline">\(S\)</span> and <span class="math inline">\(V\)</span> are highly inconvenient variables for chemical engineers. It is very hard to hold entropy constant in a lab. We prefer to work with <strong>temperature</strong> and <strong>pressure</strong>.</p>
+<p>We need a way to swap our independent variables (<span class="math inline">\(S \to T\)</span> and <span class="math inline">\(V \to P\)</span>) <em>without losing any information</em>.</p>
+<section id="the-mathematical-problem" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="the-mathematical-problem"><span class="header-section-number">4.1</span> The Mathematical Problem</h2>
+<p>Suppose we have a generic function <span class="math inline">\(y = f(x)\)</span>. We know the value of <span class="math inline">\(y\)</span> at each <span class="math inline">\(x\)</span> as well as the slope <span class="math inline">\(m = \frac{df}{dx}\)</span>. We want to replace the independent variable <span class="math inline">\(x\)</span> with the slope of the curve, <span class="math inline">\(m = \frac{df}{dx}\)</span>.</p>
+<blockquote class="blockquote">
+<p>Why would we want to do that? Because in thermodynamics, the slope of the internal energy curve with respect to entropy is temperature (see <a href="#eq-T" class="quarto-xref">Eq.&nbsp;5</a>), and the slope with respect to volume is minus the pressure (see <a href="#eq-P" class="quarto-xref">Eq.&nbsp;6</a>). If we can rewrite our equations in terms of these slopes, we can work directly with measurable variables <span class="math inline">\(T\)</span> and <span class="math inline">\(P\)</span> instead of <span class="math inline">\(S\)</span> and <span class="math inline">\(V\)</span>.</p>
+</blockquote>
+<p>Coming back to the simple equation <span class="math inline">\(y = f(x)\)</span>, our first instinct might be to just write <span class="math inline">\(y\)</span> as a function of <span class="math inline">\(m\)</span>, so <span class="math inline">\(y = g(m)\)</span>. <strong>But this fails.</strong> If I only tell you the slope of a curve at various points, you don’t know exactly where the curve sits on the y-axis. An infinite family of parallel curves all share the exact same slope <span class="math inline">\(m\)</span> at a given <span class="math inline">\(x\)</span>. By simply swapping <span class="math inline">\(x\)</span> for <span class="math inline">\(m\)</span>, we lose the integration constant. We have lost physical data.</p>
+</section>
+<section id="the-legendre-solution" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="the-legendre-solution"><span class="header-section-number">4.2</span> The Legendre Solution</h2>
+<p>How do we uniquely identify a curve using only its slopes? We define the curve not as a series of points, but as an <strong>envelope of tangent lines</strong>.</p>
+<div id="fig-xyplot1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-xyplot1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/xyplot1.png" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-xyplot1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;1: A function <span class="math inline">\(y=f(x)\)</span> and its tangent line at a point <span class="math inline">\(P=x_p,y_p\)</span>.
+</figcaption>
+</figure>
+</div>
+<p>The equation of a tangent line is <span class="math inline">\(y = mx + b\)</span>. If we rearrange this to solve for the y-intercept <span class="math inline">\(b\)</span>, we get: <span id="eq-yint"><span class="math display">\[b = y - mx \tag{7}\]</span></span></p>
+<p>This intercept <span class="math inline">\(b\)</span> is a new function that depends entirely on the slope <span class="math inline">\(m\)</span>. In <a href="#fig-xyplot1" class="quarto-xref">Fig.&nbsp;1</a>, the tangent at point <span class="math inline">\(P\)</span> has a slope <span class="math inline">\(m\)</span> and intercept <span class="math inline">\(b\)</span>. Different slopes <span class="math inline">\(m\)</span> give different intercepts <span class="math inline">\(b\)</span>. We can see this in the figure by drawing a second tangent line at point <span class="math inline">\(Q\)</span> with a different slope and intercept.</p>
+<div id="fig-xyplot2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-xyplot2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/xyplot2.png" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-xyplot2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;2: A function <span class="math inline">\(y=f(x)\)</span> and two tangent lines at point <span class="math inline">\(P\)</span> and <span class="math inline">\(Q\)</span>.
+</figcaption>
+</figure>
+</div>
+<p>Because every point on the original curve (see the blue curves in <a href="#fig-xyplot1" class="quarto-xref">Fig.&nbsp;1</a> and <a href="#fig-xyplot2" class="quarto-xref">Fig.&nbsp;2</a>) has a unique tangent line intercept, <strong>the function <span class="math inline">\(b(m)\)</span> contains the exact same information as <span class="math inline">\(y(x)\)</span>!</strong></p>
+<p>This is the <strong>Legendre Transform</strong>. To transform a function into a new potential that depends on the slope rather than the original variable, we subtract the product of the old variable and its conjugate slope. By analogy to <a href="#eq-yint" class="quarto-xref">Eq.&nbsp;7</a>, the Legendre Transform of a function <span class="math inline">\(F_{old}(x)\)</span> is: <span class="math display">\[F_{new} = F_{old} - x \left( \frac{\partial F_{old}}{\partial x} \right)\]</span></p>
+<p>The new function <span class="math inline">\(F_{new}\)</span> is a function of the slope <span class="math inline">\(\left( \frac{\partial F_{old}}{\partial x} \right)\)</span>, and it contains the same information as <span class="math inline">\(F_{old}\)</span>.</p>
+<p>Let’s apply this mathematical trick to the internal energy equation, <span class="math inline">\(dU = T dS - P dV\)</span>, to create a new thermodynamic potential.</p>
+</section>
+<section id="a-fundamental-thermodynamic-potential-in-terms-of-s-and-p-fsp" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="a-fundamental-thermodynamic-potential-in-terms-of-s-and-p-fsp"><span class="header-section-number">4.3</span> 1. A fundamental thermodynamic potential in terms of <span class="math inline">\(S\)</span> and <span class="math inline">\(P\)</span>: <span class="math inline">\(F(S,P)\)</span></h2>
+<div id="fig-USplot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-USplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/USplot.png" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-USplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;3: Plot of internal energy vs entropy at constant volume. The <span class="math inline">\(U-S\)</span> plane plotted here is a “slice” of the <span class="math inline">\(U-S-V\)</span> space. The slope of the tangent line at any point gives the temperature.
+</figcaption>
+</figure>
+</div>
+<p>Let’s swap volume (<span class="math inline">\(V\)</span>) for pressure (<span class="math inline">\(P\)</span>) in <a href="#eq-fundamental" class="quarto-xref">Eq.&nbsp;3</a> to get a new thermodynamic potential that is a function of <span class="math inline">\(S\)</span> and <span class="math inline">\(P\)</span>. From <a href="#eq-P" class="quarto-xref">Eq.&nbsp;6</a>, the conjugate slope to <span class="math inline">\(V\)</span> is <span class="math inline">\(-P\)</span>. <span class="math display">\[F_{new} \equiv U - V(-P) = U + PV\]</span> Taking the differential: <span class="math display">\[dF_{new} = dU + P dV + V dP\]</span> Substitute <span class="math inline">\(dU = T dS - P dV\)</span>: <span class="math display">\[dF_{new} = (T dS - P dV) + P dV + V dP \implies \mathbf{dF_{new} = T dS + V dP}\]</span> <em>Natural variables for the new function <span class="math inline">\(F(S,P)\)</span>:</em> <span class="math inline">\(F_{new} = F_{new}(S, P)\)</span>.</p>
+<p>We have met this new function before. It is called the <strong>enthalpy (<span class="math inline">\(H\)</span>)</strong>: <span id="eq-enthalpy"><span class="math display">\[H \equiv U + PV \tag{8}\]</span></span> <span id="eq-enthalpy-diff"><span class="math display">\[dH = T dS + V dP \tag{9}\]</span></span></p>
+<p><em>Natural variables for enthalpy:</em> <span class="math inline">\(H = H(S, P)\)</span>. Early in the course, we defined enthalpy as <span class="math inline">\(H = U + PV\)</span> and used it as a convenient way to analyze flow processes. Now we see that it has a deeper mathematical meaning: it is the Legendre Transform of internal energy that allows us to swap volume for pressure. It is a new thermodynamic potential that contains the same information as <span class="math inline">\(U\)</span>, but is expressed in terms of more convenient variables.</p>
+</section>
+<section id="a-fundamental-thermodynamic-potential-in-terms-of-t-and-v-ftv" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="a-fundamental-thermodynamic-potential-in-terms-of-t-and-v-ftv"><span class="header-section-number">4.4</span> 2. A fundamental thermodynamic potential in terms of <span class="math inline">\(T\)</span> and <span class="math inline">\(V\)</span>: <span class="math inline">\(F(T,V)\)</span></h2>
+<p>Instead of a function in terms of <span class="math inline">\(S\)</span> and <span class="math inline">\(V\)</span> or <span class="math inline">\(S\)</span> and <span class="math inline">\(P\)</span>, let’s create a new function in terms of <span class="math inline">\(T\)</span> and <span class="math inline">\(V\)</span>. Starting from the internal energy equation, let’s swap entropy (<span class="math inline">\(S\)</span>) for temperature (<span class="math inline">\(T\)</span>). The conjugate slope to <span class="math inline">\(S\)</span> is <span class="math inline">\(T\)</span> (<a href="#eq-T" class="quarto-xref">Eq.&nbsp;5</a>): <span class="math display">\[F_{new} \equiv U - S(T) = U - TS\]</span> Taking the differential: <span class="math display">\[dF_{new} = dU - T dS - S dT\]</span> Substitute <span class="math inline">\(dU = T dS - P dV\)</span>: <span class="math display">\[dF_{new} = (T dS - P dV) - T dS - S dT \implies \mathbf{dF_{new} = -S dT - P dV}\]</span> <em>Natural variables for <span class="math inline">\(F(T,V)\)</span>:</em> <span class="math inline">\(F_{new} = F_{new}(T, V)\)</span>. This new function is called the <strong>Helmholtz Free Energy and is given the symbol <span class="math inline">\(A\)</span></strong>, which stands for the German word “Arbeit” or “work”.</p>
+<p><span id="eq-helmholtz"><span class="math display">\[A \equiv U - TS \tag{10}\]</span></span> <span id="eq-helmholtz-diff"><span class="math display">\[dA = -S dT - P dV \tag{11}\]</span></span> <em>Natural variables for Helmholtz Free Energy:</em> <span class="math inline">\(A = A(T, V)\)</span>.</p>
+</section>
+<section id="gibbs-free-energy-gtp" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="gibbs-free-energy-gtp"><span class="header-section-number">4.5</span> 3. Gibbs Free Energy <span class="math inline">\(G(T,P)\)</span></h2>
+<p>Finally, we will derive the Gibbs Free Energy. I won’t bother to hide the symbol; we want to find <span class="math inline">\(G(T,P)\)</span> that contains the same information as <span class="math inline">\(U(S,V)\)</span>. We could apply a Legendre Transform to <span class="math inline">\(A(T,V)\)</span> and swap <span class="math inline">\(V\)</span> for <span class="math inline">\(P\)</span>. Try it! Instead, let’s swap <em>both</em> <span class="math inline">\(V\)</span> for <span class="math inline">\(P\)</span>, and <span class="math inline">\(S\)</span> for <span class="math inline">\(T\)</span> starting with <span class="math inline">\(U(S,V)\)</span>. We apply the transform twice: <span id="eq-gibbs"><span class="math display">\[G \equiv U - V(-P) - S(T) = U + PV - TS = H - TS \tag{12}\]</span></span> Taking the differential: <span class="math display">\[dG = dH - T dS - S dT\]</span> Substitute <span class="math inline">\(dH = T dS + V dP\)</span>: <span id="eq-gibbs-diff"><span class="math display">\[dG = (T dS + V dP) - T dS - S dT \implies \mathbf{dG = -S dT + V dP} \tag{13}\]</span></span> <em>Natural variables for Gibbs:</em> <span class="math inline">\(G = G(T, P)\)</span>. <em>(The Gibbs free energy is the most useful potential for chemical engineers since <span class="math inline">\(T\)</span> and <span class="math inline">\(P\)</span> are easily controlled or measured).</em></p>
+<hr>
+</section>
+</section>
+<section id="the-thermodynamic-square" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> The Thermodynamic Square</h1>
+<p>We now have four fundamental equations of state, derived rigorously using exact differentials and Legendre Transforms:</p>
+<ol type="1">
+<li><p><span class="math inline">\(dU = T dS - P dV\)</span></p></li>
+<li><p><span class="math inline">\(dH = T dS + V dP\)</span></p></li>
+<li><p><span class="math inline">\(dA = -S dT - P dV\)</span></p></li>
+<li><p><span class="math inline">\(dG = -S dT + V dP\)</span></p></li>
+</ol>
+<p>Memorizing these and their signs can be tedious. Instead, you can use a mnemonic device called the <strong>Thermodynamic Square</strong>.</p>
+<p>Draw a square and place the potentials (<span class="math inline">\(U, A, G, H\)</span>) on the flat sides, and the variables (<span class="math inline">\(S, V, T, P\)</span>) on the corners. The two variables on either side of a thermodynamic potential are the natural variables for that potential. Add two arrows pointing upwards diagonally. These connect the natural variables to their conjugate variables. If you move in the direction of the arrow, the sign is positive. If you move against the direction of the arrow, the sign is negative.</p>
+<div id="fig-thermo-square" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-thermo-square-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/thermo-square.png" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-thermo-square-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;4: The thermodynamic square.
+</figcaption>
+</figure>
+</div>
+<p>A common mnemonic to remember the order of the corners and sides is: <strong>V</strong>ery <strong>A</strong>wesome <strong>T</strong>hermodynamics <strong>U</strong>nder <strong>G</strong>raduate <strong>S</strong>tudents <strong>H</strong>elp <strong>P</strong>rofessors!</p>
+<p>As an example, look at <span class="math inline">\(A\)</span> in the square. The natural variables for <span class="math inline">\(A\)</span> are <span class="math inline">\(T\)</span> and <span class="math inline">\(V\)</span> and they are on either side of <span class="math inline">\(A\)</span>. Thus we know <span class="math inline">\(dA = ? dT \pm ? dV\)</span>. The conjugate variable to <span class="math inline">\(T\)</span> is <span class="math inline">\(S\)</span>, and the conjugate variable to <span class="math inline">\(V\)</span> is <span class="math inline">\(P\)</span>. So we know <span class="math inline">\(dA = \pm S dT \pm P dV\)</span>. Moving from <span class="math inline">\(T\)</span> to <span class="math inline">\(S\)</span> you go against the arrow, so you know the sign on that term is negative. Moving from <span class="math inline">\(V\)</span> to <span class="math inline">\(P\)</span> you go against the arrow, so you know the sign on that term is also negative. This matches exactly what we derived for <span class="math inline">\(dA\)</span> above: <span class="math inline">\(dA = -S dT - P dV\)</span>.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/ejmaginn\.github\.io\/CBE20260-notes\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
