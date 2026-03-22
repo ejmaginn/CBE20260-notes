@@ -70,6 +70,8 @@ $$-\left( \frac{\partial S}{\partial P} \right)_T = \left( \frac{\partial V}{\pa
 
 *Note: The last two Maxwell relations (from $A$ and $G$) are by far the most useful in chemical engineering, because they relate entropy at a constant temperature directly to volumetric ($P-V-T$) properties.*
 
+@eq-maxwell-U through @eq-maxwell-G are the **Maxwell Equations**.
+
 ---
 
 # Calculating Entropy Changes
