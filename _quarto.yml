@@ -53,6 +53,8 @@ website:
             text: Lecture 22 - Modeling Vapor Compression Cycles and Liquefaction
           - href: class23/lecture23.qmd
             text: Lecture 23 - The Mathematics of Thermodynamics and Thermodynamic Potentials 
+          - href: class24/lecture24.qmd
+            text: Lecture 24 - The Maxwell Relations and Calculating Thermodynamic Properties
               
           # Add more lectures here as you create them:
           # - href: class0x/lecture02.qmd
