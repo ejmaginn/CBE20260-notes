@@ -529,7 +529,7 @@
     "href": "class24/lecture24.html#from-gibbs-free-energy-g",
     "title": "Lecture 24: Maxwell Relations and General Property Equations",
     "section": "2.4 From Gibbs Free Energy (\\(G\\))",
-    "text": "2.4 From Gibbs Free Energy (\\(G\\))\n\\[dG = -S dT + V dP\\] Applying the exactness criterion: \\[-\\left( \\frac{\\partial S}{\\partial P} \\right)_T = \\left( \\frac{\\partial V}{\\partial T} \\right)_P \\tag{6}\\]\nNote: The last two Maxwell relations (from \\(A\\) and \\(G\\)) are by far the most useful in chemical engineering, because they relate entropy at a constant temperature directly to volumetric (\\(P-V-T\\)) properties."
+    "text": "2.4 From Gibbs Free Energy (\\(G\\))\n\\[dG = -S dT + V dP\\] Applying the exactness criterion: \\[-\\left( \\frac{\\partial S}{\\partial P} \\right)_T = \\left( \\frac{\\partial V}{\\partial T} \\right)_P \\tag{6}\\]\nNote: The last two Maxwell relations (from \\(A\\) and \\(G\\)) are by far the most useful in chemical engineering, because they relate entropy at a constant temperature directly to volumetric (\\(P-V-T\\)) properties.\nEq. 3 through Eq. 6 are the Maxwell Equations."
   },
   {
     "objectID": "class24/lecture24.html#sanity-check-the-ideal-gas",
