@@ -7,37 +7,8 @@ website:
     left:
       - href: index.qmd
         text: Home # Home (index.qmd)
-      - text: Notebooks
+      - text: Lectures
         menu:
-          - href: class02/lecture02_example.ipynb
-            text: L2 Block & Spring Demo
-          - href: class03/lecture03_example.ipynb
-            text: L3 Maxwell-Boltzmann Distribution Demo
-          - href: class04/PV-diagram.ipynb
-            text: L4 PV Diagram Demo
-          - href: class06/lecture06_LJ.ipynb
-            text: L6 LJ Potential Demo
-          - href: class07/VDW-loop.ipynb
-            text: L7 VDW loop Demo
-          - href: class07/vdw-TP.ipynb
-            text: L7 VDW TP Demo
-          - href: class14/Quenching_entropy.ipynb
-            text: L14 Quenching Entropy Demo 
-          - href: class19/rankine-regen.ipynb
-            text: L19 Regenerative Rankine Cycle Demo
-          - href: class22/vapor-compression-cycle.ipynb
-            text: L22 Vapor Compression Cycle Demo
-           
-          # Add more notebooks here as you create them:  
-          #- href: class03/lecture03_example.ipynb
-          #  text: L3 Work Modes & Polytropic Expansion
-          
-  sidebar:
-    style: "floating"
-    search: true
-    contents:
-      - section: "Lectures"
-        contents:
           - href: class01/lecture01.qmd
             text: Lecture 1 — Introduction
           - href: class02/lecture02.qmd
@@ -87,10 +58,34 @@ website:
           - href: class25/lecture25.qmd
             text: Lecture 25 - Real Fluids and Residual Properties
 
+              
           # Add more lectures here as you create them:
           # - href: class0x/lecture02.qmd
           #   text: Lecture x — Title
-
+      - text: Notebooks
+        menu:
+          - href: class02/lecture02_example.ipynb
+            text: L2 Block & Spring Demo
+          - href: class03/lecture03_example.ipynb
+            text: L3 Maxwell-Boltzmann Distribution Demo
+          - href: class04/PV-diagram.ipynb
+            text: L4 PV Diagram Demo
+          - href: class06/lecture06_LJ.ipynb
+            text: L6 LJ Potential Demo
+          - href: class07/VDW-loop.ipynb
+            text: L7 VDW loop Demo
+          - href: class07/vdw-TP.ipynb
+            text: L7 VDW TP Demo
+          - href: class14/Quenching_entropy.ipynb
+            text: L14 Quenching Entropy Demo 
+          - href: class19/rankine-regen.ipynb
+            text: L19 Regenerative Rankine Cycle Demo
+          - href: class22/vapor-compression-cycle.ipynb
+            text: L22 Vapor Compression Cycle Demo
+           
+          # Add more notebooks here as you create them:  
+          #- href: class03/lecture03_example.ipynb
+          #  text: L3 Work Modes & Polytropic Expansion
 format:
   html:
     theme: cosmo         # Options: cosmo, flatly, journal, lumen, paper
@@ -102,6 +97,7 @@ format:
     keep-ipynb: true
     code-tools: false
 
+    
   pdf:
     documentclass: scrartcl
     papersize: letter
@@ -132,6 +128,7 @@ crossref:
   eq-title:  "Eq."    # caption prefix: Eq. 1
   eq-prefix: "Eq."       # inline ref: Eq.1
 #  eq-prefix: ""       # inline ref: just 1 (we'll add Eq./eq. manually)
+
 
 resources:
   - "*/images/**"
