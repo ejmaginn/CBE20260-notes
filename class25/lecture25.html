@@ -8,7 +8,7 @@
 
 <meta name="author" content="Edward Maginn">
 
-<title>Lecture 25: Real Fluids and Residual Properties – CBE 20260 — Course Notes</title>
+<title>Lecture 25: General Property Equations from the Math of Thermo – CBE 20260 — Course Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -177,7 +177,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class01/lecture01.html">Lectures</a></li><li class="breadcrumb-item"><a href="../class25/lecture25.html">Lecture 25 - Real Fluids and Residual Properties</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class01/lecture01.html">Lectures</a></li><li class="breadcrumb-item"><a href="../class25/lecture25.html">Lecture 25 - General Property Equations from the Math of Thermo</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -347,7 +347,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class25/lecture25.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Lecture 25 - Real Fluids and Residual Properties</span></a>
+ <span class="menu-text">Lecture 25 - General Property Equations from the Math of Thermo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class26/lecture26.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 26 - Real Fluids and Residual Properties</span></a>
   </div>
 </li>
       </ul>
@@ -362,36 +368,23 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction-breaking-the-ideal-gas-mindset" id="toc-introduction-breaking-the-ideal-gas-mindset" class="nav-link active" data-scroll-target="#introduction-breaking-the-ideal-gas-mindset"><span class="header-section-number">1</span> Introduction: Breaking the Ideal Gas Mindset</a>
+  <li><a href="#introduction-calculating-thermodynamic-properties-using-the-math-of-thermo" id="toc-introduction-calculating-thermodynamic-properties-using-the-math-of-thermo" class="nav-link active" data-scroll-target="#introduction-calculating-thermodynamic-properties-using-the-math-of-thermo"><span class="header-section-number">1</span> Introduction: Calculating Thermodynamic Properties Using the Math of Thermo</a></li>
+  <li><a href="#calculating-enthalpy-and-internal-energy" id="toc-calculating-enthalpy-and-internal-energy" class="nav-link" data-scroll-target="#calculating-enthalpy-and-internal-energy"><span class="header-section-number">2</span> Calculating Enthalpy and Internal Energy</a>
   <ul class="collapse">
-  <li><a href="#motivational-example-delta-u-for-a-van-der-waals-gas" id="toc-motivational-example-delta-u-for-a-van-der-waals-gas" class="nav-link" data-scroll-target="#motivational-example-delta-u-for-a-van-der-waals-gas"><span class="header-section-number">1.1</span> Motivational Example: <span class="math inline">\(\Delta U\)</span> for a van der Waals Gas</a></li>
+  <li><a href="#sanity-check-the-ideal-gas" id="toc-sanity-check-the-ideal-gas" class="nav-link" data-scroll-target="#sanity-check-the-ideal-gas"><span class="header-section-number">2.1</span> Sanity Check: The Ideal Gas</a></li>
   </ul></li>
-  <li><a href="#the-roadblock-a-steady-state-compressor" id="toc-the-roadblock-a-steady-state-compressor" class="nav-link" data-scroll-target="#the-roadblock-a-steady-state-compressor"><span class="header-section-number">2</span> The Roadblock: A Steady-State Compressor</a></li>
-  <li><a href="#the-solution-residual-properties" id="toc-the-solution-residual-properties" class="nav-link" data-scroll-target="#the-solution-residual-properties"><span class="header-section-number">3</span> The Solution: Residual Properties</a></li>
-  <li><a href="#the-hypothetical-thermodynamic-path" id="toc-the-hypothetical-thermodynamic-path" class="nav-link" data-scroll-target="#the-hypothetical-thermodynamic-path"><span class="header-section-number">4</span> The Hypothetical Thermodynamic Path</a></li>
-  <li><a href="#deriving-the-residual-equations---pressure-based" id="toc-deriving-the-residual-equations---pressure-based" class="nav-link" data-scroll-target="#deriving-the-residual-equations---pressure-based"><span class="header-section-number">5</span> Deriving the Residual Equations - Pressure-Based</a>
-  <ul class="collapse">
-  <li><a href="#volume-residual-vr" id="toc-volume-residual-vr" class="nav-link" data-scroll-target="#volume-residual-vr"><span class="header-section-number">5.1</span> 1. Volume Residual (<span class="math inline">\(V^R\)</span>)</a></li>
-  <li><a href="#enthalpy-residual-hr" id="toc-enthalpy-residual-hr" class="nav-link" data-scroll-target="#enthalpy-residual-hr"><span class="header-section-number">5.2</span> 2. Enthalpy Residual (<span class="math inline">\(H^R\)</span>)</a></li>
-  <li><a href="#entropy-residual-sr" id="toc-entropy-residual-sr" class="nav-link" data-scroll-target="#entropy-residual-sr"><span class="header-section-number">5.3</span> 3. Entropy Residual (<span class="math inline">\(S^R\)</span>)</a></li>
-  <li><a href="#internal-energy-residual-ur" id="toc-internal-energy-residual-ur" class="nav-link" data-scroll-target="#internal-energy-residual-ur"><span class="header-section-number">5.4</span> 4. Internal Energy Residual (<span class="math inline">\(U^R\)</span>)</a></li>
-  </ul></li>
-  <li><a href="#volume-based-residual-equations" id="toc-volume-based-residual-equations" class="nav-link" data-scroll-target="#volume-based-residual-equations"><span class="header-section-number">6</span> Volume-Based Residual Equations</a>
-  <ul class="collapse">
-  <li><a href="#internal-energy-residual-ur-1" id="toc-internal-energy-residual-ur-1" class="nav-link" data-scroll-target="#internal-energy-residual-ur-1"><span class="header-section-number">6.1</span> 1. Internal Energy Residual (<span class="math inline">\(U^R\)</span>)</a></li>
-  <li><a href="#entropy-residual-sr-1" id="toc-entropy-residual-sr-1" class="nav-link" data-scroll-target="#entropy-residual-sr-1"><span class="header-section-number">6.2</span> 2. Entropy Residual (<span class="math inline">\(S^R\)</span>)</a></li>
-  <li><a href="#enthalpy-residual-hr-1" id="toc-enthalpy-residual-hr-1" class="nav-link" data-scroll-target="#enthalpy-residual-hr-1"><span class="header-section-number">6.3</span> 3. Enthalpy Residual (<span class="math inline">\(H^R\)</span>)</a></li>
-  </ul></li>
-  <li><a href="#resolving-the-roadblock-an-analytical-example" id="toc-resolving-the-roadblock-an-analytical-example" class="nav-link" data-scroll-target="#resolving-the-roadblock-an-analytical-example"><span class="header-section-number">7</span> Resolving the Roadblock: An Analytical Example</a></li>
+  <li><a href="#mathematical-tools-the-cyclic-rule" id="toc-mathematical-tools-the-cyclic-rule" class="nav-link" data-scroll-target="#mathematical-tools-the-cyclic-rule"><span class="header-section-number">3</span> Mathematical Tools: The Cyclic Rule</a></li>
+  <li><a href="#volumetric-properties-beta-and-kappa" id="toc-volumetric-properties-beta-and-kappa" class="nav-link" data-scroll-target="#volumetric-properties-beta-and-kappa"><span class="header-section-number">4</span> Volumetric Properties: <span class="math inline">\(\beta\)</span> and <span class="math inline">\(\kappa\)</span></a></li>
+  <li><a href="#the-rigorous-c_p---c_v-relationship" id="toc-the-rigorous-c_p---c_v-relationship" class="nav-link" data-scroll-target="#the-rigorous-c_p---c_v-relationship"><span class="header-section-number">5</span> The Rigorous <span class="math inline">\(C_p - C_v\)</span> Relationship</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture25.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class01/lecture01.html">Lectures</a></li><li class="breadcrumb-item"><a href="../class25/lecture25.html">Lecture 25 - Real Fluids and Residual Properties</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class01/lecture01.html">Lectures</a></li><li class="breadcrumb-item"><a href="../class25/lecture25.html">Lecture 25 - General Property Equations from the Math of Thermo</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Lecture 25: Real Fluids and Residual Properties</h1>
+<h1 class="title">Lecture 25: General Property Equations from the Math of Thermo</h1>
 <p class="subtitle lead">CBE 20260 / Thermodynamics I</p>
 </div>
 
@@ -415,150 +408,59 @@ window.Quarto = {
 </header>
 
 
-<section id="introduction-breaking-the-ideal-gas-mindset" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Introduction: Breaking the Ideal Gas Mindset</h1>
-<p>In our last lecture, we used the Maxwell relations to derive exact, general equations for changes in internal energy (<span class="math inline">\(dU\)</span>) and enthalpy (<span class="math inline">\(dH\)</span>).</p>
-<p>Let’s recall the general equation for internal energy: <span id="eq-du"><span class="math display">\[dU = C_v dT + \left[ T \left( \frac{\partial P}{\partial T} \right)_V - P \right] dV \tag{1}\]</span></span></p>
-<blockquote class="blockquote">
-<p>Note: I am working with molar quantities, but not underlining variables for simplicity. This should be apparent in context, but don’t let it confuse you.</p>
-</blockquote>
-<p>For an ideal gas (<span class="math inline">\(P = RT/V\)</span>), the bracketed term in <a href="#eq-du" class="quarto-xref">Eq.&nbsp;1</a> goes to zero, proving mathematically that the internal energy of an ideal gas depends <em>only</em> on temperature. But what about a real gas?</p>
-<section id="motivational-example-delta-u-for-a-van-der-waals-gas" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="motivational-example-delta-u-for-a-van-der-waals-gas"><span class="header-section-number">1.1</span> Motivational Example: <span class="math inline">\(\Delta U\)</span> for a van der Waals Gas</h2>
-<p>Let’s evaluate that bracketed term in <a href="#eq-du" class="quarto-xref">Eq.&nbsp;1</a> for a van der Waals gas: <span class="math display">\[P = \frac{RT}{V-b} - \frac{a}{V^2}\]</span></p>
-<p>Taking the partial derivative with respect to temperature at constant volume: <span class="math display">\[\left( \frac{\partial P}{\partial T} \right)_V = \frac{R}{V-b}\]</span></p>
-<p>Substitute this back into the bracketed term in <a href="#eq-du" class="quarto-xref">Eq.&nbsp;1</a>: <span class="math display">\[T \left( \frac{R}{V-b} \right) - \left( \frac{RT}{V-b} - \frac{a}{V^2} \right) = \frac{a}{V^2}\]</span></p>
-<p>So, for a van der Waals gas, the exact differential is: <span class="math display">\[dU = C_v dT + \frac{a}{V^2} dV\]</span></p>
-<blockquote class="blockquote">
-<p>Note: We no longer have the ideal gas “formula” that <span class="math inline">\(dU = C_v dT\)</span>!</p>
-</blockquote>
-<p>If we compress a van der Waals gas isothermally (<span class="math inline">\(dT = 0\)</span>) from <span class="math inline">\(V_1\)</span> to <span class="math inline">\(V_2\)</span>, the change in internal energy is: <span class="math display">\[\Delta U_T = \int_{V_1}^{V_2} \frac{a}{V^2} dV = -a \left( \frac{1}{V_2} - \frac{1}{V_1} \right)\]</span></p>
-<p><strong>Key Takeaway:</strong> Internal energy for a real gas <em>does</em> depend on volume! As we compress the gas (<span class="math inline">\(V_2 &lt; V_1\)</span>), the molecules get closer together, and the attractive intermolecular forces (represented by the parameter <span class="math inline">\(a\)</span>) lower the internal energy of the system.</p>
+<section id="introduction-calculating-thermodynamic-properties-using-the-math-of-thermo" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction: Calculating Thermodynamic Properties Using the Math of Thermo</h1>
+<p>In the last lecture, we derived the Maxwell relations and showed how to derive general expressions for the change in entropy with changes in <span class="math inline">\((T,P)\)</span> and <span class="math inline">\((T,V)\)</span>. In this class, we will develop general expressions for the change in enthalpy and internal energy, review some basic “math tricks”, introduce the concepts of volume expansivity and isothermal compressibility, and show a rigorous expression for <span class="math inline">\(C_P-C_V\)</span>, valid for all substances.</p>
+<hr>
+</section>
+<section id="calculating-enthalpy-and-internal-energy" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Calculating Enthalpy and Internal Energy</h1>
+<p>Now let’s find the general equation for Enthalpy using <span class="math inline">\(T\)</span> and <span class="math inline">\(P\)</span>: <span class="math display">\[dH = \left( \frac{\partial H}{\partial T} \right)_P dT + \left( \frac{\partial H}{\partial P} \right)_T dP\]</span></p>
+<p>We already know the first term is <span class="math inline">\(C_p\)</span>. For the second term, we use the fundamental equation <span class="math inline">\(dH = T dS + V dP\)</span>. Dividing by <span class="math inline">\(dP\)</span> at constant <span class="math inline">\(T\)</span>: <span class="math display">\[\left( \frac{\partial H}{\partial P} \right)_T = T \left( \frac{\partial S}{\partial P} \right)_T + V\]</span> Substitute the Maxwell relation <strong>?@eq-maxwell-G</strong> <span class="math inline">\(\left( \frac{\partial S}{\partial P} \right)_T = -\left( \frac{\partial V}{\partial T} \right)_P\)</span>: <span class="math display">\[\left( \frac{\partial H}{\partial P} \right)_T = V - T \left( \frac{\partial V}{\partial T} \right)_P\]</span></p>
+<p>So the exact, general equation for enthalpy is: <span id="eq-dH-TP"><span class="math display">\[dH = C_p dT + \left[ V - T \left( \frac{\partial V}{\partial T} \right)_P \right] dP \tag{1}\]</span></span></p>
+<section id="sanity-check-the-ideal-gas" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="sanity-check-the-ideal-gas"><span class="header-section-number">2.1</span> Sanity Check: The Ideal Gas</h2>
+<p>Does this work for an ideal gas? Let’s check. For an ideal gas, <span class="math inline">\(V = \frac{RT}{P}\)</span>. The derivative is: <span class="math inline">\(\left( \frac{\partial V}{\partial T} \right)_P = \frac{R}{P}\)</span>. Substitute this into the bracketed term in our <span class="math inline">\(dH\)</span> equation: <span class="math display">\[\left[ V - T \left( \frac{R}{P} \right) \right] = V - \frac{RT}{P} = V - V = 0!\]</span> The entire pressure dependence vanishes, leaving <span class="math inline">\(dH = C_p dT\)</span>, exactly as we learned earlier in the semester! For a real gas, that bracketed term is <em>not</em> zero, because atomic interactions and excluded volume matter.</p>
+<p>Similarly, we can derive the general equation for Internal Energy (<span class="math inline">\(U\)</span>) as a function of <span class="math inline">\(T\)</span> and <span class="math inline">\(V\)</span>: <span id="eq-dU-TV"><span class="math display">\[dU = C_v dT + \left[ T \left( \frac{\partial P}{\partial T} \right)_V - P \right] dV \tag{2}\]</span></span> <em>(You should verify for yourself that the bracketed term goes to zero for an ideal gas!)</em></p>
+<p>We can use <a href="#eq-dH-TP" class="quarto-xref">Eq.&nbsp;1</a> to compute the Joule-Thomson coefficient for a real gas. Setting <a href="#eq-dH-TP" class="quarto-xref">Eq.&nbsp;1</a> equal to zero (a Joule-Thomson expansion is a constant entropy process) yields</p>
+<p><span class="math display">\[C_p dT = \left[ T \left( \frac{\partial V}{\partial T} \right)_P -V \right] dP\]</span></p>
+<p><span class="math display">\[\mu_{JT} \equiv \left (\frac{\partial T} {\partial P} \right )_H = \frac{1}{C_P} \left [ T \left( \frac{\partial V}{\partial T} \right)_P -V \right]\]</span></p>
+<p>You can verify that for an ideal gas, <span class="math inline">\(\mu_{JT}=0\)</span></p>
 <hr>
 </section>
 </section>
-<section id="the-roadblock-a-steady-state-compressor" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> The Roadblock: A Steady-State Compressor</h1>
-<p>Now let’s look at a very standard chemical engineering problem. Suppose we have a steady-state compressor taking a real gas from state 1 (<span class="math inline">\(T_1, P_1\)</span>) to state 2 (<span class="math inline">\(T_2, P_2\)</span>).</p>
-<p>From the open-system energy balance, the shaft work is: <span class="math display">\[W_s = \Delta H = H(T_2, P_2) - H(T_1, P_1)\]</span></p>
-<p>To find <span class="math inline">\(\Delta H\)</span>, we write the exact general equation for enthalpy: <span id="eq-dH"><span class="math display">\[dH = C_p(T,P) dT + \left[ V - T \left( \frac{\partial V}{\partial T} \right)_P \right] dP \tag{2}\]</span></span></p>
-<p><strong>Here is the roadblock:</strong> To integrate this equation, we need an equation of state of the form <span class="math inline">\(V=f(T,P)\)</span> so we can evaluate the term in the bracket, and we need to know how the heat capacity <span class="math inline">\(C_p\)</span> changes with both temperature <em>and</em> pressure. However, if you look in the appendices of your textbook, you will only find polynomials for <span class="math inline">\(C_p^{IG}(T)\)</span>—the <strong>Ideal Gas</strong> heat capacity, which is measured (or calculated) at very low pressures and only depends on temperature.</p>
-<p>How can we calculate <span class="math inline">\(\Delta H\)</span> for a high-pressure compressor when we only have ideal gas heat capacity data?</p>
+<section id="mathematical-tools-the-cyclic-rule" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Mathematical Tools: The Cyclic Rule</h1>
+<p>To evaluate these partial derivatives for liquids and solids, we need a few more mathematical tools. A highly useful identity from multivariable calculus for any implicit function <span class="math inline">\(F(x,y,z) = 0\)</span> is the <strong>Triple Product Rule</strong> (or Cyclic Rule): <span id="eq-cyclic"><span class="math display">\[\left( \frac{\partial x}{\partial y} \right)_z \left( \frac{\partial y}{\partial z} \right)_x \left( \frac{\partial z}{\partial x} \right)_y = -1 \tag{3}\]</span></span></p>
+<p>Let’s apply this to our <span class="math inline">\(P-V-T\)</span> surface: <span class="math display">\[\left( \frac{\partial P}{\partial T} \right)_V \left( \frac{\partial T}{\partial V} \right)_P \left( \frac{\partial V}{\partial P} \right)_T = -1\]</span></p>
+<p>Rearranging this gives us a powerful way to evaluate the change in pressure with temperature at constant volume, which is notoriously difficult to measure experimentally: <span class="math display">\[\left( \frac{\partial P}{\partial T} \right)_V = -\frac{\left( \frac{\partial V}{\partial T} \right)_P}{\left( \frac{\partial V}{\partial P} \right)_T}\]</span></p>
 <hr>
 </section>
-<section id="the-solution-residual-properties" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> The Solution: Residual Properties</h1>
-<p>To solve this problem, we introduce the concept of <strong>Residual Properties</strong>. Residual properties provide a simple way to calculate changes in thermodynamic properties for real fluids that obey a non-trivial equation of state.</p>
-<p>A residual property (<span class="math inline">\(M^R\)</span>) is defined as the difference between the actual property of a real fluid (<span class="math inline">\(M\)</span>) and the property it <em>would have</em> if it behaved as an ideal gas (<span class="math inline">\(M^{IG}\)</span>) at the <strong>same temperature and pressure</strong>. <span id="eq-resid-def"><span class="math display">\[M^R(T,P) \equiv M(T,P) - M^{IG}(T,P) \tag{3}\]</span></span> <span id="eq-resid-use"><span class="math display">\[M(T,P) = M^{IG}(T,P) + M^R(T,P) \tag{4}\]</span></span></p>
-<p>You can think of this as a <strong>perturbation theory</strong>. The ideal gas law gets us 80% of the way to the true answer (for example), and the residual property acts as a mathematical “correction factor” that accounts for the remaining 20% caused by intermolecular forces and excluded volume.</p>
-<p>Residual properties have a reference state. At a given temperature, as pressure approaches zero (<span class="math inline">\(P \to 0\)</span>), molecules spread infinitely far apart. At this limit, all real gases behave exactly like ideal gases. Therefore, at <span class="math inline">\(P=0\)</span>, <span class="math inline">\(M = M^{IG}\)</span>, which means: <span class="math display">\[M^R(T, P=0) = 0\]</span></p>
-<hr>
-</section>
-<section id="the-hypothetical-thermodynamic-path" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> The Hypothetical Thermodynamic Path</h1>
-<p>Going back to the compressor example, because enthalpy is a state function, <span class="math inline">\(\Delta H\)</span> does not depend on the path taken from State 1 to State 2. Instead of trying to calculate the real gas change directly (which we established we cannot do because we lack <span class="math inline">\(C_p(T,P)\)</span>), we construct a 3-step <strong>hypothetical path</strong> that routes through the ideal gas state, as shown in <a href="#fig-hypothetical-path" class="quarto-xref">Fig.&nbsp;1</a></p>
-<div id="fig-hypothetical-path" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-hypothetical-path-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/hypothetical_path.png" class="img-fluid figure-img" style="width:80.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hypothetical-path-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig.&nbsp;1: The hypothetical thermodynamic path for calculating real fluid property changes.
-</figcaption>
-</figure>
-</div>
+<section id="volumetric-properties-beta-and-kappa" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Volumetric Properties: <span class="math inline">\(\beta\)</span> and <span class="math inline">\(\kappa\)</span></h1>
+<p>For liquids and solids, engineers often tabulate volumetric behavior using two coefficients:</p>
 <ol type="1">
-<li><strong>Depressurize</strong> the real gas at <span class="math inline">\(T_1\)</span> down to <span class="math inline">\(P=0\)</span> (where it becomes an ideal gas).
-<ul>
-<li><span class="math inline">\(\Delta H_1 = -H^R_1(T_1, P_1)\)</span></li>
-</ul></li>
-<li><strong>Heat/Cool</strong> the ideal gas from <span class="math inline">\(T_1\)</span> to <span class="math inline">\(T_2\)</span> at <span class="math inline">\(P=0\)</span>. Here we can finally use our tabulated ideal gas heat capacity data!
-<ul>
-<li><span class="math inline">\(\Delta H_2 = \Delta H^{IG} = \int_{T_1}^{T_2} C_p^{IG}(T) dT\)</span></li>
-</ul></li>
-<li><strong>Pressurize</strong> the ideal gas at <span class="math inline">\(T_2\)</span> back up to the real gas state at <span class="math inline">\(P_2\)</span>.
-<ul>
-<li><span class="math inline">\(\Delta H_3 = +H^R_2(T_2, P_2)\)</span></li>
-</ul></li>
+<li><p><strong>Volume Expansivity (<span class="math inline">\(\beta\)</span>):</strong> How much a material expands when heated at constant pressure. <span id="eq-beta"><span class="math display">\[\beta \equiv \frac{1}{V} \left( \frac{\partial V}{\partial T} \right)_P \tag{4}\]</span></span></p></li>
+<li><p><strong>Isothermal Compressibility (<span class="math inline">\(\kappa\)</span>):</strong> How much a material shrinks when squeezed at constant temperature. (The negative sign ensures <span class="math inline">\(\kappa\)</span> is a positive number). <span id="eq-kappa"><span class="math display">\[\kappa \equiv -\frac{1}{V} \left( \frac{\partial V}{\partial P} \right)_T \tag{5}\]</span></span></p></li>
 </ol>
-<p>Summing these steps gives the master equation for property changes: <span class="math display">\[\Delta H = H^R_2 - H^R_1 + \Delta H^{IG}\]</span></p>
-<p>This expression applies to any thermodynamic state function, such as entropy and internal energy: <span class="math display">\[\Delta S = S^R_2 - S^R_1 + \Delta S^{IG}\]</span> <span class="math display">\[\Delta U = U^R_2 - U^R_1 + \Delta U^{IG}\]</span></p>
-<p>These residual properties (in this example, <span class="math inline">\(H^R\)</span>) are simply the difference between the true property at a given state point (i.e.&nbsp;<span class="math inline">\(T\)</span> and <span class="math inline">\(P\)</span>) and <em>what it would be if it behaved as an ideal gas</em> at the same state point. You can think of determining this difference by slowly turning off all intermolecular interactions and calculating the change in the property. <a href="#fig-residual-def" class="quarto-xref">Fig.&nbsp;2</a> shows what residual properties look like graphically. At low pressure residual properties are small since at this condition, gases behave almost like ideal gases. As pressure increases, however, the difference gets larger.</p>
-<div id="fig-residual-def" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-residual-def-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/residual_definition.png" class="img-fluid figure-img" style="width:70.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-residual-def-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig.&nbsp;2: Graphical definition of a residual property at constant temperature.
-</figcaption>
-</figure>
-</div>
+<p>If we substitute these definitions into the cyclic rule relation we just derived, we get: <span class="math display">\[\left( \frac{\partial P}{\partial T} \right)_V = \frac{\beta V}{\kappa V} = \frac{\beta}{\kappa}\]</span></p>
 <hr>
 </section>
-<section id="deriving-the-residual-equations---pressure-based" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Deriving the Residual Equations - Pressure-Based</h1>
-<p>To use this method, we need equations to calculate <span class="math inline">\(H^R\)</span> and <span class="math inline">\(S^R\)</span> directly from an equation of state (PVT data).</p>
-<section id="volume-residual-vr" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="volume-residual-vr"><span class="header-section-number">5.1</span> 1. Volume Residual (<span class="math inline">\(V^R\)</span>)</h2>
-<p>Using the compressibility factor (<span class="math inline">\(Z = PV/RT\)</span>), the residual volume is: <span id="eq-resid-V"><span class="math display">\[V^R = V - V^{IG} = \frac{ZRT}{P} - \frac{RT}{P} = \frac{RT}{P}(Z - 1) \tag{5}\]</span></span> Notice that if the gas is ideal, <span class="math inline">\(Z=1\)</span>, and the residual volume is exactly zero.</p>
-</section>
-<section id="enthalpy-residual-hr" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="enthalpy-residual-hr"><span class="header-section-number">5.2</span> 2. Enthalpy Residual (<span class="math inline">\(H^R\)</span>)</h2>
-<p>We start with the pressure-dependent part of the exact <span class="math inline">\(dH\)</span> equation, evaluated at constant <span class="math inline">\(T\)</span>: <span class="math display">\[dH_T = \left[ V - T \left( \frac{\partial V}{\partial T} \right)_P \right] dP\]</span> If we write this same equation for an ideal gas and subtract it from the real gas equation, we get the differential for the residual enthalpy. Integrating from <span class="math inline">\(P=0\)</span> (where <span class="math inline">\(H^R=0\)</span>) to our system pressure <span class="math inline">\(P\)</span> gives: <span id="eq-resid-H"><span class="math display">\[H^R = \int_0^P \left[ V - T \left( \frac{\partial V}{\partial T} \right)_P \right] dP \tag{6}\]</span></span></p>
-</section>
-<section id="entropy-residual-sr" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="entropy-residual-sr"><span class="header-section-number">5.3</span> 3. Entropy Residual (<span class="math inline">\(S^R\)</span>)</h2>
-<p>Using the Maxwell relation for the pressure dependence of entropy, <span class="math inline">\(dS_T = -(\partial V/\partial T)_P dP\)</span>. Subtracting the ideal gas version <span class="math inline">\(dS^{IG}_T = -(R/P)dP\)</span> and integrating yields: <span id="eq-resid-S"><span class="math display">\[S^R = -\int_0^P \left[ \left( \frac{\partial V}{\partial T} \right)_P - \frac{R}{P} \right] dP \tag{7}\]</span></span></p>
-</section>
-<section id="internal-energy-residual-ur" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="internal-energy-residual-ur"><span class="header-section-number">5.4</span> 4. Internal Energy Residual (<span class="math inline">\(U^R\)</span>)</h2>
-<p>We don’t actually need to do another complex integration to find the residual internal energy. Instead, we can rely on the fundamental definition of enthalpy: <span class="math display">\[H = U + PV \implies U = H - PV\]</span></p>
-<p>If we write this equation for a real gas and subtract the same equation for an ideal gas at the same temperature and pressure, we get the residual form: <span class="math display">\[U^R = H^R - (PV - P V^{IG})\]</span> <span class="math display">\[U^R = H^R - P(V - V^{IG})\]</span></p>
-<p>Notice that the term in the parentheses is simply the volume residual, <span class="math inline">\(V^R\)</span>. <span class="math display">\[U^R = H^R - P V^R\]</span></p>
-<p>We can make this even more useful by substituting the expression derived earlier for the residual volume, <span class="math inline">\(V^R = \frac{RT}{P}(Z - 1)\)</span>. Multiplying both sides by <span class="math inline">\(P\)</span> gives <span class="math inline">\(P V^R = RT(Z - 1)\)</span>.</p>
-<p>Substituting this into our equation yields the final expression: <span id="eq-resid-U"><span class="math display">\[U^R = H^R - RT(Z - 1) \tag{8}\]</span></span></p>
-<p><strong>Key Takeaway:</strong> Once you have evaluated the equation of state to find the compressibility factor (<span class="math inline">\(Z\)</span>) and the residual enthalpy (<span class="math inline">\(H^R\)</span>), calculating the residual internal energy requires no extra calculus—just a simple algebraic substitution!</p>
-</section>
-</section>
-<section id="volume-based-residual-equations" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Volume-Based Residual Equations</h1>
-<p>The residual equations derived previously require integrating with respect to pressure (<span class="math inline">\(dP\)</span>). This works well for a volume-explicit equation of state (<span class="math inline">\(V = f(T,P)\)</span>). However, most realistic equations of state (like the van der Waals equation or many engineering equations of state that we will shortly introduce, like the Peng-Robinson equation) are <strong>pressure-explicit</strong> (<span class="math inline">\(P = f(T,V)\)</span>). For these equations, we cannot easily evaluate a <span class="math inline">\(dP\)</span> integral. To use these equations of state, we need residual equations that are volume-based. To do this, we must integrate with respect to volume (<span class="math inline">\(dV\)</span>). As <span class="math inline">\(P \to 0\)</span>, the volume of the gas approaches infinity (<span class="math inline">\(V \to \infty\)</span>). Therefore, the reference state for integration becomes <span class="math inline">\(V = \infty\)</span> instead of <span class="math inline">\(P=0\)</span>.</p>
-<section id="internal-energy-residual-ur-1" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="internal-energy-residual-ur-1"><span class="header-section-number">6.1</span> 1. Internal Energy Residual (<span class="math inline">\(U^R\)</span>)</h2>
-<p>Recall the general exact equation for internal energy at constant temperature: <span class="math display">\[dU_T = \left[ T \left( \frac{\partial P}{\partial T} \right)_V - P \right] dV\]</span></p>
-<p>For an ideal gas, <span class="math inline">\(P = RT/V\)</span>, so the bracketed term evaluates to exactly zero. This means <span class="math inline">\(U^{IG}\)</span> does not change with volume. The residual internal energy can be found by simply integrating the real gas equation from the ideal gas reference state (<span class="math inline">\(V = \infty\)</span>) to the system volume (<span class="math inline">\(V\)</span>):</p>
-<p><span id="eq-resid-UV"><span class="math display">\[U^R = \int_{\infty}^V \left[ T \left( \frac{\partial P}{\partial T} \right)_V - P \right] dV \tag{9}\]</span></span></p>
-</section>
-<section id="entropy-residual-sr-1" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="entropy-residual-sr-1"><span class="header-section-number">6.2</span> 2. Entropy Residual (<span class="math inline">\(S^R\)</span>)</h2>
-<p>Deriving the volume-based entropy residual is a bit more involved. By definition, a residual property is the difference between the real and ideal gas properties at the same <span class="math inline">\(T\)</span> and <span class="math inline">\(P\)</span>: <span class="math display">\[S^R(T,P) = S(T,P) - S^{IG}(T,P)\]</span></p>
-<p>Let’s write the isothermal entropy change from the zero-pressure reference state (<span class="math inline">\(V = \infty\)</span>) to the system state for both the real gas and the ideal gas:</p>
-<p>Real Gas: <span id="eq-SV-real"><span class="math display">\[S(T,P) - S(T, P=0) = \int_{\infty}^V \left( \frac{\partial P}{\partial T} \right)_V dV \tag{10}\]</span></span></p>
-<p>Ideal Gas: <span id="eq-SV-ideal"><span class="math display">\[S^{IG}(T,P) - S^{IG}(T, P=0) = \int_{\infty}^{V^{IG}} \frac{R}{V} dV \tag{11}\]</span></span></p>
-<p>Since real gases behave ideally at zero pressure, <span class="math inline">\(S(T, P=0) = S^{IG}(T, P=0)\)</span>. Subtracting the ideal gas equation (<a href="#eq-SV-ideal" class="quarto-xref">Eq.&nbsp;11</a>) from the real gas equation (<a href="#eq-SV-real" class="quarto-xref">Eq.&nbsp;10</a>) gives: <span class="math display">\[S^R = \int_{\infty}^V \left( \frac{\partial P}{\partial T} \right)_V dV - \int_{\infty}^{V^{IG}} \frac{R}{V} dV\]</span></p>
-<p>To combine these integrals, we can mathematically split the ideal gas integral into two parts—from <span class="math inline">\(\infty\)</span> to <span class="math inline">\(V\)</span>, and from <span class="math inline">\(V\)</span> to <span class="math inline">\(V^{IG}\)</span>: <span class="math display">\[\int_{\infty}^{V^{IG}} \frac{R}{V} dV = \int_{\infty}^V \frac{R}{V} dV + \int_{V}^{V^{IG}} \frac{R}{V} dV\]</span></p>
-<p>Substitute this back into the <span class="math inline">\(S^R\)</span> equation so we can combine the integrals that share the same bounds (<span class="math inline">\(\infty\)</span> to <span class="math inline">\(V\)</span>): <span class="math display">\[S^R = \int_{\infty}^V \left[ \left( \frac{\partial P}{\partial T} \right)_V - \frac{R}{V} \right] dV - \int_{V}^{V^{IG}} \frac{R}{V} dV\]</span></p>
-<p>Finally, we evaluate the remaining integral. Since the ideal gas volume is <span class="math inline">\(V^{IG} = RT/P\)</span>, the ratio <span class="math inline">\(V/V^{IG} = PV/RT\)</span>, which is exactly the compressibility factor <span class="math inline">\(Z\)</span>: <span class="math display">\[- \int_{V}^{V^{IG}} \frac{R}{V} dV = -R \ln \left( \frac{V^{IG}}{V} \right) = R \ln \left( \frac{V}{V^{IG}} \right) = R \ln Z\]</span></p>
-<p>This yields the final volume-based entropy residual: <span id="eq-resid-SV"><span class="math display">\[S^R = \int_{\infty}^V \left[ \left( \frac{\partial P}{\partial T} \right)_V - \frac{R}{V} \right] dV + R \ln Z \tag{12}\]</span></span></p>
-</section>
-<section id="enthalpy-residual-hr-1" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="enthalpy-residual-hr-1"><span class="header-section-number">6.3</span> 3. Enthalpy Residual (<span class="math inline">\(H^R\)</span>)</h2>
-<p>Just as we saw with the pressure-based derivations, once we have <span class="math inline">\(U^R\)</span>, we do not need to do any more calculus to find <span class="math inline">\(H^R\)</span>. We rely on the fundamental definition <span class="math inline">\(H = U + PV\)</span>:</p>
-<p><span class="math display">\[H^R = U^R + PV - P^{IG}V^{IG}\]</span></p>
-<p>Since <span class="math inline">\(P^{IG}V^{IG} = RT\)</span> for an ideal gas: <span class="math display">\[H^R = U^R + PV - RT\]</span></p>
-<p>If we factor out <span class="math inline">\(RT\)</span>, we can write this elegantly in terms of the compressibility factor (<span class="math inline">\(Z = PV/RT\)</span>): <span id="eq-resid-HV"><span class="math display">\[H^R = U^R + RT(Z - 1) \tag{13}\]</span></span></p>
-<hr>
-</section>
-</section>
-<section id="resolving-the-roadblock-an-analytical-example" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Resolving the Roadblock: An Analytical Example</h1>
-<p>Let’s see how this works in practice. Suppose we wish to determine the change in enthalpy and entropy for a gas being compressed from <span class="math inline">\(T_1\)</span> and <span class="math inline">\(P_1\)</span> to <span class="math inline">\(T_2\)</span> and <span class="math inline">\(P_2\)</span>. Rather than assume an ideal gas or look up properties in steam tables, we model the gas in the compressor using a simplified equation of state: <span class="math display">\[V = \frac{RT}{P} - \frac{a}{T} + b\]</span></p>
-<p>To compute <span class="math inline">\(\Delta H\)</span> and <span class="math inline">\(\Delta S\)</span>, we need to apply <a href="#eq-resid-H" class="quarto-xref">Eq.&nbsp;6</a> and <a href="#eq-resid-S" class="quarto-xref">Eq.&nbsp;7</a> (because the EOS is a volume-explicit equation and we can differentiate volume). This means we need the partial derivative: <span class="math display">\[\left( \frac{\partial V}{\partial T} \right)_P = \frac{R}{P} + \frac{a}{T^2}\]</span></p>
-<p>Now, plug this into the residual enthalpy equation (<a href="#eq-resid-H" class="quarto-xref">Eq.&nbsp;6</a>) <span class="math display">\[H^R = \int_0^P \left[ \left( \frac{RT}{P} - \frac{a}{T} + b \right) - T \left( \frac{R}{P} + \frac{a}{T^2} \right) \right] dP\]</span></p>
-<p>Notice how beautifully the ideal gas terms (<span class="math inline">\(RT/P\)</span>) cancel out! <span class="math display">\[H^R = \int_0^P \left( -\frac{a}{T} + b - \frac{a}{T} \right) dP = \int_0^P \left( b - \frac{2a}{T} \right) dP\]</span> <span class="math display">\[H^R = P \left( b - \frac{2a}{T} \right)\]</span></p>
-<p>Next, calculate the residual entropy from <a href="#eq-resid-S" class="quarto-xref">Eq.&nbsp;7</a>: <span class="math display">\[S^R = -\int_0^P \left[ \left( \frac{R}{P} + \frac{a}{T^2} \right) - \frac{R}{P} \right] dP\]</span> Again, the <span class="math inline">\(R/P\)</span> terms perfectly cancel! <span class="math display">\[S^R = -\int_0^P \frac{a}{T^2} dP = -\frac{aP}{T^2}\]</span></p>
-<p>With <span class="math inline">\(H^R\)</span> and <span class="math inline">\(S^R\)</span> fully defined in terms of <span class="math inline">\(T, P,\)</span> and the constants <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, we can now easily solve a compressor problem by calculating <span class="math inline">\(\Delta H = H^R_2 - H^R_1 + \Delta H^{IG}\)</span> and <span class="math inline">\(\Delta S = S^R_2 - S^R_1 + \Delta S^{IG}\)</span> using only standard ideal gas heat capacity tables and the expressions we have derived earlier in class for ideal gas property changes!</p>
+<section id="the-rigorous-c_p---c_v-relationship" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> The Rigorous <span class="math inline">\(C_p - C_v\)</span> Relationship</h1>
+<p>Earlier in the semester, we stated that for an ideal gas, <span class="math inline">\(C_p - C_v = R\)</span>. But what is the relationship for a real fluid?</p>
+<p>Let’s start by equating our two equations for entropy: <span class="math display">\[dS = \frac{C_p}{T} dT - \left( \frac{\partial V}{\partial T} \right)_P dP = \frac{C_v}{T} dT + \left( \frac{\partial P}{\partial T} \right)_V dV\]</span></p>
+<p>Divide the entire equation by <span class="math inline">\(dT\)</span> while holding volume constant (<span class="math inline">\(dV = 0\)</span>): <span class="math display">\[\frac{C_p}{T} - \left( \frac{\partial V}{\partial T} \right)_P \left( \frac{\partial P}{\partial T} \right)_V = \frac{C_v}{T} + 0\]</span></p>
+<p>Rearrange to solve for <span class="math inline">\(C_p - C_v\)</span>: <span class="math display">\[C_p - C_v = T \left( \frac{\partial V}{\partial T} \right)_P \left( \frac{\partial P}{\partial T} \right)_V\]</span></p>
+<p>Substitute the cyclic rule substitution <span class="math inline">\(\left( \frac{\partial P}{\partial T} \right)_V = -\frac{(\partial V/\partial T)_P}{(\partial V/\partial P)_T}\)</span>: <span class="math display">\[C_p - C_v = -T \frac{\left[ \left( \frac{\partial V}{\partial T} \right)_P \right]^2}{\left( \frac{\partial V}{\partial P} \right)_T}\]</span></p>
+<p>Finally, substitute our definitions of <span class="math inline">\(\beta\)</span> and <span class="math inline">\(\kappa\)</span>: <span id="eq-Cp-Cv"><span class="math display">\[C_p - C_v = \frac{T V \beta^2}{\kappa} \tag{6}\]</span></span></p>
+<p><strong>Why is this profound?</strong></p>
+<ol type="1">
+<li><p>Because <span class="math inline">\(T, V,\)</span> and <span class="math inline">\(\kappa\)</span> are always positive, and <span class="math inline">\(\beta^2\)</span> must be positive, <strong><span class="math inline">\(C_p\)</span> is always greater than or equal to <span class="math inline">\(C_v\)</span></strong>.</p></li>
+<li><p>As <span class="math inline">\(T \to 0\)</span> (absolute zero), <span class="math inline">\(C_p \to C_v\)</span>.</p></li>
+<li><p>For liquids and solids, water being a notable exception at <span class="math inline">\(4^\circ\text{C}\)</span>, <span class="math inline">\(\beta\)</span> is very small, meaning <span class="math inline">\(C_p \approx C_v\)</span>. This mathematically proves why we often just use a single “<span class="math inline">\(C\)</span>” for liquids and solids!</p></li>
+</ol>
+<p>You should verify that <a href="#eq-Cp-Cv" class="quarto-xref">Eq.&nbsp;6</a> reduces to <span class="math inline">\(C_p - C_v = R\)</span> for an ideal gas.</p>
 
 
 </section>

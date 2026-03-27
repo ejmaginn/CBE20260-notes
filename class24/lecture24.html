@@ -8,7 +8,7 @@
 
 <meta name="author" content="Edward Maginn">
 
-<title>Lecture 24: Maxwell Relations and General Property Equations – CBE 20260 — Course Notes</title>
+<title>Lecture 24: Maxwell Relations – CBE 20260 — Course Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -347,7 +347,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class25/lecture25.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 25 - Real Fluids and Residual Properties</span></a>
+ <span class="menu-text">Lecture 25 - General Property Equations from the Math of Thermo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class26/lecture26.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 26 - Real Fluids and Residual Properties</span></a>
   </div>
 </li>
       </ul>
@@ -371,13 +377,6 @@ window.Quarto = {
   <li><a href="#from-gibbs-free-energy-g" id="toc-from-gibbs-free-energy-g" class="nav-link" data-scroll-target="#from-gibbs-free-energy-g"><span class="header-section-number">2.4</span> From Gibbs Free Energy (<span class="math inline">\(G\)</span>)</a></li>
   </ul></li>
   <li><a href="#calculating-entropy-changes" id="toc-calculating-entropy-changes" class="nav-link" data-scroll-target="#calculating-entropy-changes"><span class="header-section-number">3</span> Calculating Entropy Changes</a></li>
-  <li><a href="#calculating-enthalpy-and-internal-energy" id="toc-calculating-enthalpy-and-internal-energy" class="nav-link" data-scroll-target="#calculating-enthalpy-and-internal-energy"><span class="header-section-number">4</span> Calculating Enthalpy and Internal Energy</a>
-  <ul class="collapse">
-  <li><a href="#sanity-check-the-ideal-gas" id="toc-sanity-check-the-ideal-gas" class="nav-link" data-scroll-target="#sanity-check-the-ideal-gas"><span class="header-section-number">4.1</span> Sanity Check: The Ideal Gas</a></li>
-  </ul></li>
-  <li><a href="#mathematical-tools-the-cyclic-rule" id="toc-mathematical-tools-the-cyclic-rule" class="nav-link" data-scroll-target="#mathematical-tools-the-cyclic-rule"><span class="header-section-number">5</span> Mathematical Tools: The Cyclic Rule</a></li>
-  <li><a href="#volumetric-properties-beta-and-kappa" id="toc-volumetric-properties-beta-and-kappa" class="nav-link" data-scroll-target="#volumetric-properties-beta-and-kappa"><span class="header-section-number">6</span> Volumetric Properties: <span class="math inline">\(\beta\)</span> and <span class="math inline">\(\kappa\)</span></a></li>
-  <li><a href="#the-rigorous-c_p---c_v-relationship" id="toc-the-rigorous-c_p---c_v-relationship" class="nav-link" data-scroll-target="#the-rigorous-c_p---c_v-relationship"><span class="header-section-number">7</span> The Rigorous <span class="math inline">\(C_p - C_v\)</span> Relationship</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture24.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
@@ -386,7 +385,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class01/lecture01.html">Lectures</a></li><li class="breadcrumb-item"><a href="../class24/lecture24.html">Lecture 24 - The Maxwell Relations and Calculating Thermodynamic Properties</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Lecture 24: Maxwell Relations and General Property Equations</h1>
+<h1 class="title">Lecture 24: Maxwell Relations</h1>
 <p class="subtitle lead">CBE 20260 / Thermodynamics I</p>
 </div>
 
@@ -471,50 +470,7 @@ Fig.&nbsp;1: Internal energy is a state function and you can follow any path on 
 <p>Remember we derived an expression for the change in entropy of an ideal gas in terms of <span class="math inline">\(T\)</span> and <span class="math inline">\(P\)</span>: <span class="math display">\[\Delta S = C_p \ln \left( \frac{T_2}{T_1} \right) - R \ln \left( \frac{P_2}{P_1} \right)\]</span> This is just the integrated form of <a href="#eq-dS-TP" class="quarto-xref">Eq.&nbsp;7</a> for an ideal gas, where <span class="math inline">\(\left( \frac{\partial V}{\partial T} \right)_P = \frac{R}{P}\)</span>. For a real gas, that term is not <span class="math inline">\(\frac{R}{P}\)</span>, and the change in entropy is more complicated. However, <a href="#eq-dS-TP" class="quarto-xref">Eq.&nbsp;7</a> is still exact and can be used to calculate the change in entropy of any real fluid from <span class="math inline">\(P-V-T\)</span> data!</p>
 <p>The same is true for the change in entropy of a real fluid as a function of <span class="math inline">\(T\)</span> and <span class="math inline">\(V\)</span> using <a href="#eq-dS-TV" class="quarto-xref">Eq.&nbsp;8</a>. For an ideal gas, <span class="math inline">\(\left( \frac{\partial P}{\partial T} \right)_V = \frac{R}{V}\)</span>, and we recover the ideal gas expression for <span class="math inline">\(\Delta S\)</span> in terms of <span class="math inline">\(T\)</span> and <span class="math inline">\(V\)</span>. For a real fluid, that term is not <span class="math inline">\(\frac{R}{V}\)</span>, but <a href="#eq-dS-TV" class="quarto-xref">Eq.&nbsp;8</a> still holds and can be used to calculate the change in entropy from <span class="math inline">\(P-V-T\)</span> data.</p>
 <hr>
-</section>
-<section id="calculating-enthalpy-and-internal-energy" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Calculating Enthalpy and Internal Energy</h1>
-<p>Now let’s find the general equation for Enthalpy using <span class="math inline">\(T\)</span> and <span class="math inline">\(P\)</span>: <span class="math display">\[dH = \left( \frac{\partial H}{\partial T} \right)_P dT + \left( \frac{\partial H}{\partial P} \right)_T dP\]</span></p>
-<p>We already know the first term is <span class="math inline">\(C_p\)</span>. For the second term, we use the fundamental equation <span class="math inline">\(dH = T dS + V dP\)</span>. Dividing by <span class="math inline">\(dP\)</span> at constant <span class="math inline">\(T\)</span>: <span class="math display">\[\left( \frac{\partial H}{\partial P} \right)_T = T \left( \frac{\partial S}{\partial P} \right)_T + V\]</span> Substitute the Maxwell relation <a href="#eq-maxwell-G" class="quarto-xref">Eq.&nbsp;6</a> <span class="math inline">\(\left( \frac{\partial S}{\partial P} \right)_T = -\left( \frac{\partial V}{\partial T} \right)_P\)</span>: <span class="math display">\[\left( \frac{\partial H}{\partial P} \right)_T = V - T \left( \frac{\partial V}{\partial T} \right)_P\]</span></p>
-<p>So the exact, general equation for enthalpy is: <span id="eq-dH-TP"><span class="math display">\[dH = C_p dT + \left[ V - T \left( \frac{\partial V}{\partial T} \right)_P \right] dP \tag{9}\]</span></span></p>
-<section id="sanity-check-the-ideal-gas" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="sanity-check-the-ideal-gas"><span class="header-section-number">4.1</span> Sanity Check: The Ideal Gas</h2>
-<p>Does this work for an ideal gas? Let’s check. For an ideal gas, <span class="math inline">\(V = \frac{RT}{P}\)</span>. The derivative is: <span class="math inline">\(\left( \frac{\partial V}{\partial T} \right)_P = \frac{R}{P}\)</span>. Substitute this into the bracketed term in our <span class="math inline">\(dH\)</span> equation: <span class="math display">\[\left[ V - T \left( \frac{R}{P} \right) \right] = V - \frac{RT}{P} = V - V = 0!\]</span> The entire pressure dependence vanishes, leaving <span class="math inline">\(dH = C_p dT\)</span>, exactly as we learned earlier in the semester! For a real gas, that bracketed term is <em>not</em> zero, because atomic interactions and excluded volume matter.</p>
-<p>Similarly, we can derive the general equation for Internal Energy (<span class="math inline">\(U\)</span>) as a function of <span class="math inline">\(T\)</span> and <span class="math inline">\(V\)</span>: <span id="eq-dU-TV"><span class="math display">\[dU = C_v dT + \left[ T \left( \frac{\partial P}{\partial T} \right)_V - P \right] dV \tag{10}\]</span></span> <em>(You should verify for yourself that the bracketed term goes to zero for an ideal gas!)</em></p>
-</section>
-</section>
-<section id="mathematical-tools-the-cyclic-rule" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Mathematical Tools: The Cyclic Rule</h1>
-<p>To evaluate these partial derivatives for liquids and solids, we need a few more mathematical tools. A highly useful identity from multivariable calculus for any implicit function <span class="math inline">\(F(x,y,z) = 0\)</span> is the <strong>Triple Product Rule</strong> (or Cyclic Rule): <span id="eq-cyclic"><span class="math display">\[\left( \frac{\partial x}{\partial y} \right)_z \left( \frac{\partial y}{\partial z} \right)_x \left( \frac{\partial z}{\partial x} \right)_y = -1 \tag{11}\]</span></span></p>
-<p>Let’s apply this to our <span class="math inline">\(P-V-T\)</span> surface: <span class="math display">\[\left( \frac{\partial P}{\partial T} \right)_V \left( \frac{\partial T}{\partial V} \right)_P \left( \frac{\partial V}{\partial P} \right)_T = -1\]</span></p>
-<p>Rearranging this gives us a powerful way to evaluate the change in pressure with temperature at constant volume, which is notoriously difficult to measure experimentally: <span class="math display">\[\left( \frac{\partial P}{\partial T} \right)_V = -\frac{\left( \frac{\partial V}{\partial T} \right)_P}{\left( \frac{\partial V}{\partial P} \right)_T}\]</span></p>
-<hr>
-</section>
-<section id="volumetric-properties-beta-and-kappa" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Volumetric Properties: <span class="math inline">\(\beta\)</span> and <span class="math inline">\(\kappa\)</span></h1>
-<p>For liquids and solids, engineers often tabulate volumetric behavior using two coefficients:</p>
-<ol type="1">
-<li><p><strong>Volume Expansivity (<span class="math inline">\(\beta\)</span>):</strong> How much a material expands when heated at constant pressure. <span id="eq-beta"><span class="math display">\[\beta \equiv \frac{1}{V} \left( \frac{\partial V}{\partial T} \right)_P \tag{12}\]</span></span></p></li>
-<li><p><strong>Isothermal Compressibility (<span class="math inline">\(\kappa\)</span>):</strong> How much a material shrinks when squeezed at constant temperature. (The negative sign ensures <span class="math inline">\(\kappa\)</span> is a positive number). <span id="eq-kappa"><span class="math display">\[\kappa \equiv -\frac{1}{V} \left( \frac{\partial V}{\partial P} \right)_T \tag{13}\]</span></span></p></li>
-</ol>
-<p>If we substitute these definitions into the cyclic rule relation we just derived, we get: <span class="math display">\[\left( \frac{\partial P}{\partial T} \right)_V = \frac{\beta V}{\kappa V} = \frac{\beta}{\kappa}\]</span></p>
-<hr>
-</section>
-<section id="the-rigorous-c_p---c_v-relationship" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> The Rigorous <span class="math inline">\(C_p - C_v\)</span> Relationship</h1>
-<p>Earlier in the semester, we stated that for an ideal gas, <span class="math inline">\(C_p - C_v = R\)</span>. But what is the relationship for a real fluid?</p>
-<p>Let’s start by equating our two equations for entropy: <span class="math display">\[dS = \frac{C_p}{T} dT - \left( \frac{\partial V}{\partial T} \right)_P dP = \frac{C_v}{T} dT + \left( \frac{\partial P}{\partial T} \right)_V dV\]</span></p>
-<p>Divide the entire equation by <span class="math inline">\(dT\)</span> while holding volume constant (<span class="math inline">\(dV = 0\)</span>): <span class="math display">\[\frac{C_p}{T} - \left( \frac{\partial V}{\partial T} \right)_P \left( \frac{\partial P}{\partial T} \right)_V = \frac{C_v}{T} + 0\]</span></p>
-<p>Rearrange to solve for <span class="math inline">\(C_p - C_v\)</span>: <span class="math display">\[C_p - C_v = T \left( \frac{\partial V}{\partial T} \right)_P \left( \frac{\partial P}{\partial T} \right)_V\]</span></p>
-<p>Substitute the cyclic rule substitution <span class="math inline">\(\left( \frac{\partial P}{\partial T} \right)_V = -\frac{(\partial V/\partial T)_P}{(\partial V/\partial P)_T}\)</span>: <span class="math display">\[C_p - C_v = -T \frac{\left[ \left( \frac{\partial V}{\partial T} \right)_P \right]^2}{\left( \frac{\partial V}{\partial P} \right)_T}\]</span></p>
-<p>Finally, substitute our definitions of <span class="math inline">\(\beta\)</span> and <span class="math inline">\(\kappa\)</span>: <span id="eq-Cp-Cv"><span class="math display">\[C_p - C_v = \frac{T V \beta^2}{\kappa} \tag{14}\]</span></span></p>
-<p><strong>Why is this profound?</strong></p>
-<ol type="1">
-<li><p>Because <span class="math inline">\(T, V,\)</span> and <span class="math inline">\(\kappa\)</span> are always positive, and <span class="math inline">\(\beta^2\)</span> must be positive, <strong><span class="math inline">\(C_p\)</span> is always greater than or equal to <span class="math inline">\(C_v\)</span></strong>.</p></li>
-<li><p>As <span class="math inline">\(T \to 0\)</span> (absolute zero), <span class="math inline">\(C_p \to C_v\)</span>.</p></li>
-<li><p>For liquids and solids, water being a notable exception at <span class="math inline">\(4^\circ\text{C}\)</span>, <span class="math inline">\(\beta\)</span> is very small, meaning <span class="math inline">\(C_p \approx C_v\)</span>. This mathematically proves why we often just use a single “<span class="math inline">\(C\)</span>” for liquids and solids!</p></li>
-</ol>
-<p>You should verify that <a href="#eq-Cp-Cv" class="quarto-xref">Eq.&nbsp;14</a> reduces to <span class="math inline">\(C_p - C_v = R\)</span> for an ideal gas.</p>
+<p>.</p>
 
 
 </section>
