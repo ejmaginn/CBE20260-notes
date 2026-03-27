@@ -85,7 +85,9 @@ website:
           - href: class24/lecture24.qmd
             text: Lecture 24 - The Maxwell Relations and Calculating Thermodynamic Properties
           - href: class25/lecture25.qmd
-            text: Lecture 25 - Real Fluids and Residual Properties
+            text: Lecture 25 - General Property Equations from the Math of Thermo
+          - href: class26/lecture26.qmd
+            text: Lecture 26 - Real Fluids and Residual Properties  
 
           # Add more lectures here as you create them:
           # - href: class0x/lecture02.qmd

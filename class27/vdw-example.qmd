@@ -1,0 +1,70 @@
+---
+title: "Untitled"
+format: html
+---
+
+# Worked Example: Isentropic Compression of a van der Waals Gas
+
+**Problem Statement:**
+Nitrogen gas ($N_2$) enters a steady-state compressor at $P_1 =$ 1 bar and $T_1 =$ 298 K. It is compressed isentropically ($\Delta S = 0$) to a final pressure of $P_2 =$ 5 bar. Determine the final temperature ($T_2$) assuming the gas follows the van der Waals equation of state. 
+
+**Data for Nitrogen:**
+* Critical Temperature ($T_c$) = 126.2 K
+* Critical Pressure ($P_c$) = 34.0 bar
+* Ideal Gas Heat Capacity ($C_p^{IG}$) = 29.12 J/(mol K) (assumed constant)
+* Universal Gas Constant ($R$) = 8.314 J/(mol K) = 0.08314 L bar/(mol K)
+
+## 1. Defining the Governing Equations
+For an isentropic process, the total change in real fluid entropy is zero. This is expressed using the hypothetical thermodynamic path and residual properties:
+$$\Delta S = S^R_2 - S^R_1 + \Delta S^{IG} = 0$$
+
+The ideal gas entropy change is:
+$$\Delta S^{IG} = C_p^{IG} \ln \left( \frac{T_2}{T_1} \right) - R \ln \left( \frac{P_2}{P_1} \right)$$
+
+To find the residual entropy ($S^R$), the volume-based residual equation is evaluated for the van der Waals equation of state ($P = \frac{RT}{V-b} - \frac{a}{V^2}$). First, evaluate the required partial derivative:
+$$\left( \frac{\partial P}{\partial T} \right)_V = \frac{R}{V-b}$$
+
+Substitute this into the general volume-based residual entropy equation:
+$$S^R = \int_{\infty}^V \left[ \frac{R}{V-b} - \frac{R}{V} \right] dV + R \ln Z$$
+
+Integrating terms yields:
+$$S^R = \left[ R \ln(V-b) - R \ln V \right]_{\infty}^V + R \ln Z = R \ln \left( \frac{V-b}{V} \right) + R \ln Z$$
+
+Substitute the definition of the compressibility factor ($Z = PV/RT$) into the argument of the logarithm to obtain the final analytical expression for the van der Waals residual entropy:
+$$S^R = R \ln \left( \frac{P(V-b)}{RT} \right)$$
+
+## 2. Calculating the van der Waals Parameters
+The parameters $a$ and $b$ are determined from the critical properties of nitrogen:
+$$a = \frac{27 R^2 T_c^2}{64 P_c} = \frac{27 (0.08314)^2 (126.2)^2}{64 (34.0)} = 1.37 \text{ L}^2 \text{ bar/mol}^2$$
+$$b = \frac{R T_c}{8 P_c} = \frac{0.08314 (126.2)}{8 (34.0)} = 0.0386 \text{ L/mol}$$
+
+## 3. Evaluating State 1 (Inlet)
+At $P_1 =$ 1 bar and $T_1 =$ 298 K, solve the van der Waals equation for $V_1$:
+$$1 = \frac{0.08314 (298)}{V_1 - 0.0386} - \frac{1.37}{V_1^2}$$
+Solving this cubic equation yields $V_1 = 24.76$ L/mol.
+
+Using the derived residual entropy equation:
+$$S^R_1 = 8.314 \ln \left( \frac{1 (24.76 - 0.0386)}{0.08314 (298)} \right) = -0.018 \text{ J/(mol K)}$$
+
+## 4. Evaluating State 2 (Outlet)
+Because $T_2$ and $V_2$ are both unknown, an iterative solution is required. 
+
+**Iteration 1: The Ideal Gas Assumption**
+As a first guess, assume the gas behaves perfectly ideally ($S^R_1 = 0$ and $S^R_2 = 0$). The entropy balance reduces to $\Delta S^{IG} = 0$:
+$$0 = 29.12 \ln \left( \frac{T_2}{298} \right) - 8.314 \ln \left( \frac{5}{1} \right)$$
+$$13.38 = 29.12 \ln \left( \frac{T_2}{298} \right) \implies T_2 = 472.0 \text{ K}$$
+
+**Iteration 2: The Real Gas Correction**
+Using the estimated $T_2 =$ 472.0 K, calculate the state 2 properties at $P_2 =$ 5 bar. Solving the van der Waals equation for $V_2$:
+$$5 = \frac{0.08314 (472.0)}{V_2 - 0.0386} - \frac{1.37}{V_2^2}$$
+Solving this yields $V_2 = 7.852$ L/mol.
+
+Calculate the residual entropy at state 2:
+$$S^R_2 = 8.314 \ln \left( \frac{5 (7.852 - 0.0386)}{0.08314 (472.0)} \right) = -0.037 \text{ J/(mol K)}$$
+
+Now, re-evaluate the full entropy balance to find the corrected $T_2$:
+$$0 = S^R_2 - S^R_1 + C_p^{IG} \ln \left( \frac{T_2}{T_1} \right) - R \ln \left( \frac{P_2}{P_1} \right)$$
+$$0 = -0.037 - (-0.018) + 29.12 \ln \left( \frac{T_2}{298} \right) - 13.38$$
+$$13.399 = 29.12 \ln \left( \frac{T_2}{298} \right) \implies T_2 = 472.0 \text{ K}$$
+
+**Conclusion:** The final temperature is 472.0 K. Notice that the residual entropies for nitrogen at these conditions are extremely small ($< 0.04$ J/(mol K)). The attractive and repulsive forces essentially cancel each other out ($Z \approx 1$), mathematically proving that the ideal gas assumption is highly accurate for non-polar diatomic gases at low-to-moderate pressures.
