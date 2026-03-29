@@ -27,6 +27,10 @@ website:
             text: L19 Regenerative Rankine Cycle Demo
           - href: class22/vapor-compression-cycle.ipynb
             text: L22 Vapor Compression Cycle Demo
+          - href: class27/VDW-solver.ipynb
+            text: L27 van der Waals Solver Demo  
+          - href: class27/residual-VDW.ipynb
+            text: L27 van der Waals Residuals Demo  
            
           # Add more notebooks here as you create them:  
           #- href: class03/lecture03_example.ipynb
@@ -87,7 +91,12 @@ website:
           - href: class25/lecture25.qmd
             text: Lecture 25 - General Property Equations from the Math of Thermo
           - href: class26/lecture26.qmd
-            text: Lecture 26 - Real Fluids and Residual Properties  
+            text: Lecture 26 - Real Fluids and Residual Properties
+          - href: class27/lecture27.qmd
+            text: Lecture 27 - Applying Residuals and Intro to Cubic Equations of State
+          #- href: class28/lecture28.qmd
+          #  text: Lecture 28 - Cubic Equations of State and the Principle of Corresponding States  
+  
 
           # Add more lectures here as you create them:
           # - href: class0x/lecture02.qmd

@@ -1,0 +1,58 @@
+---
+title: "Lecture 28: Cubic Equations of State and the Principle of Corresponding States"
+subtitle: "CBE 20260 / Thermodynamics I"
+author: "Edward Maginn"
+format:
+  html:
+    toc: true
+    number-sections: true
+  pdf:
+    toc: true
+    number-sections: true
+execute:
+  echo: false
+---
+
+# The Principle of Corresponding States
+
+In the late 19th century, a profound observation was made: if thermodynamic properties are scaled by their critical point values, many fluids behave similarly. This is formalized by defining **reduced properties**:
+$$T_r = \frac{T}{T_c}, \quad P_r = \frac{P}{P_c}, \quad V_r = \frac{V}{V_c}$$
+
+The **two-parameter theorem of corresponding states** postulates that all fluids at the same reduced temperature and reduced pressure will have the same compressibility factor ($Z$). 
+
+If the van der Waals equation is rewritten using these reduced variables, the substance-specific parameters $a$ and $b$ completely disappear:
+$$P_r = \frac{8 T_r}{3 V_r - 1} - \frac{3}{V_r^2}$$
+
+This is a universal equation. It implies that argon, methane, and water should all possess identical $Z$ values at identical $T_r$ and $P_r$. 
+
+# The Acentric Factor
+
+While the two-parameter corresponding states theory works exceptionally well for simple, spherical molecules (like noble gases), it fails for larger, non-spherical, or polar molecules.
+
+To correct this, Kenneth Pitzer introduced a third parameter known as the **acentric factor** ($\omega$). The acentric factor can be thought of as quantifying the non-sphericity of a molecule based on its vapor pressure curve.
+$$\omega = -1.0 - \log_{10}(P_r^{sat}) \quad \text{at } T_r = 0.7$$
+
+For perfectly spherical molecules like argon, it was observed that $\omega \approx 0$. For larger, more complex molecules like decane, $\omega > 0$. The acentric factor thus serves as a measure of how much a real fluid deviates from idealized spherical behavior. It is an empirical parameter that can be obtained from experimental vapor pressure data, and it is used to improve the accuracy of equations of state for non-ideal fluids. The table below shows the acentric factors for a few common fluids. Things like hydrogen bonding and quadrupole moments (which are not captured by simple cubic equations of state) lead to higher acentric factors even for fluids that are nearly "spherical". It is also possible to have negative accentric factors, as in the case of argon. 
+
+| Gas | Acentric Factor ($\omega$) | Notes |
+| :--- | :--- | :--- |
+| Methane | 0.011  | |
+| Ethane | 0.099  | Less spherical than methane  |
+| n-Hexane | 0.305  | Non-spherical / Chain |
+| Methanol | 0.566  | H-bonding  |
+| Carbon Dioxide (CO$_2$) | 0.278  | Quadrupole moment  |
+| Water | 0.344  | strong H-bonding  |
+| Argon | -0.004  | "Ideal" (Spherical)  |
+
+
+# Modern Equations of State: Peng-Robinson
+
+Because the van der Waals equation is insufficiently accurate for modern industrial design (particularly regarding liquid densities), chemical engineers developed improved cubic equations of state. The most prominent is the **Peng-Robinson** equation of state (1976):
+
+$$P = \frac{RT}{V - b} - \frac{a(T)}{V(V + b) + b(V - b)}$$
+
+While it maintains the same repulsive term ($V-b$) as van der Waals, it introduces two major improvements:
+1.  The attractive term denominator is more complex, vastly improving liquid volume predictions.
+2.  The parameter $a$ is no longer a constant; it is a function of temperature $a(T)$ and is explicitly dependent on the **acentric factor** ($\omega$).
+
+This combination of the corresponding states framework with a cubic structure forms the foundation of modern chemical process simulation software (such as Aspen Plus).
