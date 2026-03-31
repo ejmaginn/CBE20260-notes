@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Edward Maginn">
 
-<title>Lecture 28: Cubic Equations of State and the Principle of Corresponding States – CBE 20260 — Course Notes</title>
+<title>vdw_z_vs_pr_isotherms – CBE 20260 — Course Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -185,7 +219,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class01/lecture01.html">Lectures</a></li><li class="breadcrumb-item"><a href="../class28/lecture28.html">Lecture 28 - Cubic Equations of State and the Principle of Corresponding States</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -372,7 +406,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../class28/lecture28.html" class="sidebar-item-text sidebar-link active">
+  <a href="../class28/lecture28.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lecture 28 - Cubic Equations of State and the Principle of Corresponding States</span></a>
   </div>
 </li>
@@ -388,172 +422,148 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#improving-equations-of-state-the-principle-of-corresponding-states-and-the-acentric-factor" id="toc-improving-equations-of-state-the-principle-of-corresponding-states-and-the-acentric-factor" class="nav-link active" data-scroll-target="#improving-equations-of-state-the-principle-of-corresponding-states-and-the-acentric-factor"><span class="header-section-number">1</span> Improving Equations of State: The Principle of Corresponding States and the Acentric Factor</a></li>
-  <li><a href="#the-principle-of-corresponding-states" id="toc-the-principle-of-corresponding-states" class="nav-link" data-scroll-target="#the-principle-of-corresponding-states"><span class="header-section-number">2</span> The Principle of Corresponding States</a></li>
-  <li><a href="#the-acentric-factor" id="toc-the-acentric-factor" class="nav-link" data-scroll-target="#the-acentric-factor"><span class="header-section-number">3</span> The Acentric Factor</a></li>
-  <li><a href="#modern-equations-of-state-peng-robinson" id="toc-modern-equations-of-state-peng-robinson" class="nav-link" data-scroll-target="#modern-equations-of-state-peng-robinson"><span class="header-section-number">4</span> Modern Equations of State: Peng-Robinson</a></li>
-  <li><a href="#soave-redlich-kwong-srk-equation-of-state" id="toc-soave-redlich-kwong-srk-equation-of-state" class="nav-link" data-scroll-target="#soave-redlich-kwong-srk-equation-of-state"><span class="header-section-number">5</span> Soave-Redlich-Kwong (SRK) Equation of State</a></li>
-  <li><a href="#other-equations-of-state" id="toc-other-equations-of-state" class="nav-link" data-scroll-target="#other-equations-of-state"><span class="header-section-number">6</span> Other Equations of State</a></li>
+  <li><a href="#van-der-waals-eos-in-reduced-form-z-vs.-reduced-pressure" id="toc-van-der-waals-eos-in-reduced-form-z-vs.-reduced-pressure" class="nav-link active" data-scroll-target="#van-der-waals-eos-in-reduced-form-z-vs.-reduced-pressure"><span class="header-section-number">1</span> van der Waals EOS in Reduced Form: <span class="math inline">\(Z\)</span> vs.&nbsp;Reduced Pressure</a>
+  <ul class="collapse">
+  <li><a href="#helper-functions" id="toc-helper-functions" class="nav-link" data-scroll-target="#helper-functions"><span class="header-section-number">1.1</span> Helper functions</a></li>
+  <li><a href="#generate-z-vs.-p_r-isotherms" id="toc-generate-z-vs.-p_r-isotherms" class="nav-link" data-scroll-target="#generate-z-vs.-p_r-isotherms"><span class="header-section-number">1.2</span> Generate <span class="math inline">\(Z\)</span> vs.&nbsp;<span class="math inline">\(P_r\)</span> isotherms</a></li>
+  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes"><span class="header-section-number">1.3</span> Notes</a></li>
+  </ul></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture28.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="vdw_Z_vs_Pr_isotherms.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class01/lecture01.html">Lectures</a></li><li class="breadcrumb-item"><a href="../class28/lecture28.html">Lecture 28 - Cubic Equations of State and the Principle of Corresponding States</a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title">Lecture 28: Cubic Equations of State and the Principle of Corresponding States</h1>
-<p class="subtitle lead">CBE 20260 / Thermodynamics I</p>
+
+
+
+<section id="van-der-waals-eos-in-reduced-form-z-vs.-reduced-pressure" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> van der Waals EOS in Reduced Form: <span class="math inline">\(Z\)</span> vs.&nbsp;Reduced Pressure</h1>
+<p>This notebook uses the reduced van der Waals equation of state</p>
+<p><span class="math display">\[
+P_r = \frac{8 T_r}{3 V_r - 1} - \frac{3}{V_r^2}
+\]</span></p>
+<p>to compute and plot the compressibility factor <span class="math inline">\(Z\)</span> as a function of reduced pressure <span class="math inline">\(P_r\)</span> for several reduced-temperature isotherms <span class="math inline">\(T_r\)</span>.</p>
+<p>Using <span class="math inline">\(Z = PV/(RT)\)</span> together with the van der Waals critical relation</p>
+<p><span class="math display">\[
+Z = \frac{P V}{R T} = \frac{P_r V_r}{T_r}\left(\frac{P_c V_c}{R T_c}\right)
+= \frac{3}{8}\frac{P_r V_r}{T_r},
+\]</span></p>
+<p>we compute <span class="math inline">\(Z\)</span> once the reduced molar volume <span class="math inline">\(V_r\)</span> is found from the reduced EOS.</p>
+<p>For each pair <span class="math inline">\((P_r, T_r)\)</span>, the notebook solves the cubic equation in <span class="math inline">\(V_r\)</span> and selects the <strong>largest real root</strong> greater than <span class="math inline">\(1/3\)</span>, corresponding to the gas-like branch.</p>
+<div id="e587f1e9" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Make plots a bit larger for presentation</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">"figure.figsize"</span>] <span class="op">=</span> (<span class="dv">9</span>, <span class="dv">6</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">"font.size"</span>] <span class="op">=</span> <span class="dv">12</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-
-
-
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Edward Maginn </p>
-          </div>
-  </div>
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="improving-equations-of-state-the-principle-of-corresponding-states-and-the-acentric-factor" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Improving Equations of State: The Principle of Corresponding States and the Acentric Factor</h1>
-<p>Last class, we discussed the original “cubic” equation of state, the van der Waals equation. While it was a significant improvement over the ideal gas law, it is not sufficiently accurate for modern chemical engineering applications. In this lecture, we will explore how the principle of corresponding states and the introduction of the acentric factor led to the development of more accurate cubic equations of state, such as the Peng-Robinson equation and the Soave-Redlich-Kwong equation.</p>
+<section id="helper-functions" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="helper-functions"><span class="header-section-number">1.1</span> Helper functions</h2>
+<p>Starting from</p>
+<p><span class="math display">\[
+P_r = \frac{8 T_r}{3 V_r - 1} - \frac{3}{V_r^2},
+\]</span></p>
+<p>we rearrange to a cubic polynomial in <span class="math inline">\(V_r\)</span>:</p>
+<p><span class="math display">\[
+3 P_r V_r^3 - (P_r + 8 T_r) V_r^2 + 9 V_r - 3 = 0.
+\]</span></p>
+<p>We solve this cubic numerically and keep the largest physically meaningful real root.</p>
+<div id="c50c6da1" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> vdw_reduced_cubic_coeffs(Pr, Tr):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns coefficients for the cubic in Vr:</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">        3*Pr*Vr^3 - (Pr + 8*Tr)*Vr^2 + 9*Vr - 3 = 0</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [<span class="fl">3.0</span> <span class="op">*</span> Pr, <span class="op">-</span>(Pr <span class="op">+</span> <span class="fl">8.0</span> <span class="op">*</span> Tr), <span class="fl">9.0</span>, <span class="op">-</span><span class="fl">3.0</span>]</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> gas_root_vr(Pr, Tr, tol<span class="op">=</span><span class="fl">1e-10</span>):</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">    Solve the reduced vdW EOS for Vr at a given (Pr, Tr) and return the</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">    largest real root greater than 1/3 (gas-like root).</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    coeffs <span class="op">=</span> vdw_reduced_cubic_coeffs(Pr, Tr)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    roots <span class="op">=</span> np.roots(coeffs)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    real_roots <span class="op">=</span> np.real(roots[np.isclose(np.imag(roots), <span class="fl">0.0</span>, atol<span class="op">=</span>tol)])</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    physical_roots <span class="op">=</span> real_roots[real_roots <span class="op">&gt;</span> (<span class="fl">1.0</span> <span class="op">/</span> <span class="fl">3.0</span> <span class="op">+</span> tol)]</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(physical_roots) <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> np.nan</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.<span class="bu">max</span>(physical_roots)</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compressibility_from_reduced(Pr, Tr, Vr):</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co">    Z = PV/(RT) = (3/8) * (Pr*Vr/Tr) for the reduced vdW EOS.</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (<span class="fl">3.0</span> <span class="op">/</span> <span class="fl">8.0</span>) <span class="op">*</span> (Pr <span class="op">*</span> Vr <span class="op">/</span> Tr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
-<section id="the-principle-of-corresponding-states" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> The Principle of Corresponding States</h1>
-<p>In the late 19th century, a profound observation was made: if thermodynamic properties are scaled by their critical point values, many fluids behave similarly. This is formalized by defining <strong>reduced properties</strong>: <span class="math display">\[T_r = \frac{T}{T_c}, \quad P_r = \frac{P}{P_c}, \quad V_r = \frac{V}{V_c}\]</span></p>
-<p>The <strong>two-parameter theorem of corresponding states</strong> postulates that all fluids at the same reduced temperature and reduced pressure will have the same compressibility factor (<span class="math inline">\(Z\)</span>).</p>
-<p>If the van der Waals equation is rewritten using these reduced variables, the substance-specific parameters <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> completely disappear: <span id="eq-vdwreduced"><span class="math display">\[P_r = \frac{8 T_r}{3 V_r - 1} - \frac{3}{V_r^2} \tag{1}\]</span></span></p>
-<p>This is a universal equation. It implies that argon, methane, and water should all possess identical <span class="math inline">\(Z\)</span> values at identical <span class="math inline">\(T_r\)</span> and <span class="math inline">\(P_r\)</span>. A plot of the predicted compressibility factor for this “universal” van der Waals equation of state as a function of reduced pressure for several reduced temperatures is shown in <a href="#fig-vdw-Zr" class="quarto-xref">Fig.&nbsp;1</a></p>
-<div id="fig-vdw-Zr" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-vdw-Zr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/vdw-Zr.png" class="img-fluid figure-img" style="width:70.0%">
+<section id="generate-z-vs.-p_r-isotherms" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="generate-z-vs.-p_r-isotherms"><span class="header-section-number">1.2</span> Generate <span class="math inline">\(Z\)</span> vs.&nbsp;<span class="math inline">\(P_r\)</span> isotherms</h2>
+<div id="dc006f15" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose reduced temperatures for the isotherms</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>Tr_values <span class="op">=</span> [<span class="fl">1.0</span>, <span class="fl">1.1</span>, <span class="fl">1.3</span>, <span class="fl">1.5</span>, <span class="fl">1.8</span>, <span class="fl">2.0</span>]</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Reduced pressure range</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>Pr_values <span class="op">=</span> np.linspace(<span class="fl">0.02</span>, <span class="fl">8.0</span>, <span class="dv">500</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> {}</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> Tr <span class="kw">in</span> Tr_values:</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    Z_vals <span class="op">=</span> []</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    Vr_vals <span class="op">=</span> []</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> Pr <span class="kw">in</span> Pr_values:</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        Vr <span class="op">=</span> gas_root_vr(Pr, Tr)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        Z <span class="op">=</span> compressibility_from_reduced(Pr, Tr, Vr) <span class="cf">if</span> np.isfinite(Vr) <span class="cf">else</span> np.nan</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        Vr_vals.append(Vr)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        Z_vals.append(Z)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    results[Tr] <span class="op">=</span> {</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Pr"</span>: Pr_values.copy(),</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Vr"</span>: np.array(Vr_vals),</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Z"</span>: np.array(Z_vals),</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    }</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-vdw-Zr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig.&nbsp;1: Compressibility factor <span class="math inline">\(Z\)</span> for the van der Waals equation as a function of reduced pressure and reduced temperature.
-</figcaption>
+<div id="562397d2" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> Tr <span class="kw">in</span> Tr_values:</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    ax.plot(results[Tr][<span class="st">"Pr"</span>], results[Tr][<span class="st">"Z"</span>], label<span class="op">=</span><span class="vs">fr"</span><span class="dv">$</span><span class="vs">T_r = </span><span class="sc">{</span>Tr<span class="sc">}</span><span class="dv">$</span><span class="vs">"</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="vs">r"Reduced pressure, </span><span class="dv">$</span><span class="vs">P_r</span><span class="dv">$</span><span class="vs">"</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r"Compressibility factor, </span><span class="dv">$</span><span class="vs">Z</span><span class="dv">$</span><span class="vs">"</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="vs">r"van der Waals reduced EOS: </span><span class="dv">$</span><span class="vs">Z</span><span class="dv">$</span><span class="vs"> vs</span><span class="dv">.</span><span class="vs"> </span><span class="dv">$</span><span class="vs">P_r</span><span class="dv">$</span><span class="vs">"</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="vdw_Z_vs_Pr_isotherms_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
-<p>Recall how the compressibility factor <span class="math inline">\(Z=P\underline{V}/RT\)</span> quantifies the deviation of a real gas from ideal gas behavior. For an ideal gas, <span class="math inline">\(Z=1\)</span>. For real gases, <span class="math inline">\(Z\)</span> can be greater than or less than 1 depending on the conditions, and that is observed in <a href="#fig-vdw-Zr" class="quarto-xref">Fig.&nbsp;1</a>.</p>
-<p><a href="#fig-ZvsP" class="quarto-xref">Fig.&nbsp;2</a> illustrates the typical behavior of <span class="math inline">\(Z\)</span> as a function of actual pressure and temperature for temperatures both above (<span class="math inline">\(T_3\)</span> and <span class="math inline">\(T_4\)</span>) and below (<span class="math inline">\(T_1\)</span> and <span class="math inline">\(T_2\)</span>) the critical temperature. Similar to <a href="#fig-vdw-Zr" class="quarto-xref">Fig.&nbsp;1</a>, at low pressures (or high temperatures), <span class="math inline">\(Z\)</span> approaches 1, indicating ideal gas behavior. As pressure increases (or temperature decreases), <span class="math inline">\(Z\)</span> deviates from 1, reflecting the influence of intermolecular forces and finite molecular size. At the moderate conditions shown in <a href="#fig-ZvsP" class="quarto-xref">Fig.&nbsp;2</a>, the compressibility factor is less than 1 for gases where attractive forces dominate. For liquids (temperatures below the critical temperature), <span class="math inline">\(Z\)</span> is very much less than 1, consistent with the small molar volume of liquids. At very high pressures, <span class="math inline">\(Z\)</span> can exceed 1, indicating that repulsive forces dominate and the gas is less compressible than an ideal gas. Since this plot is given in terms of temperature and pressure, different fluids will have different plots, unlike the “universal” plot predicted by the van der Waals equation in <a href="#fig-vdw-Zr" class="quarto-xref">Fig.&nbsp;1</a>.</p>
-<div id="fig-ZvsP" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-ZvsP-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/ZvsP.png" class="img-fluid figure-img" style="width:80.0%">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ZvsP-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig.&nbsp;2: Typical behavior for the compressibility factor <span class="math inline">\(Z\)</span> as a function of reduced pressure and reduced temperature.
-</figcaption>
-</figure>
 </div>
-<p>If <a href="#eq-vdwreduced" class="quarto-xref">Eq.&nbsp;1</a> were perfectly accurate, then all fluids would have the same <span class="math inline">\(Z\)</span> at the same <span class="math inline">\(T_r\)</span> and <span class="math inline">\(P_r\)</span>. Is this true? Take a look at the experimental data for <span class="math inline">\(Z\)</span> as a function of <span class="math inline">\(T_r\)</span> and <span class="math inline">\(P_r\)</span> for several fluids in <a href="#fig-Zdata" class="quarto-xref">Fig.&nbsp;3</a>. Note all of these plots are for <span class="math inline">\(T&gt;T_c\)</span> so they are all supercritical fluids and don’t show a vapor-liquid transition. Do all fluids collapse onto a single curve?</p>
-<div id="fig-Zdata" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-Zdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/Zdata.png" class="img-fluid figure-img" style="width:70.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Zdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig.&nbsp;3: Experimental behavior for the compressibility factor <span class="math inline">\(Z\)</span> as a function of reduced pressure and reduced temperature for several fluids
-</figcaption>
-</figure>
-</div>
-<p>The data in <a href="#fig-Zdata" class="quarto-xref">Fig.&nbsp;3</a> clearly shows that many of the fluids do have the same trend in compressibility at the same reduced conditions. If you look closely, however, you will see that the blue curves in <a href="#fig-Zdata" class="quarto-xref">Fig.&nbsp;3</a> are not the same as the curves given by the universal van der Waals equation in <a href="#fig-vdw-Zr" class="quarto-xref">Fig.&nbsp;1</a>; they are fits to the data. Thus the two-parameter corresponding states theory seems to have some merit, but we should not expect <a href="#eq-vdwreduced" class="quarto-xref">Eq.&nbsp;1</a> to be perfectly accurate. Noble gases (like argon) and simple hydrocarbons (like methane) approximately follow the blue curves, but more complex fluids (like water and carbon dioxide) deviate more significantly. If we expanded the data to include even more fluids, we would see even more deviations. This is because the two-parameter corresponding states theory only accounts for the critical temperature and pressure, which are not sufficient to capture the complex intermolecular interactions present in real fluids. For example, water has strong hydrogen bonding, and carbon dioxide has a significant quadrupole moment, both of which lead to deviations from the idealized behavior predicted by the two-parameter corresponding states theory. So we don’t have a “universal” theory of fluids with only two parameters, but we do have a “semi-universal” theory that works reasonably well for many fluids, especially those that are simple and non-polar. To improve the accuracy of the models for more complex fluids, we need to introduce an additional parameter that can capture these deviations from idealized behavior.</p>
 </section>
-<section id="the-acentric-factor" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> The Acentric Factor</h1>
-<p>To correct for the failings of the two-parameter corresponding states theory, Kenneth Pitzer searched for a third parameter that could be easily measured and could help to better correlate the properties of real fluids. In 1955, he published a paper in the <em>Journal of the American Chemical Society</em> where he showed that the logarithm of the reduced vapor pressure curves, when plotted against inverse reduced temperature, were linear. But different molecules had different slopes, as shown in <a href="#fig-pitzer" class="quarto-xref">Fig.&nbsp;4</a>.</p>
-<div id="fig-pitzer" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-pitzer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/pitzer.png" class="img-fluid figure-img" style="width:70.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pitzer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig.&nbsp;4: Figure from Pitzer’s 1955 paper showing the relationship between reduced vapor pressure and inverse reduced temperature.
-</figcaption>
-</figure>
-</div>
-<p>He observed that “ideal” fluids like argon had a certain slope, while more complex fluids like water had a much steeper slope. This led him to define a new parameter, the acentric factor (<span class="math inline">\(\omega\)</span>), which quantifies in a crude sense the “non-sphericity” of a molecule based on its vapor pressure curve. The acentric factor is defined such that <span class="math inline">\(\omega\)</span> is (nearly) zero for a perfectly spherical and non-polar molecule (like argon) and increases as the molecule becomes more complex and non-spherical (like water or octane). To do this, he set the equation for <span class="math inline">\(\omega\)</span> such that it would be zero for argon at a reduced temperature of 0.7, which is a common reference point for vapor pressure data. This leads to the following definition of the acentric factor:</p>
-<p><span id="eq-acentric"><span class="math display">\[\omega = -1.0 - \log_{10}(P_r^{sat}) \quad \text{at } T_r = 0.7 \tag{2}\]</span></span></p>
-<p>The acentric factor thus serves as a measure of how much a real fluid deviates from idealized behavior. It is an empirical parameter that can be obtained easily from experimental vapor pressure data. It can be used to improve the accuracy of equations of state for non-ideal fluids. The table below shows the acentric factors for a few common fluids. Your book has an extensive tabulation, and you can also find acentric factors on the NIST website. Things like hydrogen bonding and quadrupole moments (which are not captured by simple cubic equations of state) lead to higher acentric factors even for fluids that are nearly “spherical”. It is also possible to have negative acentric factors, as in the case of argon (it was not “perfect” at <span class="math inline">\(T_r=0.7\)</span> after all)!</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Gas</th>
-<th style="text-align: left;">Acentric Factor (<span class="math inline">\(\omega\)</span>)</th>
-<th style="text-align: left;">Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Methane</td>
-<td style="text-align: left;">0.011</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Ethane</td>
-<td style="text-align: left;">0.099</td>
-<td style="text-align: left;">Less spherical than methane</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">n-Hexane</td>
-<td style="text-align: left;">0.305</td>
-<td style="text-align: left;">Non-spherical / Chain</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Methanol</td>
-<td style="text-align: left;">0.566</td>
-<td style="text-align: left;">H-bonding</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Carbon Dioxide (CO<span class="math inline">\(_2\)</span>)</td>
-<td style="text-align: left;">0.278</td>
-<td style="text-align: left;">Quadrupole moment</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Water</td>
-<td style="text-align: left;">0.344</td>
-<td style="text-align: left;">strong H-bonding</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Argon</td>
-<td style="text-align: left;">-0.004</td>
-<td style="text-align: left;">“Ideal” (Spherical)</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="modern-equations-of-state-peng-robinson" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Modern Equations of State: Peng-Robinson</h1>
-<p>Because the van der Waals equation is insufficiently accurate for process engineering calculations (particularly regarding liquid properties), chemical engineers developed improved cubic equations of state. They incorporated the acentric factor into their models, and also added a temperature-dependent term. Remarkably, however, these equations still retain the basic form of the van der Waals equation. A prominent model is the <strong>Peng-Robinson</strong> equation of state (1976):</p>
-<p><span id="eq-pengrobinson"><span class="math display">\[P = \frac{RT}{\underline{V} - b} - \frac{a(T,\omega)}{\underline{V}(\underline{V} + b) + b(\underline{V} - b)} \tag{3}\]</span></span></p>
-<p>While it maintains the same repulsive term (<span class="math inline">\(\underline{V}-b\)</span>) as van der Waals, it introduces two major improvements: 1. The denominator term involving <span class="math inline">\(b\)</span> is more complex, vastly improving liquid volume predictions. 2. The parameter <span class="math inline">\(a\)</span> is no longer a constant; it is a function of temperature and is explicitly dependent on the <strong>acentric factor</strong> (<span class="math inline">\(\omega\)</span>).</p>
-<p>Your textbook (Section 7.2.7) provides the full functional form of <span class="math inline">\(a(T,\omega)\)</span>, which is designed to fit experimental vapor pressure data across a wide range of fluids. By incorporating the acentric factor, the Peng-Robinson equation can more accurately model the behavior of non-ideal fluids, particularly those with significant intermolecular interactions.</p>
-</section>
-<section id="soave-redlich-kwong-srk-equation-of-state" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Soave-Redlich-Kwong (SRK) Equation of State</h1>
-<p>Another widely used cubic equation of state is the <strong>Soave-Redlich-Kwong (SRK)</strong> equation, which also incorporates the acentric factor and a temperature-dependent term. The SRK equation is given by:</p>
-<p><span id="eq-srk"><span class="math display">\[P = \frac{RT}{\underline{V} - b} - \frac{a(T,\omega)}{\underline{V}(\underline{V} + b)} \tag{4}\]</span></span></p>
-<p>Like the Peng-Robinson equation, the SRK equation modifies the original van der Waals form to improve accuracy, particularly for vapor-liquid equilibrium calculations. The main difference between the two is in the functional form of the attractive term and how it incorporates the acentric factor. Again, your textbook provides the full functional form of <span class="math inline">\(a(T,\omega)\)</span> for the SRK equation (Section 7.2.7).</p>
-<p>Both the PR and SRK equations are widely used in chemical engineering for process simulation and design, and they represent significant advancements over the original van der Waals equation by providing better predictions for a wide range of fluids, especially those with complex intermolecular interactions. These and similar cubic equations of state were introduced in the 1970s and 1980s and have since become the workhorses of chemical process simulation. They are used to model vapor-liquid equilibrium, calculate thermodynamic properties, and design separation processes like distillation. The combination of the principle of corresponding states (which provides a theoretical framework for understanding fluid behavior) with the empirical acentric factor (which captures deviations from ideality) allows these equations to provide accurate predictions for a wide range of fluids under various conditions.</p>
-</section>
-<section id="other-equations-of-state" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Other Equations of State</h1>
-<p>Finally, we briefly mention the fact that there are <em>many</em> other equations of state that have been developed, including more complex empirical multi-parameter equations of state and equations of state based on statistical mechanics (like the SAFT equation). However, the cubic equations of state remain popular due to their relative simplicity and reasonable accuracy for many engineering applications.</p>
-<p>Here is the functional form of the 8-parameter Benedict-Webb-Rubin (BWR) equation of state, which is a more complex multi-parameter model that can provide even better accuracy for certain fluids: <span id="eq-bwr"><span class="math display">\[P = \frac{RT}{V} + \frac{B_0 RT - A_0 - C_0/T^2}{V^2} + \frac{b RT - a}{V^3} + \frac{\alpha a}{V^6} + \frac{c}{V^3 T^2} \left(1 + \frac{\gamma}{V^2}\right) e^{-\gamma/V^2} \tag{5}\]</span></span></p>
+<section id="notes" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="notes"><span class="header-section-number">1.3</span> Notes</h2>
+<ul>
+<li>Below the critical temperature, the cubic may have three real roots over part of the pressure range.</li>
+<li>This notebook chooses the <strong>largest real root</strong>, which corresponds to the gas-like branch.</li>
+<li>If you want, you can modify the root-selection logic to plot the liquid-like branch or all real roots.</li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
