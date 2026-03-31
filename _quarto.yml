@@ -94,8 +94,8 @@ website:
             text: Lecture 26 - Real Fluids and Residual Properties
           - href: class27/lecture27.qmd
             text: Lecture 27 - Applying Residuals and Intro to Cubic Equations of State
-          #- href: class28/lecture28.qmd
-          #  text: Lecture 28 - Cubic Equations of State and the Principle of Corresponding States  
+          - href: class28/lecture28.qmd
+            text: Lecture 28 - Cubic Equations of State and the Principle of Corresponding States  
   
 
           # Add more lectures here as you create them:
