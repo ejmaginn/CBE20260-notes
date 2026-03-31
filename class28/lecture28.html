@@ -185,7 +185,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Lecture 28: Cubic Equations of State and the Principle of Corresponding States</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class01/lecture01.html">Lectures</a></li><li class="breadcrumb-item"><a href="../class28/lecture28.html">Lecture 28 - Cubic Equations of State and the Principle of Corresponding States</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -370,6 +370,12 @@ window.Quarto = {
  <span class="menu-text">Lecture 27 - Applying Residuals and Intro to Cubic Equations of State</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class28/lecture28.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Lecture 28 - Cubic Equations of State and the Principle of Corresponding States</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -382,16 +388,19 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#the-principle-of-corresponding-states" id="toc-the-principle-of-corresponding-states" class="nav-link active" data-scroll-target="#the-principle-of-corresponding-states"><span class="header-section-number">1</span> The Principle of Corresponding States</a></li>
-  <li><a href="#the-acentric-factor" id="toc-the-acentric-factor" class="nav-link" data-scroll-target="#the-acentric-factor"><span class="header-section-number">2</span> The Acentric Factor</a></li>
-  <li><a href="#modern-equations-of-state-peng-robinson" id="toc-modern-equations-of-state-peng-robinson" class="nav-link" data-scroll-target="#modern-equations-of-state-peng-robinson"><span class="header-section-number">3</span> Modern Equations of State: Peng-Robinson</a></li>
+  <li><a href="#improving-equations-of-state-the-principle-of-corresponding-states-and-the-acentric-factor" id="toc-improving-equations-of-state-the-principle-of-corresponding-states-and-the-acentric-factor" class="nav-link active" data-scroll-target="#improving-equations-of-state-the-principle-of-corresponding-states-and-the-acentric-factor"><span class="header-section-number">1</span> Improving Equations of State: The Principle of Corresponding States and the Acentric Factor</a></li>
+  <li><a href="#the-principle-of-corresponding-states" id="toc-the-principle-of-corresponding-states" class="nav-link" data-scroll-target="#the-principle-of-corresponding-states"><span class="header-section-number">2</span> The Principle of Corresponding States</a></li>
+  <li><a href="#the-acentric-factor" id="toc-the-acentric-factor" class="nav-link" data-scroll-target="#the-acentric-factor"><span class="header-section-number">3</span> The Acentric Factor</a></li>
+  <li><a href="#modern-equations-of-state-peng-robinson" id="toc-modern-equations-of-state-peng-robinson" class="nav-link" data-scroll-target="#modern-equations-of-state-peng-robinson"><span class="header-section-number">4</span> Modern Equations of State: Peng-Robinson</a></li>
+  <li><a href="#soave-redlich-kwong-srk-equation-of-state" id="toc-soave-redlich-kwong-srk-equation-of-state" class="nav-link" data-scroll-target="#soave-redlich-kwong-srk-equation-of-state"><span class="header-section-number">5</span> Soave-Redlich-Kwong (SRK) Equation of State</a></li>
+  <li><a href="#other-equations-of-state" id="toc-other-equations-of-state" class="nav-link" data-scroll-target="#other-equations-of-state"><span class="header-section-number">6</span> Other Equations of State</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture28.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class01/lecture01.html">Lectures</a></li><li class="breadcrumb-item"><a href="../class28/lecture28.html">Lecture 28 - Cubic Equations of State and the Principle of Corresponding States</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Lecture 28: Cubic Equations of State and the Principle of Corresponding States</h1>
 <p class="subtitle lead">CBE 20260 / Thermodynamics I</p>
@@ -417,18 +426,55 @@ window.Quarto = {
 </header>
 
 
-<section id="the-principle-of-corresponding-states" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> The Principle of Corresponding States</h1>
+<section id="improving-equations-of-state-the-principle-of-corresponding-states-and-the-acentric-factor" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Improving Equations of State: The Principle of Corresponding States and the Acentric Factor</h1>
+<p>Last class, we discussed the original “cubic” equation of state, the van der Waals equation. While it was a significant improvement over the ideal gas law, it is not sufficiently accurate for modern chemical engineering applications. In this lecture, we will explore how the principle of corresponding states and the introduction of the acentric factor led to the development of more accurate cubic equations of state, such as the Peng-Robinson equation and the Soave-Redlich-Kwong equation.</p>
+</section>
+<section id="the-principle-of-corresponding-states" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> The Principle of Corresponding States</h1>
 <p>In the late 19th century, a profound observation was made: if thermodynamic properties are scaled by their critical point values, many fluids behave similarly. This is formalized by defining <strong>reduced properties</strong>: <span class="math display">\[T_r = \frac{T}{T_c}, \quad P_r = \frac{P}{P_c}, \quad V_r = \frac{V}{V_c}\]</span></p>
 <p>The <strong>two-parameter theorem of corresponding states</strong> postulates that all fluids at the same reduced temperature and reduced pressure will have the same compressibility factor (<span class="math inline">\(Z\)</span>).</p>
-<p>If the van der Waals equation is rewritten using these reduced variables, the substance-specific parameters <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> completely disappear: <span class="math display">\[P_r = \frac{8 T_r}{3 V_r - 1} - \frac{3}{V_r^2}\]</span></p>
-<p>This is a universal equation. It implies that argon, methane, and water should all possess identical <span class="math inline">\(Z\)</span> values at identical <span class="math inline">\(T_r\)</span> and <span class="math inline">\(P_r\)</span>.</p>
+<p>If the van der Waals equation is rewritten using these reduced variables, the substance-specific parameters <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> completely disappear: <span id="eq-vdwreduced"><span class="math display">\[P_r = \frac{8 T_r}{3 V_r - 1} - \frac{3}{V_r^2} \tag{1}\]</span></span></p>
+<p>This is a universal equation. It implies that argon, methane, and water should all possess identical <span class="math inline">\(Z\)</span> values at identical <span class="math inline">\(T_r\)</span> and <span class="math inline">\(P_r\)</span>. Recall how the compressibility factor <span class="math inline">\(Z=P\underline{V}/RT\)</span> quantifies the deviation of a real gas from ideal gas behavior. For an ideal gas, <span class="math inline">\(Z=1\)</span>. For real gases, <span class="math inline">\(Z\)</span> can be greater than or less than 1 depending on the conditions. <a href="#fig-ZvsP" class="quarto-xref">Fig.&nbsp;1</a> illustrates the typical behavior of <span class="math inline">\(Z\)</span> as a function of reduced pressure and reduced temperature. At low pressures (or high temperatures), <span class="math inline">\(Z\)</span> approaches 1, indicating ideal gas behavior. As pressure increases (or temperature decreases), <span class="math inline">\(Z\)</span> deviates from 1, reflecting the influence of intermolecular forces and finite molecular size. At the moderate conditions shown in <a href="#fig-ZvsP" class="quarto-xref">Fig.&nbsp;1</a>, the compressibility factor is less than 1 for gases where attractive forces dominate. For liquids, it is very much less than 1, consistent with the small molar volume of liquids. At very high pressures, <span class="math inline">\(Z\)</span> can exceed 1, indicating that repulsive forces dominate and the gas is less compressible than an ideal gas.</p>
+<div id="fig-ZvsP" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ZvsP-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ZvsP.png" class="img-fluid figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ZvsP-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;1: Typical behavior for the compressibility factor <span class="math inline">\(Z\)</span> as a function of reduced pressure and reduced temperature.
+</figcaption>
+</figure>
+</div>
+<p>If <a href="#eq-vdwreduced" class="quarto-xref">Eq.&nbsp;1</a> were perfectly accurate, then all fluids would have the same <span class="math inline">\(Z\)</span> at the same <span class="math inline">\(T_r\)</span> and <span class="math inline">\(P_r\)</span>. Is this true? Take a look at the experimental data for <span class="math inline">\(Z\)</span> as a function of <span class="math inline">\(T_r\)</span> and <span class="math inline">\(P_r\)</span> for several fluids in <a href="#fig-Zdata" class="quarto-xref">Fig.&nbsp;2</a>. Note all of these plots are for <span class="math inline">\(T&gt;T_c\)</span> so they are all supercritical fluids and don’t show a vapor-liquid transition. Do all fluids collapse onto a single curve?</p>
+<div id="fig-Zdata" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Zdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/Zdata.png" class="img-fluid figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Zdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;2: Experimental behavior for the compressibility factor <span class="math inline">\(Z\)</span> as a function of reduced pressure and reduced temperature for several fluids
+</figcaption>
+</figure>
+</div>
+<p>The data in <a href="#fig-Zdata" class="quarto-xref">Fig.&nbsp;2</a> clearly shows that many of the fluids do have the same trend in compressibility at the same reduced conditions. Thus the 2-parameter corresponding states theory provides a reasonable approximation for simple fluids. Noble gases (like argon) and simple hydrocarbons (like methane) approximately follow the same trend, but more complex fluids (like water and carbon dioxide) deviate significantly. If we expanded the data to include even more fluids, we would see even more deviations. This is because the two-parameter corresponding states theory only accounts for the critical temperature and pressure, which are not sufficient to capture the complex intermolecular interactions present in real fluids. For example, water has strong hydrogen bonding, and carbon dioxide has a significant quadrupole moment, both of which lead to deviations from the idealized behavior predicted by the two-parameter corresponding states theory.</p>
 </section>
-<section id="the-acentric-factor" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> The Acentric Factor</h1>
-<p>While the two-parameter corresponding states theory works exceptionally well for simple, spherical molecules (like noble gases), it fails for larger, non-spherical, or polar molecules.</p>
-<p>To correct this, Kenneth Pitzer introduced a third parameter known as the <strong>acentric factor</strong> (<span class="math inline">\(\omega\)</span>). The acentric factor can be thought of as quantifying the non-sphericity of a molecule based on its vapor pressure curve. <span class="math display">\[\omega = -1.0 - \log_{10}(P_r^{sat}) \quad \text{at } T_r = 0.7\]</span></p>
-<p>For perfectly spherical molecules like argon, it was observed that <span class="math inline">\(\omega \approx 0\)</span>. For larger, more complex molecules like decane, <span class="math inline">\(\omega &gt; 0\)</span>. The acentric factor thus serves as a measure of how much a real fluid deviates from idealized spherical behavior. It is an empirical parameter that can be obtained from experimental vapor pressure data, and it is used to improve the accuracy of equations of state for non-ideal fluids. The table below shows the acentric factors for a few common fluids. Things like hydrogen bonding and quadrupole moments (which are not captured by simple cubic equations of state) lead to higher acentric factors even for fluids that are nearly “spherical”. It is also possible to have negative accentric factors, as in the case of argon.</p>
+<section id="the-acentric-factor" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> The Acentric Factor</h1>
+<p>To correct for the failings of the 2-parameter corresponding states theory, Kenneth Pitzer searched for a third parameter that could be easily measured and could help to better correlate the properties of real fluids. In 1955, he published a paper in the <em>Journal of the American Chemical Society</em> where he showed that the logarithm of the reduced vapor pressure curves, when plotted against inverse reduced temperature, were linear. But different molecules had different slopes, as shown in <a href="#fig-pitzer" class="quarto-xref">Fig.&nbsp;3</a>.</p>
+<div id="fig-pitzer" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pitzer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/pitzer.png" class="img-fluid figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pitzer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;3: Figure from Pitzer’s 1955 paper showing the relationship between reduced vapor pressure and inverse reduced temperature.
+</figcaption>
+</figure>
+</div>
+<p>He observed that “ideal” fluids like argon had a certain slope, while more complex fluids like water had a much steeper slope. This led him to define a new parameter, the acentric factor (<span class="math inline">\(\omega\)</span>), which quantifies in a crude sense the “non-sphericity” of a molecule based on its vapor pressure curve. The acentric factor is defined such that <span class="math inline">\(\omega\)</span> is (nearly) zero for a perfectly spherical molecule (like argon) and increases as the molecule becomes more complex and non-spherical (like water or octane). To do this, he set the equation for <span class="math inline">\(\omega\)</span> such that it would be zero for argon at a reduced temperature of 0.7, which is a common reference point for vapor pressure data. This leads to the following definition of the acentric factor:</p>
+<p><span id="eq-acentric"><span class="math display">\[\omega = -1.0 - \log_{10}(P_r^{sat}) \quad \text{at } T_r = 0.7 \tag{2}\]</span></span></p>
+<p>The acentric factor thus serves as a measure of how much a real fluid deviates from idealized behavior. It is an empirical parameter that can be obtained easily from experimental vapor pressure data, and it is a third experimentally derived parameter that can be used to improve the accuracy of equations of state for non-ideal fluids. The table below shows the acentric factors for a few common fluids. Your book has an extensive tabulation, and you can also find them on the NIST website. Things like hydrogen bonding and quadrupole moments (which are not captured by simple cubic equations of state) lead to higher acentric factors even for fluids that are nearly “spherical”. It is also possible to have negative acentric factors, as in the case of argon (it was not “perfect” at <span class="math inline">\(T_r=0.7\)</span> after all)!</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -476,12 +522,24 @@ window.Quarto = {
 </tbody>
 </table>
 </section>
-<section id="modern-equations-of-state-peng-robinson" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Modern Equations of State: Peng-Robinson</h1>
-<p>Because the van der Waals equation is insufficiently accurate for modern industrial design (particularly regarding liquid densities), chemical engineers developed improved cubic equations of state. The most prominent is the <strong>Peng-Robinson</strong> equation of state (1976):</p>
-<p><span class="math display">\[P = \frac{RT}{V - b} - \frac{a(T)}{V(V + b) + b(V - b)}\]</span></p>
-<p>While it maintains the same repulsive term (<span class="math inline">\(V-b\)</span>) as van der Waals, it introduces two major improvements: 1. The attractive term denominator is more complex, vastly improving liquid volume predictions. 2. The parameter <span class="math inline">\(a\)</span> is no longer a constant; it is a function of temperature <span class="math inline">\(a(T)\)</span> and is explicitly dependent on the <strong>acentric factor</strong> (<span class="math inline">\(\omega\)</span>).</p>
-<p>This combination of the corresponding states framework with a cubic structure forms the foundation of modern chemical process simulation software (such as Aspen Plus).</p>
+<section id="modern-equations-of-state-peng-robinson" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Modern Equations of State: Peng-Robinson</h1>
+<p>Because the van der Waals equation is insufficiently accurate for modern industrial design (particularly regarding liquid densities), chemical engineers developed improved cubic equations of state. They incorporated the acentric factor into their models, and also added a temperature-dependent term. A prominent model is the <strong>Peng-Robinson</strong> equation of state (1976):</p>
+<p><span id="eq-pengrobinson"><span class="math display">\[P = \frac{RT}{V - b} - \frac{a(T,\omega)}{V(V + b) + b(V - b)} \tag{3}\]</span></span></p>
+<p>While it maintains the same repulsive term (<span class="math inline">\(V-b\)</span>) as van der Waals, it introduces two major improvements: 1. The denominator term involving <span class="math inline">\(b\)</span> is more complex, vastly improving liquid volume predictions. 2. The parameter <span class="math inline">\(a\)</span> is no longer a constant; it is a function of temperature <span class="math inline">\(a(T)\)</span> and is explicitly dependent on the <strong>acentric factor</strong> (<span class="math inline">\(\omega\)</span>).</p>
+<p>Your textbook provides the full functional form of <span class="math inline">\(a(T,\omega)\)</span>, which is designed to fit experimental vapor pressure data across a wide range of fluids. By incorporating the acentric factor, the Peng-Robinson equation can more accurately model the behavior of non-ideal fluids, particularly those with significant intermolecular interactions.</p>
+</section>
+<section id="soave-redlich-kwong-srk-equation-of-state" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Soave-Redlich-Kwong (SRK) Equation of State</h1>
+<p>Another widely used cubic equation of state is the <strong>Soave-Redlich-Kwong (SRK)</strong> equation, which also incorporates the acentric factor and a temperature-dependent term. The SRK equation is given by:</p>
+<p><span id="eq-srk"><span class="math display">\[P = \frac{RT}{V - b} - \frac{a(T,\omega)}{V(V + b)} \tag{4}\]</span></span></p>
+<p>Like the Peng-Robinson equation, the SRK equation modifies the original van der Waals form to improve accuracy, particularly for vapor-liquid equilibrium calculations. The main difference between the two is in the functional form of the attractive term and how it incorporates the acentric factor. Both equations are widely used in chemical engineering for process simulation and design, and they represent significant advancements over the original van der Waals equation by providing better predictions for a wide range of fluids, especially those with complex intermolecular interactions. Again, your textbook provides the full functional form of <span class="math inline">\(a(T,\omega)\)</span> for the SRK equation.</p>
+<p>These and similar cubic equations of state were introduced in the 1970s and 1980s and have since become the workhorses of chemical process simulation. They are used to model vapor-liquid equilibrium, calculate thermodynamic properties, and design separation processes like distillation. The combination of the principle of corresponding states (which provides a theoretical framework for understanding fluid behavior) with the empirical acentric factor (which captures deviations from ideality) allows these equations to provide accurate predictions for a wide range of fluids under various conditions.</p>
+</section>
+<section id="other-equations-of-state" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Other Equations of State</h1>
+<p>Finally, we briefly mention the fact that there are <em>many</em> other equations of state that have been developed, including more complex multi-parameter equations of state (like the Benedict-Webb-Rubin equation) and equations of state based on statistical mechanics (like the SAFT equation). However, the cubic equations of state remain popular due to their relative simplicity and reasonable accuracy for many engineering applications.</p>
+<p>Here is the functional form of the 8-parameter Benedict-Webb-Rubin (BWR) equation of state, which is a more complex multi-parameter model that can provide even better accuracy for certain fluids: <span id="eq-bwr"><span class="math display">\[P = \frac{RT}{V} + \frac{B_0 RT - A_0 - C_0/T^2}{V^2} + \frac{b RT - a}{V^3} + \frac{\alpha a}{V^6} + \frac{c}{V^3 T^2} \left(1 + \frac{\gamma}{V^2}\right) e^{-\gamma/V^2} \tag{5}\]</span></span></p>
 
 
 </section>
