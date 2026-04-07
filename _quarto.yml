@@ -31,6 +31,8 @@ website:
             text: L27 van der Waals Solver Demo  
           - href: class27/residual-VDW.ipynb
             text: L27 van der Waals Residuals Demo  
+          - href: class29/PR-SRK-solvers.ipynb
+            text: L29 PR-SRK Solvers Demo  
            
           # Add more notebooks here as you create them:  
           #- href: class03/lecture03_example.ipynb
@@ -96,6 +98,8 @@ website:
             text: Lecture 27 - Applying Residuals and Intro to Cubic Equations of State
           - href: class28/lecture28.qmd
             text: Lecture 28 - Cubic Equations of State and the Principle of Corresponding States  
+          - href: class29/lecture29.qmd
+            text: Lecture 29 - Modern Cubic Equations of State  
   
 
           # Add more lectures here as you create them:

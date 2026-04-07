@@ -1,0 +1,154 @@
+---
+title: "Lecture 29: Modern Cubic Equations of State"
+subtitle: "CBE 20260 / Thermodynamics I"
+author: "Edward Maginn"
+format:
+  html:
+    toc: true
+    number-sections: true
+  pdf:
+    toc: true
+    number-sections: true
+execute:
+  echo: false
+---
+
+# Introduction to Modern Cubic Equations of State
+
+In previous lectures, we explored the van der Waals (VDW) equation of state. While historically significant, it is rarely used in modern engineering because it poorly predicts liquid-phase densities and phase equilibrium. In the last lecture, we briefly introduced the form of two more "modern" cubic equations of state: the **Soave-Redlich-Kwong (SRK)** and **Peng-Robinson (PR)** models. Tto improve accuracy, these and other modern cubic equations of state incorporate the **acentric factor** ($\omega$) and make the attractive parameter $a$ dependent on temperature. In this lecture, we will delve into the details of these equations and see how they can be used to solve engineering problems.
+
+## The Soave-Redlich-Kwong (SRK) Equation
+
+The Soave–Redlich–Kwong (SRK) equation of state is written as
+
+$$
+P = \frac{RT}{V - b} - \frac{a_c \, \alpha(T)}{V(V + b)}
+$$ {#eq-srk}
+
+where
+$$
+\alpha(T) = \left[1 + m\left(1 - \sqrt{T_r}\right)\right]^2
+$$
+
+and the reduced temperature is
+
+$$
+T_r = \frac{T}{T_c}
+$$
+
+The parameter $m$ depends on the acentric factor $\omega$ as follows:
+
+$$
+m = 0.480 + 1.574 \, \omega - 0.176 \, \omega^2
+$$
+
+The critical-parameter-based constants are given by
+
+$$
+a_c = 0.42747 \frac{R^2 T_c^2}{P_c}
+\qquad
+b = 0.08664 \frac{R T_c}{P_c}
+$$
+
+
+
+## The Peng-Robinson (PR) Equation
+The Peng–Robinson (PR) equation of state is written as
+
+$$
+P = \frac{RT}{V - b} - \frac{a_c \, \alpha(T)}{V(V + b) + b(V - b)}
+$$ {#eq-pr}
+
+where
+
+$$
+\alpha(T) = \left[1 + \kappa \left(1 - \sqrt{T_r}\right)\right]^2
+$$
+
+and the reduced temperature is
+
+$$
+T_r = \frac{T}{T_c}
+$$
+
+The parameter $\kappa$ depends on the acentric factor $\omega$ as follows:
+
+$$
+\kappa = 0.37464 + 1.54226 \, \omega - 0.26992 \, \omega^2
+$$
+
+The critical-parameter-based constants are given by
+
+$$
+a_c = 0.45724 \frac{R^2 T_c^2}{P_c}
+\qquad
+b = 0.07780 \frac{R T_c}{P_c}
+$$
+
+
+Just like the VDW equation, these equations can be integrated to find analytical expressions for residual properties ($H^R, U^R, S^R$). Because the algebra is tedious, we rely on process simulators (or the Python notebook provided below) to compute these values.
+
+---
+
+::: {.callout-tip icon=false}
+## Jupyter Notebook Example - Cubic EOS Solver
+I have prepared an interactive Jupyter Notebook that solves the Soave-Redlich-Kwong and Peng-Robinson equations of state. The user selects the fluid, temperature, and pressure, and the notebook solves for the volume roots and residual properties, plotting the roots on a PV diagram.
+
+::: {.content-visible when-format="html"}
+
+[**View Interactive Notebook (.ipynb)**](PR-SRK-solvers.ipynb)
+
+[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ejmaginn/CBE20260-notes/blob/main/class29/PR-SRK-solvers.ipynb)
+
+:::
+
+::: {.content-visible when-format="pdf"}
+*Note: This example is available as an interactive Jupyter Notebook on the course website.*
+:::
+:::
+
+---
+
+# Example: Steady-Flow Compressor Analysis
+
+**Problem Statement:**
+Methane ($\omega = 0.011, T_c = 190.6 \text{ K}, P_c = 46.0 \text{ bar}$) is compressed in a steady-state, adiabatic compressor from State 1 ($T_1 = 300 \text{ K}, P_1 = 10 \text{ bar}$) to State 2 ($T_2 = 450 \text{ K}, P_2 = 50 \text{ bar}$). 
+
+Calculate the actual work required per mole of methane ($\Delta \underline{H}$) and the entropy change ($\Delta \underline{S}$). Assume the ideal gas heat capacity is roughly constant at $C_P^{IG} = 35.3 \text{ J/(mol K)}$.
+
+## 1. Ideal Gas Assumption
+First, let's calculate the changes assuming methane behaves as an ideal gas.
+$$W^{IG}_s = \Delta \underline{H}^{IG} = \int_{T_1}^{T_2} C_P^{IG} dT = 35.3 (450 - 300) = 5,295 \text{ J/mol}$$
+
+$$\Delta \underline{S}^{IG} = \int_{T_1}^{T_2} \frac{C_P^{IG}}{T} dT - R \ln\left(\frac{P_2}{P_1}\right)$$
+$$\Delta \underline{S}^{IG} = 35.3 \ln\left(\frac{450}{300}\right) - 8.314 \ln\left(\frac{50}{10}\right) = 14.31 - 13.38 = 0.93 \text{ J/(mol K)}$$
+
+## 2. Real Gas: Peng-Robinson (Via Python Solver)
+We can use our Jupyter Notebook to find the residual properties at both states using the Peng-Robinson EOS.
+
+**State 1 (300 K, 10 bar):**
+
+* $H^R_1 = -180.1 \text{ J/mol}$
+
+* $S^R_1 = -0.421 \text{ J/(mol K)}$
+
+**State 2 (450 K, 50 bar):**
+
+* $H^R_2 = -415.4 \text{ J/mol}$
+
+* $S^R_2 = -0.779 \text{ J/(mol K)}$
+
+Now, apply the fundamental residual property equations:
+$$W_s = \Delta \underline{H} = H^R_2 - H^R_1 + \Delta \underline{H}^{IG} = -415.4 - (-180.1) + 5295 = 5,060 \text{ J/mol}$$
+$$\Delta \underline{S} = S^R_2 - S^R_1 + \Delta \underline{S}^{IG} = -0.779 - (-0.421) + 0.93 = 0.57 \text{ J/(mol K)}$$
+
+*Notice that the real work required (5.06 kJ/mol) is lower than the ideal gas prediction (5.30 kJ/mol). Intermolecular attractive forces help "pull" the molecules closer together, doing some of the compression work for us! Similarly, the entropy change is less than for the ideal gas case. This is because the volume of the gas in the final state is less than what is predicted by the ideal gas law. Since we assumed an adiabatic operation, the entropy change of the gas is $S_{gen}$. Since it is greater than zero, we know this process is allowed thermodynamically.*
+
+## 3. Real Gas: "Actual" CoolProp Data
+If we look up the "experimental" thermodynamic data for methane using CoolProp or the NIST Webbook, we find the following values::
+
+* $W_s^{true}=\Delta \underline{H}^{true} \approx 5,050 \text{ J/mol}$
+
+* $\Delta \underline{S}^{true} \approx 0.58 \text{ J/(mol K)}$
+
+**Conclusion:** The Peng-Robinson equation gives a highly accurate prediction compared to the ideal gas law (and very close to the true experimental values!), and it achieves this using only the critical temperature, critical pressure, and acentric factor of the fluid. The PR EOS is widely uses for hydrocarbons and other non-polar fluids. You might try to repeat the calculation for using the Soave-Redlich-Kwong EOS and see how the results compare!
