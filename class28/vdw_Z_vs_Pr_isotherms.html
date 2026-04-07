@@ -206,6 +206,10 @@ window.Quarto = {
     <a class="dropdown-item" href="../class27/residual-VDW.html">
  <span class="dropdown-text">L27 van der Waals Residuals Demo</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../class29/PR-SRK-solvers.html">
+ <span class="dropdown-text">L29 PR-SRK Solvers Demo</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -410,6 +414,12 @@ window.Quarto = {
  <span class="menu-text">Lecture 28 - Cubic Equations of State and the Principle of Corresponding States</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class29/lecture29.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 29 - Modern Cubic Equations of State</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -451,7 +461,7 @@ Z = \frac{P V}{R T} = \frac{P_r V_r}{T_r}\left(\frac{P_c V_c}{R T_c}\right)
 \]</span></p>
 <p>we compute <span class="math inline">\(Z\)</span> once the reduced molar volume <span class="math inline">\(V_r\)</span> is found from the reduced EOS.</p>
 <p>For each pair <span class="math inline">\((P_r, T_r)\)</span>, the notebook solves the cubic equation in <span class="math inline">\(V_r\)</span> and selects the <strong>largest real root</strong> greater than <span class="math inline">\(1/3\)</span>, corresponding to the gas-like branch.</p>
-<div id="e587f1e9" class="cell" data-execution_count="1">
+<div id="e587f1e9" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -471,7 +481,7 @@ P_r = \frac{8 T_r}{3 V_r - 1} - \frac{3}{V_r^2},
 3 P_r V_r^3 - (P_r + 8 T_r) V_r^2 + 9 V_r - 3 = 0.
 \]</span></p>
 <p>We solve this cubic numerically and keep the largest physically meaningful real root.</p>
-<div id="c50c6da1" class="cell" data-execution_count="2">
+<div id="c50c6da1" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> vdw_reduced_cubic_coeffs(Pr, Tr):</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
@@ -507,7 +517,7 @@ P_r = \frac{8 T_r}{3 V_r - 1} - \frac{3}{V_r^2},
 </section>
 <section id="generate-z-vs.-p_r-isotherms" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="generate-z-vs.-p_r-isotherms"><span class="header-section-number">1.2</span> Generate <span class="math inline">\(Z\)</span> vs.&nbsp;<span class="math inline">\(P_r\)</span> isotherms</h2>
-<div id="dc006f15" class="cell">
+<div id="dc006f15" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose reduced temperatures for the isotherms</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>Tr_values <span class="op">=</span> [<span class="fl">1.0</span>, <span class="fl">1.1</span>, <span class="fl">1.3</span>, <span class="fl">1.5</span>, <span class="fl">1.8</span>, <span class="fl">2.0</span>]</span>
@@ -531,7 +541,7 @@ P_r = \frac{8 T_r}{3 V_r - 1} - \frac{3}{V_r^2},
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Z"</span>: np.array(Z_vals),</span>
 <span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    }</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="562397d2" class="cell" data-execution_count="4">
+<div id="562397d2" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
