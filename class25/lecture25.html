@@ -386,6 +386,12 @@ window.Quarto = {
  <span class="menu-text">Lecture 29 - Modern Cubic Equations of State</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class30/lecture30.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 30 - Generalized Correlations and the Critical Point</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -446,7 +452,7 @@ window.Quarto = {
 <section id="calculating-enthalpy-and-internal-energy" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Calculating Enthalpy and Internal Energy</h1>
 <p>Now let’s find the general equation for Enthalpy using <span class="math inline">\(T\)</span> and <span class="math inline">\(P\)</span>: <span class="math display">\[dH = \left( \frac{\partial H}{\partial T} \right)_P dT + \left( \frac{\partial H}{\partial P} \right)_T dP\]</span></p>
-<p>We already know the first term is <span class="math inline">\(C_p\)</span>. For the second term, we use the fundamental equation <span class="math inline">\(dH = T dS + V dP\)</span>. Dividing by <span class="math inline">\(dP\)</span> at constant <span class="math inline">\(T\)</span>: <span class="math display">\[\left( \frac{\partial H}{\partial P} \right)_T = T \left( \frac{\partial S}{\partial P} \right)_T + V\]</span> Substitute the Maxwell relation <strong>?@eq-maxwell-G</strong> <span class="math inline">\(\left( \frac{\partial S}{\partial P} \right)_T = -\left( \frac{\partial V}{\partial T} \right)_P\)</span>: <span class="math display">\[\left( \frac{\partial H}{\partial P} \right)_T = V - T \left( \frac{\partial V}{\partial T} \right)_P\]</span></p>
+<p>We already know the first term is <span class="math inline">\(C_p\)</span>. For the second term, we use the fundamental equation <span class="math inline">\(dH = T dS + V dP\)</span>. Dividing by <span class="math inline">\(dP\)</span> at constant <span class="math inline">\(T\)</span>: <span class="math display">\[\left( \frac{\partial H}{\partial P} \right)_T = T \left( \frac{\partial S}{\partial P} \right)_T + V\]</span> Substitute the Maxwell relation <span class="math inline">\(\left( \frac{\partial S}{\partial P} \right)_T = -\left( \frac{\partial V}{\partial T} \right)_P\)</span>: <span class="math display">\[\left( \frac{\partial H}{\partial P} \right)_T = V - T \left( \frac{\partial V}{\partial T} \right)_P\]</span></p>
 <p>So the exact, general equation for enthalpy is: <span id="eq-dH-TP"><span class="math display">\[dH = C_p dT + \left[ V - T \left( \frac{\partial V}{\partial T} \right)_P \right] dP \tag{1}\]</span></span></p>
 <section id="sanity-check-the-ideal-gas" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="sanity-check-the-ideal-gas"><span class="header-section-number">2.1</span> Sanity Check: The Ideal Gas</h2>
