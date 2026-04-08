@@ -27,7 +27,7 @@ $$dH = \left( \frac{\partial H}{\partial T} \right)_P dT + \left( \frac{\partial
 
 We already know the first term is $C_p$. For the second term, we use the fundamental equation $dH = T dS + V dP$. Dividing by $dP$ at constant $T$:
 $$\left( \frac{\partial H}{\partial P} \right)_T = T \left( \frac{\partial S}{\partial P} \right)_T + V$$
-Substitute the Maxwell relation @eq-maxwell-G $\left( \frac{\partial S}{\partial P} \right)_T = -\left( \frac{\partial V}{\partial T} \right)_P$:
+Substitute the Maxwell relation $\left( \frac{\partial S}{\partial P} \right)_T = -\left( \frac{\partial V}{\partial T} \right)_P$:
 $$\left( \frac{\partial H}{\partial P} \right)_T = V - T \left( \frac{\partial V}{\partial T} \right)_P$$
 
 So the exact, general equation for enthalpy is:
