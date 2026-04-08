@@ -411,6 +411,13 @@ window.Quarto = {
   <li><a href="#final-calculation-and-comparison" id="toc-final-calculation-and-comparison" class="nav-link" data-scroll-target="#final-calculation-and-comparison"><span class="header-section-number">2.2</span> Final Calculation and Comparison</a></li>
   </ul></li>
   <li><a href="#beyond-equations-the-critical-point" id="toc-beyond-equations-the-critical-point" class="nav-link" data-scroll-target="#beyond-equations-the-critical-point"><span class="header-section-number">3</span> Beyond Equations: The Critical Point</a></li>
+  <li><a href="#how-coolprop-and-nist-actually-works-multiparameter-equations-of-state" id="toc-how-coolprop-and-nist-actually-works-multiparameter-equations-of-state" class="nav-link" data-scroll-target="#how-coolprop-and-nist-actually-works-multiparameter-equations-of-state"><span class="header-section-number">4</span> How CoolProp and NIST Actually Works: Multiparameter Equations of State</a>
+  <ul class="collapse">
+  <li><a href="#the-brute-force-of-empirical-fitting" id="toc-the-brute-force-of-empirical-fitting" class="nav-link" data-scroll-target="#the-brute-force-of-empirical-fitting"><span class="header-section-number">4.1</span> The Brute Force of Empirical Fitting</a></li>
+  <li><a href="#deriving-properties-from-the-helmholtz-surface" id="toc-deriving-properties-from-the-helmholtz-surface" class="nav-link" data-scroll-target="#deriving-properties-from-the-helmholtz-surface"><span class="header-section-number">4.2</span> Deriving Properties from the Helmholtz Surface</a></li>
+  <li><a href="#the-computational-cost" id="toc-the-computational-cost" class="nav-link" data-scroll-target="#the-computational-cost"><span class="header-section-number">4.3</span> The Computational Cost</a></li>
+  <li><a href="#the-takeaway" id="toc-the-takeaway" class="nav-link" data-scroll-target="#the-takeaway"><span class="header-section-number">4.4</span> The Takeaway</a></li>
+  </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture30.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
@@ -583,8 +590,42 @@ Fig.&nbsp;6: Reduced entropy departure <span class="math inline">\(\frac{\underl
 </ol>
 <p>As we approach the critical temperature (<span class="math inline">\(T_c\)</span>), the density of the heavy liquid and the density of the dense gas converge. Exactly at the critical point, the densities become identical. The meniscus (the physical boundary separating the liquid and gas phases) entirely vanishes. The fluid becomes a single, homogenous phase known as a <strong>supercritical fluid</strong>.</p>
 <p><em>In class, we will watch a video demonstration of this phase transition occurring in a high-pressure viewing cell.</em></p>
+<hr>
+</section>
+<section id="how-coolprop-and-nist-actually-works-multiparameter-equations-of-state" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> How CoolProp and NIST Actually Works: Multiparameter Equations of State</h1>
+<p>Throughout this course, we have used the <strong>CoolProp</strong> and <strong>NIST</strong> libraries to provide “true” experimental values to check against ideal gas and cubic equation of state calculations. But you might be wondering: <em>what equation of state is CoolProp and NIST actually using?</em></p>
+<p>It is important to realize that these and related databases do not use a single, generalized cubic equation like Peng-Robinson for all fluids. Instead, for their high-accuracy reference fluids, they use <strong>Multiparameter Helmholtz Energy Equations of State</strong>.</p>
+<p>Rather than calculating pressure as a simple algebraic function of volume and temperature <span class="math inline">\(P(V,T)\)</span>, these equations are built on a fundamental thermodynamic potential: the dimensionless Helmholtz energy (<span class="math inline">\(\alpha\)</span>). The state variables are chosen to be the inverse reduced temperature (<span class="math inline">\(\tau = T_c / T\)</span>) and reduced density (<span class="math inline">\(\delta = \rho / \rho_c\)</span>): <span class="math display">\[\frac{A}{RT} = \alpha(\tau, \delta) = \alpha^0(\tau, \delta) + \alpha^r(\tau, \delta)\]</span></p>
+<p>Here, <span class="math inline">\(\alpha^0\)</span> represents the ideal gas contribution, and <span class="math inline">\(\alpha^r\)</span> is the residual contribution due to intermolecular forces.</p>
+<section id="the-brute-force-of-empirical-fitting" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="the-brute-force-of-empirical-fitting"><span class="header-section-number">4.1</span> The Brute Force of Empirical Fitting</h2>
+<p>The residual term <span class="math inline">\(\alpha^r\)</span> in these equations is not derived from simple molecular theory or corresponding states. Instead, researchers gather thousands of highly accurate experimental data points (density, heat capacity, speed of sound, phase boundaries, etc.) for a specific fluid and fit a massive, multi-term mathematical surface to that data.</p>
+<p>A typical formulation for <span class="math inline">\(\alpha^r\)</span> (such as the famous Span-Wagner equation for non-polar fluids) contains anywhere from 12 to over 50 terms, combining polynomials, exponentials, and Gaussian functions: <span class="math display">\[\alpha^r = \sum_{i=1}^{k} n_i \delta^{d_i} \tau^{t_i} + \sum_{i=k+1}^{m} n_i \delta^{d_i} \tau^{t_i} \exp(-\delta^{c_i}) + \sum_{i=m+1}^{p} n_i \delta^{d_i} \tau^{t_i} \exp\left(-\eta_i(\delta-\epsilon_i)^2 - \beta_i(\tau-\gamma_i)^2\right)\]</span></p>
+<p>Every single fluid in the database has its own unique, published table of empirical coefficients (<span class="math inline">\(n_i\)</span>, <span class="math inline">\(d_i\)</span>, <span class="math inline">\(t_i\)</span>, <span class="math inline">\(c_i\)</span>, <span class="math inline">\(\eta_i\)</span>, etc.).</p>
+</section>
+<section id="deriving-properties-from-the-helmholtz-surface" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="deriving-properties-from-the-helmholtz-surface"><span class="header-section-number">4.2</span> Deriving Properties from the Helmholtz Surface</h2>
+<p>Why use the Helmholtz energy? Because it is a fundamental property whose natural variables are temperature and volume (or density). From the fundamental property relation <span class="math inline">\(dA = -S dT - P dV\)</span>, <strong>every other thermodynamic property</strong> can be computed simply by taking exact partial derivatives of the <span class="math inline">\(\alpha^r\)</span> surface.</p>
+<p>For example, using the definitions of <span class="math inline">\(\tau\)</span> and <span class="math inline">\(\delta\)</span>, the compressibility factor and pressure are found via the density derivative: <span class="math display">\[Z = \frac{P}{\rho R T} = 1 + \delta \left( \frac{\partial \alpha^r}{\partial \delta} \right)_\tau\]</span> <span class="math display">\[P = \rho R T \left[ 1 + \delta \left( \frac{\partial \alpha^r}{\partial \delta} \right)_\tau \right]\]</span></p>
+<p>The residual entropy, internal energy, and enthalpy are found via the temperature and density derivatives: <span class="math display">\[\frac{\underline{S}^R}{R} = \tau \left( \frac{\partial \alpha^r}{\partial \tau} \right)_\delta - \alpha^r\]</span> <span class="math display">\[\frac{\underline{U}^R}{RT} = \tau \left( \frac{\partial \alpha^r}{\partial \tau} \right)_\delta\]</span> <span class="math display">\[\frac{\underline{H}^R}{RT} = \tau \left( \frac{\partial \alpha^r}{\partial \tau} \right)_\delta + \delta \left( \frac{\partial \alpha^r}{\partial \delta} \right)_\tau\]</span></p>
+</section>
+<section id="the-computational-cost" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="the-computational-cost"><span class="header-section-number">4.3</span> The Computational Cost</h2>
+<p>If you wanted to implement this without relying on the CoolProp or NIST library, you would run into major computational hurdles:</p>
+<ol type="1">
+<li><p><strong>No Analytical Roots:</strong> Because pressure is defined in terms of density (<span class="math inline">\(\delta\)</span>) inside a maze of exponential and polynomial terms, you <strong>cannot</strong> solve for volume analytically using a simple root-finder like we did for a cubic polynomial. You must write a robust iterative numerical solver (like Newton-Raphson) to find the density that matches a target pressure.</p></li>
+<li><p><strong>Phase Equilibrium is Tough:</strong> If you are in the two-phase region, finding the saturated liquid and vapor densities requires iteratively solving a system of equations to ensure the pressures and Gibbs free energies of both phases are exactly equal (we will discuss this shortly).</p></li>
+<li><p><strong>Endless Coefficients:</strong> You would have to look up the specific academic paper for every fluid and manually hardcode arrays containing dozens of arbitrary constants.</p></li>
+</ol>
+</section>
+<section id="the-takeaway" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="the-takeaway"><span class="header-section-number">4.4</span> The Takeaway</h2>
+<p>Equations like SRK and Peng-Robinson are elegant because they offer a “generalized” analytical model: you give them three simple numbers (<span class="math inline">\(T_c\)</span>, <span class="math inline">\(P_c\)</span>, <span class="math inline">\(\omega\)</span>), and they give you a solvable cubic polynomial that works remarkably well for engineering design and estimates.</p>
+<p>The CoolProp and NIST Helmholtz equations are the opposite: they are brute-force, hyper-fitted mathematical models designed to perfectly trace experimental data. Writing the underlying numerical solvers and compiling the parameter databases for them is exactly what the creators of CoolProp and NIST spent years doing. This is why we happily import their library to act as our standard of “experimental truth” while we use cubic equations to build our physical intuition! If your work requires highly accurate calculations, then you might implement these kinds of sophisticated models. But for most engineering applications, the simplicity and speed of cubic equations of state are more than sufficient for initial calculations and design.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
