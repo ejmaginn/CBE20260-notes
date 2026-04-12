@@ -101,7 +101,9 @@ website:
           - href: class29/lecture29.qmd
             text: Lecture 29 - Modern Cubic Equations of State  
           - href: class30/lecture30.qmd
-            text: Lecture 30 - Generalized Correlations and the Critical Point  
+            text: Lecture 30 - Generalized Correlations and the Critical Point
+          - href: class31/lecture31.qmd
+            text: Lecture 31 - The Virial Equation, Group Contributions, and Molecular Origins of Thermodynamics    
   
 
           # Add more lectures here as you create them:
