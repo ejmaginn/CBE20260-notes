@@ -8,7 +8,7 @@
 
 <meta name="author" content="Edward Maginn">
 
-<title>Lecture 8: Energy Balances on Process Equipment – CBE 20260 — Course Notes</title>
+<title>Lecture 31: The Virial Equation, Group Contributions, and Molecular Origins – CBE 20260 — Course Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -189,7 +189,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class01/lecture01.html">Lectures</a></li><li class="breadcrumb-item"><a href="../class08/lecture08.html">Lecture 8 - Open system energy balance applied to process equipment</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class01/lecture01.html">Lectures</a></li><li class="breadcrumb-item"><a href="../class31/lecture31.html">Lecture 31 - The Virial Equation, Group Contributions, and Molecular Origins of Thermodynamics</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -262,7 +262,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../class08/lecture08.html" class="sidebar-item-text sidebar-link active">
+  <a href="../class08/lecture08.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lecture 8 - Open system energy balance applied to process equipment</span></a>
   </div>
 </li>
@@ -394,7 +394,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../class31/lecture31.html" class="sidebar-item-text sidebar-link">
+  <a href="../class31/lecture31.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Lecture 31 - The Virial Equation, Group Contributions, and Molecular Origins of Thermodynamics</span></a>
   </div>
 </li>
@@ -410,38 +410,25 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a>
+  <li><a href="#the-virial-equation-of-state" id="toc-the-virial-equation-of-state" class="nav-link active" data-scroll-target="#the-virial-equation-of-state"><span class="header-section-number">1</span> The Virial Equation of State</a>
   <ul class="collapse">
-  <li><a href="#the-general-balance-equation" id="toc-the-general-balance-equation" class="nav-link" data-scroll-target="#the-general-balance-equation"><span class="header-section-number">1.1</span> The General Balance Equation</a></li>
+  <li><a href="#the-physical-meaning-more-than-just-math" id="toc-the-physical-meaning-more-than-just-math" class="nav-link" data-scroll-target="#the-physical-meaning-more-than-just-math"><span class="header-section-number">1.1</span> The Physical Meaning: More Than Just Math</a></li>
   </ul></li>
-  <li><a href="#process-flow-diagram-notation" id="toc-process-flow-diagram-notation" class="nav-link" data-scroll-target="#process-flow-diagram-notation"><span class="header-section-number">2</span> Process Flow Diagram Notation</a></li>
-  <li><a href="#fluid-movers-pumps-and-compressors" id="toc-fluid-movers-pumps-and-compressors" class="nav-link" data-scroll-target="#fluid-movers-pumps-and-compressors"><span class="header-section-number">3</span> Fluid Movers: Pumps and Compressors</a>
-  <ul class="collapse">
-  <li><a href="#pumps" id="toc-pumps" class="nav-link" data-scroll-target="#pumps"><span class="header-section-number">3.1</span> Pumps</a>
-  <ul class="collapse">
-  <li><a href="#energy-balance-for-a-pump" id="toc-energy-balance-for-a-pump" class="nav-link" data-scroll-target="#energy-balance-for-a-pump"><span class="header-section-number">3.1.1</span> Energy Balance for a Pump</a></li>
-  <li><a href="#the-mechanical-definition-of-pump-work-int-vdp" id="toc-the-mechanical-definition-of-pump-work-int-vdp" class="nav-link" data-scroll-target="#the-mechanical-definition-of-pump-work-int-vdp"><span class="header-section-number">3.1.2</span> The Mechanical Definition of Pump Work (<span class="math inline">\(\int VdP\)</span>)</a></li>
-  </ul></li>
-  <li><a href="#compressors" id="toc-compressors" class="nav-link" data-scroll-target="#compressors"><span class="header-section-number">3.2</span> Compressors</a></li>
-  </ul></li>
-  <li><a href="#turbines-expanders" id="toc-turbines-expanders" class="nav-link" data-scroll-target="#turbines-expanders"><span class="header-section-number">4</span> Turbines (Expanders)</a></li>
-  <li><a href="#heat-exchangers" id="toc-heat-exchangers" class="nav-link" data-scroll-target="#heat-exchangers"><span class="header-section-number">5</span> Heat Exchangers</a></li>
-  <li><a href="#example-problem-steam-turbine" id="toc-example-problem-steam-turbine" class="nav-link" data-scroll-target="#example-problem-steam-turbine"><span class="header-section-number">6</span> Example Problem: Steam Turbine</a></li>
-  <li><a href="#comparative-examples-pumping-vs.-compressing" id="toc-comparative-examples-pumping-vs.-compressing" class="nav-link" data-scroll-target="#comparative-examples-pumping-vs.-compressing"><span class="header-section-number">7</span> Comparative Examples: Pumping vs.&nbsp;Compressing</a>
-  <ul class="collapse">
-  <li><a href="#example-1-pumping-water" id="toc-example-1-pumping-water" class="nav-link" data-scroll-target="#example-1-pumping-water"><span class="header-section-number">7.1</span> Example 1: Pumping Water</a></li>
-  <li><a href="#example-2-compressing-steam" id="toc-example-2-compressing-steam" class="nav-link" data-scroll-target="#example-2-compressing-steam"><span class="header-section-number">7.2</span> Example 2: Compressing Steam</a></li>
-  <li><a href="#comparisons-and-conclusion" id="toc-comparisons-and-conclusion" class="nav-link" data-scroll-target="#comparisons-and-conclusion"><span class="header-section-number">7.3</span> Comparisons and Conclusion</a></li>
-  </ul></li>
+  <li><a href="#extracting-virial-coefficients-from-data" id="toc-extracting-virial-coefficients-from-data" class="nav-link" data-scroll-target="#extracting-virial-coefficients-from-data"><span class="header-section-number">2</span> Extracting Virial Coefficients from Data</a></li>
+  <li><a href="#estimating-b-from-corresponding-states" id="toc-estimating-b-from-corresponding-states" class="nav-link" data-scroll-target="#estimating-b-from-corresponding-states"><span class="header-section-number">3</span> Estimating B from Corresponding States</a></li>
+  <li><a href="#residual-properties-for-the-truncated-virial-equation" id="toc-residual-properties-for-the-truncated-virial-equation" class="nav-link" data-scroll-target="#residual-properties-for-the-truncated-virial-equation"><span class="header-section-number">4</span> Residual Properties for the Truncated Virial Equation</a></li>
+  <li><a href="#multiparameter-equations-beattie-bridgeman-and-bwr" id="toc-multiparameter-equations-beattie-bridgeman-and-bwr" class="nav-link" data-scroll-target="#multiparameter-equations-beattie-bridgeman-and-bwr"><span class="header-section-number">5</span> Multiparameter Equations: Beattie-Bridgeman and BWR</a></li>
+  <li><a href="#group-contribution-methods" id="toc-group-contribution-methods" class="nav-link" data-scroll-target="#group-contribution-methods"><span class="header-section-number">6</span> Group Contribution Methods</a></li>
+  <li><a href="#the-molecular-origins-of-thermodynamics" id="toc-the-molecular-origins-of-thermodynamics" class="nav-link" data-scroll-target="#the-molecular-origins-of-thermodynamics"><span class="header-section-number">7</span> The Molecular Origins of Thermodynamics</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture08.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture31.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class01/lecture01.html">Lectures</a></li><li class="breadcrumb-item"><a href="../class08/lecture08.html">Lecture 8 - Open system energy balance applied to process equipment</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class01/lecture01.html">Lectures</a></li><li class="breadcrumb-item"><a href="../class31/lecture31.html">Lecture 31 - The Virial Equation, Group Contributions, and Molecular Origins of Thermodynamics</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Lecture 8: Energy Balances on Process Equipment</h1>
+<h1 class="title">Lecture 31: The Virial Equation, Group Contributions, and Molecular Origins</h1>
 <p class="subtitle lead">CBE 20260 / Thermodynamics I</p>
 </div>
 
@@ -465,322 +452,236 @@ window.Quarto = {
 </header>
 
 
-<section id="introduction" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
-<p>In the previous lecture, we derived the general <strong>Open System Energy Balance</strong>. Today, we will apply this equation to the most common unit operations found in chemical plants.</p>
-<p>Our goal is to simplify the general equation for specific pieces of equipment to answer engineering questions like: “How much power does this pump require?” or “How much heat must be removed from this reactor?”</p>
-<section id="the-general-balance-equation" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="the-general-balance-equation"><span class="header-section-number">1.1</span> The General Balance Equation</h2>
-<p>Recall the general form (neglecting potential and kinetic energy for a moment):</p>
-<p><span class="math display">\[
-\frac{d (M \hat{U})}{dt} = \sum_{in} \dot{m}_{in} \hat{H}_{in} - \sum_{out} \dot{m}_{out} \hat{H}_{out} + \dot{Q} + \dot{W}_s + \dot{W}_{ec}
-\]</span></p>
-<p>For steady-state processes (<span class="math inline">\(\frac{d}{dt}=0\)</span>) with one inlet and one outlet and assuming constant volume (<span class="math inline">\(\dot{W}_{ec} = 0\)</span>), this simplifies to:</p>
-<p><span id="eq-general-balance"><span class="math display">\[
-0 = \dot{m}(\hat{H}_{in} - \hat{H}_{out}) + \dot{Q} + \dot{W}_s
-\tag{1}\]</span></span></p>
-<p>This general expression is often useful for open system energy balances on equipment, but beware of the underlying assumptions!</p>
-<hr>
-</section>
-</section>
-<section id="process-flow-diagram-notation" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Process Flow Diagram Notation</h1>
-<p>Chemical plants are often represented using <strong>Process Flow Diagrams (PFDs)</strong>. These diagrams use standardized symbols to represent different types of equipment. Here are some common symbols:</p>
-<div id="fig-flowsheet" class="quarto-float quarto-figure quarto-figure-center anchored">
+<section id="the-virial-equation-of-state" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> The Virial Equation of State</h1>
+<p>In the previous lectures, we have utilized cubic equations of state and generalized correlations to model real fluid behavior. There is one more important way that one can model the behavior of real gases. If we look at the compressibility factor (<span class="math inline">\(Z\)</span>) plotted against pressure (see <a href="#fig-Z-plot" class="quarto-xref">Fig.&nbsp;1</a>) or density (<span class="math inline">\(\rho\)</span>), we notice that at low-to-moderate pressures, the curves are remarkably linear.</p>
+<div id="fig-Z-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-flowsheet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/flowsheet.png" class="img-fluid figure-img" style="width:60.0%">
+<div aria-describedby="fig-Z-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/Z-plot.png" class="img-fluid figure-img" style="width:70.0%">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-flowsheet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig.&nbsp;1: Typical symbols used to represent different pieces of equipment on a process flow diagram (PFD).
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Z-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;1: Compressibility factor versus pressure for various isotherms.
 </figcaption>
 </figure>
 </div>
-</section>
-<section id="fluid-movers-pumps-and-compressors" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Fluid Movers: Pumps and Compressors</h1>
-<p>These devices are designed to increase the pressure of a fluid.</p>
-<section id="pumps" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="pumps"><span class="header-section-number">3.1</span> Pumps</h2>
-<p>Pumps are used to move <strong>liquids</strong>. There are two main categories:</p>
-<ol type="1">
-<li><strong>Centrifugal Pumps:</strong> Use rotating blades (impellers) to increase fluid velocity, which is converted to pressure.</li>
-</ol>
-<div id="fig-centrifugal" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-centrifugal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/centrifugal.png" class="img-fluid figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-centrifugal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig.&nbsp;2: A schematic of how a centrifugal pump works. Liquid enters at the suction eye, the spinning impeller pushes the liquid forward, increasing its pressure before it is expelled out the discharge. Image from Christopher Okafor.
-</figcaption>
-</figure>
-</div>
-<ol start="2" type="1">
-<li><strong>Positive Displacement Pumps:</strong> Fluid fills a cavity and is physically pushed out (e.g., a piston or gear).</li>
-</ol>
-<div id="fig-PD-pump" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-PD-pump-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/PD-pump.png" class="img-fluid figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-PD-pump-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig.&nbsp;3: A schematic of how a positive displacement pump works. Image from Varisco Pumps.
-</figcaption>
-</figure>
-</div>
-<section id="energy-balance-for-a-pump" class="level3" data-number="3.1.1">
-<h3 data-number="3.1.1" class="anchored" data-anchor-id="energy-balance-for-a-pump"><span class="header-section-number">3.1.1</span> Energy Balance for a Pump</h3>
-<p>Let’s derive the working equation for a pump.</p>
-<p><strong>Assumptions:</strong></p>
-<ol type="1">
-<li><p><strong>Steady State</strong></p></li>
-<li><p><strong>Adiabatic</strong> (<span class="math inline">\(Q \approx 0\)</span>): The fluid moves too fast to lose significant heat.</p></li>
-<li><p><strong>Negligible Kinetic/Potential Energy changes</strong>: The rise in pressure is the dominant term.</p></li>
-</ol>
-<p><strong>The Balance:</strong></p>
-<p><a href="#eq-general-balance" class="quarto-xref">Eq.&nbsp;1</a> becomes: <span class="math display">\[
-0 = \dot{m}(\hat{H}_{in} - \hat{H}_{out}) + \dot{W}_s
-\]</span> <span id="eq-pump-open"><span class="math display">\[
-\dot{W}_s = \dot{m}(\hat{H}_{out} - \hat{H}_{in}) = \dot{m} \Delta \hat{H}
-\tag{2}\]</span></span></p>
-</section>
-<section id="the-mechanical-definition-of-pump-work-int-vdp" class="level3" data-number="3.1.2">
-<h3 data-number="3.1.2" class="anchored" data-anchor-id="the-mechanical-definition-of-pump-work-int-vdp"><span class="header-section-number">3.1.2</span> The Mechanical Definition of Pump Work (<span class="math inline">\(\int VdP\)</span>)</h3>
-<p>While <a href="#eq-pump-open" class="quarto-xref">Eq.&nbsp;2</a> is correct, it requires us to know the enthalpy at the outlet pressure. Often, we don’t know <span class="math inline">\(T_{out}\)</span>, so we can’t look up <span class="math inline">\(\hat{H}_{out}\)</span>. Even if we did know <span class="math inline">\(T_{out}\)</span>, there aren’t tabulated “steam tables” for all fluids. We need an equation purely in terms of <span class="math inline">\(P\)</span> and <span class="math inline">\(V\)</span>.</p>
-<p><strong>Alternative Derivation: The Fluid Element Approach</strong></p>
-<p>Instead of defining the pump as the system, let’s imagine that the system as a small, differential “slug” of fluid as it travels from the pump inlet (State 1) to the outlet (State 2).</p>
-<div id="fig-pump-packet" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-pump-packet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/pump-packet.png" class="img-fluid figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pump-packet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig.&nbsp;4: A fluid packet enters a pump at state 1 and exits at state 2. This is a closed system.
-</figcaption>
-</figure>
-</div>
-<p><strong>System:</strong> A packet of fluid of mass <span class="math inline">\(m\)</span>.</p>
-<p><strong>System Type:</strong> Closed System (no mass crosses the packet’s boundary as it moves).</p>
-<p>The governing equation for a closed system is: <span class="math display">\[\Delta [m(\hat{U} + \frac{v^2}{2} + gh)] = W + Q\]</span></p>
-<p>We make the standard assumptions for a pump:</p>
-<p><strong>Adiabatic:</strong> <span class="math inline">\(Q = 0\)</span>.</p>
-<p><strong>Negligible Kinetic/Potential Energy changes:</strong> <span class="math inline">\(\Delta KE \approx 0, \Delta PE \approx 0\)</span>.</p>
-<p>This simplifies the balance to: <span id="eq-closed-packet-balance"><span class="math display">\[m(\hat{U}_2 - \hat{U}_1) = W_{ec} \tag{3}\]</span></span></p>
-<p>Notice the difference between <a href="#eq-pump-open" class="quarto-xref">Eq.&nbsp;2</a> and <a href="#eq-closed-packet-balance" class="quarto-xref">Eq.&nbsp;3</a>. They are both correct, but <a href="#eq-pump-open" class="quarto-xref">Eq.&nbsp;2</a> applies to the pump as a whole system, while <a href="#eq-closed-packet-balance" class="quarto-xref">Eq.&nbsp;3</a> applies to a small fluid element within the pump. In <a href="#eq-closed-packet-balance" class="quarto-xref">Eq.&nbsp;3</a>, <span class="math inline">\(W_{ec}\)</span> is the expansion/contraction work done on the fluid packet as it changes volume while moving through the pressure gradient. Note: the system (the fluid element) has no shaft work involved (there is no power source connected to it), so <span class="math inline">\(W_s = 0\)</span>. This is sometimes confusing to students, but remember that the pump does shaft work on the fluid as a whole system, while the fluid element only experiences expansion/contraction work. In this derivation, the pump is not the system!</p>
-<p>By definition:</p>
-<p><span class="math display">\[W_{ec} = - \int_{V_1}^{V_2} P dV\]</span></p>
-<p>So <a href="#eq-closed-packet-balance" class="quarto-xref">Eq.&nbsp;3</a> becomes:</p>
-<p><span id="eq-internal-energy-pump"><span class="math display">\[\hat{U}_2 - \hat{U}_1 = - \int_{\hat{V}_1}^{\hat{V}_2} P d\hat{V} \tag{4}\]</span></span></p>
-<p><strong>Integration by Parts</strong></p>
-<p>We usually want the integral <a href="#eq-internal-energy-pump" class="quarto-xref">Eq.&nbsp;4</a> in terms of <span class="math inline">\(dP\)</span> (pressure change), not <span class="math inline">\(d\hat{V}\)</span>. We can use integration by parts:</p>
-<p><span class="math display">\[\int P d\hat{V} = P\hat{V} - \int \hat{V} dP\]</span></p>
-<p>Substituting this into our equation: <span class="math display">\[\hat{U}_2 - \hat{U}_1 = - \left[ (P\hat{V}) \Big|_1^2 - \int_{P_1}^{P_2} \hat{V} dP \right]\]</span><span class="math display">\[\hat{U}_2 - \hat{U}_1 = - (P_2\hat{V}_2 - P_1\hat{V}_1) + \int_{P_1}^{P_2} \hat{V} dP\]</span></p>
-<p>Rearranging to group the <span class="math inline">\(P\hat{V}\)</span> terms with <span class="math inline">\(\hat{U}\)</span>: <span class="math display">\[(\hat{U}_2 + P_2\hat{V}_2) - (\hat{U}_1 + P_1\hat{V}_1) = \int_{P_1}^{P_2} \hat{V} dP\]</span></p>
-<p>Recall the definition of Enthalpy (<span class="math inline">\(\hat{H} \equiv \hat{U} + P\hat{V}\)</span>). The left side is simply <span class="math inline">\(\Delta \hat{H}\)</span>:</p>
-<p><span id="eq-enthalpy-pump"><span class="math display">\[\hat{H}_2 - \hat{H}_1 = \int_{P_1}^{P_2} \hat{V} dP \tag{5}\]</span></span></p>
-<p><strong>Link to Pump Work</strong></p>
-<p>Now, recall the open system balance we wrote for the pump itself (see <a href="#eq-pump-open" class="quarto-xref">Eq.&nbsp;2</a>):</p>
-<p><span class="math display">\[\hat{W}_s = \Delta \hat{H}\]</span></p>
-<p>By combining <a href="#eq-enthalpy-pump" class="quarto-xref">Eq.&nbsp;5</a> and <a href="#eq-pump-open" class="quarto-xref">Eq.&nbsp;2</a>, we arrive at the mechanical definition of pump work:</p>
-<p><span id="eq-pumpwork-mechanical"><span class="math display">\[\hat{W}_s = \int_{P_1}^{P_2} \hat{V} dP \tag{6}\]</span></span></p>
-<p><a href="#eq-pumpwork-mechanical" class="quarto-xref">Eq.&nbsp;6</a> is the general expression we can use to compute the work required by a pump to change a fluid pressure from <span class="math inline">\(P_1\)</span> to <span class="math inline">\(P_2\)</span>. It is an important result; the work required by a pump is determined by the specific volume of the fluid and the pressure rise.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<p>This observation suggests we could represent <span class="math inline">\(Z\)</span> using a simple mathematical tool: a <strong>Taylor Series expansion</strong> about a density of zero (an ideal gas).</p>
+<p>Expanding <span class="math inline">\(Z\)</span> with respect to molar density (<span class="math inline">\(\rho = 1/\underline{V}\)</span>): <span id="eq-virial_density"><span class="math display">\[Z = 1 + B(T)\rho + C(T)\rho^2 + D(T)\rho^3 + \dots \tag{1}\]</span></span></p>
+<p><a href="#eq-virial_density" class="quarto-xref">Eq.&nbsp;1</a> is known as the <strong>Virial Equation of State</strong>. The coefficients <span class="math inline">\(B, C, D\)</span> are called the second, third, and fourth virial coefficients, respectively, and are given by <span class="math display">\[B = \left( \frac{\partial Z}{\partial \rho} \right)_{\rho=0}, \quad C = \frac{1}{2} \left( \frac{\partial^2 Z}{\partial \rho^2} \right)_{\rho=0}, \quad D = \frac{1}{6} \left( \frac{\partial^3 Z}{\partial \rho^3} \right)_{\rho=0}\]</span></p>
+<p>They are strictly functions of temperature (and the molecule in question), and each derivative is taken at the ideal gas limit (i.e.&nbsp;<span class="math inline">\(\rho \rightarrow 0\)</span>).</p>
+<p>Alternatively, expanding with respect to pressure results in a different form of the virial equation: <span id="eq-virial_pressure"><span class="math display">\[Z = 1 + B'(T)P + C'(T)P^2 + D'(T)P^3 + \dots \tag{2}\]</span></span></p>
+<p>By equating <a href="#eq-virial_density" class="quarto-xref">Eq.&nbsp;1</a> and <a href="#eq-virial_pressure" class="quarto-xref">Eq.&nbsp;2</a> (as shown below), you can show that <span id="eq-B-prime"><span class="math display">\[B' = \frac{B}{RT} \tag{3}\]</span></span> and <span id="eq-C-prime"><span class="math display">\[C' = \frac{C-B^2}{(RT)^2} \tag{4}\]</span></span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Mathematical Aside: Relating Density and Pressure Expansions">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Why Pumps are “Cheap” to Run
+<span class="screen-reader-only">Note</span>Mathematical Aside: Relating Density and Pressure Expansions
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>For a liquid, the specific volume <span class="math inline">\(\hat{V}\)</span> is essentially constant (incompressible). We can pull it out of the integral: <span class="math display">\[
-\hat{W}_{pump} \approx \hat{V} (P_{out} - P_{in})
-\]</span> Because liquid volumes are very small (<span class="math inline">\(\hat{V}_{liq} \approx 0.001\)</span> m<span class="math inline">\(^3\)</span>/kg for water), the work required to pressurize a liquid is <strong>small</strong>. We will see that <a href="#eq-pumpwork-mechanical" class="quarto-xref">Eq.&nbsp;6</a> also applies to compressors, which pressurize gases. Because gas volumes are so much larger than liquids, compressors take a lot more work to compress a gas to the same pressure as a pump requires to compress a liquid.</p>
+<p>Let’s show how to arrive at the relationships between the coefficients (<a href="#eq-B-prime" class="quarto-xref">Eq.&nbsp;3</a> and <a href="#eq-C-prime" class="quarto-xref">Eq.&nbsp;4</a>) by equating the two series.</p>
+<p>Substituting <span class="math inline">\(P = Z \rho R T\)</span> into <a href="#eq-virial_pressure" class="quarto-xref">Eq.&nbsp;2</a>: <span class="math display">\[Z = 1 + B'(Z \rho R T) + C'(Z \rho R T)^2 + \dots\]</span></p>
+<p>Now, substitute the density series (<span class="math inline">\(Z = 1 + B\rho + \dots\)</span>) in place of <span class="math inline">\(Z\)</span> on the right side and distribute, keeping only terms up to <span class="math inline">\(\rho^2\)</span>: <span class="math display">\[Z = 1 + B' R T \rho (1 + B\rho) + C' (R T)^2 \rho^2 (1 + B\rho)^2 + \dots\]</span> <span class="math display">\[Z = 1 + (B' R T)\rho + (B' B R T + C' (R T)^2)\rho^2 + \dots\]</span></p>
+<p>By equating the coefficients of this new polynomial to the original density series in <a href="#eq-virial_density" class="quarto-xref">Eq.&nbsp;1</a>, the relationships naturally fall out:</p>
+<p><strong>For the <span class="math inline">\(\rho\)</span> term:</strong> <span class="math display">\[B = B' R T \implies B' = \frac{B}{RT}\]</span></p>
+<p><strong>For the <span class="math inline">\(\rho^2\)</span> term:</strong> <span class="math display">\[C = B' B R T + C' (R T)^2\]</span> Substitute <span class="math inline">\(B' = \frac{B}{RT}\)</span> into the equation: <span class="math display">\[C = B^2 + C'(RT)^2 \implies C' = \frac{C - B^2}{(RT)^2}\]</span></p>
+<p>These relationships allow us to convert between the two forms of the virial equation, depending on whether we have data in terms of density or pressure.</p>
 </div>
 </div>
-</section>
-</section>
-<section id="compressors" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="compressors"><span class="header-section-number">3.2</span> Compressors</h2>
-<p>Compressors are used to pressurize <strong>gases</strong>.</p>
-<div id="fig-compressor" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-compressor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/compressor.jpg" class="img-fluid figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-compressor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig.&nbsp;5: Top view of a compressor interior showing carefully machined converging blades designed to increase gas pressure from inlet to outlet. Image attribution: Siemens.
-</figcaption>
-</figure>
-</div>
-<p>The energy balance is formally the same as for a pump: <span class="math display">\[\hat{W}_s = \int_{P_{in}}^{P_{out}} \hat{V} dP\]</span></p>
-<p><strong>However</strong>, for a gas, <span class="math inline">\(\hat{V}\)</span> is <strong>not</strong> constant. As pressure rises, volume shrinks drastically.</p>
+<section id="the-physical-meaning-more-than-just-math" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="the-physical-meaning-more-than-just-math"><span class="header-section-number">1.1</span> The Physical Meaning: More Than Just Math</h2>
+<p>While the virial equation looks like a standard mathematical polynomial fit, it is much more profound. It can be derived purely from fundamental statistical mechanics.</p>
+<p>The macroscopic pressure of a gas is the result of microscopic molecular collisions and forces. Statistical mechanics proves that the virial coefficients relate directly to exactly how molecules interact with one another:</p>
 <ul>
-<li><p>Because <span class="math inline">\(\hat{V}_{gas}\)</span> is roughly <span class="math inline">\(1000 \times \hat{V}_{liq}\)</span>, the work required to compress a gas is <strong>huge</strong> compared to pumping a liquid to the same pressure.</p></li>
-<li><p>To solve the integral <span class="math inline">\(\int \hat{V} dP\)</span>, we need an Equation of State (like Ideal Gas or van der Waals) to relate <span class="math inline">\(V\)</span> to <span class="math inline">\(P\)</span>.</p></li>
-<li><p>If we have something like the steam tables, we can look up <span class="math inline">\(\hat{H}\)</span> at the inlet and outlet conditions and use <a href="#eq-pump-open" class="quarto-xref">Eq.&nbsp;2</a> directly. Since <span class="math inline">\(P_2 &gt; P_1\)</span>, <span class="math inline">\(\Delta \hat{H}\)</span> is positive, resulting in positive work (work done <em>on</em> the system).</p></li>
+<li><p><strong>Ideal Gas (<span class="math inline">\(Z=1\)</span>):</strong> Molecules do not interact at all.</p></li>
+<li><p><strong>The Second Virial Coefficient (<span class="math inline">\(B\)</span>):</strong> Represents deviations from ideality due to <strong>two-body</strong> interactions (pairs of molecules bumping into each other).</p></li>
+<li><p><strong>The Third Virial Coefficient (<span class="math inline">\(C\)</span>):</strong> Represents <strong>three-body</strong> interactions, and so on.</p></li>
 </ul>
-<hr>
+<p>For example, <span class="math inline">\(B(T)\)</span> can be calculated exactly if you know the intermolecular potential energy function <span class="math inline">\(u(r)\)</span> between two molecules: <span class="math display">\[B(T) = -2\pi N_A \int_0^\infty \left[ \exp\left(-\frac{u(r)}{k_B T}\right) - 1 \right] r^2 dr\]</span></p>
+<p>You do not need to memorize this integral, but you should understand its implication: <strong>The virial equation is not an empirical guess. It bridges the microscopic forces between molecules to the macroscopic properties we need to design a chemical plant.</strong></p>
 </section>
 </section>
-<section id="turbines-expanders" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Turbines (Expanders)</h1>
-<p>Turbines are essentially compressors running in reverse. We pass a high-pressure fluid (like steam or gas) through blades to extract shaft work (<span class="math inline">\(\dot{W}_s &lt; 0\)</span>).</p>
-<div id="fig-turbine" class="quarto-float quarto-figure quarto-figure-center anchored">
+<section id="extracting-virial-coefficients-from-data" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Extracting Virial Coefficients from Data</h1>
+<p>Because the virial equation is a power series, we can extract the coefficients directly from experimental <span class="math inline">\(P-V-T\)</span> data.</p>
+<p>Let’s take the density series and rearrange it: <span class="math display">\[Z - 1 = B\rho + C\rho^2 + \dots\]</span> <span class="math display">\[\frac{Z-1}{\rho} = (Z-1)\underline{V} = B + C\rho + \dots\]</span></p>
+<p>If we plot <span class="math inline">\((Z-1)\underline{V}\)</span> versus density (<span class="math inline">\(\rho\)</span>) for a given substance, the resulting curve will have a y-intercept equal to the second virial coefficient (<span class="math inline">\(B\)</span>) and a slope at <span class="math inline">\(\rho=0\)</span> equal to the third virial coefficient (<span class="math inline">\(C\)</span>).</p>
+<div id="fig-B-ZV" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-turbine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/turbine.jpg" class="img-fluid figure-img" style="width:60.0%">
+<div aria-describedby="fig-B-ZV-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B-ZV.png" class="img-fluid figure-img" style="width:70.0%">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-turbine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig.&nbsp;6: View of the interior of a turbine in the Notre Dame power plant. Note the similarity to a compressor. Image attribution: Ed Maginn.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-B-ZV-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;2: How to experimentally estimate <span class="math inline">\(B(T)\)</span> and <span class="math inline">\(C(T)\)</span> from <span class="math inline">\(P-V-T\)</span> data.
 </figcaption>
 </figure>
 </div>
-<p><strong>Energy Balance</strong> Assume Steady state, adiabatic <span class="math inline">\(Q \approx 0\)</span>, and negligible kinetic/potential energy changes.</p>
-<p>Note: Kinetic energy changes can sometimes be significant, but we often neglect them for a first pass.</p>
-<p><strong>The Balance:</strong> <span class="math display">\[
-\dot{W}_s = \dot{m}(\hat{H}_{out} - \hat{H}_{in}) = \dot{m} \Delta \hat{H}
-\]</span></p>
-<p>Since <span class="math inline">\(P_{out} &lt; P_{in}\)</span>, <span class="math inline">\(\Delta \hat{H}\)</span> is negative, resulting in negative work (work done <em>by</em> the system).</p>
-<hr>
+<p>Notice that <span class="math inline">\(B\)</span> depends strongly on temperature. At low temperatures, attractive forces dominate, making <span class="math inline">\(B\)</span> negative. At high temperatures, repulsive forces dominate, making <span class="math inline">\(B\)</span> positive. There is a specific temperature where <span class="math inline">\(B=0\)</span>, meaning the 2-body interactions perfectly cancel out, and the gas behaves ideally up to surprisingly high pressures. This is called the <strong>Boyle Temperature (<span class="math inline">\(T_{Boyle}\)</span>)</strong>. You can find tabulations of second virial coefficients in the literature; third virial coefficients are much more difficult to find.</p>
 </section>
-<section id="heat-exchangers" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Heat Exchangers</h1>
-<p>Heat exchangers transfer thermal energy between two fluids without mixing them. Common types:</p>
-<p><strong>Shell and Tube:</strong> One fluid in tubes, another in the surrounding shell. Heat gets transferred through the tube walls between the hot and cold fluids.</p>
-<div id="fig-shell-tube" class="quarto-float quarto-figure quarto-figure-center anchored">
+<section id="estimating-b-from-corresponding-states" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Estimating B from Corresponding States</h1>
+<p>If you don’t have experimental data to extract <span class="math inline">\(B\)</span>, you can estimate it using our trusty corresponding states theory. Kenneth Pitzer and Michael Abbott developed a generalized correlation for the second virial coefficient: <span id="eq-B-corresponding-states"><span class="math display">\[\frac{B P_c}{R T_c} = B^{(0)} + \omega B^{(1)} \tag{5}\]</span></span></p>
+<p>where <span class="math inline">\(B^{(0)}\)</span> and <span class="math inline">\(B^{(1)}\)</span> are functions only of the reduced temperature (<span class="math inline">\(T_r\)</span>): <span id="eq-B0-corresponding-states"><span class="math display">\[B^{(0)} = 0.083 - \frac{0.422}{T_r^{1.6}} \tag{6}\]</span></span> <span id="eq-B1-corresponding-states"><span class="math display">\[B^{(1)} = 0.139 - \frac{0.172}{T_r^{4.2}} \tag{7}\]</span></span></p>
+<p>This is highly accurate for non-polar and slightly polar gases at low-to-moderate pressures (typically up to <span class="math inline">\(P_r \approx 0.5\)</span>).</p>
+</section>
+<section id="residual-properties-for-the-truncated-virial-equation" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Residual Properties for the Truncated Virial Equation</h1>
+<p>For many engineering applications, the gas density is low enough that 3-body interactions are incredibly rare. We can truncate the virial equation after the second term: <span id="eq-virial_truncated"><span class="math display">\[Z = 1 + \frac{BP}{RT} \tag{8}\]</span></span></p>
+<p>This simple equation allows us to derive beautiful, analytical expressions for the residual properties using the calculus of thermodynamics. First, the residual volume: <span id="eq-VR-virial"><span class="math display">\[\underline{V} = \frac{RT}{P} + B \implies \underline{V}^R = \underline{V} - \underline{V}^{IG} = B \tag{9}\]</span></span></p>
+<p>Using the fundamental property relations for enthalpy and entropy: <span id="eq-HR-virial"><span class="math display">\[\underline{H}^R = \int_0^P \left[ \underline{V} - T\left(\frac{\partial \underline{V}}{\partial T}\right)_P \right] dP = P \left( B - T \frac{dB}{dT} \right) \tag{10}\]</span></span> <span id="eq-SR-virial"><span class="math display">\[\underline{S}^R = -\int_0^P \left[ \left(\frac{\partial \underline{V}}{\partial T}\right)_P - \frac{R}{P} \right] dP = -P \frac{dB}{dT} \tag{11}\]</span></span></p>
+<p>These show exactly why we care about how <span class="math inline">\(B\)</span> changes with temperature (<span class="math inline">\(dB/dT\)</span>)!</p>
+</section>
+<section id="multiparameter-equations-beattie-bridgeman-and-bwr" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Multiparameter Equations: Beattie-Bridgeman and BWR</h1>
+<p>The virial equation is theoretically pure, but to use it at liquid densities, you would need dozens of virial coefficients, which are mathematically impossible to derive.</p>
+<p>Engineers in the 20th century solved this by using the <em>form</em> of the virial equation, but replacing the coefficients with empirical, temperature-dependent functions. For example, the <strong>Beattie-Bridgeman</strong> equation takes the form: <span class="math display">\[Z = 1 + \frac{B(T)}{\underline{V}} + \frac{C(T)}{\underline{V}^2} + \frac{D(T)}{\underline{V}^3}\]</span> where <span class="math inline">\(B, C,\)</span> and <span class="math inline">\(D\)</span> are complex empirical functions of temperature fit to specific fluids.</p>
+<p>This methodology peaked with the <strong>Benedict-Webb-Rubin (BWR)</strong> equation, which utilizes 8 (and sometimes up to 32) parameters. As we saw in Lecture 30, the Lee-Kesler generalized charts are actually generated using a 12-parameter modified BWR equation!</p>
+</section>
+<section id="group-contribution-methods" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Group Contribution Methods</h1>
+<p>Up to now, every equation of state we’ve used requires us to know <span class="math inline">\(T_c\)</span>, <span class="math inline">\(P_c\)</span>, and <span class="math inline">\(\omega\)</span>. But what if you are tasked with designing a process for a newly synthesized pharmaceutical or a complex biochemical, and those properties have never been measured?</p>
+<p>One way to do this is via <strong>Group Contribution Methods</strong>. In a sense, group contribution methods are a primitive form of machine learning. The central philosophy here is that a molecule is simply the sum of its parts. For example, if you look at the boiling points of linear alkanes (ethane, propane, butane, etc.), the boiling point increases predictably with every <span class="math inline">\(-CH_2-\)</span> group added to the chain, as shown in <a href="#fig-alkane-Tb" class="quarto-xref">Fig.&nbsp;3</a>.</p>
+<div id="fig-alkane-Tb" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-shell-tube-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/shell-tube.png" class="img-fluid figure-img" style="width:60.0%">
+<div aria-describedby="fig-alkane-Tb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/alkane-Tb.png" class="img-fluid figure-img" style="width:70.0%">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-shell-tube-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig.&nbsp;7: An image of a shell and tube heat exchanger. Image attribution: HRS Heat Exchangers.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-alkane-Tb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;3: Experimental data for the normal boiling point of linear alkanes versus chain length.
 </figcaption>
 </figure>
 </div>
-<div id="fig-shell-tube-inside" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-shell-tube-inside-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/shell-tube-inside.png" class="img-fluid figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-shell-tube-inside-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig.&nbsp;8: The inner flow pattern of a shell and tube heat exchanger. Image attribution: Scifed Publishers,
-</figcaption>
-</figure>
-</div>
-<p><strong>Plate and Frame:</strong> High surface area plates separating fluids.</p>
-<div id="fig-plate-frame" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-plate-frame-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/plate-frame.png" class="img-fluid figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-plate-frame-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig.&nbsp;9: A plate and frame heat exchanger. Image attribution: Alfa Laval.
-</figcaption>
-</figure>
-</div>
-<p><strong>Energy Balance</strong> Heat exchangers typically have two fluid streams: a hot stream being cooled and a cold stream being heated.</p>
-<p><strong>System:</strong> We can define the system as just <em>one</em> of the fluid streams (e.g., the cold stream being heated).</p>
-<p><strong>Assumptions:</strong> Steady state and passive (<span class="math inline">\(W_s = 0\)</span>).</p>
-<p><strong>The Balance:</strong> <span class="math display">\[
-0 = \dot{m}(\hat{H}_{in} - \hat{H}_{out}) + \dot{Q}
-\]</span> <span class="math display">\[
-\dot{Q} = \dot{m}(\hat{H}_{out} - \hat{H}_{in}) = \dot{m} C_p \Delta T
-\]</span></p>
-<hr>
-</section>
-<section id="example-problem-steam-turbine" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Example Problem: Steam Turbine</h1>
-<p>Steam enters a turbine at a mass flow rate of <span class="math inline">\(\dot{m} = 10 \text{ kg/s}\)</span>.</p>
-<ul>
-<li><p><strong>Inlet (State 1):</strong> <span class="math inline">\(P_1 = 100\)</span> bar, <span class="math inline">\(T_1 = 500^\circ\)</span>C.</p></li>
-<li><p><strong>Outlet (State 2):</strong> <span class="math inline">\(P_2 = 1\)</span> bar, Saturated Vapor.</p></li>
-</ul>
-<p>Calculate the power output (<span class="math inline">\(\dot{W}_s\)</span>) of the turbine.</p>
-<p><strong>Strategy:</strong></p>
-<ol type="1">
-<li><p>Define System: The Turbine.</p></li>
-<li><p>Apply Energy Balance: <span class="math inline">\(\dot{W}_s = \dot{m}(\hat{H}_2 - \hat{H}_1)\)</span>.</p></li>
-<li><p>Find State Properties (using Steam Tables).</p></li>
-</ol>
-<p><strong>Solution:</strong></p>
-<p><strong>Step 1: Inlet State</strong> At 100 bar and <span class="math inline">\(500^\circ\)</span>C (Superheated Steam): (Looking up in Steam Tables) <span class="math inline">\(\hat{H}_1 = 3373.7 \text{ kJ/kg}\)</span></p>
-<p><strong>Step 2: Outlet State</strong> At 1 bar, Saturated Vapor (<span class="math inline">\(x=1\)</span>): (Looking up in Steam Tables) <span class="math inline">\(\hat{H}_2 = 2675.5 \text{ kJ/kg}\)</span></p>
-<p><strong>Step 3: Calculate Work</strong> <span class="math display">\[
-\dot{W}_s = 10 \frac{\text{kg}}{\text{s}} \times (2675.5 - 3373.7) \frac{\text{kJ}}{\text{kg}}
-\]</span> <span class="math display">\[
-\dot{W}_s = 10 \times (-698.2) \text{ kJ/s}
-\]</span> <span class="math display">\[
-\dot{W}_s = -6982 \text{ kW} \approx \mathbf{-7.0 \text{ MW}}
-\]</span></p>
-<p><strong>Result:</strong> The turbine produces 7 MW of power.</p>
-<hr>
-</section>
-<section id="comparative-examples-pumping-vs.-compressing" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Comparative Examples: Pumping vs.&nbsp;Compressing</h1>
-<p>To truly appreciate the difference between liquids and gases, let’s calculate the work required to pressurize water versus steam by the same amount.</p>
-<section id="example-1-pumping-water" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="example-1-pumping-water"><span class="header-section-number">7.1</span> Example 1: Pumping Water</h2>
-<p><strong>Problem:</strong> Calculate the specific shaft work (<span class="math inline">\(\hat{W}_s\)</span>) required to pump saturated liquid water from <span class="math inline">\(P_1 = 0.5\)</span> bar to <span class="math inline">\(P_2 = 5\)</span> bar.</p>
-<p><strong>State 1 (Inlet):</strong></p>
-<ul>
-<li><p><span class="math inline">\(P_1 = 0.5\)</span> bar, Saturated Liquid</p></li>
-<li><p>From Steam Tables:</p>
-<ul>
-<li><span class="math inline">\(T_1 = 81.32^\circ\)</span>C</li>
-<li><span class="math inline">\(\hat{V}_1 = 0.001030 \text{ m}^3/\text{kg}\)</span></li>
-<li><span class="math inline">\(\hat{H}_1 = 340.5 \text{ kJ/kg}\)</span></li>
-</ul></li>
-</ul>
-<div class="callout callout-style-default callout-warning callout-titled">
+<p>The <strong>Joback (or Joback-Reid) Method</strong> assigns a numerical contribution value to individual structural groups (like a methyl group <span class="math inline">\(-CH_3\)</span>, an alcohol group <span class="math inline">\(-OH\)</span>, or a benzene ring). By counting the groups in a molecule, you can sum their contributions to estimate not just critical properties, but also fundamental phase transition data like the normal boiling point (<span class="math inline">\(T_b\)</span>) and the enthalpy of vaporization at that boiling point (<span class="math inline">\(\Delta H_{vap}\)</span>):</p>
+<p><strong>Boiling Point &amp; Enthalpy of Vaporization:</strong> <span id="eq-Tb-Joback"><span class="math display">\[T_b \ [\text{K}] = 198.2 + \sum \Delta T_b \tag{12}\]</span></span> <span id="eq-Delta-H-vap-Joback"><span class="math display">\[\Delta H_{vap} \ [\text{kJ/mol}] = 15.30 + \sum \Delta H_{vap} \tag{13}\]</span></span></p>
+<p><strong>Critical Properties:</strong> <em>(Note: Joback’s <span class="math inline">\(T_c\)</span> estimate actually depends on the <span class="math inline">\(T_b\)</span> estimate!)</em> <span id="eq-Tc-Joback"><span class="math display">\[T_c \ [\text{K}] = T_b \left[ 0.584 + 0.965 \sum \Delta T_c - \left(\sum \Delta T_c\right)^2 \right]^{-1} \tag{14}\]</span></span> <span id="eq-Pc-Joback"><span class="math display">\[P_c \ [\text{bar}] = \left[ 0.113 + 0.0032 n_a - \sum \Delta P_c \right]^{-2} \tag{15}\]</span></span></p>
+<p>where <span class="math inline">\(n_a\)</span> is the total number of atoms in the molecule.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Estimating the Acentric Factor ($\omega$)">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Pitfall: Using Enthalpy Tables for Liquids
+<span class="screen-reader-only">Tip</span>Estimating the Acentric Factor (<span class="math inline">\(\omega\)</span>)
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You might be tempted to use the open system balance <span class="math inline">\(\hat{W}_s = \Delta \hat{H}\)</span> and look up <span class="math inline">\(\hat{H}_2\)</span> in the subcooled liquid tables. At <span class="math inline">\(P_2 = 5\)</span> bar, the temperature will only rise slightly (approx <span class="math inline">\(81.32^\circ\)</span>C). If we look at a subcooled water table for 5 bar and <span class="math inline">\(80^\circ\)</span>C, we find <span class="math inline">\(\hat{H} \approx 335.4\)</span> kJ/kg.</p>
-<p>If we calculate work: <span class="math display">\[\hat{W}_s = 335.4 - 340.5 = -5.1 \text{ kJ/kg}\]</span> <strong>This is impossible!</strong> It implies the pump <em>generates</em> power. Enthalpy is insensitive to pressure for liquids, so reading small differences from tables leads to huge errors.</p>
+<p>You might be wondering: <em>Can we use the Joback method to find the acentric factor (<span class="math inline">\(\omega\)</span>)?</em></p>
+<p>The Joback method does not have a set of group contributions to calculate <span class="math inline">\(\omega\)</span> directly. However, we can still estimate it! Because the acentric factor describes the shape of the vapor pressure curve, it can be mathematically approximated if you know the normal boiling point and the critical point.</p>
+<p>Once you use the Joback method to estimate <span class="math inline">\(T_b\)</span>, <span class="math inline">\(T_c\)</span>, and <span class="math inline">\(P_c\)</span>, you can plug those values directly into the <strong>Edmister equation</strong>: <span class="math display">\[\omega = \frac{3}{7} \left( \frac{T_{br}}{1 - T_{br}} \right) \log_{10}(P_c) - 1\]</span></p>
+<p>where:</p>
+<ul>
+<li><p><span class="math inline">\(T_{br} = T_b / T_c\)</span> (the reduced normal boiling point)</p></li>
+<li><p><span class="math inline">\(P_c\)</span> is the critical pressure <strong>in atm</strong> <em>(Note: The Joback method calculates <span class="math inline">\(P_c\)</span> in bar, so you must convert it first!)</em></p></li>
+</ul>
+<p>For highly rigorous work, computational tools and process simulators will instead plug your Joback estimates into the <strong>Lee-Kesler</strong> vapor pressure equations to calculate <span class="math inline">\(\omega\)</span>. This perfectly bridges our group contribution models back to the generalized corresponding states charts we used earlier!</p>
 </div>
 </div>
-<p><strong>Correct Approach: The Mechanical Definition</strong> For a liquid, we assume it is incompressible (<span class="math inline">\(\hat{V} \approx \text{constant}\)</span>). <span class="math display">\[\hat{W}_s = \int_{P_1}^{P_2} \hat{V} dP \approx \hat{V}_1 (P_2 - P_1)\]</span></p>
-<p><span class="math display">\[\hat{W}_s = 0.001030 \frac{\text{m}^3}{\text{kg}} \times (5 - 0.5) \text{ bar}\]</span> <em>Note: We must convert bar to Pascals (<span class="math inline">\(N/m^2\)</span>) to get Joules.</em> <span class="math display">\[\hat{W}_s = 0.001030 \times (4.5 \times 10^5 \text{ Pa})\]</span> <span class="math display">\[\hat{W}_s = 463.5 \text{ J/kg}\]</span> <strong>Result:</strong> The work required is <strong>463.5 J/kg</strong> (or 0.46 kJ/kg).</p>
+<p>Your textbook (Dahm and Visco) has tables of these <span class="math inline">\(\Delta\)</span> parameters for <a href="#eq-Tb-Joback" class="quarto-xref">Eq.&nbsp;12</a> - <a href="#eq-Pc-Joback" class="quarto-xref">Eq.&nbsp;15</a> in the appendices. However, in modern practice, engineers rarely do this calculation by hand. We use computational chemoinformatics tools (like RDKit, various software packages such as JRgui (<a href="https://github.com/curieshicy/JRgui" class="uri">https://github.com/curieshicy/JRgui</a>), or the property estimation modules built directly into Aspen Plus) to draw the molecule and let the software compute the group contributions instantly.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Class Example: Predicting Properties with the Joback Method">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Class Example: Predicting Properties with the Joback Method
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let’s see how well this works for three different molecules: <strong>1-propanol</strong>, its structural isomer <strong>2-propanol</strong>, and <strong>DMSO</strong> (dimethyl sulfoxide, a common polar solvent).</p>
+<p><strong>1. Isomers: 1-Propanol vs.&nbsp;2-Propanol</strong> Even though both have the chemical formula <span class="math inline">\(C_3H_8O\)</span>, their connectivity is different:</p>
+<ul>
+<li><p><strong>1-propanol</strong> (<span class="math inline">\(CH_3-CH_2-CH_2-OH\)</span>) consists of: one <span class="math inline">\(-CH_3\)</span>, two <span class="math inline">\(-CH_2-\)</span>, and one <span class="math inline">\(-OH\)</span>.</p></li>
+<li><p><strong>2-propanol</strong> (<span class="math inline">\(CH_3-CH(OH)-CH_3\)</span>) consists of: two <span class="math inline">\(-CH_3\)</span>, one <span class="math inline">\(&gt;CH-\)</span>, and one <span class="math inline">\(-OH\)</span>.</p></li>
+</ul>
+<p>Because the Joback method has different parameters for a chain carbon (<span class="math inline">\(-CH_2-\)</span>) versus a branched carbon (<span class="math inline">\(&gt;CH-\)</span>), it correctly predicts that they will have different properties!</p>
+<p><strong>2. Comparing Predictions vs.&nbsp;Experiment</strong> Using the parameter tables, we sum the contributions and compare them to the true experimental values:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Molecule</th>
+<th style="text-align: left;">Property</th>
+<th style="text-align: left;">Joback Prediction</th>
+<th style="text-align: left;">Experimental Value</th>
+<th style="text-align: left;">Absolute Error</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>1-propanol</strong></td>
+<td style="text-align: left;"><span class="math inline">\(T_b\)</span> (K)</td>
+<td style="text-align: left;">360.4</td>
+<td style="text-align: left;">370.1</td>
+<td style="text-align: left;">9.7 K</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="math inline">\(\Delta H_{vap}\)</span> (kJ/mol)</td>
+<td style="text-align: left;">58.8</td>
+<td style="text-align: left;">47.5</td>
+<td style="text-align: left;">11.3 kJ/mol</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>2-propanol</strong></td>
+<td style="text-align: left;"><span class="math inline">\(T_b\)</span> (K)</td>
+<td style="text-align: left;">360.0</td>
+<td style="text-align: left;">355.6</td>
+<td style="text-align: left;">4.4 K</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="math inline">\(\Delta H_{vap}\)</span> (kJ/mol)</td>
+<td style="text-align: left;">58.7</td>
+<td style="text-align: left;">45.4</td>
+<td style="text-align: left;">13.3 kJ/mol</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>DMSO</strong></td>
+<td style="text-align: left;"><span class="math inline">\(T_b\)</span> (K)</td>
+<td style="text-align: left;">466.8</td>
+<td style="text-align: left;">462.1</td>
+<td style="text-align: left;">4.7 K</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="math inline">\(\Delta H_{vap}\)</span> (kJ/mol)</td>
+<td style="text-align: left;">53.0</td>
+<td style="text-align: left;">52.9</td>
+<td style="text-align: left;">0.1 kJ/mol</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Discussion:</strong> The Joback method does a remarkable job capturing the boiling point of all three molecules (usually within 5 to 10 degrees). It also (barely)) captures the fact that 1-propanol boils at a higher temperature than 2-propanol.</p>
+<p>However, notice the error in the <span class="math inline">\(\Delta H_{vap}\)</span> for the alcohols! Group contribution methods assume that adding an <span class="math inline">\(-OH\)</span> group always increases the enthalpy by a fixed amount. But in reality, alcohols form complex hydrogen-bonding networks, meaning the intermolecular forces are not perfectly additive. Always remember: <strong>Group contribution methods are fantastic for initial estimates, but they are linear approximations of complex, non-linear molecular physics.</strong></p>
+</div>
+</div>
 <hr>
 </section>
-<section id="example-2-compressing-steam" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="example-2-compressing-steam"><span class="header-section-number">7.2</span> Example 2: Compressing Steam</h2>
-<p><strong>Problem:</strong> Now, calculate the work required to compress steam (vapor) from the same starting pressure (<span class="math inline">\(0.5\)</span> bar) to the same final pressure (<span class="math inline">\(5\)</span> bar). Assume the inlet is superheated at <span class="math inline">\(300^\circ\)</span>C.</p>
-<p><strong>State 1 (Inlet):</strong></p>
-<ul>
-<li><p><span class="math inline">\(P_1 = 0.5\)</span> bar, <span class="math inline">\(T_1 = 300^\circ\)</span>C</p></li>
-<li><p><span class="math inline">\(\hat{H}_1 = 3075.2 \text{ kJ/kg}\)</span></p></li>
-</ul>
-<p><strong>State 2 (Outlet):</strong></p>
-<ul>
-<li><p><span class="math inline">\(P_2 = 5\)</span> bar.</p></li>
-<li><p>Determining the exact outlet temperature requires concepts involving <em>entropy</em> (which we will cover later). For now, we utilize the condition for minimum theoretical work (isentropic). That is, I have set this problem up so that the calculation gives the <em>minimum</em> amount of work required to compress the steam.</p></li>
-<li><p>Under these conditions, the outlet enthalpy is found to be <span class="math inline">\(\hat{H}_2 = 3927 \text{ kJ/kg}\)</span>.</p></li>
-</ul>
-<p><strong>Calculation:</strong> Since we are dealing with a gas, we <em>can</em> use the enthalpy difference directly (changes in H are large for gases). <span class="math display">\[\hat{W}_s = \hat{H}_2 - \hat{H}_1\]</span> <span class="math display">\[\hat{W}_s = 3927 - 3075.2 = 851.8 \text{ kJ/kg}\]</span> <span class="math display">\[\hat{W}_s = 851,800 \text{ J/kg}\]</span></p>
-</section>
-<section id="comparisons-and-conclusion" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="comparisons-and-conclusion"><span class="header-section-number">7.3</span> Comparisons and Conclusion</h2>
-<p>Compare the work required for the two fluids:</p>
-<ol type="1">
-<li><p><strong>Pump (Liquid):</strong> ~464 J/kg</p></li>
-<li><p><strong>Compressor (Gas):</strong> ~851,800 J/kg</p></li>
-</ol>
-<p><span class="math display">\[\frac{\text{Work}_{gas}}{\text{Work}_{liq}} \approx 1836\]</span></p>
-<p><strong>Why such a huge difference?</strong> Look back at the mechanical work equation: <span class="math inline">\(\hat{W}_s = \int \hat{V} dP\)</span>. The work is directly proportional to the specific volume <span class="math inline">\(\hat{V}\)</span>. * <span class="math inline">\(\hat{V}_{liquid} \approx 0.001 \text{ m}^3/\text{kg}\)</span> * <span class="math inline">\(\hat{V}_{gas} \approx 1.0 \text{ m}^3/\text{kg}\)</span></p>
-<p>Because the gas volume is roughly <span class="math inline">\(1000 \times\)</span> larger than the liquid volume, it costs roughly <span class="math inline">\(1000 \times\)</span> more energy to pressurize it. This is why pumps are cheap to run, but gas compressors are massive energy consumers in a chemical plant. This is an important concept to understand as we design processes! It will become important when we discuss power generation and refrigeration cycles later in the course.</p>
+<section id="the-molecular-origins-of-thermodynamics" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> The Molecular Origins of Thermodynamics</h1>
+<p><em>Note: This section provides a window into the connection between the macroscopic thermodynamic laws discussed in this course and their statistical microscopic origins. It is beyond the basic scope of this course, but I hope it provides you with a sense of some of the deep (and beautiful) principles that underly the topic. You will learn more about this in your Physical Chemistry class and if you choose to take a graduate elective course on thermodynamics your senior year.</em></p>
+<p>We have used the Ideal Gas Law (<span class="math inline">\(P\underline{V}=RT\)</span>) heavily. But where does it actually come from? The answer lies in entropy.</p>
+<p>In statistical mechanics, entropy (<span class="math inline">\(S\)</span>) is not a vague concept of “disorder.” It is a strict mathematical measure of the number of microstates (<span class="math inline">\(\Omega\)</span>) available to a system. A microstate is a specific arrangement of particles. Ludwig Boltzmann formulated this relation (and it is inscribed on his tombstone): <span id="eq-Boltzmann"><span class="math display">\[S = k_B \ln \Omega \tag{16}\]</span></span> where <span class="math inline">\(k_B\)</span> is the Boltzmann constant.</p>
+<p>Imagine a single molecule bouncing around a box of volume <span class="math inline">\(V\)</span>. The number of possible locations it can exist in is directly proportional to the volume. For <span class="math inline">\(N\)</span> non-interacting molecules, the total number of arrangements scales with the volume to the power of <span class="math inline">\(N\)</span>: <span class="math display">\[\Omega \propto V^N \implies \Omega = c V^N\]</span></p>
+<p>Substitute this into Boltzmann’s equation (<a href="#eq-Boltzmann" class="quarto-xref">Eq.&nbsp;16</a>): <span id="eq-entropy_volume"><span class="math display">\[S = k_B \ln(c V^N) = N k_B \ln(V) + C \tag{17}\]</span></span></p>
+<p>Recall the fundamental property relation from classical thermodynamics:</p>
+<p><span class="math inline">\(dU = T dS - P dV\)</span> (at constant <span class="math inline">\(N\)</span>).</p>
+<p>Rearranging gives an expression for pressure at constant internal energy:</p>
+<p><span id="eq-pressure_entropy"><span class="math display">\[P = T \left( \frac{\partial S}{\partial V} \right)_U \tag{18}\]</span></span></p>
+<p>Take the derivative of <a href="#eq-entropy_volume" class="quarto-xref">Eq.&nbsp;17</a> with respect to volume keeping energy <span class="math inline">\(U\)</span> constant: <span class="math display">\[\left( \frac{\partial S}{\partial V} \right)_U = \frac{N k_B}{V}\]</span></p>
+<p>Substitute this back into the thermodynamic definition of pressure (<a href="#eq-pressure_entropy" class="quarto-xref">Eq.&nbsp;18</a>): <span class="math display">\[P = T \left( \frac{N k_B}{V} \right) \implies P V = N k_B T\]</span></p>
+<p>Since <span class="math inline">\(N k_B\)</span> (number of molecules times Boltzmann’s constant) is exactly equal to <span class="math inline">\(n R\)</span> (number of moles times the universal gas constant), we arrive at: <span class="math display">\[P \underline{V} = R T\]</span></p>
+<p><strong>The Ideal Gas Law is not an empirical observation; it is a direct mathematical consequence of molecules having more ways to arrange themselves in a larger volume.</strong> When molecules <em>do</em> interact via forces, the number of available microstates changes, requiring us to use more sophisticated P-V-T expressions that account for the intermolecular interactions, such as the virial equation or cubic equations of state!</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
