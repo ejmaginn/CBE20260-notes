@@ -15,9 +15,11 @@ execute:
 
 # The Virial Equation of State
 
-In the previous lectures, we have utilized cubic equations of state and generalized correlations to model real fluid behavior. There is one more important way that one can model the behavior of real gases. If we look at the compressibility factor ($Z$) plotted against pressure (see @fig-Z-plot) or density ($\rho$), we notice that at low-to-moderate pressures, the curves are remarkably linear. 
+In the previous lectures, we have utilized cubic equations of state and generalized correlations to model real fluid behavior. There is one more important way that one can model the behavior of real gases. If we look at the compressibility factor ($Z$) plotted against pressure (see @fig-Z-plot) or density $\rho=1/\underline{V}$ (see @fig-Z-vs-rho-CH4-PR), we notice that at low-to-moderate pressures, the curves are remarkably linear. 
 
 ![Compressibility factor versus pressure for various isotherms.](images/Z-plot.png){#fig-Z-plot width=70%}
+
+![Compressibility factor versus density for various isotherms at and above the critical temperature. Generated for methane using the Peng-Robinson equation of state.](images/Z-vs-rho-CH4-PR.png){#fig-Z-vs-rho-CH4-PR width=70%}
 
 This observation suggests we could represent $Z$ using a simple mathematical tool: a **Taylor Series expansion** about a density of zero (an ideal gas). 
 
