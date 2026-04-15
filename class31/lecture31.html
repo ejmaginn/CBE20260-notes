@@ -454,7 +454,7 @@ window.Quarto = {
 
 <section id="the-virial-equation-of-state" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> The Virial Equation of State</h1>
-<p>In the previous lectures, we have utilized cubic equations of state and generalized correlations to model real fluid behavior. There is one more important way that one can model the behavior of real gases. If we look at the compressibility factor (<span class="math inline">\(Z\)</span>) plotted against pressure (see <a href="#fig-Z-plot" class="quarto-xref">Fig.&nbsp;1</a>) or density (<span class="math inline">\(\rho\)</span>), we notice that at low-to-moderate pressures, the curves are remarkably linear.</p>
+<p>In the previous lectures, we have utilized cubic equations of state and generalized correlations to model real fluid behavior. There is one more important way that one can model the behavior of real gases. If we look at the compressibility factor (<span class="math inline">\(Z\)</span>) plotted against pressure (see <a href="#fig-Z-plot" class="quarto-xref">Fig.&nbsp;1</a>) or density <span class="math inline">\(\rho=1/\underline{V}\)</span> (see <a href="#fig-Z-vs-rho-CH4-PR" class="quarto-xref">Fig.&nbsp;2</a>), we notice that at low-to-moderate pressures, the curves are remarkably linear.</p>
 <div id="fig-Z-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-Z-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -462,6 +462,16 @@ window.Quarto = {
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Z-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Fig.&nbsp;1: Compressibility factor versus pressure for various isotherms.
+</figcaption>
+</figure>
+</div>
+<div id="fig-Z-vs-rho-CH4-PR" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Z-vs-rho-CH4-PR-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/Z-vs-rho-CH4-PR.png" class="img-fluid figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Z-vs-rho-CH4-PR-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;2: Compressibility factor versus density for various isotherms at and above the critical temperature. Generated for methane using the Peng-Robinson equation of state.
 </figcaption>
 </figure>
 </div>
@@ -514,7 +524,7 @@ Fig.&nbsp;1: Compressibility factor versus pressure for various isotherms.
 <img src="images/B-ZV.png" class="img-fluid figure-img" style="width:70.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-B-ZV-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig.&nbsp;2: How to experimentally estimate <span class="math inline">\(B(T)\)</span> and <span class="math inline">\(C(T)\)</span> from <span class="math inline">\(P-V-T\)</span> data.
+Fig.&nbsp;3: How to experimentally estimate <span class="math inline">\(B(T)\)</span> and <span class="math inline">\(C(T)\)</span> from <span class="math inline">\(P-V-T\)</span> data.
 </figcaption>
 </figure>
 </div>
@@ -542,14 +552,14 @@ Fig.&nbsp;2: How to experimentally estimate <span class="math inline">\(B(T)\)</
 <section id="group-contribution-methods" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> Group Contribution Methods</h1>
 <p>Up to now, every equation of state we’ve used requires us to know <span class="math inline">\(T_c\)</span>, <span class="math inline">\(P_c\)</span>, and <span class="math inline">\(\omega\)</span>. But what if you are tasked with designing a process for a newly synthesized pharmaceutical or a complex biochemical, and those properties have never been measured?</p>
-<p>One way to do this is via <strong>Group Contribution Methods</strong>. In a sense, group contribution methods are a primitive form of machine learning. The central philosophy here is that a molecule is simply the sum of its parts. For example, if you look at the boiling points of linear alkanes (ethane, propane, butane, etc.), the boiling point increases predictably with every <span class="math inline">\(-CH_2-\)</span> group added to the chain, as shown in <a href="#fig-alkane-Tb" class="quarto-xref">Fig.&nbsp;3</a>.</p>
+<p>One way to do this is via <strong>Group Contribution Methods</strong>. In a sense, group contribution methods are a primitive form of machine learning. The central philosophy here is that a molecule is simply the sum of its parts. For example, if you look at the boiling points of linear alkanes (ethane, propane, butane, etc.), the boiling point increases predictably with every <span class="math inline">\(-CH_2-\)</span> group added to the chain, as shown in <a href="#fig-alkane-Tb" class="quarto-xref">Fig.&nbsp;4</a>.</p>
 <div id="fig-alkane-Tb" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-alkane-Tb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/alkane-Tb.png" class="img-fluid figure-img" style="width:70.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-alkane-Tb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Fig.&nbsp;3: Experimental data for the normal boiling point of linear alkanes versus chain length.
+Fig.&nbsp;4: Experimental data for the normal boiling point of linear alkanes versus chain length.
 </figcaption>
 </figure>
 </div>
