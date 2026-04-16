@@ -201,7 +201,7 @@ Using the parameter tables, we sum the contributions and compare them to the tru
 | | $\Delta H_{vap}$ (kJ/mol) | 53.0 | 52.9 | 0.1 kJ/mol |
 
 **Discussion:**
-The Joback method does a remarkable job capturing the boiling point of all three molecules (usually within 5 to 10 degrees). It also (barely)) captures the fact that 1-propanol boils at a higher temperature than 2-propanol. 
+The Joback method does a remarkable job capturing the boiling point of all three molecules (usually within 5 to 10 degrees). It also (barely) captures the fact that 1-propanol boils at a higher temperature than 2-propanol. 
 
 However, notice the error in the $\Delta H_{vap}$ for the alcohols! Group contribution methods assume that adding an $-OH$ group always increases the enthalpy by a fixed amount. But in reality, alcohols form complex hydrogen-bonding networks, meaning the intermolecular forces are not perfectly additive. Always remember: **Group contribution methods are fantastic for initial estimates, but they are linear approximations of complex, non-linear molecular physics.**
 :::

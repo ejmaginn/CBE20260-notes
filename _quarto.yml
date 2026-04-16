@@ -103,7 +103,9 @@ website:
           - href: class30/lecture30.qmd
             text: Lecture 30 - Generalized Correlations and the Critical Point
           - href: class31/lecture31.qmd
-            text: Lecture 31 - The Virial Equation, Group Contributions, and Molecular Origins of Thermodynamics    
+            text: Lecture 31 - The Virial Equation, Group Contributions, and Molecular Origins of Thermodynamics
+          - href: class32/lecture32.qmd
+            text: Lecture 32 - Introduction to Phase Equilibria      
   
 
           # Add more lectures here as you create them:
