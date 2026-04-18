@@ -1,0 +1,426 @@
+---
+title: "Big Picture: From Thermodynamic Laws to Real Fluid Calculations"
+subtitle: "CBE 20260 / Thermodynamics I"
+author: "Edward Maginn"
+format:
+  html:
+    toc: true
+    number-sections: true
+  pdf:
+    toc: true
+    number-sections: true
+execute:
+  echo: false
+---
+
+# The Big Picture of the Second Half of the Course
+
+We have been on a journey. We started off by stating some simple postulates and invoked the First and Second Laws. From this, we were able to solve problems involving pumps, compressors, turbines, etc. by writing mass, energy, and entropy balances. We put together these elements and solved more complicated problems: 
+
+- Rankine cycles  
+- Refrigeration cycles  
+
+We saw that the First and Second Laws imposed limits on what we could do. 
+
+We needed thermodynamic properties to solve these problems, so we used either the ideal gas assumption or tables like the steam tables, NIST, or CoolProp. 
+
+These worked well—but only for **specific fluids and tabulated data**.
+
+---
+
+## The Problem
+
+What if:
+
+- The fluid is new (no tables exist)?  
+- The pressure is very high?  
+- The fluid is not water?  
+
+You cannot rely on tables. You need a **general method**.
+
+---
+
+# The Big Idea
+
+Remember the Fundamental Postulate of Thermodynamics we talked about in Lecture 4:
+
+>Isolated systems with no external forces acting on them will approach unique equilibrium states
+characterized by the mass of each distinct species in the system and two independently variable
+properties.
+
+So if we know:
+
+$$
+P, \; V, \; T
+$$
+
+then in principle we can determine:
+
+$$
+U, \; H, \; S, \; G
+$$
+
+---
+
+## The Goal
+
+Build a framework to compute ALL thermodynamic properties from:
+
+- an equation of state (EOS)  
+
+- measurable variables (P, V, T)
+
+---
+
+# Step 1: Equations of State (EOS)
+
+We began by introducing equations of state:
+
+- Ideal gas:  
+  $$
+  P\underline{V} = RT
+  $$
+
+- More realistic cubic equations of state:  
+  - van der Waals: 
+    $$
+    P = \frac{RT}{\underline{V} - b} - \frac{a}{\underline{V}^2}
+    $$  
+  - Peng–Robinson: 
+    $$
+    P = \frac{RT}{\underline{V} - b} - \frac{a\alpha(T)}{\underline{V}(\underline{V} + b) + b(\underline{V} - b)}
+    $$  
+  - SRK: 
+    $$
+    P = \frac{RT}{\underline{V} - b} - \frac{a\alpha(T)}{\underline{V}(\underline{V} + b)}
+    $$  
+
+
+
+
+- The cubic equations of state were motivated by concepts from **corresponding states theory**, which says that fluids at the same reduced temperature and pressure have similar behavior. Basically, the compressibility is a function of $T_r=T/T_c$ and $P_r=P/P_c$. 
+$$Z = f(T_r, P_r)$$
+
+We found that this wasn't quite right, so we added a third parameter, the acentric factor $\omega$, to capture the non-sphericity of molecules. This led to the generalized correlation:
+$$
+Z = Z^{(0)}(T_r, P_r) + \omega Z^{(1)}(T_r, P_r)
+$$
+
+Accurate equations of state such as Peng-Robinson and SRK have three parameters that depend on $T_c$, $P_c$, and $\omega$ and can be applied to a wide range of fluids.
+
+- There are other equations of state, with a simple one being the virial EOS:
+    $$
+    P = \frac{RT}{\underline{V}} \left(1 + \frac{B(T)}{\underline{V}} + \frac{C(T)}{\underline{V}^2} + \cdots\right)
+    $$  
+- The virial EOS was motivated by statistical mechanics and the idea of a cluster expansion (sort of like a Taylor series).
+
+**Bottom line:** These equations of state all relate:
+
+$$
+P = f(T, V)
+$$
+or
+$$V = f(T, P)
+$$
+
+---
+
+## Key Insight
+
+An EOS gives you **P–V–T behavior**, but engineers need:
+
+- enthalpy  
+- entropy  
+- internal energy  
+
+👉 So we need a way to connect **PVT → all properties**
+
+---
+
+# Step 2: The Fundamental Equation
+
+From the First + Second Laws for a closed system:
+
+$$
+d\underline{U} = T d\underline{S} - P d\underline{V}
+$$
+
+
+This is the **starting point of everything**. 
+
+It tells us:
+
+- $U = U(S, V)$  
+- $T = \left(\frac{\partial U}{\partial S}\right)_V$  
+- $P = -\left(\frac{\partial U}{\partial V}\right)_S$  
+
+---
+
+## Big Interpretation
+
+> The equations above show that temperature and pressure are **slopes of a thermodynamic surface**
+
+---
+
+# Step 3: Changing Variables (Legendre Transforms)
+
+We don’t want to work in $(S, V)$.
+
+We want:
+
+- $T$ and $P$ (measurable!)
+
+So we showed that mathematically (via Legendre transforms) we can change variables to obtain other thermodynamic "potentials". The math relied upon those "slopes" we talked about, but the key point is that we can change variables to get new potentials:
+
+- $U \rightarrow H = U + PV$  
+- $U \rightarrow A = U - TS$  
+- $U \rightarrow G = U + PV - TS$
+
+In differential form, these are:
+$$d\underline{H} = T d\underline{S} + \underline{V} dP$$
+$$d\underline{A} = -\underline{S} dT - P d\underline{V}$$
+$$d\underline{G} = -\underline{S} dT + \underline{V} dP$$
+
+---
+
+## Result: Four Potentials
+
+Each thermodynamic potential has its own “natural variables”:
+
+| Potential | Natural Variables |
+|----------|------------------|
+| $U$ | $(S, V)$ |
+| $H$ | $(S, P)$ |
+| $A$ | $(T, V)$ |
+| $G$ | $(T, P)$ |
+
+---
+
+# Step 4: Maxwell Relations (The Key Tool)
+
+From exact differentials, the order of differentiation does not matter:
+$$\left[ \frac{\partial}{\partial y}  \left( \frac{\partial F}{\partial x} \right)_y \right ]_x = \left[ \frac{\partial}{\partial x}  \left( \frac{\partial F}{\partial y} \right)_x \right ]_y$$
+
+This allowed us to derive the Maxwell relations, which relate unmeasurable derivatives (like entropy) to measurable ones (PVT).
+
+## From Internal Energy ($U$)
+$$dU = T dS - P dV$$
+Here, $x = S, y = V, M = T, N = -P$. Applying the exactness criterion:
+$$\left( \frac{\partial T}{\partial V} \right)_S = -\left( \frac{\partial P}{\partial S} \right)_V$$ {#eq-maxwell-U}
+
+## From Enthalpy ($H$)
+$$dH = T dS + V dP$$
+Applying the exactness criterion:
+$$\left( \frac{\partial T}{\partial P} \right)_S = \left( \frac{\partial V}{\partial S} \right)_P$$ {#eq-maxwell-H}
+
+## From Helmholtz Free Energy ($A$)
+$$dA = -S dT - P dV$$
+Applying the exactness criterion:
+$$\left( \frac{\partial S}{\partial V} \right)_T = \left( \frac{\partial P}{\partial T} \right)_V$$ {#eq-maxwell-A}
+
+## From Gibbs Free Energy ($G$)
+$$dG = -S dT + V dP$$
+Applying the exactness criterion:
+$$-\left( \frac{\partial S}{\partial P} \right)_T = \left( \frac{\partial V}{\partial T} \right)_P$$ {#eq-maxwell-G}
+
+
+---
+
+# Step 5: General Property Equations
+
+Using calculus + Maxwell relations, we derived:
+
+## Enthalpy
+
+$$
+dH = C_p dT + \left[V - T\left(\frac{\partial V}{\partial T}\right)_P\right] dP
+$$
+
+## Internal Energy
+
+$$
+dU = C_v dT + \left[T\left(\frac{\partial P}{\partial T}\right)_V - P\right] dV
+$$
+
+---
+
+## Big Result
+
+> If you know an EOS (i.e., $V = f(T,P)$ or $P = f(T,V)$, you can compute $H$, $U$, and $S$.
+
+---
+
+# Step 6: The Roadblock
+
+In real problems:
+
+$$
+\Delta H = \int C_p(T,P)\,dT + \text{complicated term}
+$$
+
+But:
+
+- We only have **ideal gas $C_p(T)$ data**
+- EOS integrals are messy
+
+
+---
+
+# Step 7: The Breakthrough — Residual Properties
+
+Define:
+
+$$
+M^R = M - M^{IG}
+$$
+
+So:
+
+$$
+M = M^{IG} + M^R
+$$
+
+---
+
+## Why This Works
+
+We split the problem:
+
+1. Ideal gas part → easy (tables or Cp correlations - we did this in the first half of the course!)  
+2. Residual part → from EOS  
+
+---
+
+## Master Equations
+
+$$
+\Delta H = \Delta H^{IG} + (H_2^R - H_1^R)
+$$
+
+$$
+\Delta S = \Delta S^{IG} + (S_2^R - S_1^R)
+$$
+
+
+We showed that we can obtain exact expressions for residual properties from the EOS in terms of integrals over $P$ or $V$.
+Lecture 26 showed the formulas for doing this. Given some EOS $P = f(T, V)$ or $V = f(T, P)$, you can compute $H^R$ and $S^R$ from integrals over $P$ or $V$. We derived expressions for these integrals for many EOSs. All you have to do is compute the residual $H$, $U$, or $S$ at states 1 and 2 to compute the change in those properties (along with the ideal gas contribution).
+
+---
+
+## Big Insight
+
+> EOS gives you the **correction to ideal gas behavior**
+
+
+---
+
+# Step 8: Equations of State Become Powerful
+
+Now EOS is not just:
+
+$$
+P = f(T,V)
+$$
+
+It becomes a tool to compute:
+
+- $Z$
+- $H^R$
+- $S^R$
+- $U^R$
+
+Now problems like compressors, turbines, heat exchangers, and phase equilibria can be solved for **any fluid** using an EOS and the residual property framework.
+
+---
+
+## Examples
+We worked out examples using made up (simple) EOS and:
+
+- van der Waals  
+- Peng–Robinson  
+- SRK  
+
+---
+
+# Step 9: Generalized Correlations
+
+Instead of solving an EOS every time:
+
+- We could just compute reduced properties:
+  $$
+  T_r = \frac{T}{T_c}, \quad P_r = \frac{P}{P_c}
+  $$
+
+- Use acentric factor $\omega$
+
+Then:
+
+$$
+Z = Z^{(0)} + \omega Z^{(1)}
+$$
+
+This is what we call a **generalized correlation**. This is what Lee and Kesler did in their paper, and it is the basis for the generalized correlations we use in practice. Since you have a general correlation for $Z$, you can compute $H^R$ and $S^R$ from the integrals we derived in Lecture 26. This is how we can compute residual properties without solving an EOS every time.
+
+---
+
+## Interpretation
+
+> Many fluids behave similarly when scaled properly by their critical properties and acentric factor.
+
+---
+
+# Step 10: Final Toolbox
+
+At this point, you can solve problems for gases that follow on EOS for:
+
+- Compressors
+- Turbines  
+- Heat exchangers  
+- Phase equilibria  
+
+WITHOUT tables.
+
+> Everything we have done was about replacing steam tables with equations you can apply to *any* fluid.
+
+---
+
+
+**What You Should Understand (Not Memorize)**
+- Conceptual
+  
+- Why two properties define a state
+
+- Why ideal gas is only an approximation
+
+- How to compute $\Delta H$, $\Delta S$ for real fluids
+
+- How an EOS is used to perform "real" calculations
+
+- Why residual properties exist
+
+**Final Takeaway**
+
+-Everything in this section is about one idea:
+
+- Using measurable variables (P, V, T) to compute everything else
+
+-This is what allows chemical engineers to:
+
+* design processes
+
+* simulate systems
+* predict behavior of new fluids
+
+# Where This Leads
+
+You are now ready for:
+
+- Phase equilibria
+- Fugacity
+- Real mixture thermodynamics
+
+These are the tools used in:
+
+- distillation
+- separations
+- reactors

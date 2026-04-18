@@ -105,7 +105,9 @@ website:
           - href: class31/lecture31.qmd
             text: Lecture 31 - The Virial Equation, Group Contributions, and Molecular Origins of Thermodynamics
           - href: class32/lecture32.qmd
-            text: Lecture 32 - Introduction to Phase Equilibria      
+            text: Lecture 32 - Introduction to Phase Equilibria  
+          - href: Big-Picture-exam3/Big-Picture-exam3.qmd
+            text: Big Picture — Exam 3       
   
 
           # Add more lectures here as you create them:
