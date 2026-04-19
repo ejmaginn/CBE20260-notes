@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Edward Maginn">
+
+<title>Lecture 33: Chemical Potential, Gibbs Energy, and the Clapeyron Equation – CBE 20260 — Course Notes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-950ba19c765f2cec88564589b0edcdee.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">CBE 20260 — Course Notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-notebooks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Notebooks</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-notebooks">    
+        <li>
+    <a class="dropdown-item" href="../class02/lecture02_example.html">
+ <span class="dropdown-text">L2 Block &amp; Spring Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class03/lecture03_example.html">
+ <span class="dropdown-text">L3 Maxwell-Boltzmann Distribution Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class04/PV-diagram.html">
+ <span class="dropdown-text">L4 PV Diagram Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class06/lecture06_LJ.html">
+ <span class="dropdown-text">L6 LJ Potential Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class07/VDW-loop.html">
+ <span class="dropdown-text">L7 VDW loop Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class07/vdw-TP.html">
+ <span class="dropdown-text">L7 VDW TP Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class14/Quenching_entropy.html">
+ <span class="dropdown-text">L14 Quenching Entropy Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class19/rankine-regen.html">
+ <span class="dropdown-text">L19 Regenerative Rankine Cycle Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class22/vapor-compression-cycle.html">
+ <span class="dropdown-text">L22 Vapor Compression Cycle Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class27/VDW-solver.html">
+ <span class="dropdown-text">L27 van der Waals Solver Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class27/residual-VDW.html">
+ <span class="dropdown-text">L27 van der Waals Residuals Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class29/PR-SRK-solvers.html">
+ <span class="dropdown-text">L29 PR-SRK Solvers Demo</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class01/lecture01.html">Lectures</a></li><li class="breadcrumb-item"><a href="../class33/lecture33.html">Lecture 33 - Chemical Potential, Gibbs Energy, and the Clapeyron Equation</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Lectures</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class01/lecture01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 1 — Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class02/lecture02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 2 — Systems, Boundaries and Other Basics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class03/lecture03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 3 — Forms of Energy and Calculating Work</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class04/lecture04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 4 — Fundamental Postulate, States, Phase Rule, and Pure Substance Phase Behaviors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class05/lecture05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 5 — Heat Capacity, Enthalpy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class06/lecture06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 6 — Calculating Internal Energy and Enthalpy Changes; intermolecular forces</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class07/lecture07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 7 - The van der Waals Equation of State; compressibility factor; open system energy balance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class08/lecture08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 8 - Open system energy balance applied to process equipment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class09/lecture09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 9 - Advanced Open System Energy Balances</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class10/lecture10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 10 - Latent Heat and the Need for a Second Law</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class12/lecture12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 12 - Introduction to Entropy and the Second Law</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class13/lecture13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 13 - Calculating Entropy Changes for Closed Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class14/lecture14.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 14 - Entropy Changes for Open Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class15/lecture15.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 15 - Open System Entropy Balance and Efficiency</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class16/lecture16.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 16 - Heat Engines and the Second Law</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class17/lecture17.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 17 - Carnot Cycle and Practical Heat Engines</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class18/lecture18.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 18 - Rankine Cycle Analysis and Efficiency</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class19/lecture19.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 19 - Improving Rankine Cycle Efficiency</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class20/lecture20.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 20 - Organic Rankine Cycles and Internal Combustion Engines</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class21/lecture21.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 21 - Introduction to Cooling and Refrigeration</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class22/lecture22.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 22 - Modeling Vapor Compression Cycles and Liquefaction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class23/lecture23.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 23 - The Mathematics of Thermodynamics and Thermodynamic Potentials</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class24/lecture24.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 24 - The Maxwell Relations and Calculating Thermodynamic Properties</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class25/lecture25.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 25 - General Property Equations from the Math of Thermo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class26/lecture26.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 26 - Real Fluids and Residual Properties</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class27/lecture27.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 27 - Applying Residuals and Intro to Cubic Equations of State</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class28/lecture28.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 28 - Cubic Equations of State and the Principle of Corresponding States</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class29/lecture29.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 29 - Modern Cubic Equations of State</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class30/lecture30.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 30 - Generalized Correlations and the Critical Point</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class31/lecture31.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 31 - The Virial Equation, Group Contributions, and Molecular Origins of Thermodynamics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class32/lecture32.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 32 - Introduction to Phase Equilibria</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Big-Picture-exam3/Big-Picture-exam3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Big Picture — Exam 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class33/lecture33.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Lecture 33 - Chemical Potential, Gibbs Energy, and the Clapeyron Equation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#review-and-continuation-of-phase-equilibrium-discussion" id="toc-review-and-continuation-of-phase-equilibrium-discussion" class="nav-link active" data-scroll-target="#review-and-continuation-of-phase-equilibrium-discussion"><span class="header-section-number">1</span> Review and Continuation of Phase Equilibrium Discussion</a></li>
+  <li><a href="#chemical-potential-and-thermodynamic-potentials" id="toc-chemical-potential-and-thermodynamic-potentials" class="nav-link" data-scroll-target="#chemical-potential-and-thermodynamic-potentials"><span class="header-section-number">2</span> Chemical Potential and Thermodynamic Potentials</a>
+  <ul class="collapse">
+  <li><a href="#chemical-potential-from-u-h-a-and-g" id="toc-chemical-potential-from-u-h-a-and-g" class="nav-link" data-scroll-target="#chemical-potential-from-u-h-a-and-g"><span class="header-section-number">2.1</span> Chemical potential from <span class="math inline">\(U\)</span>, <span class="math inline">\(H\)</span>, <span class="math inline">\(A\)</span>, and <span class="math inline">\(G\)</span></a></li>
+  </ul></li>
+  <li><a href="#general-fundamental-relations-with-chemical-potential" id="toc-general-fundamental-relations-with-chemical-potential" class="nav-link" data-scroll-target="#general-fundamental-relations-with-chemical-potential"><span class="header-section-number">3</span> General Fundamental Relations with Chemical Potential</a>
+  <ul class="collapse">
+  <li><a href="#important-special-case" id="toc-important-special-case" class="nav-link" data-scroll-target="#important-special-case"><span class="header-section-number">3.1</span> Important special case</a></li>
+  </ul></li>
+  <li><a href="#phase-equilibrium-in-terms-of-chemical-potential" id="toc-phase-equilibrium-in-terms-of-chemical-potential" class="nav-link" data-scroll-target="#phase-equilibrium-in-terms-of-chemical-potential"><span class="header-section-number">4</span> Phase Equilibrium in Terms of Chemical Potential</a></li>
+  <li><a href="#gibbs-energy-and-spontaneous-processes" id="toc-gibbs-energy-and-spontaneous-processes" class="nav-link" data-scroll-target="#gibbs-energy-and-spontaneous-processes"><span class="header-section-number">5</span> Gibbs Energy and Spontaneous Processes</a>
+  <ul class="collapse">
+  <li><a href="#closed-system-energy-and-entropy-balances" id="toc-closed-system-energy-and-entropy-balances" class="nav-link" data-scroll-target="#closed-system-energy-and-entropy-balances"><span class="header-section-number">5.1</span> Closed System Energy and Entropy Balances</a>
+  <ul class="collapse">
+  <li><a href="#energy-balance" id="toc-energy-balance" class="nav-link" data-scroll-target="#energy-balance"><span class="header-section-number">5.1.1</span> Energy balance</a></li>
+  <li><a href="#entropy-balance" id="toc-entropy-balance" class="nav-link" data-scroll-target="#entropy-balance"><span class="header-section-number">5.1.2</span> Entropy balance</a></li>
+  <li><a href="#combined-energy-and-entropy-balances" id="toc-combined-energy-and-entropy-balances" class="nav-link" data-scroll-target="#combined-energy-and-entropy-balances"><span class="header-section-number">5.1.3</span> Combined energy and entropy balances</a></li>
+  </ul></li>
+  <li><a href="#key-result" id="toc-key-result" class="nav-link" data-scroll-target="#key-result"><span class="header-section-number">5.2</span> Key Result</a></li>
+  </ul></li>
+  <li><a href="#interpretation-why-g-is-minimized-at-equilibrium" id="toc-interpretation-why-g-is-minimized-at-equilibrium" class="nav-link" data-scroll-target="#interpretation-why-g-is-minimized-at-equilibrium"><span class="header-section-number">6</span> Interpretation: Why <span class="math inline">\(G\)</span> is Minimized at Equilibrium</a>
+  <ul class="collapse">
+  <li><a href="#spontaneous-process" id="toc-spontaneous-process" class="nav-link" data-scroll-target="#spontaneous-process"><span class="header-section-number">6.1</span> Spontaneous process</a></li>
+  <li><a href="#equilibrium" id="toc-equilibrium" class="nav-link" data-scroll-target="#equilibrium"><span class="header-section-number">6.2</span> Equilibrium</a></li>
+  </ul></li>
+  <li><a href="#phase-stability-and-direction-of-phase-change" id="toc-phase-stability-and-direction-of-phase-change" class="nav-link" data-scroll-target="#phase-stability-and-direction-of-phase-change"><span class="header-section-number">7</span> Phase Stability and Direction of Phase Change</a>
+  <ul class="collapse">
+  <li><a href="#foreshadowing-mixtures" id="toc-foreshadowing-mixtures" class="nav-link" data-scroll-target="#foreshadowing-mixtures"><span class="header-section-number">7.1</span> Foreshadowing Mixtures</a></li>
+  </ul></li>
+  <li><a href="#derivation-of-the-clapeyron-equation" id="toc-derivation-of-the-clapeyron-equation" class="nav-link" data-scroll-target="#derivation-of-the-clapeyron-equation"><span class="header-section-number">8</span> Derivation of the Clapeyron Equation</a></li>
+  <li><a href="#clapeyron-equation-in-terms-of-enthalpy" id="toc-clapeyron-equation-in-terms-of-enthalpy" class="nav-link" data-scroll-target="#clapeyron-equation-in-terms-of-enthalpy"><span class="header-section-number">9</span> Clapeyron Equation in Terms of Enthalpy</a></li>
+  <li><a href="#physical-implications-of-the-clapeyron-equation" id="toc-physical-implications-of-the-clapeyron-equation" class="nav-link" data-scroll-target="#physical-implications-of-the-clapeyron-equation"><span class="header-section-number">10</span> Physical Implications of the Clapeyron Equation</a>
+  <ul class="collapse">
+  <li><a href="#vapor-liquid-equilibrium" id="toc-vapor-liquid-equilibrium" class="nav-link" data-scroll-target="#vapor-liquid-equilibrium"><span class="header-section-number">10.1</span> Vapor-liquid equilibrium</a></li>
+  <li><a href="#solid-liquid-equilibrium" id="toc-solid-liquid-equilibrium" class="nav-link" data-scroll-target="#solid-liquid-equilibrium"><span class="header-section-number">10.2</span> Solid-liquid equilibrium</a></li>
+  <li><a href="#why-water-is-unusual" id="toc-why-water-is-unusual" class="nav-link" data-scroll-target="#why-water-is-unusual"><span class="header-section-number">10.3</span> Why water is unusual</a></li>
+  </ul></li>
+  <li><a href="#derivation-of-the-clausiusclapeyron-equation" id="toc-derivation-of-the-clausiusclapeyron-equation" class="nav-link" data-scroll-target="#derivation-of-the-clausiusclapeyron-equation"><span class="header-section-number">11</span> Derivation of the Clausius–Clapeyron Equation</a>
+  <ul class="collapse">
+  <li><a href="#assumption-1-vapor-volume-dominates-liquid-volume" id="toc-assumption-1-vapor-volume-dominates-liquid-volume" class="nav-link" data-scroll-target="#assumption-1-vapor-volume-dominates-liquid-volume"><span class="header-section-number">11.1</span> Assumption 1: vapor volume dominates liquid volume</a></li>
+  <li><a href="#assumption-2-vapor-behaves-ideally" id="toc-assumption-2-vapor-behaves-ideally" class="nav-link" data-scroll-target="#assumption-2-vapor-behaves-ideally"><span class="header-section-number">11.2</span> Assumption 2: vapor behaves ideally</a></li>
+  <li><a href="#assumption-3-delta-underlineh_vap-is-constant" id="toc-assumption-3-delta-underlineh_vap-is-constant" class="nav-link" data-scroll-target="#assumption-3-delta-underlineh_vap-is-constant"><span class="header-section-number">11.3</span> Assumption 3: <span class="math inline">\(\Delta \underline{H}_{vap}\)</span> is constant</a></li>
+  </ul></li>
+  <li><a href="#clausiusclapeyron-equation" id="toc-clausiusclapeyron-equation" class="nav-link" data-scroll-target="#clausiusclapeyron-equation"><span class="header-section-number">12</span> Clausius–Clapeyron Equation</a></li>
+  <li><a href="#interpretation-of-clausiusclapeyron" id="toc-interpretation-of-clausiusclapeyron" class="nav-link" data-scroll-target="#interpretation-of-clausiusclapeyron"><span class="header-section-number">13</span> Interpretation of Clausius–Clapeyron</a></li>
+  <li><a href="#antoine-equation" id="toc-antoine-equation" class="nav-link" data-scroll-target="#antoine-equation"><span class="header-section-number">14</span> Antoine Equation</a></li>
+  <li><a href="#example-why-is-ice-slippery" id="toc-example-why-is-ice-slippery" class="nav-link" data-scroll-target="#example-why-is-ice-slippery"><span class="header-section-number">15</span> Example: Why Is Ice Slippery?</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">16</span> Summary</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture33.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class01/lecture01.html">Lectures</a></li><li class="breadcrumb-item"><a href="../class33/lecture33.html">Lecture 33 - Chemical Potential, Gibbs Energy, and the Clapeyron Equation</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Lecture 33: Chemical Potential, Gibbs Energy, and the Clapeyron Equation</h1>
+<p class="subtitle lead">CBE 20260 / Thermodynamics I</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Edward Maginn </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="review-and-continuation-of-phase-equilibrium-discussion" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Review and Continuation of Phase Equilibrium Discussion</h1>
+<p>Last lecture, we established two key ideas about phase equilibrium:</p>
+<ol type="1">
+<li>For two phases in equilibrium (see <a href="#fig-phase-eq" class="quarto-xref">Fig.&nbsp;1</a>), temperature, pressure, and chemical potential are equal: <span class="math display">\[
+T^\alpha = T^\beta,\qquad
+P^\alpha = P^\beta,\qquad
+\mu^\alpha = \mu^\beta
+\]</span></li>
+</ol>
+<div id="fig-phase-eq" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-phase-eq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/phase-eq.png" class="img-fluid figure-img" style="width:10.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-phase-eq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;1: Phase equilibria between two phases <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>.
+</figcaption>
+</figure>
+</div>
+<ol start="2" type="1">
+<li>For a pure fluid, the chemical potential is just the molar Gibbs energy: <span class="math display">\[
+\mu = \underline{G}
+\]</span> So in this special case of pure fluids, phase equilibrium can be expressed as equality of molar Gibbs energies in addition to equality of temperature and pressure: <span class="math display">\[
+\underline{G}^\alpha = \underline{G}^\beta
+\]</span></li>
+</ol>
+<p>This lecture picks up from there. We will:</p>
+<ul>
+<li>connect chemical potential to all of the major thermodynamic potentials,</li>
+<li>write the general fundamental relations when <span class="math inline">\(N\)</span> is allowed to vary,</li>
+<li>show that maximizing entropy for a closed system at constant <span class="math inline">\(T\)</span> and <span class="math inline">\(P\)</span> implies minimization of <span class="math inline">\(G\)</span>,</li>
+<li>derive a very important result relating the <strong>rate of change of Gibbs energy</strong> to the <strong>rate of entropy generation</strong>,</li>
+<li>derive the <strong>Clapeyron equation</strong>, and</li>
+<li>simplify it to the <strong>Clausius–Clapeyron equation</strong> for vapor-liquid equilibrium.</li>
+<li>introduce the semi-empirical Antoine equation for vapor pressure.</li>
+</ul>
+<hr>
+</section>
+<section id="chemical-potential-and-thermodynamic-potentials" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Chemical Potential and Thermodynamic Potentials</h1>
+<!-- I should probably revise this to start out with total differentials and an open system and motivate the 4 chemical potential partial derivatives from scratch instead of just stating what the chemical potential is. -->
+<p>The chemical potential is the <strong>partial molar Gibbs energy</strong>:</p>
+<p><span id="eq-chemical-potential"><span class="math display">\[
+\mu = \left( \frac{\partial G}{\partial N} \right)_{T,P}
+\tag{1}\]</span></span></p>
+<p>But <span class="math inline">\(\mu\)</span> also appears naturally when we differentiate the other thermodynamic potentials with respect to the number of moles, holding their natural variables constant (see the last derivation in the previous lecture notes where we showed that maximizing entropy yields the conditions of phase equilibria). The result is that <span class="math inline">\(\mu\)</span> can be expressed as a partial derivative of <em>any</em> of the four major thermodynamic potentials.</p>
+<section id="chemical-potential-from-u-h-a-and-g" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="chemical-potential-from-u-h-a-and-g"><span class="header-section-number">2.1</span> Chemical potential from <span class="math inline">\(U\)</span>, <span class="math inline">\(H\)</span>, <span class="math inline">\(A\)</span>, and <span class="math inline">\(G\)</span></h2>
+<p>For a one-component system, in addition to <a href="#eq-chemical-potential" class="quarto-xref">Eq.&nbsp;1</a>, we also have:</p>
+<p><span id="eq-mu-from-U"><span class="math display">\[
+\mu = \left( \frac{\partial U}{\partial N} \right)_{S,V}
+\tag{2}\]</span></span></p>
+<p><span id="eq-mu-from-H"><span class="math display">\[
+\mu = \left( \frac{\partial H}{\partial N} \right)_{S,P}   
+\tag{3}\]</span></span></p>
+<p><span id="eq-mu-from-A"><span class="math display">\[
+\mu = \left( \frac{\partial A}{\partial N} \right)_{T,V}
+\tag{4}\]</span></span></p>
+<p>Note that in these expressions, <span class="math inline">\(U\)</span>, <span class="math inline">\(H\)</span>, <span class="math inline">\(A\)</span>, and <span class="math inline">\(G\)</span> are the <strong>extensive</strong> thermodynamic potentials, not the molar potentials. The derivatives are taken with respect to the number of moles at constant values of the natural variables of each potential.</p>
+<p>This means that <span class="math inline">\(\mu\)</span> is the conjugate variable to <span class="math inline">\(N\)</span>, just as:</p>
+<ul>
+<li><span class="math inline">\(T\)</span> is conjugate to <span class="math inline">\(S\)</span>,</li>
+<li><span class="math inline">\(-P\)</span> is conjugate to <span class="math inline">\(V\)</span>.</li>
+</ul>
+<p>This is why chemical potential is the natural thermodynamic quantity governing transfer of matter. When there is no net matter transferred between two phases, the chemical potentials must be equal.</p>
+<hr>
+</section>
+</section>
+<section id="general-fundamental-relations-with-chemical-potential" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> General Fundamental Relations with Chemical Potential</h1>
+<p>We first learned the fundamental relation for a closed, one-component system with fixed composition:</p>
+<p><span class="math display">\[
+d\underline{U} = T\,d\underline{S} - P\,d\underline{V}
+\]</span> For a closed system, we could just multiply by <span class="math inline">\(N\)</span> to get the fundamental relation for the extensive internal energy:</p>
+<p><span class="math display">\[
+N d\underline{U} = dU = N (T\,d\underline{S} - P\,d\underline{V}) = T dS - P dV
+\]</span></p>
+<p>If the number of moles is allowed to vary for an open system, however, then we must add a third term involving <span class="math inline">\(dN\)</span> since the moles or mass can change in an open system. The full differential relations for the extensive potentials are:</p>
+<p><span id="eq-fundamental-U"><span class="math display">\[
+dU = T\,dS - P\,dV + \mu\,dN
+\tag{5}\]</span></span></p>
+<p><span id="eq-fundamental-H"><span class="math display">\[
+dH = T\,dS + V\,dP + \mu\,dN
+\tag{6}\]</span></span></p>
+<p><span id="eq-fundamental-A"><span class="math display">\[
+dA = -S\,dT - P\,dV + \mu\,dN
+\tag{7}\]</span></span></p>
+<p><span id="eq-fundamental-G"><span class="math display">\[
+dG = -S\,dT + V\,dP + \mu\,dN
+\tag{8}\]</span></span></p>
+<p>Convince yourself that these are correct by looking at <a href="#eq-chemical-potential" class="quarto-xref">Eq.&nbsp;1</a> through <a href="#eq-mu-from-A" class="quarto-xref">Eq.&nbsp;4</a> to see how the chemical potential emerges as the partial derivative with respect to <span class="math inline">\(N\)</span>.</p>
+<p><a href="#eq-fundamental-U" class="quarto-xref">Eq.&nbsp;5</a> - <a href="#eq-fundamental-G" class="quarto-xref">Eq.&nbsp;8</a> are the general fundamental relations for a one-component open system. If you look back at <a href="#fig-phase-eq" class="quarto-xref">Fig.&nbsp;1</a>, you can see that phases <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> are open systems that can exchange matter with each other, so these are the correct fundamental relations to use when analyzing phase equilibrium.</p>
+<section id="important-special-case" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="important-special-case"><span class="header-section-number">3.1</span> Important special case</h2>
+<p>For a <strong>closed system</strong>, (<span class="math inline">\(dN=0\)</span>), these reduce to the familiar forms:</p>
+<p><span class="math display">\[
+dU = T\,dS - P\,dV
+\]</span></p>
+<p><span class="math display">\[
+dH = T\,dS + V\,dP
+\]</span></p>
+<p><span class="math display">\[
+dA = -S\,dT - P\,dV
+\]</span></p>
+<p><span class="math display">\[
+dG = -S\,dT + V\,dP
+\]</span></p>
+<hr>
+</section>
+</section>
+<section id="phase-equilibrium-in-terms-of-chemical-potential" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Phase Equilibrium in Terms of Chemical Potential</h1>
+<p>The general condition for phase equilibrium between any two phases <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> is:</p>
+<p><span class="math display">\[
+\mu^\alpha = \mu^\beta
+\]</span></p>
+<p>For a pure fluid, since <span class="math inline">\(\mu = \underline{G}\)</span>, this can also be written as</p>
+<p><span class="math display">\[
+\underline{G}^\alpha = \underline{G}^\beta
+\]</span></p>
+<p>Thus:</p>
+<ul>
+<li><p>vapor-liquid equilibrium: <span class="math display">\[
+\underline{G}^v = \underline{G}^l
+\]</span></p></li>
+<li><p>solid-liquid equilibrium: <span class="math display">\[
+\underline{G}^s = \underline{G}^l
+\]</span></p></li>
+<li><p>solid-vapor equilibrium: <span class="math display">\[
+\underline{G}^s = \underline{G}^v
+\]</span></p></li>
+<li><p>triple point: <span class="math display">\[
+\underline{G}^s = \underline{G}^l = \underline{G}^v
+\]</span></p></li>
+</ul>
+<p>If the molar Gibbs energies of the phases are not equal at a given <span class="math inline">\(T\)</span> and <span class="math inline">\(P\)</span>, then the system is not at phase equilibrium.</p>
+<hr>
+</section>
+<section id="gibbs-energy-and-spontaneous-processes" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Gibbs Energy and Spontaneous Processes</h1>
+<p>Now we want to connect phase equilibrium to the <strong>direction of spontaneous change</strong>.</p>
+<p>The key question is:</p>
+<blockquote class="blockquote">
+<p>At constant <span class="math inline">\(T\)</span> and <span class="math inline">\(P\)</span>, what thermodynamic potential determines whether a process will proceed spontaneously?</p>
+</blockquote>
+<p>We will show that the answer is the Gibbs energy.</p>
+<hr>
+<section id="closed-system-energy-and-entropy-balances" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="closed-system-energy-and-entropy-balances"><span class="header-section-number">5.1</span> Closed System Energy and Entropy Balances</h2>
+<p>Consider a <strong>closed system</strong> at constant temperature and pressure.</p>
+<section id="energy-balance" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="energy-balance"><span class="header-section-number">5.1.1</span> Energy balance</h3>
+<p>Ignore kinetic and potential energy changes. The (extensive) energy balance is:</p>
+<p><span class="math display">\[
+\frac{dU}{dt} = \dot{Q} + \dot{W}
+\]</span></p>
+<p>For a simple compressible system, if the only work is boundary (“PV”) work,</p>
+<p><span class="math display">\[
+\dot{W} = -P\frac{dV}{dt}
+\]</span></p>
+<p>so</p>
+<p><span id="eq-energy-balance"><span class="math display">\[
+\frac{dU}{dt} = \dot{Q} - P\frac{dV}{dt}
+\tag{9}\]</span></span></p>
+</section>
+<section id="entropy-balance" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="entropy-balance"><span class="header-section-number">5.1.2</span> Entropy balance</h3>
+<p>The entropy balance for a closed system is</p>
+<p><span id="eq-entropy-balance"><span class="math display">\[
+\frac{dS}{dt} = \frac{\dot{Q}}{T} + \dot{S}_{gen}
+\tag{10}\]</span></span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(\dot{Q}/T\)</span> accounts for entropy transfer with heat</li>
+<li><span class="math inline">\(\dot{S}_{gen}\)</span> is the rate of entropy generation</li>
+</ul>
+<p>Multiply by <span class="math inline">\(T\)</span> to get:</p>
+<p><span class="math display">\[
+T\frac{dS}{dt} = \dot{Q} + T\dot{S}_{gen}
+\]</span></p>
+<p>Solve for <span class="math inline">\(\dot{Q}\)</span>:</p>
+<p><span class="math display">\[
+\dot{Q} = T\frac{dS}{dt} - T\dot{S}_{gen}
+\]</span></p>
+</section>
+<section id="combined-energy-and-entropy-balances" class="level3" data-number="5.1.3">
+<h3 data-number="5.1.3" class="anchored" data-anchor-id="combined-energy-and-entropy-balances"><span class="header-section-number">5.1.3</span> Combined energy and entropy balances</h3>
+<p>Substitute this last expression into the energy balance <a href="#eq-energy-balance" class="quarto-xref">Eq.&nbsp;9</a>:</p>
+<p><span class="math display">\[
+\frac{dU}{dt} = T\frac{dS}{dt} - T\dot{S}_{gen} - P\frac{dV}{dt}
+\]</span></p>
+<p>Rearrange:</p>
+<p><span class="math display">\[
+\frac{dU}{dt} + P\frac{dV}{dt} - T\frac{dS}{dt} = -T\dot{S}_{gen}
+\]</span></p>
+<p>Because <span class="math inline">\(T\)</span> and <span class="math inline">\(P\)</span> are constant, they may be treated as constants with respect to time and moved inside the derivative.</p>
+<p><span class="math display">\[
+\frac{d}{dt}(U+PV-TS) = -T\dot{S}_{gen}
+\]</span></p>
+<p>But by definition,</p>
+<p><span class="math display">\[
+G = U + PV - TS
+\]</span></p>
+<p>Therefore,</p>
+<p><span id="eq-Gibbs-entropy-generation"><span class="math display">\[
+\frac{dG}{dt} = -T\dot{S}_{gen}
+\tag{11}\]</span></span></p>
+<hr>
+</section>
+</section>
+<section id="key-result" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="key-result"><span class="header-section-number">5.2</span> Key Result</h2>
+<div class="callout callout-style-default callout-important callout-titled" title="Key Result: Gibbs Energy and Entropy Generation">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Key Result: Gibbs Energy and Entropy Generation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>At constant <span class="math inline">\(T\)</span> and <span class="math inline">\(P\)</span>, <a href="#eq-Gibbs-entropy-generation" class="quarto-xref">Eq.&nbsp;11</a> shows that the rate of change of Gibbs energy is directly related to the rate of entropy generation:</p>
+<p><span class="math display">\[
+\frac{dG}{dt} = -T\dot{S}_{gen}
+\]</span></p>
+<p>Since the second law requires</p>
+<p><span class="math display">\[
+\dot{S}_{gen} \ge 0
+\]</span></p>
+<p>it follows that</p>
+<p><span class="math display">\[
+\frac{dG}{dt} \le 0
+\]</span></p>
+<p>for any spontaneous process.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="interpretation-why-g-is-minimized-at-equilibrium" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Interpretation: Why <span class="math inline">\(G\)</span> is Minimized at Equilibrium</h1>
+<p>This result gives immediate physical insight.</p>
+<section id="spontaneous-process" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="spontaneous-process"><span class="header-section-number">6.1</span> Spontaneous process</h2>
+<p>If the process is spontaneous,</p>
+<p><span class="math display">\[
+\dot{S}_{gen} &gt; 0
+\]</span></p>
+<p>so</p>
+<p><span class="math display">\[
+\frac{dG}{dt} &lt; 0
+\]</span></p>
+<p>That is, <strong>Gibbs energy decreases with time</strong> for a spontaneous process.</p>
+</section>
+<section id="equilibrium" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="equilibrium"><span class="header-section-number">6.2</span> Equilibrium</h2>
+<p>At equilibrium,</p>
+<p><span class="math display">\[
+\dot{S}_{gen} = 0
+\]</span></p>
+<p>so</p>
+<p><span class="math display">\[
+\frac{dG}{dt} = 0
+\]</span></p>
+<p>Thus, at constant <span class="math inline">\(T\)</span> and <span class="math inline">\(P\)</span>, a spontaneous process moves in the direction of decreasing Gibbs energy, and equilibrium corresponds to a minimum in <span class="math inline">\(G\)</span> (at constant <span class="math inline">\(T\)</span>, <span class="math inline">\(P\)</span>, and <span class="math inline">\(N\)</span>):</p>
+<blockquote class="blockquote">
+<p>A spontaneous process moves in the direction of decreasing Gibbs energy, and equilibrium corresponds to a minimum in <span class="math inline">\(G\)</span>.</p>
+</blockquote>
+<div id="fig-G-min" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-G-min-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/G-min.png" class="img-fluid figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-G-min-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;2: Spontaneous processes move downhill on the <span class="math inline">\(G\)</span> surface.
+</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+</section>
+<section id="phase-stability-and-direction-of-phase-change" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Phase Stability and Direction of Phase Change</h1>
+<p>This explains why <span class="math inline">\(G\)</span> tells us which phase is stable.</p>
+<p>At a given <span class="math inline">\(T\)</span> and <span class="math inline">\(P\)</span>:</p>
+<ul>
+<li>if <span class="math inline">\(\underline{G}^v &gt; \underline{G}^l\)</span>, vapor should spontaneously condense to liquid,</li>
+<li>if <span class="math inline">\(\underline{G}^l &gt; \underline{G}^v\)</span>, liquid should spontaneously vaporize,</li>
+<li>if <span class="math inline">\(\underline{G}^v = \underline{G}^l\)</span>, the two phases are in equilibrium.</li>
+</ul>
+<p>So <span class="math inline">\(G\)</span> tells us the direction a process wants to go.</p>
+<blockquote class="blockquote">
+<p>The most stable phase at equilibrium is the one with the lowest molar Gibbs energy.</p>
+</blockquote>
+<p>Recall when we were solving cubic equations of state, we had to determine which root corresponded to the stable phase. We needed to compare the pressure to the experimental vapor pressure to choose the proper root, but that assumed the cubic equation of state captured the experimental vapor pressure. Now we see that the root with the lowest molar Gibbs energy is the stable phase. This is how we trace out phase diagrams with equations of state - we solve for the Gibbs energy of each phase, and choose the one with the lowest <span class="math inline">\(\underline{G}\)</span> as the stable phase. We will come back to this later when we discuss the concept of fugacity.</p>
+<hr>
+<section id="foreshadowing-mixtures" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="foreshadowing-mixtures"><span class="header-section-number">7.1</span> Foreshadowing Mixtures</h2>
+<p>For a pure fluid,</p>
+<p><span class="math display">\[
+\mu = \left(\frac{\partial G}{\partial N}\right)_{T,P}
+\qquad \text{and} \qquad
+G = N\underline{G}
+\]</span></p>
+<p>For a mixture, each species <span class="math inline">\(i\)</span> has its own chemical potential:</p>
+<p><span class="math display">\[
+\mu_i \equiv \left(\frac{\partial G}{\partial N_i}\right)_{T,P,N_{j\ne i}}
+\]</span></p>
+<p>That is, when differentiating with respect to <span class="math inline">\(N_i\)</span>, we hold:</p>
+<ul>
+<li><span class="math inline">\(T\)</span> constant,</li>
+<li><span class="math inline">\(P\)</span> constant,</li>
+<li>all other mole numbers <span class="math inline">\(N_j\)</span> constant.</li>
+</ul>
+<p>This will be extremely important next semester when you study mixtures.</p>
+<hr>
+</section>
+</section>
+<section id="derivation-of-the-clapeyron-equation" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Derivation of the Clapeyron Equation</h1>
+<p>Now we return to phase equilibrium of pure substances and ask:</p>
+<blockquote class="blockquote">
+<p>How does the equilibrium pressure change with temperature along a phase boundary?</p>
+</blockquote>
+<p>Consider a pure fluid on a <span class="math inline">\(P\)</span>-<span class="math inline">\(T\)</span> phase diagram, as shown in <a href="#fig-PT-Clapeyron" class="quarto-xref">Fig.&nbsp;3</a>.</p>
+<div id="fig-PT-Clapeyron" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-PT-Clapeyron-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/PT-Clapeyron.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-PT-Clapeyron-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;3: An example of a <span class="math inline">\(P-T\)</span> phase diagram. Consider the coexistence line between two phases <span class="math inline">\(L\)</span> and <span class="math inline">\(V\)</span> (could be any two phases <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>). Start at one of the points in phase equilibrium and move along the coexistence curve between the two points by making small changes in <span class="math inline">\(T\)</span> (<span class="math inline">\(dT\)</span>) and <span class="math inline">\(P\)</span> (<span class="math inline">\(dP\)</span>).
+</figcaption>
+</figure>
+</div>
+<p>Suppose the system is initially at a point on the coexistence line. If we change the temperature by <span class="math inline">\(dT\)</span>, then the pressure must also change by <span class="math inline">\(dP\)</span> to remain on the phase boundary. That is shown by the points and dotted red lines in <a href="#fig-PT-Clapeyron" class="quarto-xref">Fig.&nbsp;3</a>.</p>
+<div id="fig-Clap-dTdP" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Clap-dTdP-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/Clap-dTdP.png" class="img-fluid figure-img" style="width:25.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Clap-dTdP-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;4: Two phases in equilibrium where <span class="math inline">\(T\)</span> changes by <span class="math inline">\(dT\)</span> and <span class="math inline">\(P\)</span> changes by <span class="math inline">\(d P\)</span>.
+</figcaption>
+</figure>
+</div>
+<p>The phases will still be in equilibrium after these changes (<a href="#fig-Clap-dTdP" class="quarto-xref">Fig.&nbsp;4</a>) but they will be at a different point on the phase boundary. The question is: what is the slope of the phase boundary, i.e.&nbsp;what is <span class="math inline">\(dP/dT\)</span> along the coexistence curve?</p>
+<p>For a pure fluid,</p>
+<p><span class="math display">\[
+d\underline{G} = \underline{V}\,dP - \underline{S}\,dT
+\]</span></p>
+<p>At equilibrium between phases <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>,</p>
+<p><span class="math display">\[
+\underline{G}^\alpha = \underline{G}^\beta
+\]</span></p>
+<p>and if we remain on the coexistence curve during the differential change,</p>
+<p><span class="math display">\[
+d\underline{G}^\alpha = d\underline{G}^\beta
+\]</span></p>
+<p>So:</p>
+<p><span class="math display">\[
+\underline{V}^\alpha dP - \underline{S}^\alpha dT
+=
+\underline{V}^\beta dP - \underline{S}^\beta dT
+\]</span></p>
+<p>Rearranging:</p>
+<p><span class="math display">\[
+(\underline{V}^\beta - \underline{V}^\alpha)dP
+=
+(\underline{S}^\beta - \underline{S}^\alpha)dT
+\]</span></p>
+<p>Therefore,</p>
+<p><span class="math display">\[
+\left(\frac{dP}{dT}\right)_{\alpha-\beta}
+=
+\frac{\underline{S}^\beta - \underline{S}^\alpha}{\underline{V}^\beta - \underline{V}^\alpha}
+\]</span></p>
+<p>or more compactly,</p>
+<p><span id="eq-Clapeyron-ab"><span class="math display">\[
+\left(\frac{dP}{dT}\right)_{\alpha-\beta}
+=
+\frac{\Delta \underline{S}^{\alpha\to\beta}}{\Delta \underline{V}^{\alpha\to\beta}}
+\tag{12}\]</span></span> we define all changes from <span class="math inline">\(\alpha\)</span> to <span class="math inline">\(\beta\)</span> as <span class="math inline">\((\beta - \alpha)\)</span>.</p>
+<p>This is one form of the <strong>Clapeyron equation</strong>. For the vapor-liquid coexistence line shown in <a href="#fig-PT-Clapeyron" class="quarto-xref">Fig.&nbsp;3</a>, this becomes</p>
+<p><span id="eq-Clapeyron-VLE"><span class="math display">\[
+\left(\frac{dP}{dT}\right)_{VLE}
+=
+\frac{\Delta \underline{S}_{vap}}{\Delta \underline{V}_{vap}}
+\tag{13}\]</span></span></p>
+<hr>
+</section>
+<section id="clapeyron-equation-in-terms-of-enthalpy" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Clapeyron Equation in Terms of Enthalpy</h1>
+<p>Using the fact that for a reversible phase change at equilibrium,</p>
+<p><span class="math display">\[
+\Delta \underline{S}^{\alpha\to\beta}
+=
+\frac{\Delta \underline{H}^{\alpha\to\beta}}{T}
+\]</span></p>
+<p>we obtain</p>
+<p><span class="math display">\[
+\left(\frac{dP}{dT}\right)_{\alpha-\beta}
+=
+\frac{\Delta \underline{H}^{\alpha\to\beta}}{T\,\Delta \underline{V}^{\alpha\to\beta}}
+\]</span></p>
+<p>This is the most common form of the <strong>Clapeyron equation</strong>:</p>
+<p><span id="eq-Clapeyron-ab-enthalpy"><span class="math display">\[
+\boxed{
+\left(\frac{dP}{dT}\right)_{\alpha-\beta}
+=
+\frac{\Delta \underline{H}^{\alpha\to\beta}}{T\,\Delta \underline{V}^{\alpha\to\beta}}
+}
+\tag{14}\]</span></span></p>
+<p>It is an <strong>exact</strong> equation and applies to <strong>any two phases in equilibrium</strong>. The Clapeyron equation connects measurable thermodynamic properties (<span class="math inline">\(\Delta H\)</span>, <span class="math inline">\(\Delta V\)</span>) to the shape of phase diagrams.</p>
+<p>For VLE (as shown in <a href="#fig-PT-Clapeyron" class="quarto-xref">Fig.&nbsp;3</a>), this becomes the (exact) Clapeyron equation for vapor-liquid equilibrium:</p>
+<p><span id="eq-Clapeyron"><span class="math display">\[
+\left(\frac{dP}{dT}\right)_{VLE}
+=
+\frac{\Delta \underline{H}_{vap}}{T\,\Delta \underline{V}_{vap}}
+\tag{15}\]</span></span></p>
+<hr>
+</section>
+<section id="physical-implications-of-the-clapeyron-equation" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Physical Implications of the Clapeyron Equation</h1>
+<p>The sign of the slope of a coexistence curve depends on the signs of <span class="math inline">\(\Delta \underline{H}\)</span> and <span class="math inline">\(\Delta \underline{V}\)</span>.</p>
+<section id="vapor-liquid-equilibrium" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="vapor-liquid-equilibrium"><span class="header-section-number">10.1</span> Vapor-liquid equilibrium</h2>
+<p>For vaporization,</p>
+<ul>
+<li><span class="math inline">\(\Delta \underline{H}_{vap} &gt; 0\)</span>,</li>
+<li><span class="math inline">\(\Delta \underline{V}_{vap} &gt; 0\)</span>,</li>
+</ul>
+<p>so</p>
+<p><span class="math display">\[
+\left(\frac{dP}{dT}\right)_{VLE} &gt; 0
+\]</span></p>
+<p>Thus the vapor-liquid line has a positive slope (see <a href="#fig-PT-Clapeyron" class="quarto-xref">Fig.&nbsp;3</a>).</p>
+</section>
+<section id="solid-liquid-equilibrium" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="solid-liquid-equilibrium"><span class="header-section-number">10.2</span> Solid-liquid equilibrium</h2>
+<p>For melting,</p>
+<ul>
+<li><span class="math inline">\(\Delta \underline{H}_{fus} &gt; 0\)</span> almost always,</li>
+<li><span class="math inline">\(\Delta \underline{V}_{fus}\)</span> is usually positive, but not always.</li>
+</ul>
+<p>For most substances,</p>
+<p><span class="math display">\[
+\underline{V}^l &gt; \underline{V}^s
+\]</span></p>
+<p>so</p>
+<p><span class="math display">\[
+\left(\frac{dP}{dT}\right)_{SLE} &gt; 0
+\]</span></p>
+<p>This is also consistent with <a href="#fig-PT-Clapeyron" class="quarto-xref">Fig.&nbsp;3</a>, which shows a positive slope for the solid-liquid coexistence line.</p>
+</section>
+<section id="why-water-is-unusual" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="why-water-is-unusual"><span class="header-section-number">10.3</span> Why water is unusual</h2>
+<p>Water is unusual because ice is less dense than liquid water, so</p>
+<p><span class="math display">\[
+\underline{V}^s &gt; \underline{V}^l
+\]</span></p>
+<p>Thus, for water,</p>
+<p><span class="math display">\[
+\Delta \underline{V}_{fus} = \underline{V}^l - \underline{V}^s &lt; 0
+\]</span></p>
+<p>and therefore</p>
+<p><span class="math display">\[
+\left(\frac{dP}{dT}\right)_{SLE} &lt; 0
+\]</span></p>
+<p>So the solid-liquid line for water has a <strong>negative slope</strong>, as shown schematically in <a href="#fig-PT-clapeyron-water" class="quarto-xref">Fig.&nbsp;5</a>.</p>
+<div id="fig-PT-clapeyron-water" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-PT-clapeyron-water-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/PT-clapeyron-water.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-PT-clapeyron-water-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;5: Phase diagram of water showing the negative slope of the solid-liquid coexistence line.
+</figcaption>
+</figure>
+</div>
+<p>Other substances with this behavior include bismuth, gallium, germanium, silicon, and arsenic. The fact that <span class="math inline">\(\underline{V}^s &gt; \underline{V}^l\)</span> for water is critical for life on Earth, because it allows ice to float on liquid water, providing insulation and a habitat for aquatic life during cold weather.</p>
+<hr>
+</section>
+</section>
+<section id="derivation-of-the-clausiusclapeyron-equation" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Derivation of the Clausius–Clapeyron Equation</h1>
+<p>Now let’s focus on the Clapeyron equation for <strong>vapor-liquid equilibrium</strong>.</p>
+<p>Start with</p>
+<p><span id="eq-Clapeyron-VLE-enthalpy"><span class="math display">\[
+\left(\frac{dP}{dT}\right)_{VLE}
+=
+\frac{\Delta \underline{H}_{vap}}{T(\underline{V}^v-\underline{V}^l)}
+\tag{16}\]</span></span></p>
+<p>To simplify this, make three assumptions.</p>
+<section id="assumption-1-vapor-volume-dominates-liquid-volume" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="assumption-1-vapor-volume-dominates-liquid-volume"><span class="header-section-number">11.1</span> Assumption 1: vapor volume dominates liquid volume</h2>
+<p>Assume</p>
+<p><span class="math display">\[
+\underline{V}^v \gg \underline{V}^l
+\]</span></p>
+<p>so</p>
+<p><span class="math display">\[
+\underline{V}^v - \underline{V}^l \approx \underline{V}^v
+\]</span></p>
+<p>This is usually a good approximation except near the critical point, where the liquid and vapor densities become similar.</p>
+</section>
+<section id="assumption-2-vapor-behaves-ideally" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="assumption-2-vapor-behaves-ideally"><span class="header-section-number">11.2</span> Assumption 2: vapor behaves ideally</h2>
+<p>Assume the vapor is an ideal gas:</p>
+<p><span class="math display">\[
+\underline{V}^v = \frac{RT}{P}
+\]</span></p>
+<p>Combining the first two assumptions:</p>
+<p><span class="math display">\[
+\underline{V}^v - \underline{V}^l \approx \underline{V}^v \approx \frac{RT}{P}
+\]</span></p>
+<p>Substitute into the Clapeyron equation (<a href="#eq-Clapeyron-VLE-enthalpy" class="quarto-xref">Eq.&nbsp;16</a>):</p>
+<p><span class="math display">\[
+\frac{dP^{sat}}{dT}
+\approx
+\frac{\Delta \underline{H}_{vap}}{T(RT/P^{sat})}
+\]</span></p>
+<p>so</p>
+<p><span class="math display">\[
+\frac{dP^{sat}}{dT}
+\approx
+\frac{P^{sat}\Delta \underline{H}_{vap}}{RT^2}
+\]</span></p>
+<p>Rearrange:</p>
+<p><span class="math display">\[
+\frac{dP^{sat}}{P^{sat}}
+\approx
+\frac{\Delta \underline{H}_{vap}}{R}\frac{dT}{T^2}
+\]</span></p>
+<p>or equivalently,</p>
+<p><span id="eq-Clapeyron-VLE-ideal-gas"><span class="math display">\[
+d\ln P^{sat}
+=
+-\frac{\Delta \underline{H}_{vap}}{R}\,d\left(\frac{1}{T}\right)
+\tag{17}\]</span></span></p>
+</section>
+<section id="assumption-3-delta-underlineh_vap-is-constant" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="assumption-3-delta-underlineh_vap-is-constant"><span class="header-section-number">11.3</span> Assumption 3: <span class="math inline">\(\Delta \underline{H}_{vap}\)</span> is constant</h2>
+<p>Assume <span class="math inline">\(\Delta \underline{H}_{vap}\)</span> does not vary strongly with temperature over the range of interest. Then integration gives:</p>
+<p><span class="math display">\[
+\ln\left(\frac{P_2^{sat}}{P_1^{sat}}\right)
+=
+-\frac{\Delta \underline{H}_{vap}}{R}
+\left(\frac{1}{T_2}-\frac{1}{T_1}\right)
+\]</span></p>
+<p>This is the <strong>Clausius–Clapeyron equation</strong>.</p>
+<hr>
+</section>
+</section>
+<section id="clausiusclapeyron-equation" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> Clausius–Clapeyron Equation</h1>
+<p>The Clausius–Clapeyron equation may be written as</p>
+<p><span id="eq-Clausius-Clapeyron"><span class="math display">\[
+\boxed{
+\ln\left(\frac{P_2^{sat}}{P_1^{sat}}\right)
+=
+-\frac{\Delta \underline{H}_{vap}}{R}
+\left(\frac{1}{T_2}-\frac{1}{T_1}\right)
+}
+\tag{18}\]</span></span></p>
+<p>or, relative to an arbitrary constant,</p>
+<p><span id="eq-Clausius-Clapeyron-constant"><span class="math display">\[
+\ln P^{sat} = -\frac{\Delta \underline{H}_{vap}}{R}\frac{1}{T} + C
+\tag{19}\]</span></span></p>
+<p>This is an <strong>approximate</strong> equation, because it relies on the three assumptions above, but it is often very useful and reasonably accurate over moderate temperature ranges.</p>
+<hr>
+</section>
+<section id="interpretation-of-clausiusclapeyron" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> Interpretation of Clausius–Clapeyron</h1>
+<p>This equation shows that a plot of</p>
+<p><span class="math display">\[
+\ln P^{sat} \quad \text{vs.} \quad \frac{1}{T}
+\]</span></p>
+<p>should be approximately linear, with slope</p>
+<p><span class="math display">\[
+-\frac{\Delta \underline{H}_{vap}}{R}
+\]</span></p>
+<p>Therefore, vapor pressure data can be used to estimate the enthalpy of vaporization.</p>
+<div id="fig-cc-water" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cc-water-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/cc-water.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cc-water-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;6: Plot of <span class="math inline">\(\ln P^{sat}\)</span> vs.&nbsp;<span class="math inline">\(1/T\)</span> for water, showing a linear relationship.
+</figcaption>
+</figure>
+</div>
+<p>In <a href="#fig-cc-water" class="quarto-xref">Fig.&nbsp;6</a>, we see that the Clausius–Clapeyron equation gives an excellent fit to the vapor pressure data for water over a moderate temperature range. The slope of the line can be used to estimate <span class="math inline">\(\Delta \underline{H}_{vap}\)</span>, and the intercept can be used to estimate the constant <span class="math inline">\(C\)</span>. The estimated enthalpy of vaporization is 42.75 kJ/mol.</p>
+<p>How does this compare to literature?</p>
+<ul>
+<li><p>The true <span class="math inline">\(\Delta H_{vap}\)</span> for water at 100°C is 40.65 kJ/mol.</p></li>
+<li><p>The true <span class="math inline">\(\Delta H_{vap}\)</span> for water at 25°C is 44.00 kJ/mol.</p></li>
+</ul>
+<p>Obviously, the enthalpy of vaporization is not constant. Since the Clausius–Clapeyron equation assumes it is constant, the results are not perfect. Nevertheless, the estimate of 42.75 kJ/mol is mid-way between the true values at 25°C and 100°C, which is consistent with the fact that we assumed <span class="math inline">\(\Delta \underline{H}_{vap}\)</span> was constant. For water under these conditions, the Clausius-Clapeyron equation is an excellent approximation.</p>
+</section>
+<section id="antoine-equation" class="level1" data-number="14">
+<h1 data-number="14"><span class="header-section-number">14</span> Antoine Equation</h1>
+<p>Vapor pressures are often tabulated in the form of the Antoine equation (see Appendix E in your textbook):</p>
+<p><span class="math display">\[
+\log_{10} P^{sat} = A - \frac{B}{T + C}
+\]</span></p>
+<p>This functional form is loosely related to the Clausius–Clapeyron equation, but the Antoine equation is empirical. The parameters <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, and <span class="math inline">\(C\)</span> are fitted to experimental vapor pressure data. The Antoine equation can provide a better fit to vapor pressure data over a wider temperature range than the Clausius–Clapeyron equation, because it has more adjustable parameters. However, it does not have a direct physical interpretation like the Clausius–Clapeyron equation does.</p>
+<hr>
+</section>
+<section id="example-why-is-ice-slippery" class="level1" data-number="15">
+<h1 data-number="15"><span class="header-section-number">15</span> Example: Why Is Ice Slippery?</h1>
+<p>A classic hypothesis is that the pressure exerted by an ice skate melts the ice underneath the blade, creating a thin liquid water layer that reduces friction.</p>
+<p>Let us test whether this is plausible using the Clapeyron equation.</p>
+<p>Suppose ice is initially at <span class="math inline">\(-5^\circ\text{C}\)</span> and 1 bar. How much pressure would be needed to make it melt at <span class="math inline">\(-5^\circ\text{C}\)</span>?</p>
+<p>We cannot use the Clausius–Clapeyron equation here because this is <strong>solid-liquid equilibrium</strong>, not vapor-liquid equilibrium.</p>
+<p>Instead use the exact Clapeyron equation:</p>
+<p><span class="math display">\[
+\left(\frac{dP}{dT}\right)_{SLE}
+=
+\frac{\Delta \underline{H}_{fus}}{T\,\Delta \underline{V}_{fus}}
+\]</span></p>
+<p>Assume <span class="math inline">\(\Delta \underline{H}_{fus}\)</span> and <span class="math inline">\(\Delta \underline{V}_{fus}\)</span> are approximately constant over the small temperature range.</p>
+<p>Using data near <span class="math inline">\(0^\circ\text{C}\)</span> for water:</p>
+<ul>
+<li><span class="math inline">\(\rho^l \approx 1000 \text{kg/m}^3\)</span></li>
+<li><span class="math inline">\(\rho^s \approx 917 \text{kg/m}^3\)</span></li>
+<li><span class="math inline">\(\Delta \underline{H}_{fus} \approx 6010 \text{J/mol}\)</span></li>
+</ul>
+<p>The molar volumes are approximately</p>
+<p><span class="math display">\[
+\underline{V}^l \approx 1.80\times10^{-5}\ \text{m}^3/\text{mol}
+\]</span></p>
+<p><span class="math display">\[
+\underline{V}^s \approx 1.97\times10^{-5}\ \text{m}^3/\text{mol}
+\]</span></p>
+<p>so</p>
+<p><span class="math display">\[
+\Delta \underline{V}_{fus} = \underline{V}^l-\underline{V}^s &lt; 0
+\]</span></p>
+<p>Integrating the Clapeyron equation approximately gives a required pressure on the order of tens of bar, roughly</p>
+<p><span class="math display">\[
+P_2 \approx 66\ \text{bar}
+\]</span></p>
+<p>This is much larger than the pressure exerted by a typical skate blade, which is only a few bar. (You should verify this with a force balance and a ruler to estimate the area of contact between the blade and the ice.)</p>
+<p>Therefore:</p>
+<blockquote class="blockquote">
+<p>Pressure melting alone does <strong>not</strong> explain why ice is slippery.</p>
+</blockquote>
+<p>A better explanation is that the ice surface is not a perfect bulk solid; a thin disordered or quasi-liquid interfacial layer can exist, and frictional heating may also contribute.</p>
+<hr>
+</section>
+<section id="summary" class="level1" data-number="16">
+<h1 data-number="16"><span class="header-section-number">16</span> Summary</h1>
+<ul>
+<li><p>Chemical potential is the conjugate variable to <span class="math inline">\(N\)</span> and can be written as: <span class="math display">\[
+\mu =
+\left(\frac{\partial U}{\partial N}\right)_{S,V}
+=
+\left(\frac{\partial H}{\partial N}\right)_{S,P}
+=
+\left(\frac{\partial A}{\partial N}\right)_{T,V}
+=
+\left(\frac{\partial G}{\partial N}\right)_{T,P}
+\]</span></p></li>
+<li><p>The general fundamental relations are: <span class="math display">\[
+dU = T\,dS - P\,dV + \mu\,dN
+\]</span> <span class="math display">\[
+dH = T\,dS + V\,dP + \mu\,dN
+\]</span> <span class="math display">\[
+dA = -S\,dT - P\,dV + \mu\,dN
+\]</span> <span class="math display">\[
+dG = -S\,dT + V\,dP + \mu\,dN
+\]</span></p></li>
+<li><p>For a closed system at constant <span class="math inline">\(T\)</span> and <span class="math inline">\(P\)</span>, the rate of change of Gibbs energy is related to the rate of entropy generation by: <span class="math display">\[
+\frac{dG}{dt} = -T\dot{S}_{gen}
+\]</span></p></li>
+<li><p>Therefore:</p>
+<ul>
+<li>spontaneous processes decrease <span class="math inline">\(G\)</span>,</li>
+<li>equilibrium corresponds to a minimum in <span class="math inline">\(G\)</span>.</li>
+</ul></li>
+<li><p>The exact Clapeyron equation is: <span class="math display">\[
+\left(\frac{dP}{dT}\right)_{\alpha-\beta}
+=
+\frac{\Delta \underline{H}^{\alpha\to\beta}}{T\,\Delta \underline{V}^{\alpha\to\beta}}
+\]</span></p></li>
+<li><p>For vapor-liquid equilibrium, under additional assumptions, this becomes the Clausius–Clapeyron equation: <span class="math display">\[
+\ln\left(\frac{P_2^{sat}}{P_1^{sat}}\right)
+=
+-\frac{\Delta \underline{H}_{vap}}{R}
+\left(\frac{1}{T_2}-\frac{1}{T_1}\right)
+\]</span></p></li>
+</ul>
+<hr>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/ejmaginn\.github\.io\/CBE20260-notes\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
