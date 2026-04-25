@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Edward Maginn">
+
+<title>Lecture 34: Fugacity and Phase Stability – CBE 20260 — Course Notes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-950ba19c765f2cec88564589b0edcdee.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">CBE 20260 — Course Notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-notebooks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Notebooks</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-notebooks">    
+        <li>
+    <a class="dropdown-item" href="../class02/lecture02_example.html">
+ <span class="dropdown-text">L2 Block &amp; Spring Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class03/lecture03_example.html">
+ <span class="dropdown-text">L3 Maxwell-Boltzmann Distribution Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class04/PV-diagram.html">
+ <span class="dropdown-text">L4 PV Diagram Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class06/lecture06_LJ.html">
+ <span class="dropdown-text">L6 LJ Potential Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class07/VDW-loop.html">
+ <span class="dropdown-text">L7 VDW loop Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class07/vdw-TP.html">
+ <span class="dropdown-text">L7 VDW TP Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class14/Quenching_entropy.html">
+ <span class="dropdown-text">L14 Quenching Entropy Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class19/rankine-regen.html">
+ <span class="dropdown-text">L19 Regenerative Rankine Cycle Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class22/vapor-compression-cycle.html">
+ <span class="dropdown-text">L22 Vapor Compression Cycle Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class27/VDW-solver.html">
+ <span class="dropdown-text">L27 van der Waals Solver Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class27/residual-VDW.html">
+ <span class="dropdown-text">L27 van der Waals Residuals Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class29/PR-SRK-solvers.html">
+ <span class="dropdown-text">L29 PR-SRK Solvers Demo</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class01/lecture01.html">Lectures</a></li><li class="breadcrumb-item"><a href="../class34/lecture34.html">Lecture 34 - Fugacity and Phase Equilibria</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Lectures</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class01/lecture01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 1 — Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class02/lecture02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 2 — Systems, Boundaries and Other Basics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class03/lecture03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 3 — Forms of Energy and Calculating Work</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class04/lecture04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 4 — Fundamental Postulate, States, Phase Rule, and Pure Substance Phase Behaviors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class05/lecture05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 5 — Heat Capacity, Enthalpy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class06/lecture06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 6 — Calculating Internal Energy and Enthalpy Changes; intermolecular forces</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class07/lecture07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 7 - The van der Waals Equation of State; compressibility factor; open system energy balance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class08/lecture08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 8 - Open system energy balance applied to process equipment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class09/lecture09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 9 - Advanced Open System Energy Balances</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class10/lecture10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 10 - Latent Heat and the Need for a Second Law</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class12/lecture12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 12 - Introduction to Entropy and the Second Law</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class13/lecture13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 13 - Calculating Entropy Changes for Closed Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class14/lecture14.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 14 - Entropy Changes for Open Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class15/lecture15.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 15 - Open System Entropy Balance and Efficiency</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class16/lecture16.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 16 - Heat Engines and the Second Law</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class17/lecture17.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 17 - Carnot Cycle and Practical Heat Engines</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class18/lecture18.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 18 - Rankine Cycle Analysis and Efficiency</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class19/lecture19.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 19 - Improving Rankine Cycle Efficiency</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class20/lecture20.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 20 - Organic Rankine Cycles and Internal Combustion Engines</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class21/lecture21.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 21 - Introduction to Cooling and Refrigeration</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class22/lecture22.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 22 - Modeling Vapor Compression Cycles and Liquefaction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class23/lecture23.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 23 - The Mathematics of Thermodynamics and Thermodynamic Potentials</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class24/lecture24.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 24 - The Maxwell Relations and Calculating Thermodynamic Properties</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class25/lecture25.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 25 - General Property Equations from the Math of Thermo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class26/lecture26.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 26 - Real Fluids and Residual Properties</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class27/lecture27.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 27 - Applying Residuals and Intro to Cubic Equations of State</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class28/lecture28.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 28 - Cubic Equations of State and the Principle of Corresponding States</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class29/lecture29.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 29 - Modern Cubic Equations of State</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class30/lecture30.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 30 - Generalized Correlations and the Critical Point</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class31/lecture31.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 31 - The Virial Equation, Group Contributions, and Molecular Origins of Thermodynamics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class32/lecture32.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 32 - Introduction to Phase Equilibria</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Big-Picture-exam3/Big-Picture-exam3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Big Picture — Exam 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class33/lecture33.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 33 - Chemical Potential, Gibbs Energy, and the Clapeyron Equation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class34/lecture34.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Lecture 34 - Fugacity and Phase Equilibria</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class35/lecture35.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 35 - The Big Picture — A Journey Through Thermodynamics</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction-the-problem-with-gibbs-free-energy" id="toc-introduction-the-problem-with-gibbs-free-energy" class="nav-link active" data-scroll-target="#introduction-the-problem-with-gibbs-free-energy"><span class="header-section-number">1</span> Introduction: The Problem with Gibbs Free Energy</a></li>
+  <li><a href="#the-concept-of-fugacity" id="toc-the-concept-of-fugacity" class="nav-link" data-scroll-target="#the-concept-of-fugacity"><span class="header-section-number">2</span> The Concept of Fugacity</a>
+  <ul class="collapse">
+  <li><a href="#step-1-the-ideal-gas-analog" id="toc-step-1-the-ideal-gas-analog" class="nav-link" data-scroll-target="#step-1-the-ideal-gas-analog"><span class="header-section-number">2.1</span> Step 1: The Ideal Gas Analog</a></li>
+  <li><a href="#step-2-defining-fugacity-by-analogy" id="toc-step-2-defining-fugacity-by-analogy" class="nav-link" data-scroll-target="#step-2-defining-fugacity-by-analogy"><span class="header-section-number">2.2</span> Step 2: Defining Fugacity by Analogy</a></li>
+  <li><a href="#step-3-choosing-the-reference-state" id="toc-step-3-choosing-the-reference-state" class="nav-link" data-scroll-target="#step-3-choosing-the-reference-state"><span class="header-section-number">2.3</span> Step 3: Choosing the Reference State</a></li>
+  <li><a href="#step-4-subtracting-to-get-the-key-result" id="toc-step-4-subtracting-to-get-the-key-result" class="nav-link" data-scroll-target="#step-4-subtracting-to-get-the-key-result"><span class="header-section-number">2.4</span> Step 4: Subtracting to Get the Key Result</a></li>
+  </ul></li>
+  <li><a href="#phase-equilibrium-revisited" id="toc-phase-equilibrium-revisited" class="nav-link" data-scroll-target="#phase-equilibrium-revisited"><span class="header-section-number">3</span> Phase Equilibrium Revisited</a></li>
+  <li><a href="#computing-fugacity-from-equations-of-state" id="toc-computing-fugacity-from-equations-of-state" class="nav-link" data-scroll-target="#computing-fugacity-from-equations-of-state"><span class="header-section-number">4</span> Computing Fugacity from Equations of State</a>
+  <ul class="collapse">
+  <li><a href="#derivation-via-residual-properties" id="toc-derivation-via-residual-properties" class="nav-link" data-scroll-target="#derivation-via-residual-properties"><span class="header-section-number">4.1</span> Derivation via Residual Properties</a></li>
+  <li><a href="#converting-to-the-compressibility-factor-form" id="toc-converting-to-the-compressibility-factor-form" class="nav-link" data-scroll-target="#converting-to-the-compressibility-factor-form"><span class="header-section-number">4.2</span> Converting to the Compressibility Factor Form</a></li>
+  </ul></li>
+  <li><a href="#fugacity-coefficients-from-common-equations-of-state" id="toc-fugacity-coefficients-from-common-equations-of-state" class="nav-link" data-scroll-target="#fugacity-coefficients-from-common-equations-of-state"><span class="header-section-number">5</span> Fugacity Coefficients from Common Equations of State</a></li>
+  <li><a href="#phase-stability-and-cubic-eos-solvers" id="toc-phase-stability-and-cubic-eos-solvers" class="nav-link" data-scroll-target="#phase-stability-and-cubic-eos-solvers"><span class="header-section-number">6</span> Phase Stability and Cubic EOS Solvers</a>
+  <ul class="collapse">
+  <li><a href="#multiple-roots-inside-the-vapor-liquid-dome" id="toc-multiple-roots-inside-the-vapor-liquid-dome" class="nav-link" data-scroll-target="#multiple-roots-inside-the-vapor-liquid-dome"><span class="header-section-number">6.1</span> Multiple Roots Inside the Vapor-Liquid Dome</a></li>
+  <li><a href="#using-fugacity-to-select-the-stable-phase" id="toc-using-fugacity-to-select-the-stable-phase" class="nav-link" data-scroll-target="#using-fugacity-to-select-the-stable-phase"><span class="header-section-number">6.2</span> Using Fugacity to Select the Stable Phase</a></li>
+  <li><a href="#finding-ttextsat-and-ptextsat-by-iteration" id="toc-finding-ttextsat-and-ptextsat-by-iteration" class="nav-link" data-scroll-target="#finding-ttextsat-and-ptextsat-by-iteration"><span class="header-section-number">6.3</span> Finding <span class="math inline">\(T^\text{sat}\)</span> and <span class="math inline">\(P^\text{sat}\)</span> by Iteration</a></li>
+  </ul></li>
+  <li><a href="#example-problem-fugacity-from-an-empirical-eos" id="toc-example-problem-fugacity-from-an-empirical-eos" class="nav-link" data-scroll-target="#example-problem-fugacity-from-an-empirical-eos"><span class="header-section-number">7</span> Example Problem: Fugacity from an Empirical EOS</a></li>
+  <li><a href="#fugacity-of-liquids-and-solids-the-poynting-correction" id="toc-fugacity-of-liquids-and-solids-the-poynting-correction" class="nav-link" data-scroll-target="#fugacity-of-liquids-and-solids-the-poynting-correction"><span class="header-section-number">8</span> Fugacity of Liquids and Solids (The Poynting Correction)</a>
+  <ul class="collapse">
+  <li><a href="#tracing-a-path-to-the-compressed-liquid" id="toc-tracing-a-path-to-the-compressed-liquid" class="nav-link" data-scroll-target="#tracing-a-path-to-the-compressed-liquid"><span class="header-section-number">8.1</span> Tracing a Path to the Compressed Liquid</a></li>
+  <li><a href="#approximations" id="toc-approximations" class="nav-link" data-scroll-target="#approximations"><span class="header-section-number">8.2</span> Approximations</a></li>
+  <li><a href="#fugacity-of-solids" id="toc-fugacity-of-solids" class="nav-link" data-scroll-target="#fugacity-of-solids"><span class="header-section-number">8.3</span> Fugacity of Solids</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture34.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class01/lecture01.html">Lectures</a></li><li class="breadcrumb-item"><a href="../class34/lecture34.html">Lecture 34 - Fugacity and Phase Equilibria</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Lecture 34: Fugacity and Phase Stability</h1>
+<p class="subtitle lead">CBE 20260 / Thermodynamics I</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Edward Maginn </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction-the-problem-with-gibbs-free-energy" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction: The Problem with Gibbs Free Energy</h1>
+<p>In our last lecture, we established that phase equilibrium requires the temperature, pressure, and chemical potential (which is the molar Gibbs energy for a pure fluid) to be equal across all phases:</p>
+<p><span id="eq-phase-equil"><span class="math display">\[T^\alpha = T^\beta, \quad P^\alpha = P^\beta, \quad \underline{G}^\alpha = \underline{G}^\beta \tag{1}\]</span></span></p>
+<p>This is a beautiful, mathematically exact condition. But from an engineering standpoint, working directly with molar Gibbs free energy (<span class="math inline">\(\underline{G}\)</span>) is unwieldy.</p>
+<p>To see why, let’s look at how Gibbs energy changes with pressure at constant temperature: <span class="math display">\[d\underline{G} = \underline{V}dP - \underline{S}dT\]</span> At constant <span class="math inline">\(T\)</span> (<span class="math inline">\(dT=0\)</span>), <span class="math inline">\(d\underline{G} = \underline{V}dP\)</span>.</p>
+<p>If we assume our substance is an ideal gas (<span class="math inline">\(\underline{V} = RT/P\)</span>), we can integrate from a reference pressure <span class="math inline">\(P^\circ\)</span> to a system pressure <span class="math inline">\(P\)</span>:</p>
+<p><span id="eq-ig-gibbs"><span class="math display">\[\underline{G}(T, P) - \underline{G}(T, P^\circ) = \int_{P^\circ}^P \frac{RT}{P}\,dP = RT \ln\!\left(\frac{P}{P^\circ}\right) \tag{2}\]</span></span></p>
+<p>Here is the problem: what is the absolute reference state? If we try to define our reference state at a pressure of absolute zero (a perfect vacuum, where molecules definitely behave ideally), we run into a singularity: <span class="math display">\[\lim_{P \to 0} \ln(P) = -\infty \implies \underline{G}^\circ \to -\infty\]</span></p>
+<p>Because the absolute Gibbs energy drops to negative infinity as pressure approaches zero, tabulating absolute values of <span class="math inline">\(G\)</span> is mathematically frustrating. You can see this in <a href="#fig-g-vs-p" class="quarto-xref">Fig.&nbsp;1</a> which is from Example 8-4 of Dahm and Visco.</p>
+<div id="fig-g-vs-p" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-g-vs-p-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/G-vs-P.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-g-vs-p-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;1: Molar Gibbs energy of the vapor diverges to <span class="math inline">\(-\infty\)</span> as pressure approaches zero. Image from Dahm and Visco.
+</figcaption>
+</figure>
+</div>
+<p>We need a property that is easier to use but still holds the thermodynamic “magic” of Gibbs energy.</p>
+</section>
+<section id="the-concept-of-fugacity" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> The Concept of Fugacity</h1>
+<p>To overcome the <span class="math inline">\(\underline{G} \to -\infty\)</span> problem, the great American physical chemist G.N. Lewis invented a new thermodynamic property called <strong>fugacity</strong> (<span class="math inline">\(f\)</span>) in 1901. The term comes from the Latin <em>fugere</em> (to flee), suggesting is is the “escaping tendency” of the fluid. (You may have seen the term “tempus fugit” — time flies — on a clock face.)</p>
+<p>The strategy is elegant: choose a shared reference state for both the ideal and real fluid, write the departure from that reference for each, then subtract to cancel it out.</p>
+<section id="step-1-the-ideal-gas-analog" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="step-1-the-ideal-gas-analog"><span class="header-section-number">2.1</span> Step 1: The Ideal Gas Analog</h2>
+<p>Starting from the fundamental relation for a closed system at constant <span class="math inline">\(T\)</span>: <span id="eq-fund-relation"><span class="math display">\[d\underline{G} = -\underline{S}dT + \underline{V}dP \implies d\underline{G}\big|_T = \underline{V}\,dP \tag{3}\]</span></span></p>
+<p>Integrating for an ideal gas from a reference pressure <span class="math inline">\(P^\circ\)</span> to <span class="math inline">\(P\)</span>:</p>
+<p><span id="eq-ig-departure"><span class="math display">\[\underline{G}^{ig}(T,P) - \underline{G}^{ig}(T,P^\circ) = \int_{P^\circ}^{P} \frac{RT}{P}\,dP = RT\ln\!\left(\frac{P}{P^\circ}\right) \tag{4}\]</span></span></p>
+<p>All this does is define how the molar Gibbs energy change between two pressures for an ideal gas. The reference state is still arbitrary, but the departure from it is well-defined and finite at all pressures.</p>
+</section>
+<section id="step-2-defining-fugacity-by-analogy" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="step-2-defining-fugacity-by-analogy"><span class="header-section-number">2.2</span> Step 2: Defining Fugacity by Analogy</h2>
+<p>Lewis defined fugacity so that the <strong>exact same logarithmic form</strong> holds for a <strong>real fluid</strong>:</p>
+<p><span id="eq-fugacity-def"><span class="math display">\[\underline{G}(T,P) - \underline{G}(T,P^\circ) \equiv RT\ln\!\left(\frac{f}{f^\circ}\right) \tag{5}\]</span></span></p>
+<p>where <span class="math inline">\(f\)</span> is the fugacity (which has units of pressure) and <span class="math inline">\(f^\circ\)</span> is its value at the reference state. The <strong>fugacity coefficient</strong> <span class="math inline">\(\phi\)</span> is the dimensionless ratio:</p>
+<p><span id="eq-phi-def"><span class="math display">\[\phi \equiv \frac{f}{P}, \qquad f^\circ = \phi^\circ P^\circ \tag{6}\]</span></span></p>
+<p>For an ideal gas, <span class="math inline">\(\phi = 1\)</span> and <span class="math inline">\(f = P\)</span>.</p>
+</section>
+<section id="step-3-choosing-the-reference-state" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="step-3-choosing-the-reference-state"><span class="header-section-number">2.3</span> Step 3: Choosing the Reference State</h2>
+<p>We choose <span class="math inline">\(P^\circ = 1\)</span> bar as the reference pressure, and define <span class="math inline">\(\underline{G}^\circ(T, P^\circ)\)</span> as the <strong>ideal gas</strong> Gibbs energy at that <span class="math inline">\(T\)</span> and <span class="math inline">\(P^\circ = 1\)</span> bar. This is a hypothetical state — it is <em>not</em> the <span class="math inline">\(P \to 0\)</span> limit, but rather a well-defined mathematical reference where the fluid behaves as an ideal gas. Because the reference state is an ideal gas, <span class="math inline">\(\phi^\circ = 1\)</span> and therefore <span class="math inline">\(f^\circ = \phi^\circ P^\circ = P^\circ\)</span>.</p>
+<p>Both the ideal gas and the real fluid are written as departures from this same reference:</p>
+<p><span id="eq-ig-ref-departure"><span class="math display">\[\text{Ideal gas:} \quad \underline{G}^{ig}(T,P) - \underline{G}^\circ(T,P^\circ) = RT\ln\!\left(\frac{P}{P^\circ}\right) \tag{7}\]</span></span> <span id="eq-real-ref-departure"><span class="math display">\[\text{Real fluid:} \quad \phantom{^{ig}}\underline{G}(T,P) - \underline{G}^\circ(T,P^\circ) = RT\ln\!\left(\frac{f}{P^\circ}\right) \tag{8}\]</span></span></p>
+</section>
+<section id="step-4-subtracting-to-get-the-key-result" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="step-4-subtracting-to-get-the-key-result"><span class="header-section-number">2.4</span> Step 4: Subtracting to Get the Key Result</h2>
+<p>Subtracting <a href="#eq-ig-ref-departure" class="quarto-xref">Eq.&nbsp;7</a> from <a href="#eq-real-ref-departure" class="quarto-xref">Eq.&nbsp;8</a>, the reference state <span class="math inline">\(\underline{G}^\circ\)</span> cancels exactly: <span id="eq-gr-fugacity"><span class="math display">\[\underline{G}(T,P) - \underline{G}^{ig}(T,P) \equiv \underline{G}^R(T,P) = RT\ln\!\left(\frac{f}{P}\right) = RT\ln\phi \tag{9}\]</span></span></p>
+<p>This is the <strong>fundamental definition</strong> linking fugacity to the residual Gibbs energy:</p>
+<p><span id="eq-gr-lnphi"><span class="math display">\[\boxed{\underline{G}^R(T,P) = RT\ln\phi = RT\ln\!\left(\frac{f}{P}\right)} \tag{10}\]</span></span></p>
+<p>Rearranging <a href="#eq-gr-lnphi" class="quarto-xref">Eq.&nbsp;10</a> gives the fugacity directly:</p>
+<p><span id="eq-f-phi-p"><span class="math display">\[f = P\exp\!\left[\frac{\underline{G}^R}{RT}\right] = \phi P \tag{11}\]</span></span></p>
+<p>Note what we did: we snuck the residual molar Gibbs energy into <a href="#eq-gr-fugacity" class="quarto-xref">Eq.&nbsp;9</a>.</p>
+<p><strong>Why is this better?</strong> As <span class="math inline">\(P \to 0\)</span>, every real gas approaches ideal behavior: <span class="math inline">\(\phi \to 1\)</span> and <span class="math inline">\(f \to P\)</span>. Consequently <span class="math inline">\(\underline{G}^R \to RT\ln(1) = 0\)</span> — a perfectly well-behaved limit. Unlike <span class="math inline">\(\underline{G}\)</span> itself, fugacity remains finite and meaningful at all pressures.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Fugacity: A Chemical Engineer's Best Friend">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Fugacity: A Chemical Engineer’s Best Friend
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Fugacity has an undeserved reputation for being mysterious or difficult. It is not. Think of it simply as a <strong>corrected pressure</strong> — the effective pressure a molecule “feels” once intermolecular interactions are accounted for. When <span class="math inline">\(\phi = 1\)</span>, the fluid is ideal and <span class="math inline">\(f = P\)</span> exactly. When <span class="math inline">\(\phi &gt; 1\)</span>, repulsive interactions dominate and molecules escape more readily than they would in an ideal gas. When <span class="math inline">\(\phi &lt; 1\)</span>, attractive interactions hold molecules back. That is all there is to it.</p>
+<p>Why do chemical engineers use fugacity while most chemists prefer chemical potential <span class="math inline">\(\mu\)</span>? Partly tradition, but mostly practicality. Chemical potential is the more fundamental quantity (it is the molar Gibbs energy) but it diverges to <span class="math inline">\(-\infty\)</span> as <span class="math inline">\(P \to 0\)</span>, making it impossible to tabulate in absolute terms. Fugacity sidesteps this by encoding the same information in a quantity that is finite, has units of pressure, and is directly computable from any PVT equation of state. As we will see in the sections below, the working formulas for <span class="math inline">\(\phi\)</span> from common equations of state are compact and straightforward to implement (see <a href="#eq-lnphi-Z" class="quarto-xref">Eq.&nbsp;19</a>). That computational convenience is why fugacity became the standard language for phase equilibrium in chemical engineering.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="phase-equilibrium-revisited" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Phase Equilibrium Revisited</h1>
+<p>We established in <a href="#eq-phase-equil" class="quarto-xref">Eq.&nbsp;1</a> that phase equilibrium for a pure fluid requires <span class="math inline">\(\underline{G}^\alpha = \underline{G}^\beta\)</span>. This third condition also forces the residual Gibbs energies to be equal. Since both phases are at the same <span class="math inline">\(T\)</span> and <span class="math inline">\(P\)</span>, they share the same ideal gas value <span class="math inline">\(\underline{G}^{ig}(T,P)\)</span>. Subtracting it from both sides:</p>
+<p><span id="eq-gr-equil"><span class="math display">\[\underline{G}^\alpha - \underline{G}^{ig} = \underline{G}^\beta - \underline{G}^{ig} \implies \underline{G}^{R,\alpha} = \underline{G}^{R,\beta} \tag{12}\]</span></span></p>
+<p>Now substitute <a href="#eq-gr-lnphi" class="quarto-xref">Eq.&nbsp;10</a> into <a href="#eq-gr-equil" class="quarto-xref">Eq.&nbsp;12</a>: <span class="math display">\[RT\ln\!\left(\frac{f^\alpha}{P^\alpha}\right) = RT\ln\!\left(\frac{f^\beta}{P^\beta}\right)\]</span></p>
+<p>Since <span class="math inline">\(P^\alpha = P^\beta\)</span> at equilibrium, the pressures cancel and since the temperatures are also equal, we are left with:</p>
+<p><span id="eq-vle-fugacity"><span class="math display">\[\boxed{f^\alpha = f^\beta} \tag{13}\]</span></span></p>
+<p>Finally, because <span class="math inline">\(\phi = f/P\)</span> (<a href="#eq-phi-def" class="quarto-xref">Eq.&nbsp;6</a>) and both phases share the same pressure, we get something amazingly simple:</p>
+<p><span id="eq-phi-equil"><span class="math display">\[\phi^\alpha = \phi^\beta \tag{14}\]</span></span></p>
+<p><strong>This is the operational condition for phase equilibrium.</strong> Rather than working with <span class="math inline">\(\underline{G}\)</span> (which diverges as <span class="math inline">\(P \to 0\)</span>), we compute <span class="math inline">\(f\)</span> or <span class="math inline">\(\phi\)</span> from an equation of state and simply check whether <a href="#eq-vle-fugacity" class="quarto-xref">Eq.&nbsp;13</a> is satisfied.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Two Important Properties of Fugacity">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Two Important Properties of Fugacity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p><strong>Fugacity is a state property.</strong> It is defined entirely through <span class="math inline">\(\underline{G}^R\)</span> (<a href="#eq-gr-lnphi" class="quarto-xref">Eq.&nbsp;10</a>), which is determined by <span class="math inline">\(T\)</span>, <span class="math inline">\(P\)</span>, and <span class="math inline">\(\underline{V}\)</span> — all state properties. Therefore <span class="math inline">\(f\)</span> is fully specified by the thermodynamic state. It has units of pressure, but it is not a mechanical pressure; fugacity is a thermodynamic property that encodes the effects of intermolecular interactions.</p></li>
+<li><p><strong>Fugacity applies to any phase.</strong> We can define fugacities for vapor (<span class="math inline">\(f^V\)</span>), liquid (<span class="math inline">\(f^L\)</span>), solid (<span class="math inline">\(f^S\)</span>), and supercritical fluid (<span class="math inline">\(f^{scf}\)</span>). The phase equilibrium condition <a href="#eq-vle-fugacity" class="quarto-xref">Eq.&nbsp;13</a> is completely general.</p></li>
+</ol>
+</div>
+</div>
+</section>
+<section id="computing-fugacity-from-equations-of-state" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Computing Fugacity from Equations of State</h1>
+<section id="derivation-via-residual-properties" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="derivation-via-residual-properties"><span class="header-section-number">4.1</span> Derivation via Residual Properties</h2>
+<p>We want to evaluate <span class="math inline">\(\ln \phi = \underline{G}^R/RT\)</span> (see <a href="#eq-gr-lnphi" class="quarto-xref">Eq.&nbsp;10</a>) from a PVT equation of state. The strategy is to use the residual property expressions for <span class="math inline">\(\underline{H}^R\)</span> and <span class="math inline">\(\underline{S}^R\)</span> that we derived earlier in the course, and substitute them into <span class="math inline">\(\underline{G}^R = \underline{H}^R - T\underline{S}^R\)</span>:</p>
+<p><span id="eq-lnphi-HR-SR"><span class="math display">\[\ln\!\left(\frac{f}{P}\right) = \frac{\underline{G}^R}{RT} = \frac{\underline{H}^R}{RT} - \frac{\underline{S}^R}{R} \tag{15}\]</span></span></p>
+<p>Recall the textbook expressions for the residual enthalpy and entropy, evaluated at constant <span class="math inline">\(T\)</span> (Text Eqs. 6.130, 6.134):</p>
+<p><span id="eq-HR"><span class="math display">\[\underline{H}^R = \int_0^P \left[\underline{V} - T\!\left(\frac{\partial \underline{V}}{\partial T}\right)_{\!P}\right] dP \tag{16}\]</span></span></p>
+<p><span id="eq-SR"><span class="math display">\[\underline{S}^R = -\int_0^P \left[\left(\frac{\partial \underline{V}}{\partial T}\right)_{\!P} - \frac{R}{P}\right] dP \tag{17}\]</span></span></p>
+<p>Substituting <a href="#eq-HR" class="quarto-xref">Eq.&nbsp;16</a> and <a href="#eq-SR" class="quarto-xref">Eq.&nbsp;17</a> into <a href="#eq-lnphi-HR-SR" class="quarto-xref">Eq.&nbsp;15</a> gives: <span class="math display">\[\ln\!\left(\frac{f}{P}\right) = \frac{1}{RT}\int_0^P \left[\underline{V} - T\!\left(\frac{\partial \underline{V}}{\partial T}\right)_{\!P}\right] dP + \frac{T}{RT}\int_0^P \left[\left(\frac{\partial \underline{V}}{\partial T}\right)_{\!P} - \frac{R}{P}\right] dP\]</span></p>
+<p>The <span class="math inline">\(T(\partial \underline{V}/\partial T)_P\)</span> terms appear with opposite signs and cancel exactly, leaving:</p>
+<p><span id="eq-lnphi-VR"><span class="math display">\[\boxed{\ln\!\left(\frac{f}{P}\right) = \frac{1}{RT}\int_0^P \left[\underline{V} - \frac{RT}{P}\right] dP} \tag{18}\]</span></span></p>
+<p>The integrand is simply the residual volume <span class="math inline">\(\underline{V}^R = \underline{V} - RT/P\)</span>; in other words, is is the local deviation of the real molar volume from the ideal gas value. The fugacity coefficient <span class="math inline">\(\phi\)</span> therefore captures the <strong>cumulative</strong> volumetric non-ideality, integrated from <span class="math inline">\(P = 0\)</span> up to the system pressure.</p>
+</section>
+<section id="converting-to-the-compressibility-factor-form" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="converting-to-the-compressibility-factor-form"><span class="header-section-number">4.2</span> Converting to the Compressibility Factor Form</h2>
+<p>We can rewrite <a href="#eq-lnphi-VR" class="quarto-xref">Eq.&nbsp;18</a> in a form more convenient for direct EOS calculations. Noting that: <span class="math display">\[\frac{\underline{V} - RT/P}{RT} = \frac{P\underline{V}/RT - 1}{P} = \frac{Z - 1}{P}\]</span></p>
+<p><a href="#eq-lnphi-VR" class="quarto-xref">Eq.&nbsp;18</a> becomes:</p>
+<p><span id="eq-lnphi-Z"><span class="math display">\[\boxed{\ln \phi = \int_0^P \frac{Z-1}{P}\,dP} \tag{19}\]</span></span></p>
+<p>This is the standard working formula. Given any EOS that expresses <span class="math inline">\(Z\)</span> as a function of <span class="math inline">\(T\)</span> and <span class="math inline">\(P\)</span>, <a href="#eq-lnphi-Z" class="quarto-xref">Eq.&nbsp;19</a> yields <span class="math inline">\(\ln \phi\)</span>, and the fugacity follows as <span class="math inline">\(f = \phi P\)</span> (<a href="#eq-f-phi-p" class="quarto-xref">Eq.&nbsp;11</a>).</p>
+</section>
+</section>
+<section id="fugacity-coefficients-from-common-equations-of-state" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Fugacity Coefficients from Common Equations of State</h1>
+<p>Evaluating the integral in <a href="#eq-lnphi-Z" class="quarto-xref">Eq.&nbsp;19</a> analytically for a specific EOS is a calculus exercise that has already been carried out. The results are collected here. For the cubic equations of state (vdW, SRK, PR), define the dimensionless parameters:</p>
+<p><span id="eq-AB-def"><span class="math display">\[A \equiv \frac{aP}{(RT)^2}, \qquad B \equiv \frac{bP}{RT} \tag{20}\]</span></span></p>
+<p>For SRK and PR, <span class="math inline">\(a\)</span> includes the temperature-dependent <span class="math inline">\(\alpha(T)\)</span> correction.</p>
+<p><strong>Truncated Virial EOS</strong> (<span class="math inline">\(Z = 1 + B_2 P/RT\)</span>, where <span class="math inline">\(B_2\)</span> is the second virial coefficient):</p>
+<p><span id="eq-lnphi-virial"><span class="math display">\[\ln \phi = \frac{B_2 P}{RT} \tag{21}\]</span></span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In <a href="#eq-lnphi-virial" class="quarto-xref">Eq.&nbsp;21</a>, <span class="math inline">\(B_2\)</span> is the <strong>second virial coefficient</strong> (units of L/mol or cm³/mol), which is distinct from the dimensionless parameter <span class="math inline">\(B \equiv bP/RT\)</span> defined in <a href="#eq-AB-def" class="quarto-xref">Eq.&nbsp;20</a> for the cubic equations of state.</p>
+</div>
+</div>
+<p><strong>van der Waals EOS:</strong></p>
+<p><span id="eq-lnphi-vdw"><span class="math display">\[\ln \phi = Z - 1 - \ln(Z - B) - \frac{A}{Z} \tag{22}\]</span></span></p>
+<p><strong>Soave-Redlich-Kwong (SRK) EOS:</strong></p>
+<p><span id="eq-lnphi-srk"><span class="math display">\[\ln \phi = Z - 1 - \ln(Z - B) - \frac{A}{B}\ln\!\left(1 + \frac{B}{Z}\right) \tag{23}\]</span></span></p>
+<p><strong>Peng-Robinson (PR) EOS:</strong></p>
+<p><span id="eq-lnphi-pr"><span class="math display">\[\ln \phi = Z - 1 - \ln(Z - B) - \frac{A}{2\sqrt{2}\,B}\ln\!\left(\frac{Z + (1+\sqrt{2})B}{Z + (1-\sqrt{2})B}\right) \tag{24}\]</span></span></p>
+<p><strong>How to use these formulas.</strong> The procedure is the same regardless of which EOS you choose:</p>
+<ol type="1">
+<li><strong>Determine the EOS parameters</strong> <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span> (and <span class="math inline">\(\alpha(T)\)</span> for SRK and PR) from the critical constants <span class="math inline">\(T_c\)</span>, <span class="math inline">\(P_c\)</span>, and acentric factor <span class="math inline">\(\omega\)</span> using the correlations covered earlier in the course.</li>
+<li><strong>Compute <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span></strong> at the temperature and pressure of interest using <a href="#eq-AB-def" class="quarto-xref">Eq.&nbsp;20</a>. Both are functions of <span class="math inline">\(T\)</span> and <span class="math inline">\(P\)</span>.</li>
+<li><strong>Solve the cubic EOS for <span class="math inline">\(Z\)</span>.</strong> Inside the two-phase envelope this yields three real roots; take the largest (<span class="math inline">\(Z^V\)</span>) for vapor and the smallest (<span class="math inline">\(Z^L\)</span>) for liquid. Outside the dome only one real root exists.</li>
+<li><strong>Substitute <span class="math inline">\(Z\)</span>, <span class="math inline">\(A\)</span>, and <span class="math inline">\(B\)</span></strong> into the appropriate formula above to obtain <span class="math inline">\(\ln\phi\)</span>, then compute <span class="math inline">\(\phi = e^{\ln\phi}\)</span> and finally <span class="math inline">\(f = \phi P\)</span> (see <a href="#eq-f-phi-p" class="quarto-xref">Eq.&nbsp;11</a>).</li>
+</ol>
+<hr>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Jupyter Notebook Example — Fugacity from Cubic EOS
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I have prepared an interactive Jupyter Notebook that computes the fugacity coefficient <span class="math inline">\(\phi\)</span> and fugacity <span class="math inline">\(f = \phi P\)</span> for the vdW, SRK, and PR equations of state. Select a fluid, temperature, and pressure: the notebook solves the cubic for all physical roots, evaluates <span class="math inline">\(\ln\phi\)</span> for each root using the formulas above, and identifies the thermodynamically stable phase as the one with the lower fugacity.</p>
+<p><a href="../class34/fugacity-EOS.html"><strong>View Interactive Notebook (.ipynb)</strong></a></p>
+<p><a href="https://colab.research.google.com/github/ejmaginn/CBE20260-notes/blob/main/class34/fugacity-EOS.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid"></a></p>
+</div>
+</div>
+<hr>
+</section>
+<section id="phase-stability-and-cubic-eos-solvers" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Phase Stability and Cubic EOS Solvers</h1>
+<section id="multiple-roots-inside-the-vapor-liquid-dome" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="multiple-roots-inside-the-vapor-liquid-dome"><span class="header-section-number">6.1</span> Multiple Roots Inside the Vapor-Liquid Dome</h2>
+<p>When a cubic equation of state (SRK, PR, vdW) is evaluated at a <span class="math inline">\(T\)</span> and <span class="math inline">\(P\)</span> that falls <strong>inside the two-phase envelope</strong>, it yields three real positive roots for <span class="math inline">\(\underline{V}\)</span>:</p>
+<ul>
+<li><strong>Largest root</strong> (<span class="math inline">\(\underline{V}^V\)</span>): the vapor-phase molar volume</li>
+<li><strong>Smallest root</strong> (<span class="math inline">\(\underline{V}^L\)</span>): the liquid-phase molar volume</li>
+<li><strong>Middle root</strong>: physically meaningless — it lies in a mechanically unstable region where <span class="math inline">\((\partial P / \partial \underline{V})_T &gt; 0\)</span>, violating mechanical stability, and is always discarded</li>
+</ul>
+<p>Outside the two-phase dome, only one real root exists and that is the correct solution.</p>
+</section>
+<section id="using-fugacity-to-select-the-stable-phase" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="using-fugacity-to-select-the-stable-phase"><span class="header-section-number">6.2</span> Using Fugacity to Select the Stable Phase</h2>
+<p>Both the vapor and liquid roots are mathematically valid inside the dome, but only one represents the thermodynamically stable state. <strong>Nature minimizes Gibbs free energy</strong>, and since <a href="#eq-gr-lnphi" class="quarto-xref">Eq.&nbsp;10</a> gives <span class="math inline">\(\underline{G}^R = RT\ln(f/P)\)</span> at fixed <span class="math inline">\(T\)</span> and <span class="math inline">\(P\)</span>, this is equivalent to selecting the <strong>phase with the lower fugacity</strong>.</p>
+<p>The procedure is:</p>
+<ol type="1">
+<li>Solve the cubic EOS at the given <span class="math inline">\(T\)</span> and <span class="math inline">\(P\)</span> to obtain <span class="math inline">\(\underline{V}^V\)</span> and <span class="math inline">\(\underline{V}^L\)</span>.</li>
+<li>Compute <span class="math inline">\(f^V\)</span> using <span class="math inline">\(Z^V = P\underline{V}^V/RT\)</span> in the appropriate formula (<a href="#eq-lnphi-vdw" class="quarto-xref">Eq.&nbsp;22</a>, <a href="#eq-lnphi-srk" class="quarto-xref">Eq.&nbsp;23</a>, or <a href="#eq-lnphi-pr" class="quarto-xref">Eq.&nbsp;24</a>).</li>
+<li>Compute <span class="math inline">\(f^L\)</span> using <span class="math inline">\(Z^L = P\underline{V}^L/RT\)</span> in the same formula.</li>
+<li>Apply the stability criterion based on <a href="#eq-vle-fugacity" class="quarto-xref">Eq.&nbsp;13</a>:</li>
+</ol>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Condition</th>
+<th style="text-align: left;">Physical state</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(f^V &lt; f^L\)</span></td>
+<td style="text-align: left;">Superheated vapor</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(f^L &lt; f^V\)</span></td>
+<td style="text-align: left;">Subcooled liquid</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(f^V = f^L\)</span></td>
+<td style="text-align: left;">Vapor-liquid equilibrium (VLE)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="finding-ttextsat-and-ptextsat-by-iteration" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="finding-ttextsat-and-ptextsat-by-iteration"><span class="header-section-number">6.3</span> Finding <span class="math inline">\(T^\text{sat}\)</span> and <span class="math inline">\(P^\text{sat}\)</span> by Iteration</h2>
+<p>The condition <a href="#eq-vle-fugacity" class="quarto-xref">Eq.&nbsp;13</a> is not just a diagnostic — it is the basis of a practical algorithm for locating the saturation curve from an EOS alone, with no experimental input.</p>
+<p><strong>Given <span class="math inline">\(P\)</span>, find <span class="math inline">\(T^\text{sat}\)</span>:</strong></p>
+<ol type="1">
+<li>Guess <span class="math inline">\(T\)</span>.</li>
+<li>Solve the cubic; compute <span class="math inline">\(f^V\)</span> and <span class="math inline">\(f^L\)</span> using <a href="#eq-lnphi-srk" class="quarto-xref">Eq.&nbsp;23</a> or <a href="#eq-lnphi-pr" class="quarto-xref">Eq.&nbsp;24</a>.</li>
+<li>Iterate on <span class="math inline">\(T\)</span> until <a href="#eq-vle-fugacity" class="quarto-xref">Eq.&nbsp;13</a> is satisfied. The converged value is <span class="math inline">\(T^\text{sat}\)</span>.</li>
+</ol>
+<p><strong>Given <span class="math inline">\(T\)</span>, find <span class="math inline">\(P^\text{sat}\)</span>:</strong></p>
+<ol type="1">
+<li>Guess <span class="math inline">\(P\)</span> (the Antoine equation gives a good starting point).</li>
+<li>Solve the cubic; compute <span class="math inline">\(f^V\)</span> and <span class="math inline">\(f^L\)</span> using <a href="#eq-lnphi-srk" class="quarto-xref">Eq.&nbsp;23</a> or <a href="#eq-lnphi-pr" class="quarto-xref">Eq.&nbsp;24</a>.</li>
+<li>Iterate on <span class="math inline">\(P\)</span> until <a href="#eq-vle-fugacity" class="quarto-xref">Eq.&nbsp;13</a> is satisfied. The converged value is <span class="math inline">\(P^\text{sat}\)</span>.</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Homework Help: Fugacity from Steam Tables!">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Homework Help: Fugacity from Steam Tables!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Your homework asks you to find the fugacity of steam at 500 °C using both the Peng-Robinson EOS and the Steam Tables. You have <a href="#eq-lnphi-pr" class="quarto-xref">Eq.&nbsp;24</a> for the PR calculation, but how do you use tables?</p>
+<p>From <a href="#eq-gr-lnphi" class="quarto-xref">Eq.&nbsp;10</a>, <span class="math inline">\(\underline{G}^R = RT \ln(f/P)\)</span>, and from <span class="math inline">\(\underline{G} = \underline{H} - T\underline{S}\)</span>: <span class="math display">\[\ln\!\left(\frac{f}{P}\right) = \frac{\underline{H}_{real} - \underline{H}_{ideal}}{RT} - \frac{\underline{S}_{real} - \underline{S}_{ideal}}{R}\]</span></p>
+<p>To find the ideal properties at 500 °C and high pressure, simply look up <span class="math inline">\(\underline{H}\)</span> and <span class="math inline">\(\underline{S}\)</span> for steam at 500 °C but at a <strong>very low pressure</strong> (e.g., <span class="math inline">\(P^* = 0.01\)</span> bar) where it behaves essentially as an ideal gas. You must correct the ideal entropy for the pressure difference using <span class="math inline">\(\underline{S}_{ideal}(P) = \underline{S}(P^*) - R \ln(P/P^*)\)</span> before plugging it in!</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="example-problem-fugacity-from-an-empirical-eos" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Example Problem: Fugacity from an Empirical EOS</h1>
+<p><em>(D-V Example 8.19)</em></p>
+<p>A gas obeys the following equation of state: <span class="math display">\[\underline{V} = \frac{RT}{P} + aP^2, \qquad a = 0.01\ \frac{\text{L}}{\text{bar}^2{\cdot}\text{mol}}\]</span></p>
+<p><strong>(a)</strong> Derive a general expression for the fugacity <span class="math inline">\(f(T,P)\)</span>.</p>
+<p><strong>(b)</strong> Evaluate the fugacity at <span class="math inline">\(T = 500\ \text{K}\)</span>, <span class="math inline">\(P = 5\ \text{bar}\)</span>.</p>
+<hr>
+<p><strong>Part (a): General expression</strong></p>
+<p><strong>Step 1: Write the EOS in terms of <span class="math inline">\(Z\)</span>.</strong></p>
+<p>Multiply both sides by <span class="math inline">\(P/RT\)</span>: <span id="eq-empirical-Z"><span class="math display">\[Z = \frac{P\underline{V}}{RT} = 1 + \frac{aP^3}{RT} \tag{25}\]</span></span></p>
+<p><strong>Step 2: Substitute <a href="#eq-empirical-Z" class="quarto-xref">Eq.&nbsp;25</a> into <a href="#eq-lnphi-Z" class="quarto-xref">Eq.&nbsp;19</a>.</strong></p>
+<p><span id="eq-empirical-lnphi"><span class="math display">\[\ln\!\left(\frac{f}{P}\right) = \int_0^P \frac{Z-1}{P}\,dP = \int_0^P \frac{aP^2}{RT}\,dP = \frac{aP^3}{3RT} \tag{26}\]</span></span></p>
+<p><strong>Step 3: Exponentiate <a href="#eq-empirical-lnphi" class="quarto-xref">Eq.&nbsp;26</a> to get the general result.</strong></p>
+<p><span id="eq-empirical-f"><span class="math display">\[\boxed{f(T,P) = P\exp\!\left(\frac{aP^3}{3RT}\right)} \tag{27}\]</span></span></p>
+<hr>
+<p><strong>Part (b): Numerical evaluation</strong></p>
+<p>Using <span class="math inline">\(R = 0.08314\ \text{L·bar/(mol·K)}\)</span>, <span class="math inline">\(T = 500\ \text{K}\)</span>, <span class="math inline">\(P = 5\ \text{bar}\)</span> in <a href="#eq-empirical-f" class="quarto-xref">Eq.&nbsp;27</a>: <span class="math display">\[\frac{aP^3}{3RT} = \frac{0.01 \times 5^3}{3 \times 0.08314 \times 500} = \frac{1.25}{124.71} = 0.01002\]</span> <span class="math display">\[f = 5\ \text{bar} \times \exp(0.01002) = \mathbf{5.05\ \text{bar}}, \qquad \phi = \frac{f}{P} = 1.01\]</span></p>
+<p><strong>Physical interpretation:</strong> <span class="math inline">\(\phi &gt; 1\)</span> means the fugacity exceeds the actual pressure, indicating that repulsive intermolecular interactions dominate — the molecules are being “pushed out” more readily than an ideal gas. Conversely, <span class="math inline">\(\phi &lt; 1\)</span> signals attractive interactions, where the effective escaping tendency is reduced. Here <span class="math inline">\(\phi \approx 1\)</span> because at 500 K and only 5 bar the gas is nearly ideal, so the correction is small.</p>
+</section>
+<section id="fugacity-of-liquids-and-solids-the-poynting-correction" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Fugacity of Liquids and Solids (The Poynting Correction)</h1>
+<section id="tracing-a-path-to-the-compressed-liquid" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="tracing-a-path-to-the-compressed-liquid"><span class="header-section-number">8.1</span> Tracing a Path to the Compressed Liquid</h2>
+<p>We already know how to compute <span class="math inline">\(f^V\)</span> for a gas using <a href="#eq-lnphi-Z" class="quarto-xref">Eq.&nbsp;19</a> or <a href="#eq-lnphi-VR" class="quarto-xref">Eq.&nbsp;18</a>. For a <strong>compressed liquid</strong> at pressure <span class="math inline">\(P &gt; P^{sat}\)</span>, we use <a href="#eq-lnphi-VR" class="quarto-xref">Eq.&nbsp;18</a> but split the integration path into three legs:</p>
+<p><span class="math display">\[P = 0 \xrightarrow{\text{vapor}} P^{sat} \xrightarrow{\text{VLE}} P^{sat} \xrightarrow{\text{liquid}} P\]</span></p>
+<p>This path is illustrated on a <span class="math inline">\(P\)</span>–<span class="math inline">\(V\)</span> diagram in <a href="#fig-liquid-fugacity-path" class="quarto-xref">Fig.&nbsp;2</a>.</p>
+<div id="fig-liquid-fugacity-path" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-liquid-fugacity-path-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/liquid-fugacity-path.png" class="img-fluid figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-liquid-fugacity-path-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Fig.&nbsp;2: Integration path used to derive the fugacity of a compressed liquid on a <span class="math inline">\(P\)</span>–<span class="math inline">\(V\)</span> diagram. Leg 1 follows the vapor-phase isotherm from the ideal-gas limit (<span class="math inline">\(P \approx 0\)</span>, point <span class="math inline">\(A\)</span>) up to the saturated vapor state (point <span class="math inline">\(B\)</span>, on the vapor branch of the dome). Leg 2 crosses the two-phase region horizontally at <span class="math inline">\(P^{sat}\)</span>, where <span class="math inline">\(f^V = f^L\)</span>, ending at the saturated liquid state (point <span class="math inline">\(C\)</span>, on the liquid branch). Leg 3 compresses the liquid along the liquid isotherm from <span class="math inline">\(C\)</span> to the target pressure <span class="math inline">\(P\)</span> (point <span class="math inline">\(D\)</span>).
+</figcaption>
+</figure>
+</div>
+<p>Starting from <a href="#eq-lnphi-VR" class="quarto-xref">Eq.&nbsp;18</a>, multiplied through by <span class="math inline">\(RT\)</span>, and splitting accordingly:</p>
+<p><span id="eq-path-split"><span class="math display">\[RT\ln\!\left(\frac{f^L}{P}\right) = \underbrace{\int_0^{P^{sat}}\!\!\left[\underline{V}^V - \frac{RT}{P}\right]dP}_{\text{Leg 1: vapor}} + \underbrace{0}_{\substack{\text{Leg 2: VLE}\\P = P^{sat}\ (\text{const})\\dP = 0}} + \underbrace{\int_{P^{sat}}^{P}\!\!\left[\underline{V}^L - \frac{RT}{P}\right]dP}_{\text{Leg 3: liquid}} \tag{28}\]</span></span></p>
+<p><strong>Leg 1</strong> is exactly <a href="#eq-lnphi-VR" class="quarto-xref">Eq.&nbsp;18</a> evaluated at <span class="math inline">\(P = P^{sat}\)</span>, which by definition equals <span class="math inline">\(RT\ln\phi^V_{sat}\)</span>: <span id="eq-leg1"><span class="math display">\[\int_0^{P^{sat}}\!\!\left[\underline{V}^V - \frac{RT}{P}\right]dP = RT\ln\phi^V_{sat} \tag{29}\]</span></span></p>
+<p><strong>Leg 3</strong> is split by separating the volume integral from the logarithmic ideal-gas term: <span id="eq-leg3"><span class="math display">\[\int_{P^{sat}}^{P}\!\!\left[\underline{V}^L - \frac{RT}{P}\right]dP = \int_{P^{sat}}^{P}\underline{V}^L\,dP - RT\ln\!\left(\frac{P}{P^{sat}}\right) \tag{30}\]</span></span></p>
+<p>Substituting <a href="#eq-leg1" class="quarto-xref">Eq.&nbsp;29</a> and <a href="#eq-leg3" class="quarto-xref">Eq.&nbsp;30</a> into <a href="#eq-path-split" class="quarto-xref">Eq.&nbsp;28</a> and dividing through by <span class="math inline">\(RT\)</span>: <span class="math display">\[\ln\!\left(\frac{f^L}{P}\right) = \ln\phi^V_{sat} + \ln\!\left(\frac{P^{sat}}{P}\right) + \frac{1}{RT}\int_{P^{sat}}^{P}\underline{V}^L\,dP\]</span></p>
+<p>Exponentiating gives the <strong>exact expression</strong> for the fugacity of a compressed liquid:</p>
+<p><span id="eq-liquid-fugacity-exact"><span class="math display">\[\boxed{f^L(T,P) = \phi^V_{sat}\,P^{sat}\exp\!\left[\frac{1}{RT}\int_{P^{sat}}^{P}\underline{V}^L\,dP\right]} \tag{31}\]</span></span></p>
+<p>The exponential in <a href="#eq-liquid-fugacity-exact" class="quarto-xref">Eq.&nbsp;31</a> is called the <strong>Poynting Correction (PC)</strong>. It accounts for the work done compressing the liquid from <span class="math inline">\(P^{sat}\)</span> to <span class="math inline">\(P\)</span>.</p>
+</section>
+<section id="approximations" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="approximations"><span class="header-section-number">8.2</span> Approximations</h2>
+<p>Three successive approximations simplify <a href="#eq-liquid-fugacity-exact" class="quarto-xref">Eq.&nbsp;31</a>.</p>
+<p><strong>Approximation 1 — incompressible liquid</strong> (<span class="math inline">\(\underline{V}^L \neq f(P)\)</span>): Pull the constant molar volume out of the integral: <span id="eq-poynting-correction"><span class="math display">\[\text{PC} = \exp\!\left[\frac{\underline{V}^L(P - P^{sat})}{RT}\right] \tag{32}\]</span></span> This is the form most commonly used in practice.</p>
+<p><strong>Approximation 2 — moderate pressure</strong> (<span class="math inline">\(P \approx P^{sat}\)</span>): If the pressure does not greatly exceed the saturation pressure, the Poynting Correction (<a href="#eq-poynting-correction" class="quarto-xref">Eq.&nbsp;32</a>) is close to unity because <span class="math inline">\((P - P^{sat})\)</span> is small and <span class="math inline">\(\underline{V}^L\)</span> is already small. Hence <span class="math inline">\(\text{PC} \approx 1\)</span>.</p>
+<p><strong>Approximation 3 — ideal saturated vapor</strong> (<span class="math inline">\(\phi^V_{sat} \approx 1\)</span>): At pressures well below the critical point the saturated vapor is nearly ideal.</p>
+<p>Applying all three simultaneously:</p>
+<p><span id="eq-liquid-fugacity-approx"><span class="math display">\[f^L \approx P^{sat} \tag{33}\]</span></span></p>
+<p>This is often an excellent approximation for engineering calculations at moderate pressures.</p>
+</section>
+<section id="fugacity-of-solids" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="fugacity-of-solids"><span class="header-section-number">8.3</span> Fugacity of Solids</h2>
+<p>The derivation for a solid is identical, referenced to the sublimation curve rather than the vapor-pressure curve:</p>
+<p><span id="eq-solid-fugacity"><span class="math display">\[f^S(T,P) = \phi^V_{sub}\,P^{sat}_{sub}\exp\!\left[\frac{\underline{V}^S(P - P^{sat}_{sub})}{RT}\right] \tag{34}\]</span></span></p>
+<p>where <span class="math inline">\(P^{sat}_{sub}\)</span> is the sublimation pressure and <span class="math inline">\(\phi^V_{sub}\)</span> is the fugacity coefficient of the vapor on the sublimation curve at temperature <span class="math inline">\(T\)</span>.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/ejmaginn\.github\.io\/CBE20260-notes\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

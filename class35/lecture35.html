@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Edward Maginn">
+
+<title>Lecture 35: The Big Picture — A Journey Through Thermodynamics – CBE 20260 — Course Notes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-950ba19c765f2cec88564589b0edcdee.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">CBE 20260 — Course Notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-notebooks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Notebooks</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-notebooks">    
+        <li>
+    <a class="dropdown-item" href="../class02/lecture02_example.html">
+ <span class="dropdown-text">L2 Block &amp; Spring Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class03/lecture03_example.html">
+ <span class="dropdown-text">L3 Maxwell-Boltzmann Distribution Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class04/PV-diagram.html">
+ <span class="dropdown-text">L4 PV Diagram Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class06/lecture06_LJ.html">
+ <span class="dropdown-text">L6 LJ Potential Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class07/VDW-loop.html">
+ <span class="dropdown-text">L7 VDW loop Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class07/vdw-TP.html">
+ <span class="dropdown-text">L7 VDW TP Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class14/Quenching_entropy.html">
+ <span class="dropdown-text">L14 Quenching Entropy Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class19/rankine-regen.html">
+ <span class="dropdown-text">L19 Regenerative Rankine Cycle Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class22/vapor-compression-cycle.html">
+ <span class="dropdown-text">L22 Vapor Compression Cycle Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class27/VDW-solver.html">
+ <span class="dropdown-text">L27 van der Waals Solver Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class27/residual-VDW.html">
+ <span class="dropdown-text">L27 van der Waals Residuals Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class29/PR-SRK-solvers.html">
+ <span class="dropdown-text">L29 PR-SRK Solvers Demo</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class01/lecture01.html">Lectures</a></li><li class="breadcrumb-item"><a href="../class35/lecture35.html">Lecture 35 - The Big Picture — A Journey Through Thermodynamics</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Lectures</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class01/lecture01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 1 — Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class02/lecture02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 2 — Systems, Boundaries and Other Basics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class03/lecture03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 3 — Forms of Energy and Calculating Work</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class04/lecture04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 4 — Fundamental Postulate, States, Phase Rule, and Pure Substance Phase Behaviors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class05/lecture05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 5 — Heat Capacity, Enthalpy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class06/lecture06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 6 — Calculating Internal Energy and Enthalpy Changes; intermolecular forces</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class07/lecture07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 7 - The van der Waals Equation of State; compressibility factor; open system energy balance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class08/lecture08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 8 - Open system energy balance applied to process equipment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class09/lecture09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 9 - Advanced Open System Energy Balances</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class10/lecture10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 10 - Latent Heat and the Need for a Second Law</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class12/lecture12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 12 - Introduction to Entropy and the Second Law</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class13/lecture13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 13 - Calculating Entropy Changes for Closed Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class14/lecture14.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 14 - Entropy Changes for Open Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class15/lecture15.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 15 - Open System Entropy Balance and Efficiency</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class16/lecture16.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 16 - Heat Engines and the Second Law</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class17/lecture17.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 17 - Carnot Cycle and Practical Heat Engines</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class18/lecture18.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 18 - Rankine Cycle Analysis and Efficiency</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class19/lecture19.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 19 - Improving Rankine Cycle Efficiency</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class20/lecture20.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 20 - Organic Rankine Cycles and Internal Combustion Engines</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class21/lecture21.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 21 - Introduction to Cooling and Refrigeration</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class22/lecture22.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 22 - Modeling Vapor Compression Cycles and Liquefaction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class23/lecture23.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 23 - The Mathematics of Thermodynamics and Thermodynamic Potentials</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class24/lecture24.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 24 - The Maxwell Relations and Calculating Thermodynamic Properties</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class25/lecture25.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 25 - General Property Equations from the Math of Thermo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class26/lecture26.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 26 - Real Fluids and Residual Properties</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class27/lecture27.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 27 - Applying Residuals and Intro to Cubic Equations of State</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class28/lecture28.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 28 - Cubic Equations of State and the Principle of Corresponding States</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class29/lecture29.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 29 - Modern Cubic Equations of State</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class30/lecture30.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 30 - Generalized Correlations and the Critical Point</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class31/lecture31.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 31 - The Virial Equation, Group Contributions, and Molecular Origins of Thermodynamics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class32/lecture32.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 32 - Introduction to Phase Equilibria</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Big-Picture-exam3/Big-Picture-exam3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Big Picture — Exam 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class33/lecture33.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 33 - Chemical Potential, Gibbs Energy, and the Clapeyron Equation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class34/lecture34.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 34 - Fugacity and Phase Equilibria</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class35/lecture35.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Lecture 35 - The Big Picture — A Journey Through Thermodynamics</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction-where-we-started-and-where-we-are" id="toc-introduction-where-we-started-and-where-we-are" class="nav-link active" data-scroll-target="#introduction-where-we-started-and-where-we-are"><span class="header-section-number">1</span> Introduction: Where We Started and Where We Are</a></li>
+  <li><a href="#part-i-the-two-great-laws-and-what-they-demand" id="toc-part-i-the-two-great-laws-and-what-they-demand" class="nav-link" data-scroll-target="#part-i-the-two-great-laws-and-what-they-demand"><span class="header-section-number">2</span> Part I: The Two Great Laws and What They Demand</a>
+  <ul class="collapse">
+  <li><a href="#the-fundamental-postulate-and-state-functions" id="toc-the-fundamental-postulate-and-state-functions" class="nav-link" data-scroll-target="#the-fundamental-postulate-and-state-functions"><span class="header-section-number">2.1</span> The Fundamental Postulate and State Functions</a></li>
+  <li><a href="#the-first-law-energy-bookkeeping" id="toc-the-first-law-energy-bookkeeping" class="nav-link" data-scroll-target="#the-first-law-energy-bookkeeping"><span class="header-section-number">2.2</span> The First Law: Energy Bookkeeping</a></li>
+  <li><a href="#the-second-law-directionality-and-limits" id="toc-the-second-law-directionality-and-limits" class="nav-link" data-scroll-target="#the-second-law-directionality-and-limits"><span class="header-section-number">2.3</span> The Second Law: Directionality and Limits</a></li>
+  </ul></li>
+  <li><a href="#part-ii-applying-the-laws-engineering-devices-and-cycles" id="toc-part-ii-applying-the-laws-engineering-devices-and-cycles" class="nav-link" data-scroll-target="#part-ii-applying-the-laws-engineering-devices-and-cycles"><span class="header-section-number">3</span> Part II: Applying the Laws: Engineering Devices and Cycles</a>
+  <ul class="collapse">
+  <li><a href="#steady-state-devices" id="toc-steady-state-devices" class="nav-link" data-scroll-target="#steady-state-devices"><span class="header-section-number">3.1</span> Steady-State Devices</a></li>
+  <li><a href="#power-cycles-the-rankine-cycle" id="toc-power-cycles-the-rankine-cycle" class="nav-link" data-scroll-target="#power-cycles-the-rankine-cycle"><span class="header-section-number">3.2</span> Power Cycles: The Rankine Cycle</a></li>
+  <li><a href="#refrigeration-and-liquefaction" id="toc-refrigeration-and-liquefaction" class="nav-link" data-scroll-target="#refrigeration-and-liquefaction"><span class="header-section-number">3.3</span> Refrigeration and Liquefaction</a></li>
+  </ul></li>
+  <li><a href="#part-iii-the-mathematics-of-thermodynamics" id="toc-part-iii-the-mathematics-of-thermodynamics" class="nav-link" data-scroll-target="#part-iii-the-mathematics-of-thermodynamics"><span class="header-section-number">4</span> Part III: The Mathematics of Thermodynamics</a>
+  <ul class="collapse">
+  <li><a href="#the-fundamental-relations" id="toc-the-fundamental-relations" class="nav-link" data-scroll-target="#the-fundamental-relations"><span class="header-section-number">4.1</span> The Fundamental Relations</a></li>
+  <li><a href="#the-legendre-transforms-changing-variables" id="toc-the-legendre-transforms-changing-variables" class="nav-link" data-scroll-target="#the-legendre-transforms-changing-variables"><span class="header-section-number">4.2</span> The Legendre Transforms: Changing Variables</a></li>
+  <li><a href="#the-maxwell-relations" id="toc-the-maxwell-relations" class="nav-link" data-scroll-target="#the-maxwell-relations"><span class="header-section-number">4.3</span> The Maxwell Relations</a></li>
+  <li><a href="#general-property-equations" id="toc-general-property-equations" class="nav-link" data-scroll-target="#general-property-equations"><span class="header-section-number">4.4</span> General Property Equations</a></li>
+  </ul></li>
+  <li><a href="#part-iv-equations-of-state-for-modeling-pvt-behavior" id="toc-part-iv-equations-of-state-for-modeling-pvt-behavior" class="nav-link" data-scroll-target="#part-iv-equations-of-state-for-modeling-pvt-behavior"><span class="header-section-number">5</span> Part IV: Equations of State for Modeling PVT Behavior</a>
+  <ul class="collapse">
+  <li><a href="#the-corresponding-states-principle" id="toc-the-corresponding-states-principle" class="nav-link" data-scroll-target="#the-corresponding-states-principle"><span class="header-section-number">5.1</span> The Corresponding States Principle</a></li>
+  <li><a href="#cubic-equations-of-state" id="toc-cubic-equations-of-state" class="nav-link" data-scroll-target="#cubic-equations-of-state"><span class="header-section-number">5.2</span> Cubic Equations of State</a></li>
+  <li><a href="#the-virial-equation-of-state" id="toc-the-virial-equation-of-state" class="nav-link" data-scroll-target="#the-virial-equation-of-state"><span class="header-section-number">5.3</span> The Virial Equation of State</a></li>
+  </ul></li>
+  <li><a href="#part-v-residual-properties-the-bridge-from-eos-to-properties" id="toc-part-v-residual-properties-the-bridge-from-eos-to-properties" class="nav-link" data-scroll-target="#part-v-residual-properties-the-bridge-from-eos-to-properties"><span class="header-section-number">6</span> Part V: Residual Properties: The Bridge from EOS to Properties</a>
+  <ul class="collapse">
+  <li><a href="#the-core-idea" id="toc-the-core-idea" class="nav-link" data-scroll-target="#the-core-idea"><span class="header-section-number">6.1</span> The Core Idea</a></li>
+  <li><a href="#computing-residual-properties-from-an-eos" id="toc-computing-residual-properties-from-an-eos" class="nav-link" data-scroll-target="#computing-residual-properties-from-an-eos"><span class="header-section-number">6.2</span> Computing Residual Properties from an EOS</a></li>
+  </ul></li>
+  <li><a href="#part-vi-phase-equilibrium-chemical-potential-and-fugacity" id="toc-part-vi-phase-equilibrium-chemical-potential-and-fugacity" class="nav-link" data-scroll-target="#part-vi-phase-equilibrium-chemical-potential-and-fugacity"><span class="header-section-number">7</span> Part VI: Phase Equilibrium, Chemical Potential, and Fugacity</a>
+  <ul class="collapse">
+  <li><a href="#chemical-potential-as-the-driver-of-phase-change" id="toc-chemical-potential-as-the-driver-of-phase-change" class="nav-link" data-scroll-target="#chemical-potential-as-the-driver-of-phase-change"><span class="header-section-number">7.1</span> Chemical Potential as the Driver of Phase Change</a></li>
+  <li><a href="#the-problem-with-gibbs-energy-and-the-invention-of-fugacity" id="toc-the-problem-with-gibbs-energy-and-the-invention-of-fugacity" class="nav-link" data-scroll-target="#the-problem-with-gibbs-energy-and-the-invention-of-fugacity"><span class="header-section-number">7.2</span> The Problem with Gibbs Energy and the Invention of Fugacity</a></li>
+  <li><a href="#computing-fugacity-from-an-eos" id="toc-computing-fugacity-from-an-eos" class="nav-link" data-scroll-target="#computing-fugacity-from-an-eos"><span class="header-section-number">7.3</span> Computing Fugacity from an EOS</a></li>
+  <li><a href="#phase-stability-using-fugacity-to-select-the-stable-root" id="toc-phase-stability-using-fugacity-to-select-the-stable-root" class="nav-link" data-scroll-target="#phase-stability-using-fugacity-to-select-the-stable-root"><span class="header-section-number">7.4</span> Phase Stability: Using Fugacity to Select the Stable Root</a></li>
+  </ul></li>
+  <li><a href="#part-vii-fugacity-of-compressed-liquids-and-the-poynting-correction" id="toc-part-vii-fugacity-of-compressed-liquids-and-the-poynting-correction" class="nav-link" data-scroll-target="#part-vii-fugacity-of-compressed-liquids-and-the-poynting-correction"><span class="header-section-number">8</span> Part VII: Fugacity of Compressed Liquids and the Poynting Correction</a></li>
+  <li><a href="#part-viii-what-you-can-now-do" id="toc-part-viii-what-you-can-now-do" class="nav-link" data-scroll-target="#part-viii-what-you-can-now-do"><span class="header-section-number">9</span> Part VIII: What You Can Now Do</a></li>
+  <li><a href="#part-ix-where-this-leads" id="toc-part-ix-where-this-leads" class="nav-link" data-scroll-target="#part-ix-where-this-leads"><span class="header-section-number">10</span> Part IX: Where This Leads</a></li>
+  <li><a href="#summary-the-arc-of-cbe-20260" id="toc-summary-the-arc-of-cbe-20260" class="nav-link" data-scroll-target="#summary-the-arc-of-cbe-20260"><span class="header-section-number">11</span> Summary: The Arc of CBE 20260</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture35.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class01/lecture01.html">Lectures</a></li><li class="breadcrumb-item"><a href="../class35/lecture35.html">Lecture 35 - The Big Picture — A Journey Through Thermodynamics</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Lecture 35: The Big Picture — A Journey Through Thermodynamics</h1>
+<p class="subtitle lead">CBE 20260 / Thermodynamics I</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Edward Maginn </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction-where-we-started-and-where-we-are" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction: Where We Started and Where We Are</h1>
+<p>Thirty-four lectures ago, you walked in knowing that hot objects cool down and engines need fuel. You leave knowing <em>why</em>, and more importantly, how to <em>calculate</em> outcomes for real engineering systems operating on real fluids.</p>
+<p>This final lecture is not a list of equations to memorize. It is a map. We will trace the logical thread that ran through the entire course: from a few foundational postulates, through rigorous mathematics, to a complete computational framework for thermodynamic problems. Our goal is to help you see the whole structure at once.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="The Central Claim of This Course">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>The Central Claim of This Course
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Every result in CBE 20260 — from the Carnot efficiency to the Poynting correction — follows from just three things:</p>
+<ol type="1">
+<li><strong>The First Law:</strong> Energy is conserved.</li>
+<li><strong>The Second Law:</strong> Entropy of an isolated system increases until equilibrium.</li>
+<li><strong>The Fundamental Postulate:</strong> Equilibrium states of pure systems are determined by two independent intensive variables.</li>
+</ol>
+<p>All the machinery we built — Legendre transforms, Maxwell relations, residual properties, fugacity — is the mathematical consequence of these statements, combined with the thermodynamic property relations we derived from them.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="part-i-the-two-great-laws-and-what-they-demand" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Part I: The Two Great Laws and What They Demand</h1>
+<section id="the-fundamental-postulate-and-state-functions" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="the-fundamental-postulate-and-state-functions"><span class="header-section-number">2.1</span> The Fundamental Postulate and State Functions</h2>
+<p>We opened the course by asking: what does it take to specify the state of a system? The answer from the Fundamental Postulate is elegant: for a pure substance at equilibrium, <strong>two independent intensive properties</strong> completely determine all others. This is why we can draw phase diagrams, use steam tables, and write equations of state; the state is determined, and everything flows from it.</p>
+<p>This postulate implies that thermodynamic properties (<span class="math inline">\(U\)</span>, <span class="math inline">\(H\)</span>, <span class="math inline">\(S\)</span>, <span class="math inline">\(G\)</span>, <span class="math inline">\(A\)</span>) are <strong>state functions</strong>: their changes depend only on the initial and final states, not the path. That fact is what makes thermodynamics tractable.</p>
+</section>
+<section id="the-first-law-energy-bookkeeping" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="the-first-law-energy-bookkeeping"><span class="header-section-number">2.2</span> The First Law: Energy Bookkeeping</h2>
+<p>The First Law is an accounting principle. For an open system in general:</p>
+<p><span class="math display">\[\frac{d}{dt}\!\left[M\!\left(\hat{U} + \frac{v^2}{2} + gh\right)\right] = \sum_{in}\dot{m}_j\!\left(\hat{H}_j + \frac{v_j^2}{2} + gh_j\right) - \sum_{out}\dot{m}_k\!\left(\hat{H}_k + \frac{v_k^2}{2} + gh_k\right) + \dot{W}_s + \dot{Q}\]</span></p>
+<p>Every problem in the first half of the course was an application of this equation under specific simplifying assumptions (steady-state, adiabatic, closed, incompressible, etc.). For steady-state flow processes, this simplified to:</p>
+<p><span class="math display">\[\Delta\hat{H} = Q + W_s\]</span></p>
+<p>That one equation (with the appropriate assumptions) governs nozzles, turbines, compressors, pumps, and heat exchangers.</p>
+</section>
+<section id="the-second-law-directionality-and-limits" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="the-second-law-directionality-and-limits"><span class="header-section-number">2.3</span> The Second Law: Directionality and Limits</h2>
+<p>The Second Law adds something the First Law cannot: <strong>directionality</strong>. It tells us which processes are possible and sets the upper limit on efficiency. The entropy balance for an open system is:</p>
+<p><span class="math display">\[\frac{d(M\hat{S})}{dt} = \sum_{in}\dot{m}\hat{S} - \sum_{out}\dot{m}\hat{S} + \frac{\dot{Q}}{T} + \dot{S}_{gen}, \qquad \dot{S}_{gen} \geq 0\]</span></p>
+<p>The inequality <span class="math inline">\(\dot{S}_{gen} \geq 0\)</span> is where all the power lives. It gave us:</p>
+<ul>
+<li><strong>Reversible processes</strong> as idealized upper bounds (<span class="math inline">\(\dot{S}_{gen} = 0\)</span>)</li>
+<li>The <strong>Carnot efficiency</strong> as the best possible heat engine: <span class="math inline">\(\eta = 1 - T_C/T_H\)</span></li>
+<li>The <strong>Carnot COP</strong> as the best possible refrigerator: <span class="math inline">\(\text{COP} = T_C/(T_H - T_C)\)</span></li>
+<li><strong>Isentropic efficiency</strong> as a way to quantify real device performance against the reversible ideal</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="What the Laws Together Tell You">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>What the Laws Together Tell You
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The First Law says <em>how much</em> energy enters and leaves. The Second Law says <em>which direction</em> the process goes and <em>how efficiently</em> it can run. Together they define the feasibility and thermodynamic limits of every process.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="part-ii-applying-the-laws-engineering-devices-and-cycles" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Part II: Applying the Laws: Engineering Devices and Cycles</h1>
+<p>With the two laws in hand, we solved a rich set of practical problems by combining energy and entropy balances with thermodynamic property data.</p>
+<section id="steady-state-devices" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="steady-state-devices"><span class="header-section-number">3.1</span> Steady-State Devices</h2>
+<p>For each of these devices, you learned to write the appropriate simplified form of the energy and entropy balances:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 50%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Device</th>
+<th style="text-align: left;">Key assumption</th>
+<th style="text-align: left;">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Nozzle / diffuser</td>
+<td style="text-align: left;"><span class="math inline">\(Q = 0\)</span>, <span class="math inline">\(W_s = 0\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\Delta H = -\Delta(\frac{1}{2}v^2)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Turbine / compressor</td>
+<td style="text-align: left;">Adiabatic, steady</td>
+<td style="text-align: left;"><span class="math inline">\(W_s = \Delta H\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Heat exchanger</td>
+<td style="text-align: left;"><span class="math inline">\(W_s = 0\)</span>, steady</td>
+<td style="text-align: left;"><span class="math inline">\(Q = \Delta H\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Throttle</td>
+<td style="text-align: left;"><span class="math inline">\(Q = 0\)</span>, <span class="math inline">\(W_s = 0\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(H_{in} = H_{out}\)</span> (isenthalpic)</td>
+</tr>
+</tbody>
+</table>
+<p>The Joule-Thomson coefficient <span class="math inline">\(\mu_{JT} = (\partial T/\partial P)_H\)</span> told us whether a fluid warms or cools on throttling, which is crucial for liquefaction design.</p>
+</section>
+<section id="power-cycles-the-rankine-cycle" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="power-cycles-the-rankine-cycle"><span class="header-section-number">3.2</span> Power Cycles: The Rankine Cycle</h2>
+<p>We started off by talking theoretically about “heat engines”: ways to generate work from heat. Harnessing heat to make work resulted in the Industrial Revolution, one of the most significant developments in human history. We learned that the First and Second Laws imposed limits on what was possible. The Carnot cycle was the ideal heat engine, but it was not practical.</p>
+<p>We combined the devices we discussed in the first part of the class into the <strong>Rankine cycle</strong>, which is a practical “heat engine”: boiler → turbine → condenser → pump → back to boiler. The thermal efficiency is:</p>
+<p><span class="math display">\[\eta = \frac{|W_{turbine}| - |W_{pump}|}{Q_{boiler}}\]</span></p>
+<p>Real cycles deviated from the ideal through <strong>isentropic efficiencies</strong> for the turbine and pump. Modifications such as superheat, reheat, and regeneration improved efficiency by reducing irreversibilities.</p>
+</section>
+<section id="refrigeration-and-liquefaction" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="refrigeration-and-liquefaction"><span class="header-section-number">3.3</span> Refrigeration and Liquefaction</h2>
+<p>The vapor-compression refrigeration cycle reversed the Rankine cycle concept. The Linde liquefaction process used repeated throttling (Joule-Thomson expansion) and heat exchange to reach cryogenic temperatures. The key was finding operating conditions where <span class="math inline">\(\mu_{JT} &gt; 0\)</span>, meaning the fluid actually cools on expansion.</p>
+<p><strong>The bottleneck in all of this:</strong> we needed thermodynamic property data such as <span class="math inline">\(\hat{H}\)</span> and <span class="math inline">\(\hat{S}\)</span> at various <span class="math inline">\((T, P)\)</span> to design these systems. For steam and refrigerants we had tables. But for novel or high-pressure fluids, we needed a general method. That necessity launched the second half of the course.</p>
+<hr>
+</section>
+</section>
+<section id="part-iii-the-mathematics-of-thermodynamics" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Part III: The Mathematics of Thermodynamics</h1>
+<section id="the-fundamental-relations" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="the-fundamental-relations"><span class="header-section-number">4.1</span> The Fundamental Relations</h2>
+<p>To build a general framework, we went back to basics. Combining the First and Second Laws for a <em>reversible process in a closed system</em>:</p>
+<p><span class="math display">\[d\underline{U} = T\,d\underline{S} - P\,d\underline{V}\]</span></p>
+<p>This is the foundational equation. It tells us <span class="math inline">\(\underline{U} = \underline{U}(\underline{S}, \underline{V})\)</span>, and gives definitions:</p>
+<p><span class="math display">\[T = \left(\frac{\partial \underline{U}}{\partial \underline{S}}\right)_{\!\underline{V}}, \qquad -P = \left(\frac{\partial \underline{U}}{\partial \underline{V}}\right)_{\!\underline{S}}\]</span></p>
+<p>Temperature and pressure are <strong>slopes of thermodynamic surfaces</strong>. This geometric picture is surprisingly deep.</p>
+</section>
+<section id="the-legendre-transforms-changing-variables" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="the-legendre-transforms-changing-variables"><span class="header-section-number">4.2</span> The Legendre Transforms: Changing Variables</h2>
+<p>Working in <span class="math inline">\((\underline{S}, \underline{V})\)</span> is mathematically natural but practically inconvenient because we can’t measure entropy directly. We want to work in <span class="math inline">\((T, P)\)</span>. The Legendre transform machinery gave us three new potentials, each with its own natural variables:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 21%">
+<col style="width: 32%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Potential</th>
+<th style="text-align: left;">Definition</th>
+<th style="text-align: left;">Natural variables</th>
+<th style="text-align: left;">Differential</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Enthalpy <span class="math inline">\(\underline{H}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\underline{U} + P\underline{V}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\((\underline{S}, P)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(d\underline{H} = T\,d\underline{S} + \underline{V}\,dP\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Helmholtz <span class="math inline">\(\underline{A}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\underline{U} - T\underline{S}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\((T, \underline{V})\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(d\underline{A} = -\underline{S}\,dT - P\,d\underline{V}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gibbs <span class="math inline">\(\underline{G}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\underline{U} + P\underline{V} - T\underline{S}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\((T, P)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(d\underline{G} = -\underline{S}\,dT + \underline{V}\,dP\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Gibbs free energy is the natural potential for processes at constant <span class="math inline">\(T\)</span> and <span class="math inline">\(P\)</span>, which is why it governs phase equilibrium.</p>
+</section>
+<section id="the-maxwell-relations" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="the-maxwell-relations"><span class="header-section-number">4.3</span> The Maxwell Relations</h2>
+<p>Because <span class="math inline">\(\underline{U}\)</span>, <span class="math inline">\(\underline{H}\)</span>, <span class="math inline">\(\underline{A}\)</span>, and <span class="math inline">\(\underline{G}\)</span> are state functions (exact differentials), the order of mixed partial differentiation is irrelevant. This yielded four <strong>Maxwell relations</strong> that connect entropy derivatives to measurable PVT derivatives:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 45%">
+<col style="width: 54%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Derived from</th>
+<th style="text-align: left;">Maxwell relation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(d\underline{U} = T\,d\underline{S} - P\,d\underline{V}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\displaystyle\left(\frac{\partial T}{\partial \underline{V}}\right)_{\!\underline{S}} = -\left(\frac{\partial P}{\partial \underline{S}}\right)_{\!\underline{V}}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(d\underline{H} = T\,d\underline{S} + \underline{V}\,dP\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\displaystyle\left(\frac{\partial T}{\partial P}\right)_{\!\underline{S}} = \left(\frac{\partial \underline{V}}{\partial \underline{S}}\right)_{\!P}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(d\underline{A} = -\underline{S}\,dT - P\,d\underline{V}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\displaystyle\left(\frac{\partial \underline{S}}{\partial \underline{V}}\right)_{\!T} = \left(\frac{\partial P}{\partial T}\right)_{\!\underline{V}}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(d\underline{G} = -\underline{S}\,dT + \underline{V}\,dP\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\displaystyle-\!\left(\frac{\partial \underline{S}}{\partial P}\right)_{\!T} = \left(\frac{\partial \underline{V}}{\partial T}\right)_{\!P}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The last two (derived from <span class="math inline">\(\underline{A}\)</span> and <span class="math inline">\(\underline{G}\)</span>) are the most useful in practice, because they convert unmeasurable entropy derivatives into PVT derivatives that an equation of state can supply directly.</p>
+<p>These were not just formal results; they were the key to replacing unmeasurable entropy derivatives with PVT derivatives that an equation of state provides.</p>
+</section>
+<section id="general-property-equations" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="general-property-equations"><span class="header-section-number">4.4</span> General Property Equations</h2>
+<p>Combining the exact differentials with the Maxwell relations (and using the cyclic relation and other calculus identities), we derived:</p>
+<p><span class="math display">\[d\underline{H} = C_P\,dT + \left[\underline{V} - T\!\left(\frac{\partial \underline{V}}{\partial T}\right)_{\!P}\right] dP\]</span></p>
+<p><span class="math display">\[d\underline{S} = \frac{C_P}{T}\,dT - \left(\frac{\partial \underline{V}}{\partial T}\right)_{\!P} dP\]</span></p>
+<p>These are <strong>exact expressions</strong> relating <span class="math inline">\(\underline{H}\)</span> and <span class="math inline">\(\underline{S}\)</span> changes to <span class="math inline">\((T, P, \underline{V})\)</span>, quantities that equations of state provide. The difficulty is that real EOS give messy <span class="math inline">\(\underline{V}(T,P)\)</span> expressions that make these integrals tedious. The solution came next.</p>
+<hr>
+</section>
+</section>
+<section id="part-iv-equations-of-state-for-modeling-pvt-behavior" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Part IV: Equations of State for Modeling PVT Behavior</h1>
+<section id="the-corresponding-states-principle" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="the-corresponding-states-principle"><span class="header-section-number">5.1</span> The Corresponding States Principle</h2>
+<p>Every calculation we want to do requires an equation relating <span class="math inline">\(P\)</span>, <span class="math inline">\(\underline{V}\)</span>, and <span class="math inline">\(T\)</span>. The <strong>corresponding states principle</strong> provided the conceptual foundation: fluids at the same reduced temperature <span class="math inline">\(T_r = T/T_c\)</span> and reduced pressure <span class="math inline">\(P_r = P/P_c\)</span> have similar PVT behavior:</p>
+<p><span class="math display">\[Z \approx f(T_r, P_r)\]</span></p>
+<p>This works well for simple, spherical molecules but needs a correction for more complex ones. The <strong>acentric factor</strong> <span class="math inline">\(\omega\)</span> captures the non-sphericity:</p>
+<p><span class="math display">\[Z = Z^{(0)}(T_r, P_r) + \omega\, Z^{(1)}(T_r, P_r)\]</span></p>
+<p>This gave us the Pitzer-type generalized correlations (Lee-Kesler), which allow residual property estimation from <span class="math inline">\(T_c\)</span>, <span class="math inline">\(P_c\)</span>, and <span class="math inline">\(\omega\)</span> alone, without solving any equation of state.</p>
+</section>
+<section id="cubic-equations-of-state" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="cubic-equations-of-state"><span class="header-section-number">5.2</span> Cubic Equations of State</h2>
+<p>The cubic equations of state encode molecular physics into tractable algebraic forms. All share a common structure: a repulsive term and an attractive term.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 70%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">EOS</th>
+<th style="text-align: left;">Expression</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">van der Waals</td>
+<td style="text-align: left;"><span class="math inline">\(\displaystyle P = \frac{RT}{\underline{V}-b} - \frac{a}{\underline{V}^2}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SRK</td>
+<td style="text-align: left;"><span class="math inline">\(\displaystyle P = \frac{RT}{\underline{V}-b} - \frac{a\,\alpha(T)}{\underline{V}(\underline{V}+b)}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Peng-Robinson</td>
+<td style="text-align: left;"><span class="math inline">\(\displaystyle P = \frac{RT}{\underline{V}-b} - \frac{a\,\alpha(T)}{\underline{V}(\underline{V}+b)+b(\underline{V}-b)}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>For SRK and PR, the temperature-dependent <span class="math inline">\(\alpha(T)\)</span> function and the parameters <span class="math inline">\(a_c\)</span>, <span class="math inline">\(b\)</span> are determined entirely from <span class="math inline">\(T_c\)</span>, <span class="math inline">\(P_c\)</span>, and <span class="math inline">\(\omega\)</span>. This makes them universally applicable without fitting to fluid-specific data.</p>
+<p>The cubic form means up to <strong>three real volume roots</strong> exist at a given <span class="math inline">\((T, P)\)</span>. Inside the two-phase envelope this is physically meaningful: the largest root is the vapor volume, the smallest is the liquid volume, and the middle root is mechanically unstable and discarded.</p>
+</section>
+<section id="the-virial-equation-of-state" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="the-virial-equation-of-state"><span class="header-section-number">5.3</span> The Virial Equation of State</h2>
+<p>The virial EOS has a rigorous statistical-mechanical foundation:</p>
+<p><span class="math display">\[Z = 1 + \frac{B_2(T)}{\underline{V}} + \frac{C(T)}{\underline{V}^2} + \cdots \approx 1 + \frac{B_2 P}{RT} \quad \text{(truncated, pressure series)}\]</span></p>
+<p>The second virial coefficient <span class="math inline">\(B_2(T)\)</span> captures pairwise intermolecular interactions and is useful for gas-phase calculations at moderate pressures.</p>
+<hr>
+</section>
+</section>
+<section id="part-v-residual-properties-the-bridge-from-eos-to-properties" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Part V: Residual Properties: The Bridge from EOS to Properties</h1>
+<section id="the-core-idea" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="the-core-idea"><span class="header-section-number">6.1</span> The Core Idea</h2>
+<p>We could not integrate <span class="math inline">\(d\underline{H}\)</span> and <span class="math inline">\(d\underline{S}\)</span> directly for real fluids because we lacked <span class="math inline">\(C_P(T,P)\)</span> data for real gases. The <strong>residual property framework</strong> solved this elegantly.</p>
+<p>Define the residual molar property as the difference between the real fluid and an ideal gas at the same <span class="math inline">\(T\)</span> and <span class="math inline">\(P\)</span>:</p>
+<p><span class="math display">\[\underline{M}^R(T,P) \equiv \underline{M}(T,P) - \underline{M}^{ig}(T,P)\]</span></p>
+<p>Then split any property change into an ideal-gas part (easy, using <span class="math inline">\(C_P^{ig}\)</span> data we have) and a residual correction (from the EOS):</p>
+<p><span class="math display">\[\boxed{\Delta\underline{H} = \Delta\underline{H}^{ig} + (\underline{H}_2^R - \underline{H}_1^R)}\]</span></p>
+<p><span class="math display">\[\boxed{\Delta\underline{S} = \Delta\underline{S}^{ig} + (\underline{S}_2^R - \underline{S}_1^R)}\]</span></p>
+</section>
+<section id="computing-residual-properties-from-an-eos" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="computing-residual-properties-from-an-eos"><span class="header-section-number">6.2</span> Computing Residual Properties from an EOS</h2>
+<p>The general integral formulas (from the general property equations derived in Part III) are:</p>
+<p><span class="math display">\[\underline{H}^R = \int_0^P \left[\underline{V} - T\!\left(\frac{\partial \underline{V}}{\partial T}\right)_{\!P}\right] dP \qquad \underline{S}^R = -\int_0^P \left[\left(\frac{\partial \underline{V}}{\partial T}\right)_{\!P} - \frac{R}{P}\right] dP\]</span></p>
+<p>These integrals were carried out analytically for the vdW, SRK, and PR equations of state, yielding compact closed-form expressions (see Lecture 29). The Jupyter notebook in Lecture 29 computes these numerically for any fluid and any EOS.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="The Residual Property Framework in One Sentence">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>The Residual Property Framework in One Sentence
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The residual framework lets you use <strong>ideal gas heat capacity data</strong> (which is tabulated for thousands of substances) together with an <strong>equation of state</strong> (which requires only <span class="math inline">\(T_c\)</span>, <span class="math inline">\(P_c\)</span>, and <span class="math inline">\(\omega\)</span>) to compute <span class="math inline">\(\Delta H\)</span> and <span class="math inline">\(\Delta S\)</span> for any real fluid, at any conditions, without any additional experimental data.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="part-vi-phase-equilibrium-chemical-potential-and-fugacity" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Part VI: Phase Equilibrium, Chemical Potential, and Fugacity</h1>
+<section id="chemical-potential-as-the-driver-of-phase-change" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="chemical-potential-as-the-driver-of-phase-change"><span class="header-section-number">7.1</span> Chemical Potential as the Driver of Phase Change</h2>
+<p>The condition for two phases <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> of a pure fluid to coexist in equilibrium is that all three intensive variables are equal:</p>
+<p><span class="math display">\[T^\alpha = T^\beta, \qquad P^\alpha = P^\beta, \qquad \underline{G}^\alpha = \underline{G}^\beta\]</span></p>
+<p>The third condition (equal molar Gibbs energies) is the <strong>chemical equilibrium</strong> condition, and it is what drives molecules between phases. At equilibrium, there is no net driving force for molecules to transfer from one phase to the other.</p>
+<p>This condition also implies the Clapeyron equation, which describes how the saturation curve slopes in <span class="math inline">\(P\)</span>–<span class="math inline">\(T\)</span> space:</p>
+<p><span class="math display">\[\left(\frac{dP}{dT}\right)_{\!sat} = \frac{\Delta_{\!vap}\underline{H}}{T\,\Delta_{\!vap}\underline{V}}\]</span></p>
+<p>Approximating the vapor as ideal and the enthalpy of vaporization as constant gives the <strong>Clausius-Clapeyron equation</strong> and, with empirical curve-fitting, the <strong>Antoine equation</strong>:</p>
+<p><span class="math display">\[\log_{10}(P^{sat}) = A - \frac{B}{T+C}\]</span></p>
+</section>
+<section id="the-problem-with-gibbs-energy-and-the-invention-of-fugacity" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="the-problem-with-gibbs-energy-and-the-invention-of-fugacity"><span class="header-section-number">7.2</span> The Problem with Gibbs Energy and the Invention of Fugacity</h2>
+<p>Using <span class="math inline">\(\underline{G}\)</span> directly is inconvenient: as <span class="math inline">\(P \to 0\)</span>, <span class="math inline">\(\underline{G} \to -\infty\)</span> for any real gas (because of the <span class="math inline">\(RT\ln P\)</span> term). G.N. Lewis (1901) invented <strong>fugacity</strong> <span class="math inline">\(f\)</span> to sidestep this by defining it so that the same logarithmic form holds for a real fluid, with <span class="math inline">\(f \to P\)</span> as <span class="math inline">\(P \to 0\)</span>:</p>
+<p><span class="math display">\[\underline{G}^R(T,P) = RT\ln\phi = RT\ln\!\left(\frac{f}{P}\right), \qquad f = \phi P\]</span></p>
+<p>Here <span class="math inline">\(\phi\)</span> is the <strong>fugacity coefficient</strong>. For an ideal gas, <span class="math inline">\(\phi = 1\)</span> and <span class="math inline">\(f = P\)</span> exactly. For real fluids, <span class="math inline">\(\phi &lt; 1\)</span> when attractions dominate and <span class="math inline">\(\phi &gt; 1\)</span> when repulsions dominate.</p>
+<p>The phase equilibrium condition <span class="math inline">\(\underline{G}^\alpha = \underline{G}^\beta\)</span> becomes:</p>
+<p><span class="math display">\[\boxed{f^\alpha = f^\beta}\]</span></p>
+<p>This is the operational workhorse of phase equilibrium calculations. It is finite, has units of pressure, and is computable from any EOS.</p>
+</section>
+<section id="computing-fugacity-from-an-eos" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="computing-fugacity-from-an-eos"><span class="header-section-number">7.3</span> Computing Fugacity from an EOS</h2>
+<p>From <span class="math inline">\(\underline{G}^R = RT\ln\phi\)</span> and the general property relations for <span class="math inline">\(\underline{G}^R\)</span>, we derived:</p>
+<p><span class="math display">\[\ln\phi = \int_0^P \frac{Z-1}{P}\,dP\]</span></p>
+<p>Evaluating this analytically for the cubic EOS (using dimensionless parameters <span class="math inline">\(A \equiv aP/(RT)^2\)</span>, <span class="math inline">\(B \equiv bP/RT\)</span>) gives compact working formulas:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 66%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">EOS</th>
+<th style="text-align: left;"><span class="math inline">\(\ln\phi\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">vdW</td>
+<td style="text-align: left;"><span class="math inline">\((Z-1) - \ln(Z-B) - A/Z\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SRK</td>
+<td style="text-align: left;"><span class="math inline">\((Z-1) - \ln(Z-B) - \frac{A}{B}\ln\!\left(1+\frac{B}{Z}\right)\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PR</td>
+<td style="text-align: left;"><span class="math inline">\((Z-1) - \ln(Z-B) - \frac{A}{2\sqrt{2}B}\ln\!\left(\frac{Z+(1+\sqrt{2})B}{Z+(1-\sqrt{2})B}\right)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The procedure is always the same: get EOS parameters from <span class="math inline">\(T_c\)</span>, <span class="math inline">\(P_c\)</span>, <span class="math inline">\(\omega\)</span> → compute <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> → solve cubic for <span class="math inline">\(Z\)</span> → evaluate <span class="math inline">\(\ln\phi\)</span> → get <span class="math inline">\(f = \phi P\)</span>.</p>
+</section>
+<section id="phase-stability-using-fugacity-to-select-the-stable-root" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="phase-stability-using-fugacity-to-select-the-stable-root"><span class="header-section-number">7.4</span> Phase Stability: Using Fugacity to Select the Stable Root</h2>
+<p>When the cubic EOS yields three real roots inside the two-phase dome, both the vapor root (<span class="math inline">\(Z^V\)</span>) and liquid root (<span class="math inline">\(Z^L\)</span>) are mathematically valid. The thermodynamically stable phase at given <span class="math inline">\((T, P)\)</span> is the one with <strong>lower fugacity</strong> (lower Gibbs energy):</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Comparison</th>
+<th style="text-align: left;">Physical meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(f^V &lt; f^L\)</span></td>
+<td style="text-align: left;">Superheated vapor: vapor is stable</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(f^L &lt; f^V\)</span></td>
+<td style="text-align: left;">Subcooled liquid: liquid is stable</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(f^V = f^L\)</span></td>
+<td style="text-align: left;">VLE: the two phases coexist</td>
+</tr>
+</tbody>
+</table>
+<p>This criterion is also the basis for iterative algorithms to find <span class="math inline">\(P^{sat}(T)\)</span> or <span class="math inline">\(T^{sat}(P)\)</span> directly from an EOS: guess, solve cubic, compute both fugacities, iterate until <span class="math inline">\(f^V = f^L\)</span>.</p>
+<hr>
+</section>
+</section>
+<section id="part-vii-fugacity-of-compressed-liquids-and-the-poynting-correction" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Part VII: Fugacity of Compressed Liquids and the Poynting Correction</h1>
+<p>For a <strong>compressed liquid</strong> at <span class="math inline">\(P &gt; P^{sat}\)</span>, we cannot directly integrate from <span class="math inline">\(P = 0\)</span> along the liquid phase. Instead, we trace a three-leg path: vapor isotherm from <span class="math inline">\(P \approx 0\)</span> to <span class="math inline">\(P^{sat}\)</span> (Leg 1), across the two-phase region at constant <span class="math inline">\(P^{sat}\)</span> (Leg 2), then along the liquid isotherm from <span class="math inline">\(P^{sat}\)</span> to <span class="math inline">\(P\)</span> (Leg 3).</p>
+<p>Leg 2 contributes zero (constant pressure, <span class="math inline">\(dP = 0\)</span>, with <span class="math inline">\(f^V = f^L\)</span> at equilibrium). The result is the exact expression:</p>
+<p><span class="math display">\[\boxed{f^L(T,P) = \phi^V_{sat}\,P^{sat}\exp\!\left[\frac{1}{RT}\int_{P^{sat}}^{P}\underline{V}^L\,dP\right]}\]</span></p>
+<p>The exponential is the <strong>Poynting correction</strong>. For an incompressible liquid it simplifies to:</p>
+<p><span class="math display">\[\text{PC} = \exp\!\left[\frac{\underline{V}^L(P - P^{sat})}{RT}\right]\]</span></p>
+<p>At moderate pressures, the Poynting correction is close to 1 and the saturated vapor is nearly ideal, so <span class="math inline">\(f^L \approx P^{sat}\)</span>. This is one of the most widely used approximations in phase equilibrium calculations.</p>
+<hr>
+</section>
+<section id="part-viii-what-you-can-now-do" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Part VIII: What You Can Now Do</h1>
+<p>You came in knowing that steam tables existed. You leave knowing how to <em>build</em> a steam table for any fluid, from scratch, using nothing more than <span class="math inline">\(T_c\)</span>, <span class="math inline">\(P_c\)</span>, and <span class="math inline">\(\omega\)</span>.</p>
+<p>More concretely, you can now:</p>
+<p><strong>Compute <span class="math inline">\(\Delta H\)</span> and <span class="math inline">\(\Delta S\)</span> for real fluids</strong> for any process (compression, expansion, heat exchange) using any EOS via the residual property framework. This is the core of process simulation.</p>
+<p><strong>Analyze power and refrigeration cycles</strong> by predicting work and heat for turbines, compressors, pumps, and heat exchangers operating with real (non-ideal) working fluids.</p>
+<p><strong>Predict phase behavior</strong> by determining <span class="math inline">\(P^{sat}\)</span>, <span class="math inline">\(T^{sat}\)</span>, and the liquid and vapor molar volumes for any fluid from an EOS, without experimental data.</p>
+<p><strong>Compute fugacity</strong> for gases, liquids, and compressed liquids, and use the condition <span class="math inline">\(f^\alpha = f^\beta\)</span> to determine phase equilibrium.</p>
+<p><strong>Connect molecular properties to macroscopic behavior</strong> by understanding why the acentric factor matters, why some fluids are “more ideal” than others, and why the Joule-Thomson coefficient changes sign.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="The Conceptual Ladder of This Course">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>The Conceptual Ladder of This Course
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[\underbrace{\text{Postulates}}_{\text{Lectures 1–4}} \xrightarrow{+\,\text{calculus}} \underbrace{\text{Fundamental relations}}_{\text{Lectures 23–25}} \xrightarrow{+\,\text{EOS}} \underbrace{\text{Residual props.}}_{\text{Lectures 26–30}} \xrightarrow{+\,G^R} \underbrace{\text{Fugacity and phase eq.}}_{\text{Lectures 33–35}}\]</span></p>
+<p>And throughout, the energy and entropy balances (Lectures 5–22) gave you the tools to apply all this to real engineering devices and cycles.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="part-ix-where-this-leads" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Part IX: Where This Leads</h1>
+<p>CBE 20260 is the foundation. The ideas do not stop here.</p>
+<p>In <strong>CBE 30370 (Phase Equilibria and Separations)</strong>, you will extend the fugacity concept to <strong>mixtures</strong>. The equilibrium condition <span class="math inline">\(f_i^\alpha = f_i^\beta\)</span> still holds, but now <span class="math inline">\(f_i\)</span> is the fugacity of species <span class="math inline">\(i\)</span> in the mixture, a function of composition as well as <span class="math inline">\(T\)</span> and <span class="math inline">\(P\)</span>. This will require new concepts: partial molar properties, excess properties, and activity coefficient models. But the thermodynamic framework — First Law, Second Law, Gibbs free energy, and the residual/excess property split — will be exactly the same. You already know the language.</p>
+<p>In practice, the calculations we did by hand are performed by <strong>process simulators</strong> (Aspen Plus, HYSYS, GAMS). These simulators use exactly the equations we derived (PR and SRK EOS, residual property formulas, fugacity-based phase equilibrium), evaluated numerically for streams with hundreds of components at once. The day you can look at a simulator and understand where every number comes from is the day you become a more capable engineer.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="A Final Thought">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>A Final Thought
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Thermodynamics was built from remarkably little raw material: conservation of energy, the tendency of isolated systems toward maximum entropy, and the mathematics of state functions. From those three ingredients, 19th and 20th century scientists constructed the entire theoretical framework that underlies modern chemical engineering. What you have learned is not a collection of disconnected formulas; it is a unified logical structure. The formulas are just the outputs.</p>
+<p>When you encounter a new thermodynamic problem in practice, the question to ask is not <em>which equation do I look up?</em> but <em>what does the First Law say, what does the Second Law demand, and what does the equation of state tell me about this fluid?</em> If you can answer those three questions, you can solve the problem.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="summary-the-arc-of-cbe-20260" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Summary: The Arc of CBE 20260</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 41%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Theme</th>
+<th style="text-align: left;">Key results</th>
+<th style="text-align: left;">Lectures</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Foundations</strong></td>
+<td style="text-align: left;">Postulates; First Law; Second Law; entropy generation</td>
+<td style="text-align: left;">1–7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Engineering devices</strong></td>
+<td style="text-align: left;">Nozzles, turbines, compressors, heat exchangers</td>
+<td style="text-align: left;">8–13</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Cycles</strong></td>
+<td style="text-align: left;">Rankine, refrigeration, liquefaction; Carnot limits</td>
+<td style="text-align: left;">14–22</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Math of thermodynamics</strong></td>
+<td style="text-align: left;">Fundamental relations; Maxwell relations; general property equations</td>
+<td style="text-align: left;">23–25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>EOS and residual properties</strong></td>
+<td style="text-align: left;">Cubic EOS; corresponding states; <span class="math inline">\(\underline{H}^R\)</span>, <span class="math inline">\(\underline{S}^R\)</span></td>
+<td style="text-align: left;">26–30</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Phase diagrams and stability</strong></td>
+<td style="text-align: left;">Pure-component phase diagrams; Clapeyron equation</td>
+<td style="text-align: left;">31–33</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Fugacity</strong></td>
+<td style="text-align: left;">Definition; <span class="math inline">\(\ln\phi\)</span> formulas; phase stability; Poynting correction</td>
+<td style="text-align: left;">34–35</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-tip callout-titled" title="Course Learning Objectives">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Course Learning Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>At the beginning of the semester, the syllabus laid out specific capabilities you were expected to acquire. I had hoped to give you a brief introduction to mixtures, which you will cover next semester, but decided against it. So here is how the course objectives map to the topics we have covered on our journey:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Capability / Learning Objective</th>
+<th style="text-align: left;">Covered in</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Qualitatively and quantitatively describe thermodynamic concepts (heat, work, internal energy, heat capacity, reversible processes, state functions, entropy)</td>
+<td style="text-align: left;">Parts I &amp; III</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">State and apply the First and Second Laws of thermodynamics to open and closed systems</td>
+<td style="text-align: left;">Parts I &amp; II</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Evaluate the thermodynamic feasibility and efficiency of a process</td>
+<td style="text-align: left;">Parts I &amp; II</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Analyze power and refrigeration cycles</td>
+<td style="text-align: left;">Part II</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Apply different equations of state to calculate unknown properties from known intensive quantities</td>
+<td style="text-align: left;">Part IV</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">State the principle of corresponding states on a molecular and macroscopic level and apply it to solve for EOS parameters</td>
+<td style="text-align: left;">Part IV</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Know and apply the fundamental property relations and Maxwell relations to develop convenient expressions for thermodynamic derivatives</td>
+<td style="text-align: left;">Part III</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Use departure functions (residual properties) to solve First and Second Law problems for non-ideal systems</td>
+<td style="text-align: left;">Part V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Understand phase diagrams of pure fluids</td>
+<td style="text-align: left;">Part VI</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Calculate the fugacity and saturation pressure of a pure fluid from an equation of state</td>
+<td style="text-align: left;">Parts VI &amp; VII</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Utilize tabulated properties (such as steam tables) to carry out thermodynamic calculations</td>
+<td style="text-align: left;">Part II</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>You have come a long way. Good luck on the final exam — and in everything that comes after.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/ejmaginn\.github\.io\/CBE20260-notes\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
