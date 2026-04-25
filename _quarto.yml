@@ -107,7 +107,11 @@ website:
           - href: class32/lecture32.qmd
             text: Lecture 32 - Introduction to Phase Equilibria  
           - href: Big-Picture-exam3/Big-Picture-exam3.qmd
-            text: Big Picture — Exam 3       
+            text: Big Picture — Exam 3
+          - href: class33/lecture33.qmd
+            text: Lecture 33 - Chemical Potential, Gibbs Energy, and the Clapeyron Equation
+          - href: class34/lecture34.qmd
+            text: Lecture 34 - Fugacity and Phase Equilibria          
   
 
           # Add more lectures here as you create them:
