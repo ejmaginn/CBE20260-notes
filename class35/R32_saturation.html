@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>xyplots – CBE 20260 — Course Notes</title>
+<title>Saturated R-32 Properties – CBE 20260 — Course Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -103,6 +103,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -158,8 +161,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">L7 VDW TP Demo</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../class13/Entropy-calculator-IG.html">
+ <span class="dropdown-text">L13 Ideal Gas Entropy Calculator</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../class14/Quenching_entropy.html">
  <span class="dropdown-text">L14 Quenching Entropy Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class19/property-notebook1.html">
+ <span class="dropdown-text">L19 Fluid Property Calculator</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class19/property-notebook2.html">
+ <span class="dropdown-text">L19 Isentropic Expansion Solver</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../class19/rankine-regen.html">
@@ -178,8 +193,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">L27 van der Waals Residuals Demo</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../class28/vdw_Z_vs_Pr_isotherms.html">
+ <span class="dropdown-text">L28 Reduced van der Waals Isotherms</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../class29/PR-SRK-solvers.html">
  <span class="dropdown-text">L29 PR-SRK Solvers Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class29/EOS-compare.html">
+ <span class="dropdown-text">L29 Equation of State Comparison</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class34/fugacity-EOS.html">
+ <span class="dropdown-text">L34 Fugacity from Cubic EOS</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../class35/R32_saturation.html">
+ <span class="dropdown-text">L35 Saturated R-32 Properties</span></a>
   </li>  
     </ul>
   </li>
@@ -194,7 +225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Saturated R-32 Properties</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -226,187 +257,187 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class01/lecture01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 1 — Introduction</span></a>
+ <span class="menu-text">Lecture 1: Introduction to Chemical Engineering Thermodynamics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class02/lecture02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 2 — Systems, Boundaries and Other Basics</span></a>
+ <span class="menu-text">Lecture 2: Systems, Boundaries and Other Basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class03/lecture03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 3 — Forms of Energy and Calculating Work</span></a>
+ <span class="menu-text">Lecture 3: Forms of Energy and Calculating Work</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class04/lecture04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 4 — Fundamental Postulate, States, Phase Rule, and Pure Substance Phase Behaviors</span></a>
+ <span class="menu-text">Lecture 4: Fundamental Postulate, States, Phase Rule, and Pure Substance Phase Behavior</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class05/lecture05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 5 — Heat Capacity, Enthalpy</span></a>
+ <span class="menu-text">Lecture 5: Heat Capacity, Enthalpy</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class06/lecture06.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 6 — Calculating Internal Energy and Enthalpy Changes; intermolecular forces</span></a>
+ <span class="menu-text">Lecture 6: Calculating Property Changes and Intermolecular Forces</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class07/lecture07.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 7 - The van der Waals Equation of State; compressibility factor; open system energy balance</span></a>
+ <span class="menu-text">Lecture 7: The van der Waals EOS and Open System Energy Balances</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class08/lecture08.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 8 - Open system energy balance applied to process equipment</span></a>
+ <span class="menu-text">Lecture 8: Energy Balances on Process Equipment</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class09/lecture09.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 9 - Advanced Open System Energy Balances</span></a>
+ <span class="menu-text">Lecture 9: Advanced Open System Energy Balances</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class10/lecture10.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 10 - Latent Heat and the Need for a Second Law</span></a>
+ <span class="menu-text">Lecture 10: Latent Heat and the Need for a Second Law</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class12/lecture12.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 12 - Introduction to Entropy and the Second Law</span></a>
+ <span class="menu-text">Lecture 12: Introduction to Entropy and the Second Law</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class13/lecture13.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 13 - Calculating Entropy Changes for Closed Systems</span></a>
+ <span class="menu-text">Lecture 13: Calculating Entropy Changes - Closed Systems</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class14/lecture14.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 14 - Entropy Changes for Open Systems</span></a>
+ <span class="menu-text">Lecture 14: Entropy Balance for Open Systems</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class15/lecture15.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 15 - Open System Entropy Balance and Efficiency</span></a>
+ <span class="menu-text">Lecture 15: Open System Entropy Balance and Efficiency</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class16/lecture16.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 16 - Heat Engines and the Second Law</span></a>
+ <span class="menu-text">Lecture 16: Heat Engines and the Second Law</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class17/lecture17.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 17 - Carnot Cycle and Practical Heat Engines</span></a>
+ <span class="menu-text">Lecture 17: The Carnot Cycle and Practical Heat Engines</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class18/lecture18.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 18 - Rankine Cycle Analysis and Efficiency</span></a>
+ <span class="menu-text">Lecture 18: Rankine Cycle Analysis and Efficiency</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class19/lecture19.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 19 - Improving Rankine Cycle Efficiency</span></a>
+ <span class="menu-text">Lecture 19: Improving Rankine Cycle Efficiency</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class20/lecture20.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 20 - Organic Rankine Cycles and Internal Combustion Engines</span></a>
+ <span class="menu-text">Lecture 20: Organic Rankine Cycles and Internal Combustion Engines</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class21/lecture21.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 21 - Introduction to Cooling and Refrigeration</span></a>
+ <span class="menu-text">Lecture 21: Introduction to Cooling and Refrigeration</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class22/lecture22.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 22 - Modeling Vapor Compression Cycles and Liquefaction</span></a>
+ <span class="menu-text">Lecture 22: Modeling Vapor Compression Cycles and Liquefaction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class23/lecture23.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 23 - The Mathematics of Thermodynamics and Thermodynamic Potentials</span></a>
+ <span class="menu-text">Lecture 23: The Mathematics of Thermodynamics and Thermodynamic Potentials</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class24/lecture24.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 24 - The Maxwell Relations and Calculating Thermodynamic Properties</span></a>
+ <span class="menu-text">Lecture 24: Maxwell Relations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class25/lecture25.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 25 - General Property Equations from the Math of Thermo</span></a>
+ <span class="menu-text">Lecture 25: General Property Equations from the Math of Thermo</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class26/lecture26.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 26 - Real Fluids and Residual Properties</span></a>
+ <span class="menu-text">Lecture 26: Real Fluids and Residual Properties</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class27/lecture27.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 27 - Applying Residuals and Intro to Cubic Equations of State</span></a>
+ <span class="menu-text">Lecture 27: Applying Residuals and Intro to Cubic Equations of State</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class28/lecture28.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 28 - Cubic Equations of State and the Principle of Corresponding States</span></a>
+ <span class="menu-text">Lecture 28: Cubic Equations of State and the Principle of Corresponding States</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class29/lecture29.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 29 - Modern Cubic Equations of State</span></a>
+ <span class="menu-text">Lecture 29: Modern Cubic Equations of State</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class30/lecture30.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 30 - Generalized Correlations and the Critical Point</span></a>
+ <span class="menu-text">Lecture 30: Generalized Correlations and the Critical Point</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class31/lecture31.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 31 - The Virial Equation, Group Contributions, and Molecular Origins of Thermodynamics</span></a>
+ <span class="menu-text">Lecture 31: The Virial Equation, Group Contributions, and Molecular Origins</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class32/lecture32.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 32 - Introduction to Phase Equilibria</span></a>
+ <span class="menu-text">Lecture 32: Introduction to Phase Equilibria</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -418,19 +449,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class33/lecture33.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 33 - Chemical Potential, Gibbs Energy, and the Clapeyron Equation</span></a>
+ <span class="menu-text">Lecture 33: Chemical Potential, Gibbs Energy, and the Clapeyron Equation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class34/lecture34.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 34 - Fugacity and Phase Equilibria</span></a>
+ <span class="menu-text">Lecture 34: Fugacity and Phase Stability</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../class35/lecture35.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 35 - The Big Picture — A Journey Through Thermodynamics</span></a>
+ <span class="menu-text">Lecture 35: The Big Picture — A Journey Through Thermodynamics</span></a>
   </div>
 </li>
       </ul>
@@ -442,74 +473,223 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="xyplots.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="R32_saturation.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Saturated R-32 Properties</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<div id="b0ad59e6" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Define the convex curve (e.g., a simple parabola)</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="fl">0.5</span>, <span class="dv">5</span>, <span class="dv">100</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="fl">0.5</span> <span class="op">*</span> x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Define Point P in the middle of the curve</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>x_p <span class="op">=</span> <span class="fl">3.0</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>y_p <span class="op">=</span> <span class="fl">0.5</span> <span class="op">*</span> x_p<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Calculate the tangent line at Point P</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># The derivative of y = 0.5*x^2 + 1 is dy/dx = x</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> x_p  <span class="co"># slope at Point P</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Equation of tangent line: y_tan = m*(x - x_p) + y_p</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>x_tan <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="fl">4.5</span>, <span class="dv">100</span>)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>y_tan <span class="op">=</span> m <span class="op">*</span> (x_tan <span class="op">-</span> x_p) <span class="op">+</span> y_p</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Calculate the y-intercept (b)</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> m <span class="op">*</span> (<span class="dv">0</span> <span class="op">-</span> x_p) <span class="op">+</span> y_p</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Create the plot</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">5</span>))</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the convex curve (blue line)</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>ax.plot(x, y, <span class="st">'b-'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'$y = f(x)$'</span>)</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the tangent line (dashed line)</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>ax.plot(x_tan, y_tan, <span class="st">'k--'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>)</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot Point P (black circle)</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>ax.plot(x_p, y_p, <span class="st">'ko'</span>, markersize<span class="op">=</span><span class="dv">6</span>)</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>ax.text(x_p <span class="op">+</span> <span class="fl">0.1</span>, y_p <span class="op">-</span> <span class="fl">0.5</span>, <span class="st">'P'</span>, fontsize<span class="op">=</span><span class="dv">12</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the y-intercept (b)</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">0</span>, b, <span class="st">'ko'</span>, markersize<span class="op">=</span><span class="dv">6</span>)</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="op">-</span><span class="fl">0.3</span>, b, <span class="st">'b'</span>, fontsize<span class="op">=</span><span class="dv">12</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Labeling and formatting</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="dv">3</span>, <span class="dv">10</span>, <span class="st">'$y = f(x)$'</span>, color<span class="op">=</span><span class="st">'blue'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="dv">1</span>, <span class="op">-</span><span class="dv">2</span>, <span class="st">'$y = m*x + b$'</span>, color<span class="op">=</span><span class="st">'black'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">0</span>, <span class="fl">5.5</span>)</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="op">-</span><span class="dv">4</span>, <span class="dv">14</span>)</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>ax.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, linewidth<span class="op">=</span><span class="dv">1</span>) <span class="co"># x-axis</span></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>ax.axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, linewidth<span class="op">=</span><span class="dv">1</span>) <span class="co"># y-axis</span></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'x'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'y'</span>, fontsize<span class="op">=</span><span class="dv">12</span>, rotation<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove top and right spines for a cleaner look</span></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="xyplots_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Liquid and vapor density, enthalpy, and entropy of saturated R-32 (difluoromethane, CH₂F₂) at selected temperatures, computed using CoolProp.</p>
+<div id="cell-2" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install CoolProp if it is missing (e.g., on Google Colab)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> CoolProp</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ImportError</span>:</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">%</span>pip install <span class="op">-</span>q CoolProp</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> CoolProp.CoolProp <span class="im">import</span> PropsSI</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">'display.float_format'</span>, <span class="st">'</span><span class="sc">{:.4f}</span><span class="st">'</span>.<span class="bu">format</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">'display.max_columns'</span>, <span class="dv">20</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="cell-3" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fluid <span class="op">=</span> <span class="st">'R32'</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>temperatures <span class="op">=</span> [<span class="dv">253</span>, <span class="dv">273</span>, <span class="dv">283</span>, <span class="dv">293</span>, <span class="dv">308</span>, <span class="dv">318</span>, <span class="dv">328</span>]  <span class="co"># K</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> []</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> T <span class="kw">in</span> temperatures:</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    P_sat <span class="op">=</span> PropsSI(<span class="st">'P'</span>, <span class="st">'T'</span>, T, <span class="st">'Q'</span>, <span class="dv">0</span>, fluid) <span class="op">/</span> <span class="fl">1e5</span>  <span class="co"># bar</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    rho_L <span class="op">=</span> PropsSI(<span class="st">'D'</span>, <span class="st">'T'</span>, T, <span class="st">'Q'</span>, <span class="dv">0</span>, fluid)        <span class="co"># kg/m³</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    h_L   <span class="op">=</span> PropsSI(<span class="st">'H'</span>, <span class="st">'T'</span>, T, <span class="st">'Q'</span>, <span class="dv">0</span>, fluid) <span class="op">/</span> <span class="fl">1e3</span>  <span class="co"># kJ/kg</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    s_L   <span class="op">=</span> PropsSI(<span class="st">'S'</span>, <span class="st">'T'</span>, T, <span class="st">'Q'</span>, <span class="dv">0</span>, fluid) <span class="op">/</span> <span class="fl">1e3</span>  <span class="co"># kJ/(kg·K)</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    rho_V <span class="op">=</span> PropsSI(<span class="st">'D'</span>, <span class="st">'T'</span>, T, <span class="st">'Q'</span>, <span class="dv">1</span>, fluid)        <span class="co"># kg/m³</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    h_V   <span class="op">=</span> PropsSI(<span class="st">'H'</span>, <span class="st">'T'</span>, T, <span class="st">'Q'</span>, <span class="dv">1</span>, fluid) <span class="op">/</span> <span class="fl">1e3</span>  <span class="co"># kJ/kg</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    s_V   <span class="op">=</span> PropsSI(<span class="st">'S'</span>, <span class="st">'T'</span>, T, <span class="st">'Q'</span>, <span class="dv">1</span>, fluid) <span class="op">/</span> <span class="fl">1e3</span>  <span class="co"># kJ/(kg·K)</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    rows.append({</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">'T (K)'</span>:          T,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">'P_sat (bar)'</span>:    P_sat,</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        <span class="st">'ρ_L (kg/m³)'</span>:   rho_L,</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        <span class="st">'h_L (kJ/kg)'</span>:   h_L,</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="st">'s_L (kJ/kg·K)'</span>: s_L,</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        <span class="st">'ρ_V (kg/m³)'</span>:   rho_V,</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        <span class="st">'h_V (kJ/kg)'</span>:   h_V,</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">'s_V (kJ/kg·K)'</span>: s_V,</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(rows).set_index(<span class="st">'T (K)'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="cell-4" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Saturated R-32 Properties (CoolProp)'</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'='</span> <span class="op">*</span> <span class="dv">80</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.to_string())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Saturated R-32 Properties (CoolProp)
+================================================================================
+       P_sat (bar)  ρ_L (kg/m³)  h_L (kJ/kg)  s_L (kJ/kg·K)  ρ_V (kg/m³)  h_V (kJ/kg)  s_V (kJ/kg·K)
+T (K)                                                                                               
+253         4.0346    1121.0274     165.6900         0.8710      11.0963     509.9215         2.2316
+273         8.0920    1055.7748     199.7380         0.9991      21.9846     515.2715         2.1549
+283        11.0198    1020.2031     217.4720         1.0618      30.0934     516.6472         2.1190
+293        14.6845     981.9809     235.8394         1.1243      40.6745     516.9034         2.0836
+308        21.8159     917.7454     264.9994         1.2189      63.0679     514.5267         2.0290
+318        27.8486     868.0674     285.9805         1.2837      84.4830     510.3765         1.9894
+328        35.0803     809.2929     308.9210         1.3521     114.4470     503.0721         1.9440</code></pre>
+</div>
+</div>
+<div id="cell-5" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Styled display for notebooks</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df.style <span class="op">\</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    .set_caption(<span class="st">'Saturated R-32 Properties'</span>) <span class="op">\</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">format</span>({</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">'P_sat (bar)'</span>:    <span class="st">'</span><span class="sc">{:.4f}</span><span class="st">'</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">'ρ_L (kg/m³)'</span>:   <span class="st">'</span><span class="sc">{:.2f}</span><span class="st">'</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">'h_L (kJ/kg)'</span>:   <span class="st">'</span><span class="sc">{:.4f}</span><span class="st">'</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">'s_L (kJ/kg·K)'</span>: <span class="st">'</span><span class="sc">{:.6f}</span><span class="st">'</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">'ρ_V (kg/m³)'</span>:   <span class="st">'</span><span class="sc">{:.4f}</span><span class="st">'</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">'h_V (kJ/kg)'</span>:   <span class="st">'</span><span class="sc">{:.4f}</span><span class="st">'</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">'s_V (kJ/kg·K)'</span>: <span class="st">'</span><span class="sc">{:.6f}</span><span class="st">'</span>,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<style type="text/css">
+</style>
+
+<div id="T_634fa" class="quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="T_634fa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Saturated R-32 Properties
+</figcaption>
+<div aria-describedby="T_634fa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table id="T_634fa" class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th class="blank level0" data-quarto-table-cell-role="th">&nbsp;</th>
+<th id="T_634fa_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">P_sat (bar)</th>
+<th id="T_634fa_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">ρ_L (kg/m³)</th>
+<th id="T_634fa_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">h_L (kJ/kg)</th>
+<th id="T_634fa_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">s_L (kJ/kg·K)</th>
+<th id="T_634fa_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">ρ_V (kg/m³)</th>
+<th id="T_634fa_level0_col5" class="col_heading level0 col5" data-quarto-table-cell-role="th">h_V (kJ/kg)</th>
+<th id="T_634fa_level0_col6" class="col_heading level0 col6" data-quarto-table-cell-role="th">s_V (kJ/kg·K)</th>
+</tr>
+<tr class="even">
+<th class="index_name level0" data-quarto-table-cell-role="th">T (K)</th>
+<th class="blank col0" data-quarto-table-cell-role="th">&nbsp;</th>
+<th class="blank col1" data-quarto-table-cell-role="th">&nbsp;</th>
+<th class="blank col2" data-quarto-table-cell-role="th">&nbsp;</th>
+<th class="blank col3" data-quarto-table-cell-role="th">&nbsp;</th>
+<th class="blank col4" data-quarto-table-cell-role="th">&nbsp;</th>
+<th class="blank col5" data-quarto-table-cell-role="th">&nbsp;</th>
+<th class="blank col6" data-quarto-table-cell-role="th">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th id="T_634fa_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">253</th>
+<td id="T_634fa_row0_col0" class="data row0 col0">4.0346</td>
+<td id="T_634fa_row0_col1" class="data row0 col1">1121.03</td>
+<td id="T_634fa_row0_col2" class="data row0 col2">165.6900</td>
+<td id="T_634fa_row0_col3" class="data row0 col3">0.870987</td>
+<td id="T_634fa_row0_col4" class="data row0 col4">11.0963</td>
+<td id="T_634fa_row0_col5" class="data row0 col5">509.9215</td>
+<td id="T_634fa_row0_col6" class="data row0 col6">2.231586</td>
+</tr>
+<tr class="even">
+<th id="T_634fa_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">273</th>
+<td id="T_634fa_row1_col0" class="data row1 col0">8.0920</td>
+<td id="T_634fa_row1_col1" class="data row1 col1">1055.77</td>
+<td id="T_634fa_row1_col2" class="data row1 col2">199.7380</td>
+<td id="T_634fa_row1_col3" class="data row1 col3">0.999054</td>
+<td id="T_634fa_row1_col4" class="data row1 col4">21.9846</td>
+<td id="T_634fa_row1_col5" class="data row1 col5">515.2715</td>
+<td id="T_634fa_row1_col6" class="data row1 col6">2.154855</td>
+</tr>
+<tr class="odd">
+<th id="T_634fa_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">283</th>
+<td id="T_634fa_row2_col0" class="data row2 col0">11.0198</td>
+<td id="T_634fa_row2_col1" class="data row2 col1">1020.20</td>
+<td id="T_634fa_row2_col2" class="data row2 col2">217.4720</td>
+<td id="T_634fa_row2_col3" class="data row2 col3">1.061832</td>
+<td id="T_634fa_row2_col4" class="data row2 col4">30.0934</td>
+<td id="T_634fa_row2_col5" class="data row2 col5">516.6472</td>
+<td id="T_634fa_row2_col6" class="data row2 col6">2.118988</td>
+</tr>
+<tr class="even">
+<th id="T_634fa_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">293</th>
+<td id="T_634fa_row3_col0" class="data row3 col0">14.6845</td>
+<td id="T_634fa_row3_col1" class="data row3 col1">981.98</td>
+<td id="T_634fa_row3_col2" class="data row3 col2">235.8394</td>
+<td id="T_634fa_row3_col3" class="data row3 col3">1.124336</td>
+<td id="T_634fa_row3_col4" class="data row3 col4">40.6745</td>
+<td id="T_634fa_row3_col5" class="data row3 col5">516.9034</td>
+<td id="T_634fa_row3_col6" class="data row3 col6">2.083599</td>
+</tr>
+<tr class="odd">
+<th id="T_634fa_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">308</th>
+<td id="T_634fa_row4_col0" class="data row4 col0">21.8159</td>
+<td id="T_634fa_row4_col1" class="data row4 col1">917.75</td>
+<td id="T_634fa_row4_col2" class="data row4 col2">264.9994</td>
+<td id="T_634fa_row4_col3" class="data row4 col3">1.218865</td>
+<td id="T_634fa_row4_col4" class="data row4 col4">63.0679</td>
+<td id="T_634fa_row4_col5" class="data row4 col5">514.5267</td>
+<td id="T_634fa_row4_col6" class="data row4 col6">2.029018</td>
+</tr>
+<tr class="even">
+<th id="T_634fa_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">318</th>
+<td id="T_634fa_row5_col0" class="data row5 col0">27.8486</td>
+<td id="T_634fa_row5_col1" class="data row5 col1">868.07</td>
+<td id="T_634fa_row5_col2" class="data row5 col2">285.9805</td>
+<td id="T_634fa_row5_col3" class="data row5 col3">1.283731</td>
+<td id="T_634fa_row5_col4" class="data row5 col4">84.4830</td>
+<td id="T_634fa_row5_col5" class="data row5 col5">510.3765</td>
+<td id="T_634fa_row5_col6" class="data row5 col6">1.989379</td>
+</tr>
+<tr class="odd">
+<th id="T_634fa_level0_row6" class="row_heading level0 row6" data-quarto-table-cell-role="th">328</th>
+<td id="T_634fa_row6_col0" class="data row6 col0">35.0803</td>
+<td id="T_634fa_row6_col1" class="data row6 col1">809.29</td>
+<td id="T_634fa_row6_col2" class="data row6 col2">308.9210</td>
+<td id="T_634fa_row6_col3" class="data row6 col3">1.352072</td>
+<td id="T_634fa_row6_col4" class="data row6 col4">114.4470</td>
+<td id="T_634fa_row6_col5" class="data row6 col5">503.0721</td>
+<td id="T_634fa_row6_col6" class="data row6 col6">1.943996</td>
+</tr>
+</tbody>
+</table>
+</div>
 </figure>
 </div>
+</div>
+</div>
+<div id="cell-6" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Export to CSV (opens directly in Excel)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># utf-8-sig adds a BOM so Excel recognises the encoding on both Mac and Windows</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>csv_path <span class="op">=</span> <span class="st">'R32_saturation.csv'</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>df.to_csv(csv_path, encoding<span class="op">=</span><span class="st">'utf-8-sig'</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Saved: </span><span class="sc">{</span>csv_path<span class="sc">}</span><span class="ss">'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Saved: R32_saturation.csv</code></pre>
 </div>
 </div>
 
@@ -589,7 +769,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/ejmaginn\.github\.io\/CBE20260-notes\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
