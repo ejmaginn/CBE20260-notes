@@ -1,14 +1,16 @@
 ---
-title: "Lecture 1 — Introduction to Chemical Engineering Thermodynamics"
-author: "Prof. Edward Maginn"
-subtitle: "CBE 20260 — Spring 2026"
+title: "Lecture 1: Introduction to Chemical Engineering Thermodynamics"
+subtitle: "CBE 20260 / Thermodynamics I"
+author: "Edward Maginn"
 format:
   html:
     toc: true
+    number-sections: true
   pdf:
-    geometry: margin=1in
     toc: true
     number-sections: true
+execute:
+  echo: false
 ---
 
 # Course Administration

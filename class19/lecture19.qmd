@@ -160,6 +160,41 @@ I have prepared an interactive Jupyter Notebook that solves the regenerative Ran
 :::
 
 
+::: {.callout-tip icon=false}
+## Jupyter Notebook Example - Fluid Property Calculator
+I have prepared an interactive Jupyter Notebook that looks up thermodynamic properties ($T$, $P$, $\hat{V}$, $\hat{U}$, $\hat{H}$, $\hat{S}$) for water, R-134a, ammonia, CO$_2$, and other common fluids using CoolProp. You specify the state with any of several input pairs, such as $T$ and $P$, $P$ and quality, or $P$ and $\hat{S}$. You can use it to check the steam table values used in the hand calculations above.
+
+::: {.content-visible when-format="html"}
+
+[**View Interactive Notebook (.ipynb)**](property-notebook1.ipynb)
+
+[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ejmaginn/CBE20260-notes/blob/main/class19/property-notebook1.ipynb)
+
+:::
+
+::: {.content-visible when-format="pdf"}
+*Note: This example is available as an interactive Jupyter Notebook on the course website.*
+:::
+:::
+
+::: {.callout-tip icon=false}
+## Jupyter Notebook Example - Isentropic Expansion Solver
+This short Jupyter Notebook finds the exit state of an ideal (isentropic) turbine or compressor using CoolProp: it fixes $\hat{S}_2 = \hat{S}_1$ at the outlet pressure and reports $T_2$, $\hat{H}_2$, the phase or quality, and the reversible work. It is set up for the high-pressure turbine in Step 1 above (60 bar, $500^\circ\text{C}$ expanded to 10 bar), and you can change the fluid and conditions.
+
+::: {.content-visible when-format="html"}
+
+[**View Interactive Notebook (.ipynb)**](property-notebook2.ipynb)
+
+[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ejmaginn/CBE20260-notes/blob/main/class19/property-notebook2.ipynb)
+
+:::
+
+::: {.content-visible when-format="pdf"}
+*Note: This example is available as an interactive Jupyter Notebook on the course website.*
+:::
+:::
+
+
 # Other Enhancements: Reheating
 
 Another common strategy to improve efficiency (and protect turbine blades from water droplet erosion) is to use **Multiple Turbines with Reheating**.

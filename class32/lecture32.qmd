@@ -538,7 +538,7 @@ For this to hold for **any variation**, each term must be zero:
 
 We now have a complete statement of phase equilibrium:
 
-> Two phases are in equilibrium if and only if:
+> Two phases $\alpha$ and $\beta$ are in equilibrium if and only if:
 >
 > $$
 > T^\alpha = T^\beta,\quad
@@ -551,7 +551,7 @@ We now have a complete statement of phase equilibrium:
 ## Interpretation
 
 - $T$ equality → no heat flow  
-- $P$ equality → no mechanical motion  
+- $P$ equality → no volume change
 - $\mu$ equality → no mass transfer  
 
 **Chemical potential is the “driving force” for phase change (i.e. for mass to go between phases).**

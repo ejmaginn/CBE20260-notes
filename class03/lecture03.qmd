@@ -1,18 +1,16 @@
 ---
-title: "Lecture 3 — Forms of Energy and Calculating Work"
-author: "Prof. Edward Maginn"
-subtitle: "CBE 20260 — Spring 2026"
+title: "Lecture 3: Forms of Energy and Calculating Work"
+subtitle: "CBE 20260 / Thermodynamics I"
+author: "Edward Maginn"
 format:
   html:
     toc: true
     number-sections: true
-    theme: cosmo
-    highlight-style: pygments
-
   pdf:
-    geometry: margin=1in
     toc: true
     number-sections: true
+execute:
+  echo: false
 ---
 # Last class
 - Systems, boundaries, other definitions

@@ -32,6 +32,24 @@ This is a universal equation. It implies that argon, methane, and water should a
 
 ![Compressibility factor $Z$ for the van der Waals equation as a function of reduced pressure and reduced temperature.](images/vdw-Zr.png){#fig-vdw-Zr width=70%}
 
+::: {.callout-tip icon=false}
+## Jupyter Notebook Example - Reduced van der Waals Isotherms
+I have prepared a Jupyter Notebook that solves the reduced van der Waals equation (@eq-vdwreduced) for $V_r$ and plots $Z$ versus $P_r$ for several reduced temperatures, reproducing @fig-vdw-Zr. Try adding isotherms closer to $T_r = 1$ to see how sharply $Z$ drops near the critical point.
+
+::: {.content-visible when-format="html"}
+
+[**View Interactive Notebook (.ipynb)**](vdw_Z_vs_Pr_isotherms.ipynb)
+
+[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ejmaginn/CBE20260-notes/blob/main/class28/vdw_Z_vs_Pr_isotherms.ipynb)
+
+:::
+
+::: {.content-visible when-format="pdf"}
+*Note: This example is available as an interactive Jupyter Notebook on the course website.*
+:::
+:::
+
+
 
 Recall how the compressibility factor $Z=P\underline{V}/RT$ quantifies the deviation of a real gas from ideal gas behavior. For an ideal gas, $Z=1$. For real gases, $Z$ can be greater than or less than 1 depending on the conditions, and that is observed in @fig-vdw-Zr. 
 

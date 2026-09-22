@@ -1,0 +1,372 @@
+---
+title: "Lecture 35: The Big Picture"
+subtitle: "A Journey Through Thermodynamics — CBE 20260"
+author: "Edward Maginn"
+format:
+  pptx:
+    toc: false
+    slide-level: 2
+execute:
+  echo: false
+---
+
+# Introduction
+
+## Where We Started, Where We Are
+
+* **34 lectures ago:** You knew hot objects cool down and engines need fuel.
+* **Today:** You know *why* — and how to *calculate* outcomes for real engineering systems.
+* This lecture is a **map**, not a formula sheet.
+* We trace the logical thread: foundational postulates → rigorous mathematics → complete computational framework.
+
+## The Central Claim of This Course
+
+Every result in CBE 20260 follows from just **three things**:
+
+1. **The First Law:** Energy is conserved.
+2. **The Second Law:** Entropy of an isolated system increases until equilibrium.
+3. **The Fundamental Postulate:** Equilibrium states of pure systems are determined by two independent intensive variables.
+
+All the machinery we built — Legendre transforms, Maxwell relations, residual properties, fugacity — is the **mathematical consequence** of these three statements.
+
+# Part I: The Two Great Laws
+
+## The Fundamental Postulate and State Functions
+
+* **Fundamental Postulate:** For a pure substance at equilibrium, **two independent intensive properties** completely determine all others.
+* This is why we can draw phase diagrams, use steam tables, and write equations of state.
+* It implies that thermodynamic properties ($U$, $H$, $S$, $G$, $A$) are **state functions**.
+* State function changes depend only on **initial and final states**, not the path.
+* That fact is what makes thermodynamics tractable.
+
+## The First Law: Energy Bookkeeping
+
+**General open system:**
+$$\frac{d}{dt}\!\left[M\!\left(\hat{U} + \frac{v^2}{2} + gh\right)\right] = \sum_{in}\dot{m}_j\!\left(\hat{H}_j + \frac{v_j^2}{2} + gh_j\right) - \sum_{out}\dot{m}_k\!\left(\hat{H}_k + \frac{v_k^2}{2} + gh_k\right) + \dot{W}_s + \dot{Q}$$
+
+**Steady-state flow (most practical):**
+$$\Delta\hat{H} = Q + W_s$$
+
+This one equation (with appropriate assumptions) governs nozzles, turbines, compressors, pumps, and heat exchangers.
+
+## The Second Law: Directionality and Limits
+
+**Entropy balance for an open system:**
+$$\frac{d(M\hat{S})}{dt} = \sum_{in}\dot{m}\hat{S} - \sum_{out}\dot{m}\hat{S} + \frac{\dot{Q}}{T} + \dot{S}_{gen}, \qquad \dot{S}_{gen} \geq 0$$
+
+The inequality $\dot{S}_{gen} \geq 0$ gives us:
+
+* **Reversible processes** as idealized upper bounds ($\dot{S}_{gen} = 0$)
+* **Carnot efficiency:** $\eta = 1 - T_C/T_H$
+* **Carnot COP:** $\text{COP} = T_C/(T_H - T_C)$
+* **Isentropic efficiency** to quantify real vs. ideal device performance
+
+## What the Two Laws Together Tell You
+
+| Law | Tells you |
+|:----|:---------|
+| **First Law** | *How much* energy enters and leaves |
+| **Second Law** | *Which direction* the process goes and *how efficiently* it can run |
+
+Together they define the **feasibility and thermodynamic limits** of every process.
+
+# Part II: Engineering Devices and Cycles
+
+## Steady-State Devices
+
+| Device | Key assumption | Result |
+|:-------|:---------------|:-------|
+| Nozzle / diffuser | $Q = 0$, $W_s = 0$ | $\Delta H = -\Delta(\tfrac{1}{2}v^2)$ |
+| Turbine / compressor | Adiabatic, steady | $W_s = \Delta H$ |
+| Heat exchanger | $W_s = 0$, steady | $Q = \Delta H$ |
+| Throttle | $Q = 0$, $W_s = 0$ | $H_{in} = H_{out}$ (isenthalpic) |
+
+* **Joule-Thomson coefficient:** $\mu_{JT} = (\partial T/\partial P)_H$ — determines whether a fluid warms or cools on throttling.
+
+## The Rankine Cycle
+
+* Harnessing heat to make work drove the **Industrial Revolution**.
+* The Carnot cycle is the ideal heat engine, but not practical.
+* The **Rankine cycle** is a practical heat engine: boiler → turbine → condenser → pump → boiler.
+
+$$\eta = \frac{|W_{turbine}| - |W_{pump}|}{Q_{boiler}}$$
+
+* Real cycles deviate from ideal through **isentropic efficiencies**.
+* Modifications: **superheat, reheat, regeneration** → reduce irreversibilities, improve $\eta$.
+
+## Refrigeration and Liquefaction
+
+* **Vapor-compression refrigeration:** Reverses the Rankine cycle concept.
+* **Linde liquefaction:** Repeated throttling (Joule-Thomson expansion) + heat exchange → cryogenic temperatures.
+* Key condition: must operate where $\mu_{JT} > 0$ (fluid cools on expansion).
+
+**The bottleneck in all of this:** We needed thermodynamic property data ($\hat{H}$, $\hat{S}$) at various $(T, P)$.
+
+* Steam and refrigerant tables worked — but what about novel or high-pressure fluids?
+* Need a **general method** → this launched the second half of the course.
+
+# Part III: The Mathematics of Thermodynamics
+
+## The Fundamental Relation
+
+Combining the First and Second Laws for a reversible, closed system:
+
+$$d\underline{U} = T\,d\underline{S} - P\,d\underline{V}$$
+
+* Shows that $\underline{U} = \underline{U}(\underline{S}, \underline{V})$; definitions follow from partial derivatives:
+$$T = \left(\frac{\partial \underline{U}}{\partial \underline{S}}\right)_{\!\underline{V}}, \qquad -P = \left(\frac{\partial \underline{U}}{\partial \underline{V}}\right)_{\!\underline{S}}$$
+* **Temperature and pressure are slopes of the thermodynamic energy surface.**
+* Holds for *any* process between equilibrium states (not just reversible).
+
+## The Legendre Transforms
+
+Working in $(\underline{S}, \underline{V})$ is inconvenient — we want $(T, P)$. Legendre transforms give new potentials with convenient natural variables:
+
+| Potential | Definition | Natural variables | Differential |
+|:----------|:-----------|:-----------------|:-------------|
+| Enthalpy $H$ | $U + PV$ | $(S, P)$ | $dH = T\,dS + V\,dP$ |
+| Helmholtz $A$ | $U - TS$ | $(T, V)$ | $dA = -S\,dT - P\,dV$ |
+| Gibbs $G$ | $U + PV - TS$ | $(T, P)$ | $dG = -S\,dT + V\,dP$ |
+
+**Gibbs free energy** is the natural potential for constant $T$, $P$ processes → governs phase equilibrium.
+
+## The Maxwell Relations
+
+Because $U$, $H$, $A$, $G$ are exact differentials, mixed partial derivatives commute → four Maxwell relations:
+
+| Derived from | Maxwell relation |
+|:-------------|:----------------|
+| $dU = T\,dS - P\,dV$ | $\left(\frac{\partial T}{\partial V}\right)_{S} = -\left(\frac{\partial P}{\partial S}\right)_{V}$ |
+| $dH = T\,dS + V\,dP$ | $\left(\frac{\partial T}{\partial P}\right)_{S} = \left(\frac{\partial V}{\partial S}\right)_{P}$ |
+| $dA = -S\,dT - P\,dV$ | $\left(\frac{\partial S}{\partial V}\right)_{T} = \left(\frac{\partial P}{\partial T}\right)_{V}$ |
+| $dG = -S\,dT + V\,dP$ | $-\left(\frac{\partial S}{\partial P}\right)_{T} = \left(\frac{\partial V}{\partial T}\right)_{P}$ |
+
+The last two are most useful: they convert **unmeasurable entropy derivatives** into PVT derivatives that an EOS provides.
+
+## General Property Equations
+
+Combining exact differentials + Maxwell relations + calculus identities:
+
+$$d\underline{H} = C_P\,dT + \left[\underline{V} - T\!\left(\frac{\partial \underline{V}}{\partial T}\right)_{\!P}\right] dP$$
+
+$$d\underline{S} = \frac{C_P}{T}\,dT - \left(\frac{\partial \underline{V}}{\partial T}\right)_{\!P} dP$$
+
+* **Exact expressions** relating $\underline{H}$ and $\underline{S}$ to measurable quantities $(T, P, \underline{V})$.
+* An EOS provides $\underline{V}(T,P)$ — but real EOS make these integrals messy.
+* **Solution coming next:** the residual property framework.
+
+# Part IV: Equations of State
+
+## The Corresponding States Principle
+
+* At the same **reduced** $T_r = T/T_c$ and $P_r = P/P_c$, fluids behave similarly:
+$$Z \approx f(T_r, P_r)$$
+* The **acentric factor** $\omega$ corrects for non-spherical molecules:
+$$Z = Z^{(0)}(T_r, P_r) + \omega\, Z^{(1)}(T_r, P_r)$$
+* **Pitzer-type correlations (Lee-Kesler):** estimate residual properties from $T_c$, $P_c$, $\omega$ alone — no EOS needed.
+
+## Cubic Equations of State
+
+All cubic EOS share the same structure: repulsive term + attractive term.
+
+| EOS | Expression |
+|:----|:-----------|
+| van der Waals | $P = \dfrac{RT}{\underline{V}-b} - \dfrac{a}{\underline{V}^2}$ |
+| SRK | $P = \dfrac{RT}{\underline{V}-b} - \dfrac{a\,\alpha(T)}{\underline{V}(\underline{V}+b)}$ |
+| Peng-Robinson | $P = \dfrac{RT}{\underline{V}-b} - \dfrac{a\,\alpha(T)}{\underline{V}(\underline{V}+b)+b(\underline{V}-b)}$ |
+
+* Parameters determined entirely from $T_c$, $P_c$, $\omega$ — universally applicable.
+* Up to **three real volume roots** inside the two-phase envelope.
+
+## The Virial Equation of State
+
+Rigorous statistical-mechanical foundation:
+
+$$Z = 1 + \frac{B_2(T)}{\underline{V}} + \frac{C(T)}{\underline{V}^2} + \cdots \approx 1 + \frac{B_2 P}{RT} \quad \text{(truncated, pressure series)}$$
+
+* $B_2(T)$: second virial coefficient — captures **pairwise intermolecular interactions**.
+* Useful for gas-phase calculations at **moderate pressures**.
+
+# Part V: Residual Properties
+
+## The Core Idea
+
+**Problem:** We lack $C_P(T,P)$ data for real gases → can't integrate $d\underline{H}$ and $d\underline{S}$ directly.
+
+**Solution:** Define the **residual property** as the difference between real fluid and ideal gas at the same $(T, P)$:
+
+$$\underline{M}^R(T,P) \equiv \underline{M}(T,P) - \underline{M}^{ig}(T,P)$$
+
+Split any property change into an ideal-gas part (easy) + a residual correction (from EOS):
+
+$$\Delta\underline{H} = \Delta\underline{H}^{ig} + (\underline{H}_2^R - \underline{H}_1^R) \qquad \Delta\underline{S} = \Delta\underline{S}^{ig} + (\underline{S}_2^R - \underline{S}_1^R)$$
+
+## Computing Residual Properties
+
+General integral formulas derived from the property equations:
+
+$$\underline{H}^R = \int_0^P \left[\underline{V} - T\!\left(\frac{\partial \underline{V}}{\partial T}\right)_{\!P}\right] dP \qquad \underline{S}^R = -\int_0^P \left[\left(\frac{\partial \underline{V}}{\partial T}\right)_{\!P} - \frac{R}{P}\right] dP$$
+
+* Evaluated **analytically** for vdW, SRK, and PR EOS (Lecture 29).
+* Can also be computed **numerically** for any fluid and any EOS.
+
+**The residual framework in one sentence:** Use **ideal-gas $C_P^{ig}$ data** (tabulated for thousands of substances) + an **EOS** (needs only $T_c$, $P_c$, $\omega$) to compute $\Delta H$ and $\Delta S$ for any real fluid, at any conditions, without additional experimental data.
+
+# Part VI: Phase Equilibrium and Fugacity
+
+## Chemical Potential as the Driver of Phase Change
+
+Two phases $\alpha$ and $\beta$ coexist at equilibrium when:
+
+$$T^\alpha = T^\beta, \qquad P^\alpha = P^\beta, \qquad \underline{G}^\alpha = \underline{G}^\beta$$
+
+**Clapeyron equation** — slope of the saturation curve in $P$–$T$ space:
+$$\left(\frac{dP}{dT}\right)_{\!sat} = \frac{\Delta_{\!vap}\underline{H}}{T\,\Delta_{\!vap}\underline{V}}$$
+
+**Antoine equation** (empirical, from Clausius-Clapeyron approximation):
+$$\log_{10}(P^{sat}) = A - \frac{B}{T+C}$$
+
+## The Invention of Fugacity
+
+**Problem with $\underline{G}$:** As $P \to 0$, $\underline{G} \to -\infty$ due to the $RT\ln P$ term — inconvenient for calculations.
+
+**Solution (G.N. Lewis, 1901):** Define **fugacity** $f$ so the logarithmic form holds, with $f \to P$ as $P \to 0$:
+
+$$\underline{G}^R(T,P) = RT\ln\phi = RT\ln\!\left(\frac{f}{P}\right), \qquad f = \phi P$$
+
+* $\phi$ = **fugacity coefficient**. For ideal gas: $\phi = 1$, $f = P$.
+* Attractions dominate → $\phi < 1$. Repulsions dominate → $\phi > 1$.
+
+**Phase equilibrium condition:**
+$$\boxed{f^\alpha = f^\beta}$$
+Finite, has units of pressure, computable from any EOS.
+
+## Computing Fugacity from an EOS
+
+From $\underline{G}^R = RT\ln\phi$ and the property relations:
+$$\ln\phi = \int_0^P \frac{Z-1}{P}\,dP$$
+
+Evaluated analytically for cubic EOS (with $A \equiv aP/(RT)^2$, $B \equiv bP/RT$):
+
+| EOS | $\ln\phi$ |
+|:----|:---------|
+| vdW | $(Z-1) - \ln(Z-B) - A/Z$ |
+| SRK | $(Z-1) - \ln(Z-B) - \frac{A}{B}\ln\!\left(1+\frac{B}{Z}\right)$ |
+| PR  | $(Z-1) - \ln(Z-B) - \frac{A}{2\sqrt{2}B}\ln\!\left(\frac{Z+(1+\sqrt{2})B}{Z+(1-\sqrt{2})B}\right)$ |
+
+Procedure: get $T_c$, $P_c$, $\omega$ → compute $A$, $B$ → solve cubic for $Z$ → evaluate $\ln\phi$ → $f = \phi P$.
+
+## Phase Stability: Selecting the Right Root
+
+Inside the two-phase dome, the cubic EOS yields three real roots. The **thermodynamically stable phase** has **lower fugacity** (lower Gibbs energy):
+
+| Comparison | Physical meaning |
+|:-----------|:----------------|
+| $f^V < f^L$ | Superheated vapor: vapor is stable |
+| $f^L < f^V$ | Subcooled liquid: liquid is stable |
+| $f^V = f^L$ | VLE: the two phases coexist |
+
+* Basis for iterative algorithms to find $P^{sat}(T)$ or $T^{sat}(P)$ directly from an EOS.
+* Guess → solve cubic → compute both fugacities → iterate until $f^V = f^L$.
+
+# Part VII: Compressed Liquids & the Poynting Correction
+
+## Fugacity of a Compressed Liquid
+
+For a **compressed liquid** at $P > P^{sat}$, trace a three-leg path:
+
+1. **Leg 1:** Vapor isotherm from $P \approx 0$ to $P^{sat}$
+2. **Leg 2:** Across two-phase region at $P^{sat}$ (contributes zero: $dP = 0$, $f^V = f^L$)
+3. **Leg 3:** Liquid isotherm from $P^{sat}$ to $P$
+
+$$\boxed{f^L(T,P) = \phi^V_{sat}\,P^{sat}\exp\!\left[\frac{1}{RT}\int_{P^{sat}}^{P}\underline{V}^L\,dP\right]}$$
+
+The exponential is the **Poynting correction**. For an incompressible liquid:
+$$\text{PC} = \exp\!\left[\frac{\underline{V}^L(P - P^{sat})}{RT}\right]$$
+
+At moderate pressures: PC $\approx 1$, $\phi^V_{sat} \approx 1$, so $f^L \approx P^{sat}$.
+
+# Part VIII: What You Can Now Do
+
+## Your New Capabilities
+
+You came in knowing that steam tables existed. You leave knowing how to **build a steam table** for any fluid, from scratch, using only $T_c$, $P_c$, and $\omega$.
+
+| Capability | Framework used |
+|:-----------|:--------------|
+| Compute $\Delta H$ and $\Delta S$ for real fluids | Residual property framework + EOS |
+| Analyze power and refrigeration cycles | 1st Law + 2nd Law + EOS |
+| Predict phase behavior ($P^{sat}$, $T^{sat}$, molar volumes) | Cubic EOS |
+| Compute fugacity; determine phase equilibrium | $f^\alpha = f^\beta$ condition |
+| Connect molecular properties to macroscopic behavior | Corresponding states, acentric factor |
+
+# Part IX: Where This Leads
+
+## The Road Ahead
+
+**CBE 30370 — Phase Equilibria and Separations:**
+
+* Extend fugacity to **mixtures**: $f_i^\alpha = f_i^\beta$ still holds, but $f_i$ depends on composition too.
+* New concepts: partial molar properties, excess properties, activity coefficient models.
+* The framework — First Law, Second Law, Gibbs free energy, residual/excess properties — is **exactly the same**.
+* You already know the language.
+
+**Process simulators (Aspen Plus, HYSYS, GAMS):**
+
+* Use exactly the equations we derived: PR/SRK EOS, residual property formulas, fugacity-based equilibrium.
+* The day you can look at a simulator and understand **where every number comes from** is the day you become a more capable engineer.
+
+# Summary
+
+## The Arc of CBE 20260
+
+| Theme | Key results | Lectures |
+|:------|:-----------|:---------|
+| **Foundations** | Postulates; First Law; Second Law; entropy generation | 1–7 |
+| **Engineering devices** | Nozzles, turbines, compressors, heat exchangers | 8–13 |
+| **Cycles** | Rankine, refrigeration, liquefaction; Carnot limits | 14–22 |
+| **Math of thermodynamics** | Fundamental relations; Maxwell relations; general property equations | 23–25 |
+| **EOS and residual properties** | Cubic EOS; corresponding states; $H^R$, $S^R$ | 26–30 |
+| **Phase diagrams and stability** | Pure-component phase diagrams; Clapeyron equation | 31–33 |
+| **Fugacity** | Definition; $\ln\phi$ formulas; phase stability; Poynting correction | 34–35 |
+
+## The Conceptual Ladder
+
+$$\underbrace{\text{Postulates}}_{\text{Lec. 1–4}} \xrightarrow{+\,\text{calculus}} \underbrace{\text{Fundamental relations}}_{\text{Lec. 23–25}} \xrightarrow{+\,\text{EOS}} \underbrace{\text{Residual props.}}_{\text{Lec. 26–30}} \xrightarrow{+\,G^R} \underbrace{\text{Fugacity \& phase eq.}}_{\text{Lec. 33–35}}$$
+
+And throughout, **energy and entropy balances** (Lectures 5–22) gave you the tools to apply all this to real engineering devices and cycles.
+
+## Course Learning Objectives (1/2)
+
+| Capability | Covered in |
+|:-----------|:---------|
+| Describe thermodynamic concepts: heat, work, $U$, $C_p$, entropy, state functions | Parts I & III |
+| State and apply the First and Second Laws to open and closed systems | Parts I & II |
+| Evaluate thermodynamic feasibility and efficiency of a process | Parts I & II |
+| Analyze power and refrigeration cycles | Part II |
+| Apply equations of state to calculate unknown properties | Part IV |
+| State and apply the principle of corresponding states | Part IV |
+
+## Course Learning Objectives (2/2)
+
+| Capability | Covered in |
+|:-----------|:---------|
+| Know and apply fundamental property relations and Maxwell relations | Part III |
+| Use residual properties for non-ideal First and Second Law problems | Part V |
+| Understand phase diagrams of pure fluids | Part VI |
+| Calculate fugacity and saturation pressure from an EOS | Parts VI & VII |
+| Utilize tabulated properties (steam tables) for thermodynamic calculations | Part II |
+
+## A Final Thought
+
+> Thermodynamics was built from remarkably little raw material: conservation of energy, the tendency of isolated systems toward maximum entropy, and the mathematics of state functions. The formulas are just the outputs.
+
+When you encounter a new thermodynamic problem in practice, ask:
+
+1. **What does the First Law say?**
+2. **What does the Second Law demand?**
+3. **What does the equation of state tell me about this fluid?**
+
+If you can answer those three questions, **you can solve the problem.**
+
+*Good luck on the final exam — and in everything that comes after.*

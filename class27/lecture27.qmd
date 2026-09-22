@@ -130,7 +130,81 @@ along with the critical isotherm. The notebook uses CoolProp to obtain critical 
 :::
 :::
 
+# Worked Example: Isentropic Compression of a van der Waals Gas
 
+The methane turbine example used the residual enthalpy. This example applies the residual entropy to a compressor, and shows what happens when the residuals are small.
+
+**Problem Statement:**
+Nitrogen gas ($N_2$) enters a steady-state compressor at $P_1 =$ 1 bar and $T_1 =$ 298 K. It is compressed isentropically ($\Delta S = 0$) to a final pressure of $P_2 =$ 5 bar. Determine the final temperature ($T_2$) assuming the gas follows the van der Waals equation of state.
+
+**Data for Nitrogen:**
+
+* Critical temperature ($T_c$) = 126.2 K
+
+* Critical pressure ($P_c$) = 34.0 bar
+
+* Ideal gas heat capacity ($C_p^{IG}$) = 29.12 J/(mol K) (assumed constant)
+
+* Universal gas constant ($R$) = 8.314 J/(mol K) = 0.08314 L bar/(mol K)
+
+## Governing Equations
+For an isentropic process, the total change in real fluid entropy is zero. Using the hypothetical path and residual properties:
+$$\Delta S = S^R_2 - S^R_1 + \Delta S^{IG} = 0$$ {#eq-isentropic-resid}
+
+The ideal gas entropy change is:
+$$\Delta S^{IG} = C_p^{IG} \ln \left( \frac{T_2}{T_1} \right) - R \ln \left( \frac{P_2}{P_1} \right)$$
+
+To find the residual entropy ($S^R$), we evaluate the volume-based residual equation for the van der Waals equation of state ($P = \frac{RT}{V-b} - \frac{a}{V^2}$). As before, the required partial derivative is:
+$$\left( \frac{\partial P}{\partial T} \right)_V = \frac{R}{V-b}$$
+
+Substitute this into the general volume-based residual entropy equation:
+$$S^R = \int_{\infty}^V \left[ \frac{R}{V-b} - \frac{R}{V} \right] dV + R \ln Z$$
+
+Integrating yields:
+$$S^R = \left[ R \ln(V-b) - R \ln V \right]_{\infty}^V + R \ln Z = R \ln \left( \frac{V-b}{V} \right) + R \ln Z$$
+
+Substituting the definition of the compressibility factor ($Z = PV/RT$) into the argument of the logarithm gives the van der Waals residual entropy:
+$$S^R = R \ln \left( \frac{P(V-b)}{RT} \right)$$ {#eq-resid-SV-vdw}
+
+## van der Waals Parameters
+The parameters $a$ and $b$ are determined from the critical properties of nitrogen:
+$$a = \frac{27 R^2 T_c^2}{64 P_c} = \frac{27 (0.08314)^2 (126.2)^2}{64 (34.0)} = 1.37 \text{ L}^2 \text{ bar/mol}^2$$
+$$b = \frac{R T_c}{8 P_c} = \frac{0.08314 (126.2)}{8 (34.0)} = 0.0386 \text{ L/mol}$$
+
+## Evaluating State 1 (Inlet)
+At $P_1 =$ 1 bar and $T_1 =$ 298 K, solve the van der Waals equation for $V_1$:
+$$1 = \frac{0.08314 (298)}{V_1 - 0.0386} - \frac{1.37}{V_1^2}$$
+Solving this cubic equation yields $V_1 = 24.76$ L/mol.
+
+Using @eq-resid-SV-vdw:
+$$S^R_1 = 8.314 \ln \left( \frac{1 (24.76 - 0.0386)}{0.08314 (298)} \right) = -0.018 \text{ J/(mol K)}$$
+
+## Evaluating State 2 (Outlet)
+Because $T_2$ and $V_2$ are both unknown, an iterative solution is required.
+
+**Iteration 1: The Ideal Gas Assumption**
+As a first guess, assume the gas behaves ideally ($S^R_1 = 0$ and $S^R_2 = 0$). The entropy balance reduces to $\Delta S^{IG} = 0$:
+$$0 = 29.12 \ln \left( \frac{T_2}{298} \right) - 8.314 \ln \left( \frac{5}{1} \right)$$
+$$13.38 = 29.12 \ln \left( \frac{T_2}{298} \right) \implies T_2 = 471.8 \text{ K}$$
+
+**Iteration 2: The Real Gas Correction**
+Using the estimated $T_2 =$ 471.8 K, calculate the state 2 properties at $P_2 =$ 5 bar. Solving the van der Waals equation for $V_2$:
+$$5 = \frac{0.08314 (471.8)}{V_2 - 0.0386} - \frac{1.37}{V_2^2}$$
+Solving this yields $V_2 = 7.849$ L/mol.
+
+Calculate the residual entropy at state 2:
+$$S^R_2 = 8.314 \ln \left( \frac{5 (7.849 - 0.0386)}{0.08314 (471.8)} \right) = -0.037 \text{ J/(mol K)}$$
+
+Now, re-evaluate the full entropy balance (@eq-isentropic-resid) to find the corrected $T_2$:
+$$0 = S^R_2 - S^R_1 + C_p^{IG} \ln \left( \frac{T_2}{T_1} \right) - R \ln \left( \frac{P_2}{P_1} \right)$$
+$$0 = -0.037 - (-0.018) + 29.12 \ln \left( \frac{T_2}{298} \right) - 13.38$$
+$$13.399 = 29.12 \ln \left( \frac{T_2}{298} \right) \implies T_2 = 472.1 \text{ K}$$
+
+A further iteration does not change $T_2$ at this precision.
+
+**Conclusion:** The final temperature is 472.1 K, only 0.3 K above the ideal gas estimate. The residual entropies for nitrogen at these conditions are extremely small ($< 0.04$ J/(mol K)) because $Z \approx 1$: the attractive and repulsive contributions nearly cancel at these low pressures. Contrast this with the methane turbine at 100 bar, where the residuals changed the answer by about 40%. The ideal gas assumption is accurate for nitrogen here, but you should check the residuals before assuming that for other conditions. You can check these numbers with the VDW residual calculator notebook above.
+
+---
 
 # Cubic Equations of State and P-V-T Behavior
 

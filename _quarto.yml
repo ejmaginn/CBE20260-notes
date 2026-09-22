@@ -1,5 +1,13 @@
 project:
   type: website # website: → sets the site title and a simple navbar:
+  render:
+    - "**/*.qmd"
+    - "**/*.ipynb"
+    # Notebooks that only generate figures for the notes (not student demos):
+    - "!class23/USplots.ipynb"
+    - "!class23/xyplots.ipynb"
+    - "!class23/xyplots2.ipynb"
+    - "!class24/path-plot.ipynb"
 
 website:
   title: "CBE 20260 — Course Notes"
@@ -21,19 +29,33 @@ website:
             text: L7 VDW loop Demo
           - href: class07/vdw-TP.ipynb
             text: L7 VDW TP Demo
+          - href: class13/Entropy-calculator-IG.ipynb
+            text: L13 Ideal Gas Entropy Calculator
           - href: class14/Quenching_entropy.ipynb
-            text: L14 Quenching Entropy Demo 
+            text: L14 Quenching Entropy Demo
+          - href: class19/property-notebook1.ipynb
+            text: L19 Fluid Property Calculator
+          - href: class19/property-notebook2.ipynb
+            text: L19 Isentropic Expansion Solver
           - href: class19/rankine-regen.ipynb
             text: L19 Regenerative Rankine Cycle Demo
           - href: class22/vapor-compression-cycle.ipynb
             text: L22 Vapor Compression Cycle Demo
           - href: class27/VDW-solver.ipynb
-            text: L27 van der Waals Solver Demo  
+            text: L27 van der Waals Solver Demo
           - href: class27/residual-VDW.ipynb
-            text: L27 van der Waals Residuals Demo  
+            text: L27 van der Waals Residuals Demo
+          - href: class28/vdw_Z_vs_Pr_isotherms.ipynb
+            text: L28 Reduced van der Waals Isotherms
           - href: class29/PR-SRK-solvers.ipynb
-            text: L29 PR-SRK Solvers Demo  
-           
+            text: L29 PR-SRK Solvers Demo
+          - href: class29/EOS-compare.ipynb
+            text: L29 Equation of State Comparison
+          - href: class34/fugacity-EOS.ipynb
+            text: L34 Fugacity from Cubic EOS
+          - href: class35/R32_saturation.ipynb
+            text: L35 Saturated R-32 Properties
+
           # Add more notebooks here as you create them:  
           #- href: class03/lecture03_example.ipynb
           #  text: L3 Work Modes & Polytropic Expansion
@@ -45,77 +67,75 @@ website:
       - section: "Lectures"
         contents:
           - href: class01/lecture01.qmd
-            text: Lecture 1 — Introduction
+            text: "Lecture 1: Introduction to Chemical Engineering Thermodynamics"
           - href: class02/lecture02.qmd
-            text: Lecture 2 — Systems, Boundaries and Other Basics
+            text: "Lecture 2: Systems, Boundaries and Other Basics"
           - href: class03/lecture03.qmd
-            text: Lecture 3 — Forms of Energy and Calculating Work
+            text: "Lecture 3: Forms of Energy and Calculating Work"
           - href: class04/lecture04.qmd
-            text: Lecture 4 — Fundamental Postulate, States, Phase Rule, and Pure Substance Phase Behaviors 
+            text: "Lecture 4: Fundamental Postulate, States, Phase Rule, and Pure Substance Phase Behavior"
           - href: class05/lecture05.qmd
-            text: Lecture 5 — Heat Capacity, Enthalpy 
+            text: "Lecture 5: Heat Capacity, Enthalpy"
           - href: class06/lecture06.qmd
-            text: Lecture 6 — Calculating Internal Energy and Enthalpy Changes; intermolecular forces
+            text: "Lecture 6: Calculating Property Changes and Intermolecular Forces"
           - href: class07/lecture07.qmd
-            text: Lecture 7 - The van der Waals Equation of State; compressibility factor; open system energy balance
+            text: "Lecture 7: The van der Waals EOS and Open System Energy Balances"
           - href: class08/lecture08.qmd
-            text: Lecture 8 - Open system energy balance applied to process equipment
+            text: "Lecture 8: Energy Balances on Process Equipment"
           - href: class09/lecture09.qmd
-            text: Lecture 9 - Advanced Open System Energy Balances
+            text: "Lecture 9: Advanced Open System Energy Balances"
           - href: class10/lecture10.qmd
-            text: Lecture 10 - Latent Heat and the Need for a Second Law
+            text: "Lecture 10: Latent Heat and the Need for a Second Law"
           - href: class12/lecture12.qmd
-            text: Lecture 12 - Introduction to Entropy and the Second Law  
+            text: "Lecture 12: Introduction to Entropy and the Second Law"
           - href: class13/lecture13.qmd
-            text: Lecture 13 - Calculating Entropy Changes for Closed Systems
+            text: "Lecture 13: Calculating Entropy Changes - Closed Systems"
           - href: class14/lecture14.qmd
-            text: Lecture 14 - Entropy Changes for Open Systems   
+            text: "Lecture 14: Entropy Balance for Open Systems"
           - href: class15/lecture15.qmd
-            text: Lecture 15 - Open System Entropy Balance and Efficiency
+            text: "Lecture 15: Open System Entropy Balance and Efficiency"
           - href: class16/lecture16.qmd
-            text: Lecture 16 - Heat Engines and the Second Law  
+            text: "Lecture 16: Heat Engines and the Second Law"
           - href: class17/lecture17.qmd
-            text: Lecture 17 - Carnot Cycle and Practical Heat Engines  
+            text: "Lecture 17: The Carnot Cycle and Practical Heat Engines"
           - href: class18/lecture18.qmd
-            text: Lecture 18 - Rankine Cycle Analysis and Efficiency  
+            text: "Lecture 18: Rankine Cycle Analysis and Efficiency"
           - href: class19/lecture19.qmd
-            text: Lecture 19 - Improving Rankine Cycle Efficiency
+            text: "Lecture 19: Improving Rankine Cycle Efficiency"
           - href: class20/lecture20.qmd
-            text: Lecture 20 - Organic Rankine Cycles and Internal Combustion Engines
+            text: "Lecture 20: Organic Rankine Cycles and Internal Combustion Engines"
           - href: class21/lecture21.qmd
-            text: Lecture 21 - Introduction to Cooling and Refrigeration
+            text: "Lecture 21: Introduction to Cooling and Refrigeration"
           - href: class22/lecture22.qmd
-            text: Lecture 22 - Modeling Vapor Compression Cycles and Liquefaction
+            text: "Lecture 22: Modeling Vapor Compression Cycles and Liquefaction"
           - href: class23/lecture23.qmd
-            text: Lecture 23 - The Mathematics of Thermodynamics and Thermodynamic Potentials 
+            text: "Lecture 23: The Mathematics of Thermodynamics and Thermodynamic Potentials"
           - href: class24/lecture24.qmd
-            text: Lecture 24 - The Maxwell Relations and Calculating Thermodynamic Properties
+            text: "Lecture 24: Maxwell Relations"
           - href: class25/lecture25.qmd
-            text: Lecture 25 - General Property Equations from the Math of Thermo
+            text: "Lecture 25: General Property Equations from the Math of Thermo"
           - href: class26/lecture26.qmd
-            text: Lecture 26 - Real Fluids and Residual Properties
+            text: "Lecture 26: Real Fluids and Residual Properties"
           - href: class27/lecture27.qmd
-            text: Lecture 27 - Applying Residuals and Intro to Cubic Equations of State
+            text: "Lecture 27: Applying Residuals and Intro to Cubic Equations of State"
           - href: class28/lecture28.qmd
-            text: Lecture 28 - Cubic Equations of State and the Principle of Corresponding States  
+            text: "Lecture 28: Cubic Equations of State and the Principle of Corresponding States"
           - href: class29/lecture29.qmd
-            text: Lecture 29 - Modern Cubic Equations of State  
+            text: "Lecture 29: Modern Cubic Equations of State"
           - href: class30/lecture30.qmd
-            text: Lecture 30 - Generalized Correlations and the Critical Point
+            text: "Lecture 30: Generalized Correlations and the Critical Point"
           - href: class31/lecture31.qmd
-            text: Lecture 31 - The Virial Equation, Group Contributions, and Molecular Origins of Thermodynamics
+            text: "Lecture 31: The Virial Equation, Group Contributions, and Molecular Origins"
           - href: class32/lecture32.qmd
-            text: Lecture 32 - Introduction to Phase Equilibria  
+            text: "Lecture 32: Introduction to Phase Equilibria"
           - href: Big-Picture-exam3/Big-Picture-exam3.qmd
             text: Big Picture — Exam 3
           - href: class33/lecture33.qmd
-            text: Lecture 33 - Chemical Potential, Gibbs Energy, and the Clapeyron Equation
+            text: "Lecture 33: Chemical Potential, Gibbs Energy, and the Clapeyron Equation"
           - href: class34/lecture34.qmd
-            text: Lecture 34 - Fugacity and Phase Equilibria
+            text: "Lecture 34: Fugacity and Phase Stability"
           - href: class35/lecture35.qmd
-            text: Lecture 35 - The Big Picture — A Journey Through Thermodynamics          
-  
-
+            text: "Lecture 35: The Big Picture — A Journey Through Thermodynamics"
           # Add more lectures here as you create them:
           # - href: class0x/lecture02.qmd
           #   text: Lecture x — Title

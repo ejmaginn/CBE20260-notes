@@ -197,6 +197,23 @@ $$\Delta \underline{S} = C_p \ln\left(\frac{T_2}{T_1}\right) - R \ln\left(\frac{
 
 **Caution** @eq-S_ideal_TV and @eq-S_ideal_TP are only valid for ideal gases (and when heat capacity is constant). For real gases, the expressions are more complex and depend on the specific equation of state. We will cover this in more detail later. 
 
+::: {.callout-tip icon=false}
+## Jupyter Notebook Example - Ideal Gas Entropy Calculator
+I have prepared a Jupyter Notebook that uses @eq-S_ideal_TV to calculate the entropy change of an ideal gas with constant $C_v$ between two states $(T_1, \underline{V}_1)$ and $(T_2, \underline{V}_2)$, and plots the process on a $P$-$\underline{V}$ diagram. The example is an isothermal doubling of the volume. Try changing the temperatures and volumes to see how each term contributes to $\Delta S$.
+
+::: {.content-visible when-format="html"}
+
+[**View Interactive Notebook (.ipynb)**](Entropy-calculator-IG.ipynb)
+
+[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ejmaginn/CBE20260-notes/blob/main/class13/Entropy-calculator-IG.ipynb)
+
+:::
+
+::: {.content-visible when-format="pdf"}
+*Note: This example is available as an interactive Jupyter Notebook on the course website.*
+:::
+:::
+
 ## 4. Phase Changes (Constant T and P)
 Phase changes (melting, boiling) occur at constant temperature and pressure.
 Since $P$ is constant, $dQ_{rev} = dH$.

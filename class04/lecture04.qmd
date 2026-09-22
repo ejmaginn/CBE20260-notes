@@ -2,7 +2,6 @@
 title: "Lecture 4: Fundamental Postulate, States, Phase Rule, and Pure Substance Phase Behavior"
 subtitle: "CBE 20260 / Thermodynamics I"
 author: "Edward Maginn"
-# date: "Lecture 4"
 format:
   html:
     toc: true

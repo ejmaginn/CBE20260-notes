@@ -103,6 +103,24 @@ The vapor-compression refrigeration cycle reversed the Rankine cycle concept. Th
 
 **The bottleneck in all of this:** we needed thermodynamic property data such as $\hat{H}$ and $\hat{S}$ at various $(T, P)$ to design these systems. For steam and refrigerants we had tables. But for novel or high-pressure fluids, we needed a general method. That necessity launched the second half of the course.
 
+::: {.callout-tip icon=false}
+## Jupyter Notebook Example - Saturated R-32 Properties
+Property tables are no longer the only option. This Jupyter Notebook uses CoolProp to build a table of saturated liquid and vapor properties (pressure, density, enthalpy, and entropy) for R-32 (difluoromethane), a refrigerant used in many modern air conditioners and heat pumps, at selected temperatures. It also exports the table to a CSV file that opens in Excel. Change the fluid name or the temperature list to make your own table.
+
+::: {.content-visible when-format="html"}
+
+[**View Interactive Notebook (.ipynb)**](R32_saturation.ipynb)
+
+[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ejmaginn/CBE20260-notes/blob/main/class35/R32_saturation.ipynb)
+
+:::
+
+::: {.content-visible when-format="pdf"}
+*Note: This example is available as an interactive Jupyter Notebook on the course website.*
+:::
+:::
+
+
 ---
 
 # Part III: The Mathematics of Thermodynamics
