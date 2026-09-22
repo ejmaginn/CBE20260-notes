@@ -11,6 +11,7 @@ project:
 
 website:
   title: "CBE 20260 — Course Notes"
+  site-url: "https://ejmaginn.github.io/CBE20260-notes/"
   navbar:
     left:
       - href: index.qmd
