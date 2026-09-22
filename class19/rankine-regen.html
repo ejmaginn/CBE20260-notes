@@ -639,6 +639,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <img src="images/modified_rankine.png" width="600">
 </p>
 <p><strong>Figure 1.</strong> Modified Rankine Cycle with open feedwater heater.</p>
+<div id="5e86061c" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Static preview: results for the default inputs above.</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The output is saved so the course website can show it.</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># To try other inputs, use the controls above, or open</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># this notebook in Colab (badge on the course website).</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>solve_regenerative_rankine(P_boiler_bar<span class="op">=</span>slider_P_boiler.value, T_boiler_C<span class="op">=</span>slider_T_boiler.value,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                           P_extract_bar<span class="op">=</span>slider_P_extract.value, P_cond_bar<span class="op">=</span>slider_P_cond.value,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                           eta<span class="op">=</span>slider_eta.value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>--------------------------------------------------
+REGENERATIVE RANKINE CYCLE ANALYSIS
+--------------------------------------------------
+Extraction Fraction (y):     0.1308  (13.1%)
+--------------------------------------------------
+HP Turbine Work (per kg):    -377.03 kJ/kg
+LP Turbine Work (per kg):    -346.55 kJ/kg
+Total Turbine Work:          -678.24 kJ/kg
+Total Pump Work:             8.60 kJ/kg
+Net Work (W_net):            -669.63 kJ/kg
+Heat Added (Q_H):            2653.08 kJ/kg
+--------------------------------------------------
+THERMAL EFFICIENCY:          25.24 %
+--------------------------------------------------</code></pre>
+</div>
+</div>
 
 
 

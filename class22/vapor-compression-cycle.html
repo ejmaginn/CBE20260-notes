@@ -703,6 +703,35 @@ window.Quarto = {
 </script>
 </div>
 </div>
+<div id="b9c6a5a3" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Static preview: results for the default inputs above.</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The output is saved so the course website can show it.</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># To try other inputs, use the controls above, or open</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># this notebook in Colab (badge on the course website).</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>solve_vcc(fluid<span class="op">=</span>dropdown_fluid.value, mode<span class="op">=</span>dropdown_mode.value,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>          T_evap_C<span class="op">=</span>slider_T_evap.value, T_cond_C<span class="op">=</span>slider_T_cond.value,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>          P_evap_bar<span class="op">=</span>slider_P_evap.value, P_cond_bar<span class="op">=</span>slider_P_cond.value,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>          eta<span class="op">=</span>slider_eta.value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>============================================================
+VAPOR-COMPRESSION CYCLE ANALYSIS: R134a
+============================================================
+Evaporator: 2.01 bar | -10.00 °C
+Condenser:  7.70 bar | 30.00 °C
+------------------------------------------------------------
+State 1 (Comp In)  : H1 = 392.66 kJ/kg | S1 = 1.7334 kJ/kg-K
+State 2 (Comp Out) : H2 = 429.89 kJ/kg | T2 = 44.56 °C
+State 3 (Valve In) : H3 = 241.72 kJ/kg | Saturated Liquid
+State 4 (Valve Out): H4 = 241.72 kJ/kg | Quality (x) = 0.267
+------------------------------------------------------------
+Cooling Load (q_in):       150.94 kJ/kg
+Compressor Work (W_c):     37.23 kJ/kg
+Heat Rejected (q_out):    -188.17 kJ/kg
+------------------------------------------------------------
+COEFFICIENT OF PERFORMANCE (COP): 4.05
+============================================================</code></pre>
+</div>
+</div>
 
 
 

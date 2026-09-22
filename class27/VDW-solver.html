@@ -671,6 +671,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </script>
 </div>
 </div>
+<div id="269035e1" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Static preview: results for the default inputs above.</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The output is saved so the course website can show it.</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># To try other inputs, use the controls above, or open</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># this notebook in Colab (badge on the course website).</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>solve_and_plot(fluid_name<span class="op">=</span>fluid_dropdown.value, T_val<span class="op">=</span>T_input.value, T_unit<span class="op">=</span>T_unit.value,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>               P_val<span class="op">=</span>P_input.value, P_unit<span class="op">=</span>P_unit.value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>============================================================
+FLUID: Methane
+Critical State: Tc = 190.56 K  |  Pc = 45.99 bar
+VDW Parameters: a = 2.3028 L^2·bar/mol^2  |  b = 0.04306 L/mol
+------------------------------------------------------------
+TARGET STATE:   T = 300.00 K  |  P = 100.00 bar
+
+1 Real Root Found (Supercritical Fluid):
+  ---&gt; V = 0.2032 L/mol
+============================================================</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="VDW-solver_files/figure-html/cell-3-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 

@@ -759,6 +759,41 @@ window.Quarto = {
 </script>
 </div>
 </div>
+<div id="a7fdbdc2" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Static preview: results for the default inputs above.</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The output is saved so the course website can show it.</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># To try other inputs, use the controls above, or open</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># this notebook in Colab (badge on the course website).</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>compute_residuals_and_plot(eos_choice<span class="op">=</span>eos_dropdown.value, fluid_name<span class="op">=</span>fluid_dropdown.value,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                           T_val<span class="op">=</span>T_input.value, T_unit<span class="op">=</span>T_unit.value,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                           P_val<span class="op">=</span>P_input.value, P_unit<span class="op">=</span>P_unit.value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>======================================================================
+SYSTEM: Methane modeled with Peng-Robinson EOS
+Critical State: Tc = 190.56 K  |  Pc = 45.99 bar  |  ω = 0.0114
+Parameters: a(T) = 2.0221 L^2·bar/mol^2  |  b = 0.02680 L/mol
+----------------------------------------------------------------------
+TARGET STATE:   T = 300.00 K  |  P = 100.00 bar
+Ideal Gas Vol:  V_ig = 0.2494 L/mol
+======================================================================
+
+[Supercritical Gas]
+  Molar Volume (V) = 0.2080 L/mol
+  Residual Volume   (V^R) = -0.0414 L/mol
+  Residual Internal (U^R) = -1343.8 J/mol
+  Residual Enthalpy (H^R) = -1758.1 J/mol
+  Residual Entropy  (S^R) = -4.241 J/(mol·K)
+
+======================================================================</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="PR-SRK-solvers_files/figure-html/cell-3-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 </section>

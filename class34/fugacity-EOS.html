@@ -502,7 +502,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#background-ln-φ-formulas" id="toc-background-ln-φ-formulas" class="nav-link active" data-scroll-target="#background-ln-φ-formulas"><span class="header-section-number">1</span> Background: ln φ Formulas</a></li>
+  <li><a href="#background-ln-phi-formulas" id="toc-background-ln-phi-formulas" class="nav-link active" data-scroll-target="#background-ln-phi-formulas"><span class="header-section-number">1</span> Background: <span class="math inline">\(\ln \phi\)</span> Formulas</a></li>
   <li><a href="#python-solver" id="toc-python-solver" class="nav-link" data-scroll-target="#python-solver"><span class="header-section-number">2</span> Python Solver</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="fugacity-EOS.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -532,8 +532,8 @@ window.Quarto = {
 <p><strong>Author:</strong> Edward Maginn, CBE 20260</p>
 <p>This notebook computes the <strong>fugacity coefficient</strong> <span class="math inline">\(\phi\)</span> and <strong>fugacity</strong> <span class="math inline">\(f = \phi P\)</span> for a real fluid using the van der Waals (vdW), Soave-Redlich-Kwong (SRK), and Peng-Robinson (PR) equations of state. When the cubic EOS yields two physical roots (liquid and vapor), the notebook computes both fugacities and identifies the <strong>thermodynamically stable phase</strong> as the one with the lower fugacity.</p>
 <hr>
-<section id="background-ln-φ-formulas" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="background-ln-φ-formulas"><span class="header-section-number">1</span> Background: ln φ Formulas</h2>
+<section id="background-ln-phi-formulas" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="background-ln-phi-formulas"><span class="header-section-number">1</span> Background: <span class="math inline">\(\ln \phi\)</span> Formulas</h2>
 <p>Starting from the general formula <span class="math display">\[\ln\phi = \int_0^P \frac{Z-1}{P}\,dP\]</span> and evaluating analytically for each EOS, we obtain closed-form expressions. Define the dimensionless parameters <span class="math display">\[A \equiv \frac{aP}{(RT)^2}, \qquad B \equiv \frac{bP}{RT}\]</span> where <span class="math inline">\(a\)</span> includes the <span class="math inline">\(\alpha(T)\)</span> correction for SRK and PR.</p>
 <p><strong>van der Waals:</strong> <span class="math display">\[\ln\phi = (Z-1) - \ln(Z-B) - \frac{A}{Z}\]</span></p>
 <p><strong>Soave-Redlich-Kwong (SRK):</strong> <span class="math display">\[\ln\phi = (Z-1) - \ln(Z-B) - \frac{A}{B}\ln\!\left(1 + \frac{B}{Z}\right)\]</span></p>
@@ -806,6 +806,56 @@ window.Quarto = {
 <span id="cb1-259"><a href="#cb1-259" aria-hidden="true" tabindex="-1"></a>})</span>
 <span id="cb1-260"><a href="#cb1-260" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-261"><a href="#cb1-261" aria-hidden="true" tabindex="-1"></a>display(ui, out)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="72348447" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Static preview: results for the default inputs above.</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The output is saved so the course website can show it.</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># To try other inputs, use the controls above, or open</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># this notebook in Colab (badge on the course website).</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>run(eos_choice<span class="op">=</span>eos_dd.value, fluid_name<span class="op">=</span>fluid_dd.value, T_val<span class="op">=</span>T_in.value, T_unit<span class="op">=</span>T_unit.value,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    P_val<span class="op">=</span>P_in.value, P_unit<span class="op">=</span>P_unit.value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>========================================================================
+  EOS: Peng-Robinson  |  Fluid: Propane
+  Tc = 369.89 K   Pc = 42.51 bar   ω = 0.1521
+  T  = 300.00 K   P  = 10.000 bar
+  A  = 0.18370      B  = 0.02256
+  V_ideal = 2.4943 L/mol
+========================================================================
+
+  [Liquid root]
+    V      = 0.08670 L/mol
+    Z      = 0.03476
+    ln φ   = -0.17370
+    φ      = 0.84055
+    f      = 8.4055 bar
+
+  [Unstable root (discard)]
+    V      = 0.31927 L/mol
+    Z      = 0.12800
+    (fugacity not meaningful for unstable root — skip)
+
+  [Vapor root]
+    V      = 2.03209 L/mol
+    Z      = 0.81468
+    ln φ   = -0.17179
+    φ      = 0.84216
+    f      = 8.4216 bar
+
+------------------------------------------------------------------------
+  PHASE STABILITY ANALYSIS:
+    f^L = 8.4055 bar   (liquid root)
+    f^V = 8.4216 bar   (vapor root)
+    → f^L &lt; f^V  :  LIQUID is the stable phase at this T and P.
+========================================================================</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="fugacity-EOS_files/figure-html/cell-3-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 
 

@@ -741,6 +741,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </script>
 </div>
 </div>
+<div id="3dc01340" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Static preview: results for the default inputs above.</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The output is saved so the course website can show it.</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># To try other inputs, use the controls above, or open</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># this notebook in Colab (badge on the course website).</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>compute_all_eos_and_plot(fluid_name<span class="op">=</span>fluid_dropdown.value, T_val<span class="op">=</span>T_input.value, T_unit<span class="op">=</span>T_unit.value,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                         P_val<span class="op">=</span>P_input.value, P_unit<span class="op">=</span>P_unit.value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>=====================================================================================
+SYSTEM: Methane  |  Critical State: Tc = 190.56 K, Pc = 45.99 bar, ω = 0.0114
+TARGET: T = 300.00 K  |  P = 100.00 bar  |  V_ideal = 0.2494 L/mol  |  Psat = N/A (Supercritical)
+TRUE VOLUMES (CoolProp): [0.2134] L/mol
+=====================================================================================
+
+[vdW EQUATION OF STATE]
+  Root 1: V = 0.2032 L/mol (Stable Phase)
+      U^R =  -1133.4 J/mol  |  H^R =  -1595.9 J/mol  |  S^R =  -3.686 J/(mol·K)
+
+[SRK EQUATION OF STATE]
+  Root 1: V = 0.2172 L/mol (Stable Phase)
+      U^R =  -1316.9 J/mol  |  H^R =  -1639.6 J/mol  |  S^R =  -4.212 J/(mol·K)
+
+[PR EQUATION OF STATE]
+  Root 1: V = 0.2080 L/mol (Stable Phase)
+      U^R =  -1343.8 J/mol  |  H^R =  -1758.1 J/mol  |  S^R =  -4.241 J/(mol·K)
+
+=====================================================================================</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="EOS-compare_files/figure-html/cell-3-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 
