@@ -5,3 +5,6 @@ _freeze/
 
 /.quarto/
 **/*.quarto_ipynb
+
+# pixi
+.pixi/

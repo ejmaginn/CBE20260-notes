@@ -1,0 +1,29 @@
+[workspace]
+authors = ["Edward Maginn <ejmaginn@users.noreply.github.com>"]
+channels = ["conda-forge"]
+name = "cbe20260-notes"
+description = "CBE 20260 Thermodynamics I: course notes and demo notebooks"
+platforms = ["osx-arm64", "osx-64", "linux-64"]
+version = "0.1.0"
+
+[tasks]
+render = "quarto render"
+# HTML only, no PDF/LaTeX; fast for checking edits.
+render-html = "quarto render --to html"
+preview = "quarto preview"
+lab = "jupyter lab"
+
+# Replaces the old `thermo2026` conda environment. Notebooks are rendered
+# from their saved outputs, so these packages are for running and editing
+# the demos, not for the site build. PDF output uses the system TeX (MacTeX).
+[dependencies]
+python = ">=3.11,<3.14"
+numpy = "*"
+scipy = "*"
+pandas = "*"
+matplotlib = "*"
+coolprop = "*"
+ipywidgets = "*"
+ipympl = "*"
+jupyterlab = "*"
+quarto = "*"
